@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="1" name="FindByTheme" preserve-order="true">
+    
+    <parameter name="config.file.name" value="config.dev.properties" />
+    <parameter name="params.file.name" value="params.properties" />
+    
+    <test name="Test - BuyCredut Normal User" preserve-order="true">
+        <parameter name="normalLogin" value="NormalTester" />        
+        <parameter name="normalPassword" value="Tester13" />        
+        <parameter name="resellerLogin" value="Tester" />        
+        <parameter name="resellerPassword" value="Tester13" />        
+        <parameter name="masterLogin" value="MasterTester" />        
+        <parameter name="masterPassword" value="Tester13" />        
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInNormalUserTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+</suite>

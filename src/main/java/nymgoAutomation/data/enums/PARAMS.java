@@ -1,0 +1,12 @@
+package nymgoAutomation.data.enums;
+
+public enum PARAMS {
+
+    INTER_NORMAL_WHITELIST_GC_USERNAME,
+    INTER_NORMAL_WHITELIST_GC_PASSWORD,
+
+    MOBILE_REGEXP,
+    MOBILE_PLACEHOLDER,
+    BILLING_PROVIDER
+
+}

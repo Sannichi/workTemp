@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="1" name="FindByTheme" preserve-order="true">
+    
+    <parameter name="config.file.name" value="config.dev.properties" />
+    <parameter name="params.file.name" value="params.properties" />
+    
+    <test name="Test - BuyCredut Normal User" preserve-order="true">
+        <parameter name="adminLogin" value="luliia.khikmatova" />        
+        <parameter name="adminPassword" value="13theBest" />    
+        <parameter name="transactionID" value="3336765696" />        
+        <parameter name="username" value="normaltester" />    
+        <parameter name="amount" value="48.4AED/13.18$" />        
+        <parameter name="currency" value="AED" />    
+        <parameter name="product" value="AED 40" />        
+        <parameter name="service" value="Global Collect" />    
+        <parameter name="method" value="American Express" />        
+        <parameter name="country" value="united kingdom" />    
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="cancelNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+</suite>

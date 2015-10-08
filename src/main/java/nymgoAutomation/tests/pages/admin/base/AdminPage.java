@@ -1,0 +1,35 @@
+package nymgoAutomation.tests.pages.admin.base;
+
+import nymgoAutomation.tests.fragments.admin.base.AdminPageFragment;
+import nymgoAutomation.tests.navigation.Starter;
+
+/*
+ * 
+ * Any Admin logged page  
+ * 
+ */
+
+public class AdminPage extends AbstractLoggedAdminPage{
+
+	private AdminPageFragment adminPageFragment;
+	
+    public AdminPage(Starter starter) {
+        super(starter);
+        adminPageFragment = new AdminPageFragment(driver);
+    }
+
+    private static final String ADMIN_PAGE_NAME_ENG = "AdminNymgoPage"; 
+	
+	@Override
+	public boolean isCorrectPage() {
+		// TODO Auto-generated method stub
+		return adminPageFragment.isCorrectURL();
+	}
+
+	@Override
+	public String getPageName() {
+		// TODO Auto-generated method stub
+		return ADMIN_PAGE_NAME_ENG;
+	}
+    
+}
