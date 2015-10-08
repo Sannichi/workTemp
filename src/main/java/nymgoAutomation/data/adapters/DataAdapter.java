@@ -2,20 +2,28 @@ package nymgoAutomation.data.adapters;
 
 import nymgoAutomation.data.adapters.BaseAdapter;
 import nymgoAutomation.data.entity.FullUserEntity;
-import nymgoAutomation.data.enums.PARAMS;
+import nymgoAutomation.data.utils.ExcelUtils;
+import nymgoAutomation.tests.navigation.Starter;
 
 public class DataAdapter extends BaseAdapter {
 
+	private static String usersTablePath = Starter.USERS_FILE_PATH;
+	
+    public static Object[][] getInterNormalWhitelistGC() throws Exception{
 
-    public static Object[] getInterNormalWhitelistGC(){
-
-        Object[] interNormalWhiteArray = new Object[14];
-//        FullUserEntity fullUserEntity = 
-//        Object[][] dataArray = {{PARAMETERS.getProperty(PARAMS.INTER_NORMAL_WHITELIST_GC_USERNAME.name()), 
-//        	PARAMETERS.getProperty(PARAMS.INTER_NORMAL_WHITELIST_GC_PASSWORD.name())}};
-//        interNormalWhiteArray[0] = dataArray[0];
-//        interNormalWhiteArray[0] = fullUserEntity;        
-        return interNormalWhiteArray;
+    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
+    	FullUserEntity[] fullUserEntities = {new FullUserEntity(ExcelUtils.getUserArray(usersTablePath,"InterNormalWhitelistGC"))};
+    	Object[][] userEntityArray = new Object[1][];
+    	userEntityArray[0] = fullUserEntities;
+    	return userEntityArray;
     }
 
+    public static Object[][] getEuroNormalWhitelistGC() throws Exception{
+	
+    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
+    	FullUserEntity[] fullUserEntities = {new FullUserEntity(ExcelUtils.getUserArray(usersTablePath,"EuroNormalWhitelistGC"))};
+    	Object[][] userEntityArray = new Object[1][];
+    	userEntityArray[0] = fullUserEntities;
+    	return userEntityArray;
+  }
 }

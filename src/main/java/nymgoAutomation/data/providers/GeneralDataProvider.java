@@ -10,9 +10,14 @@ public class GeneralDataProvider extends BaseDataProvider{
 
 
     @DataProvider(name=PROVIDER_CONST.INTER_NORMAL_WHITELIST_GC_PROVIDER)
-    public static Object[][] interNormalWhitelistedGCDataProvider() {
+    public static Object[][] interNormalWhitelistedGCDataProvider() throws Exception {
 
         return DataAdapter.getInterNormalWhitelistGC();
     }
 
+    @DataProvider(name=PROVIDER_CONST.EURO_NORMAL_WHITELIST_GC_PROVIDER)
+    public static Object[][] euroNormalWhitelistedGCDataProvider() throws Exception {
+
+        return DataAdapter.getEuroNormalWhitelistGC();
+    }
 }

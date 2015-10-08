@@ -77,13 +77,13 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConf
 	public void clickContinueButton(){
 		
 //		continueButton.click();
-		clickSubmitButton(continueButton);
+		clickInputButton(continueButton);
 	}
 
 	public void clickCancelButton(){
 		
 //		cancelButton.click();
-		clickSubmitButton(cancelButton);
+		clickInputButton(cancelButton);
 	}
 
 	public String getSelectedExpireDateMonth(){

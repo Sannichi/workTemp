@@ -63,9 +63,9 @@ public class BaseFragment {
 	//input with only value
 	public void clickInputButton(WebElement button){
 		
-		String title = button.getAttribute("title");
+		String value = button.getAttribute("value");
 		button.click();
-		LOGGER.info("Button '" + title + "' was clicked");
+		LOGGER.info("Button '" + value + "' was clicked");
 	}
 	
 	public void clickLink(WebElement link){

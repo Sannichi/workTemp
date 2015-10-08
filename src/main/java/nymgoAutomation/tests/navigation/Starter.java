@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import nymgoAutomation.data.enums.USER_PARAMS;
 import nymgoAutomation.tests.enums.BROWSERS;
 import nymgoAutomation.tests.enums.FILES_NAMES;
 import nymgoAutomation.tests.enums.LOCALES;
@@ -33,6 +34,7 @@ public class Starter {
     public final  static String CONFIG_FILE_NAME = "config.file.name";
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE = "params.file.name";
+    public static String USERS_FILE_PATH = "";
     public static int IMPLICITLY_WAIT_TIME = 30;
     public static int CORRECT_PAGE_WAIT_TIME = 5;
     public static int ELEMENT_WAIT_TIME = 5;
@@ -106,6 +108,7 @@ public class Starter {
             LOGGER.fatal("There was a problem to load the config file from " + PARAMS_FILE);
             e.printStackTrace();
         }
+        USERS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.USERS_FILE_PATH.name());
         IMPLICITLY_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.IMPLICITLY_WAIT_TIME.name()));
         CORRECT_PAGE_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.CORRECT_PAGE_WAIT_TIME.name()));
         ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ELEMENT_WAIT_TIME.name()));        

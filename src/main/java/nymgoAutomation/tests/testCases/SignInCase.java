@@ -1,5 +1,6 @@
 package nymgoAutomation.tests.testCases;
 
+import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.enums.PROVIDER_CONST;
 import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.tests.pages.nymgo.HomePage;
@@ -16,10 +17,8 @@ import org.testng.Assert;
 
 public class SignInCase extends AbstractCase{
 	
-    @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_GC_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-//	@Parameters({"normalLogin", "normalPassword"})
-	public void signInNormalUserTest(String login, String password){
-
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_GC_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void signInNormalUserTest(FullUserEntity... fullUserEntities){ 
 		/*
 		HomePage homePage = new HomePage(driver);
 		homePage.setDefaultState();
@@ -30,18 +29,20 @@ public class SignInCase extends AbstractCase{
 		HomePage homePage = nymgoPage.setDefaultState();
 		
 		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
-		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(login, password);
-		Assert.assertTrue(normalAccountPage.isUserLogged(login));
-	}
+		String username = fullUserEntities[0].getUsername();
+		String password = fullUserEntities[0].getPassword();
+		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(username, password);
+		Assert.assertTrue(normalAccountPage.isUserLogged(username));
+    }
 	
 	@Test
 	@Parameters({"resellerLogin", "resellerPassword"})
 	public void signInResellerTest(String login, String password){
 		
 		NymgoPage nymgoPage = new NymgoPage(starter);
-		nymgoPage.setDefaultState();
+		HomePage homePage = nymgoPage.setDefaultState();
 
-		ResellersPage resellersPage = nymgoPage.clickResellersLink();
+		ResellersPage resellersPage = homePage.clickResellersLink();
 		ResellerSignInPage resellerSignInPage = resellersPage.clickResellerSignInButton();
 		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
@@ -52,9 +53,9 @@ public class SignInCase extends AbstractCase{
 	public void signInMasterTest(String login, String password){
 		
 		NymgoPage nymgoPage = new NymgoPage(starter);
-		nymgoPage.setDefaultState();
+		HomePage homePage = nymgoPage.setDefaultState();
 
-		ResellersPage resellersPage = nymgoPage.clickResellersLink();
+		ResellersPage resellersPage = homePage.clickResellersLink();
 		ResellerSignInPage resellerSignInPage = resellersPage.clickResellerSignInButton();
 		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
