@@ -44,7 +44,7 @@ public class BaseWidgetFragment extends BaseFragment{
         catch (NotFoundException e){
             return false;
         }
-        return true;
+        return widgetContainer.isDisplayed();
     }
 
     protected WebElement getWidgetContentArea() throws NotFoundException{

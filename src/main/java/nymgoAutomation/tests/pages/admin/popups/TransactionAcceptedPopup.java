@@ -33,12 +33,18 @@ public class TransactionAcceptedPopup extends AbstractPopup{
 	
     public void closeTransactionAcceptedPopup(){
     	
-    	if(isPopupExist()){
-            delay(2000);
-    		clickOnCloseButton();
-            LOGGER.info("Closing the Transaction Accepted Popup");            
-        } 
-    	Assert.assertFalse(isPopupExist(), "Transaction Accepted Popup was not closed");
+		for(int i = 0; i < 5; i++){
+			delay(2000);
+			if(isPopupExist()){
+				clickOnCloseButton();
+		        delay(2000);
+	            LOGGER.info("Closing the Transaction Accepted Popup");            
+		    	Assert.assertFalse(isPopupExist(), "Transaction Accepted Popup was not closed");
+				break;
+			}
+			if(i == 4){
+				LOGGER.fatal("Transaction Accepted Popup was not appeared in 10 seconds");
+			}
+		}
     }
-	
 }

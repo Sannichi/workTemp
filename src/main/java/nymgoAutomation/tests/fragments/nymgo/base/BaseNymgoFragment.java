@@ -125,10 +125,7 @@ public class BaseNymgoFragment extends BaseFragment{
 	{
 		
     	initializeHomePageLink();
-    	clickLink(nymgoHomepageLink);
-//    	String alt = nymgoHomepageLink.getText();
-//		nymgoHomepageLink.click();
-//		LOGGER.info("Link '" + alt + "' was clicked");
+    	clickTitleLink(nymgoHomepageLink);
 	}
 
 	public void clickAppsLink()
@@ -136,9 +133,6 @@ public class BaseNymgoFragment extends BaseFragment{
 		
 		initializeAppsLink();
 		clickLink(appsLink);
-//    	String alt = appsLink.getText();
-//		appsLink.click();
-//		LOGGER.info("Link '" + alt + "' was clicked");
 	}
 
 	public void clickPricesLink()
@@ -146,9 +140,6 @@ public class BaseNymgoFragment extends BaseFragment{
 		
 		initializePricesLink();
 		clickLink(pricesLink);
-//    	String alt = pricesLink.getText();
-//		pricesLink.click();
-//		LOGGER.info("Link '" + alt + "' was clicked");
 	}
 
 	public void clickSupportLink()
@@ -156,9 +147,6 @@ public class BaseNymgoFragment extends BaseFragment{
 		
 		initializeSupportLink();
 		clickLink(supportLink);
-//    	String alt = supportLink.getText();
-//		supportLink.click();
-//		LOGGER.info("Link '" + alt + "' was clicked");
 	}
 
 	public void clickResellersLink()
@@ -166,9 +154,6 @@ public class BaseNymgoFragment extends BaseFragment{
 		
 		initializeResellersLink();
 		clickLink(resellersLink);
-//    	String alt = resellersLink.getText();
-//		resellersLink.click();
-//		LOGGER.info("Link '" + alt + "' was clicked");
 	}
 
 	public void clickMenuBuyCreditButton()
@@ -176,9 +161,6 @@ public class BaseNymgoFragment extends BaseFragment{
 		
 		initializeBuyCreditButton();
 		clickButton(buyCreditButton);
-//    	String text = buyCreditButton.getText();
-//		buyCreditButton.click();
-//		LOGGER.info("Button '" + text + "' was clicked");
 	}
 
 	public void clickMenuNormalUserSignInButton()
@@ -186,9 +168,6 @@ public class BaseNymgoFragment extends BaseFragment{
 
 		initializeNormalUserSingInButton();
 		clickButton(normalUserSignInButton);
-//    	String text = normalUserSignInButton.getText();
-//    	normalUserSignInButton.click();
-//		LOGGER.info("Button '" + text + "' was clicked");
     }
 	
 	public boolean isUserLogged()

@@ -75,6 +75,13 @@ public class BaseFragment {
 		LOGGER.info("Link '" + text + "' was clicked");
 	}
 	
+	public void clickTitleLink(WebElement link){
+		
+		String title = link.getAttribute("title");
+		link.click();
+		LOGGER.info("Link '" + title + "' was clicked");
+	}
+	
 	public void clickWidget(WebElement widget){
 		
 		String alt = widget.getAttribute("alt");

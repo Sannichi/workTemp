@@ -35,6 +35,7 @@ public class Starter {
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE = "params.file.name";
     public static String USERS_FILE_PATH = "";
+    public static String TRANSACTIONS_FILE_PATH = "";
     public static int IMPLICITLY_WAIT_TIME = 30;
     public static int CORRECT_PAGE_WAIT_TIME = 5;
     public static int ELEMENT_WAIT_TIME = 5;
@@ -109,6 +110,7 @@ public class Starter {
             e.printStackTrace();
         }
         USERS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.USERS_FILE_PATH.name());
+        TRANSACTIONS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.TRANSACTIONS_FILE_PATH.name());
         IMPLICITLY_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.IMPLICITLY_WAIT_TIME.name()));
         CORRECT_PAGE_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.CORRECT_PAGE_WAIT_TIME.name()));
         ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ELEMENT_WAIT_TIME.name()));        

@@ -7,6 +7,12 @@
     
     <test name="Test - BuyCredut Normal User" preserve-order="true">
         <classes>
+            <class name="nymgoAutomation.data.testCases.ExcelCases">
+                <methods>
+                    <include name="clearTransactionsExcelTest" />
+                </methods>
+            </class>
+        
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="writeExcelTest" />

@@ -131,7 +131,7 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 	    	if(isWidgetExist()){
 				clickOnCloseButton();
 		        delay(2000);
-		        LOGGER.info("Closing the Transaction Declined Popup");            
+		        LOGGER.info("Closing the Member Payment History Widget");            
 		    	Assert.assertFalse(isWidgetExist(), "Member Payment History Widget was not closed");
 				break;
 			}

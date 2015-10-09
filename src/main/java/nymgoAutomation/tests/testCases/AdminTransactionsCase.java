@@ -1,11 +1,13 @@
 package nymgoAutomation.tests.testCases;
 
+import nymgoAutomation.data.utils.ExcelUtils;
 import nymgoAutomation.tests.pages.admin.TransactionsAdminPage;
 import nymgoAutomation.tests.pages.admin.base.AdminPage;
 import nymgoAutomation.tests.pages.admin.popups.TransactionAcceptedPopup;
 import nymgoAutomation.tests.pages.admin.popups.TransactionDeclinedPopup;
 import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
 
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -17,6 +19,9 @@ public class AdminTransactionsCase extends AbstractCase{
 
 		AdminPage adminPage = new AdminPage(starter);
 
+		transactionID = ExcelUtils.getLastTransactionByUsername(username);
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		LOGGER.info("Last transaction ID = " + transactionID);
 		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
@@ -29,10 +34,12 @@ public class AdminTransactionsCase extends AbstractCase{
 
 	@Test
 	@Parameters({"transactionID", "username", "amount", "currency", "product", "service", "method", "country"})
-	public void cancelNormalUserTransactionAdminTest(String transactionID, String username, String amount, String currency, String product, String service, String method, String country){
+	public void declineNormalUserTransactionAdminTest(String transactionID, String username, String amount, String currency, String product, String service, String method, String country){
 
 		AdminPage adminPage = new AdminPage(starter);
 
+		transactionID = ExcelUtils.getLastTransactionByUsername(username);
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);

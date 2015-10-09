@@ -5,44 +5,65 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelUtils {
+import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.testCases.AbstractCase;
 
-	private static XSSFSheet ExcelWSheet;
-	private static XSSFWorkbook ExcelWBook;
-	private static XSSFCell Cell;
-	private static XSSFRow Row;
+public class ExcelUtils {
+	
+	private static Logger LOGGER = AbstractCase.LOGGER;
+
+	private static XSSFSheet excelWSheet;
+	private static XSSFWorkbook excelWBook;
+	private static XSSFCell cell;
+	private static XSSFRow row;
+	private static String transactionFilePath = Starter.TRANSACTIONS_FILE_PATH;
+	private static String transactionSheetName = "Transactions";
 
 	//This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
-	public static void setExcelFile(String Path,String SheetName) throws Exception {
+	private static void setExcelFile(String filePath,String sheetName) throws Exception{
 		try {
 			// Open the Excel file
-			FileInputStream ExcelFile = new FileInputStream(Path);
+			FileInputStream ExcelFile = new FileInputStream(filePath);
 
 			// Access the required test data sheet
-			ExcelWBook = new XSSFWorkbook(ExcelFile);
-			ExcelWSheet = ExcelWBook.getSheet(SheetName);
+			excelWBook = new XSSFWorkbook(ExcelFile);
+			excelWSheet = excelWBook.getSheet(sheetName);
 		} 
 		catch (Exception e){
 			throw (e);
 		}
 	}
 
-	public static Object[][] getTableArray(String FilePath, String SheetName) throws Exception	
-	{   
+	private static void writeExcelFile(String filePath){
+		
+		// Constant variables Test Data path and Test Data file name
+		FileOutputStream fileOut;
+		try {
+			fileOut = new FileOutputStream(filePath);
+			excelWBook.write(fileOut);
+			fileOut.flush();
+			fileOut.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static Object[][] getTableArray(String filePath, String sheetName){   
 
 		String[][] tabArray = null;
 		try{
-
-			FileInputStream ExcelFile = new FileInputStream(FilePath);
 			
-			// Access the required test data sheet
-			ExcelWBook = new XSSFWorkbook(ExcelFile);
-			ExcelWSheet = ExcelWBook.getSheet(SheetName);
+			setExcelFile(filePath, sheetName);
 			int startCol = 1;
 			int startRow = 0;
 			int ci=0,cj=0;
@@ -66,21 +87,20 @@ public class ExcelUtils {
 
 			System.out.println("Could not read the Excel sheet");
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return(tabArray);
 	}
 
-	public static Object[] getUserArray(String FilePath, String SheetName) throws Exception	
+	public static Object[] getUserArray(String filePath, String sheetName)	
 	{   
 
 		String[] tabArray = null;
 		try{
 
-			FileInputStream ExcelFile = new FileInputStream(FilePath);
-			
-			// Access the required test data sheet
-			ExcelWBook = new XSSFWorkbook(ExcelFile);
-			ExcelWSheet = ExcelWBook.getSheet(SheetName);
+			setExcelFile(filePath, sheetName);
 			int startCol = 1;
 			int startRow = 0;
 			int cj=0;
@@ -103,39 +123,27 @@ public class ExcelUtils {
 
 			System.out.println("Could not read the Excel sheet");
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return(tabArray);
 	}
 
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
-	public static String getCellData(int RowNum, int ColNum) throws Exception{
+	private static String getCellData(int RowNum, int ColNum){
 		try{
-			Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
-			String CellData = Cell.getStringCellValue();
-			return CellData;
+			
+			cell = excelWSheet.getRow(RowNum).getCell(ColNum);
+			String cellData = cell.getStringCellValue();
+			return cellData;
 		}
 		catch (Exception e){
 			return"";
 		}
 	}
 
-	public static String getTestUserName(String sTestCase)throws Exception{
-
-		String value = sTestCase;
-		try{
-
-			int posi = value.indexOf("@");
-			value = value.substring(0, posi);
-			posi = value.lastIndexOf(".");	
-			value = value.substring(posi + 1);
-			return value;
-		}
-		catch (Exception e){
-			throw (e);
-		}
-	}
-
-	public static int getRowContains(String sTestCaseName, int colNum) throws Exception{
+	private static int getRowContains(String sTestCaseName, int colNum) throws Exception{
 
 		int i;
 		try {
@@ -155,8 +163,8 @@ public class ExcelUtils {
 	public static int getRowUsed() throws Exception {
 
 		try{
-			int RowCount = ExcelWSheet.getLastRowNum();
-			return RowCount;
+			int rowCount = excelWSheet.getLastRowNum();
+			return rowCount;
 		}
 		catch (Exception e){
 			System.out.println(e.getMessage());
@@ -165,37 +173,40 @@ public class ExcelUtils {
 	}
 	
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
-	public static void setCellData(int RowNum, int ColNum, String str) throws Exception{
+	@SuppressWarnings("static-access")
+//	private static void setCellData(String filePath, int RowNum, int ColNum, String str) throws Exception{
+	private static void setCellData(int RowNum, int ColNum, String str) throws Exception{	
 		try{
-			Row = ExcelWSheet.getRow(RowNum);
-			Cell = Row.getCell(ColNum, Row.RETURN_BLANK_AS_NULL);
-			if (Cell == null) {
-				Cell = Row.createCell(ColNum);
-				Cell.setCellValue(str);
-			} else {
-				Cell.setCellValue(str);
+			row = excelWSheet.getRow(RowNum);
+			if (row == null){
+				row = excelWSheet.createRow(RowNum);
 			}
-	          // Constant variables Test Data path and Test Data file name
-	          FileOutputStream fileOut = new FileOutputStream("");
-	          ExcelWBook.write(fileOut);
-	          fileOut.flush();
-	          fileOut.close();			
+			cell = row.getCell(ColNum, row.RETURN_BLANK_AS_NULL);
+			if (cell == null) {
+				cell = row.createCell(ColNum);
+			}  
+			cell.setCellValue(str);
+/*			
+			// Constant variables Test Data path and Test Data file name
+			FileOutputStream fileOut = new FileOutputStream(filePath);
+			excelWBook.write(fileOut);
+			fileOut.flush();
+			fileOut.close();
+*/						
 		}
 		catch (Exception e){
 			throw (e);
 		}
 	}
 
-	public static boolean setTransactionData(String FilePath, String SheetName, String username, String transactionID){
+//	public static boolean setTransactionDataFromStart(String filePath, String sheetName, String username, String transactionID){
+	public static boolean setTransactionDataFromStart(String username, String transactionID){	
 
 		try{
-			FileInputStream ExcelFile = new FileInputStream(FilePath);
-			
-			// Access the required test data sheet
-			ExcelWBook = new XSSFWorkbook(ExcelFile);
-			ExcelWSheet = ExcelWBook.getSheet(SheetName);
-			int startCol = 1;
-			int startRow = 1;
+
+			setExcelFile(transactionFilePath, transactionSheetName);
+			int startCol = 0;
+			int startRow = 0;
 			try {
 				setCellData(startRow, startCol, username);
 				setCellData(startRow, startCol + 1, transactionID);				
@@ -203,6 +214,55 @@ public class ExcelUtils {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			writeExcelFile(transactionFilePath);
+		}
+		catch (FileNotFoundException e)
+		{
+	
+			System.out.println("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	} 
+
+	private static int getFirstEmptyRow(){
+		//hope 50 transactions are maximum for one test suite
+		int i = 0;
+		int maxRows = 50;
+		try{
+			while (excelWSheet.getRow(i) != null){
+				if (i > maxRows){
+					LOGGER.fatal("Rows number is more than 50");
+					break;
+				}
+				i++;
+			}
+			return i;
+		}
+		catch (Exception e){
+			return maxRows;
+		}
+	}
+
+//	public static boolean addTransactionData(String filePath, String sheetName, String username, String transactionID){
+	public static boolean addTransactionData(String username, String transactionID){
+
+		try{
+			
+			setExcelFile(transactionFilePath, transactionSheetName);
+			int startCol = 0;
+			int startRow = getFirstEmptyRow();
+			try {
+				setCellData(startRow, startCol, username);
+				setCellData(startRow, startCol + 1, transactionID);				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			writeExcelFile(transactionFilePath);
 		}
 		catch (FileNotFoundException e)
 		{
@@ -215,7 +275,65 @@ public class ExcelUtils {
 	
 			System.out.println("Could not read the Excel sheet");
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
+	} 
+
+	public static void clearSheet(String filePath, String sheetName){
+		
+		try {
+			setExcelFile(filePath, sheetName);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int lastRow = excelWSheet.getPhysicalNumberOfRows();
+		try{
+			for (int i = 0; i < lastRow; i++ ){
+				excelWSheet.removeRow(excelWSheet.getRow(i));
+			}
+	          FileOutputStream fileOut = new FileOutputStream(filePath);
+	          excelWBook.write(fileOut);
+	          fileOut.flush();
+	          fileOut.close();			
+		}
+		catch (Exception e){
+			System.out.println("Could not clear sheet");
+		}
+	}
+
+//	private static int getLastRowNumber(String filePath, String sheetName){
+	private static int getLastRowNumber(){	
+/*		
+		try {
+			setExcelFile(filePath, sheetName);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+*/
+		return excelWSheet.getPhysicalNumberOfRows();
+	}
+
+	public static String getLastTransactionByUsername(String username){
+
+		try{
+//			setExcelFile(filePath, sheetName);
+			setExcelFile(Starter.TRANSACTIONS_FILE_PATH, "Transactions");			
+			int startCol = 0;
+			int startRow = 0;
+			int lastRow = getLastRowNumber();
+			for (int i = lastRow - 1; i >= startRow; i --)
+			if (getCellData(i, startCol).equals(username)){
+				return getCellData(i, startCol + 1);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	} 
 }

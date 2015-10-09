@@ -44,14 +44,16 @@ public class BuyCreditCase extends AbstractCase{
 				"Transaction is not pending, current status is: " + buyCreditConfirmPagePending.getPaymentStatus());
 		normalAccountPage = buyCreditConfirmPagePending.clickBackToNormalUserDashboardButton();
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-		ExcelUtils.setTransactionData(Starter.USERS_FILE_PATH, "Transactions", "normaltester", transactionID);
-		LOGGER.info("transaction ID was added to Excel");
+		ExcelUtils.addTransactionData("normaltester", transactionID);
+		LOGGER.info("transactionID " + transactionID + " was added to Excel");
 	}
-	
+/*	
 	@Test
 	public void writeExcelTest(){
 
-		ExcelUtils.setTransactionData(Starter.USERS_FILE_PATH, "Transactions", "normaltester", "3391378432");
+		ExcelUtils.setTransactionDataFromStart(Starter.TRANSACTIONS_FILE_PATH, "Transactions", "normaltester", "3391378432");
+		ExcelUtils.addTransactionData(Starter.TRANSACTIONS_FILE_PATH, "Transactions", "normaltester", "3391378432");
 		LOGGER.info("transaction ID was added to Excel");
 	}
+*/	
 }

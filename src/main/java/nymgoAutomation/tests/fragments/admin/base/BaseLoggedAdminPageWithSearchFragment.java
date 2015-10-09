@@ -68,7 +68,7 @@ public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragme
 	public void clickGoButton(){
 		
 //		goButton.click();
-		clickSubmitButton(goButton);
+		clickInputButton(goButton);
 	}
 
 	public void waitSearchCriteria(){

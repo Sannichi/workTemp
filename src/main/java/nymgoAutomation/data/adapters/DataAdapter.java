@@ -11,7 +11,7 @@ public class DataAdapter extends BaseAdapter {
 	
     public static Object[][] getInterNormalWhitelistGC() throws Exception{
 
-    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
+//    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
     	FullUserEntity[] fullUserEntities = {new FullUserEntity(ExcelUtils.getUserArray(usersTablePath,"InterNormalWhitelistGC"))};
     	Object[][] userEntityArray = new Object[1][];
     	userEntityArray[0] = fullUserEntities;
@@ -20,7 +20,7 @@ public class DataAdapter extends BaseAdapter {
 
     public static Object[][] getEuroNormalWhitelistGC() throws Exception{
 	
-    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
+//    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
     	FullUserEntity[] fullUserEntities = {new FullUserEntity(ExcelUtils.getUserArray(usersTablePath,"EuroNormalWhitelistGC"))};
     	Object[][] userEntityArray = new Object[1][];
     	userEntityArray[0] = fullUserEntities;
