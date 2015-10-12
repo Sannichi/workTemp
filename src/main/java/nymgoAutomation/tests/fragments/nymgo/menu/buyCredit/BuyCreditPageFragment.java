@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,8 +40,15 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasUR
 
     @FindBy(id="transaction-proceed")
     private WebElement continueButton;
+    
+    @FindBys({@FindBy(css = "div[class='vatHolder']"),
+    	@FindBy(xpath = ".//label")})
+    private WebElement vatLabel;
 
-	public boolean isCorrectURL() {
+    @FindBy(css="div[id='vat-calc']")
+    private WebElement vatValue;
+
+    public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_PAGE_URL));
@@ -159,5 +167,15 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasUR
 			}
 		}
 		return false;
+	}
+	
+	public String getVATPercent(){
+		
+		return vatLabel.getText().split(" ")[1];
+	}
+
+	public String getVATValue(){
+		
+		return vatValue.getText();
 	}
 }

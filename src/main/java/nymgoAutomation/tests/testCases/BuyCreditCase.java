@@ -1,7 +1,10 @@
 package nymgoAutomation.tests.testCases;
 
+import nymgoAutomation.data.entity.FullCardEntity;
+import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.enums.PROVIDER_CONST;
+import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.data.utils.ExcelUtils;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
 import nymgoAutomation.tests.pages.nymgo.base.LoggedNymgoPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageGlobalCollect;
@@ -14,46 +17,48 @@ import org.testng.annotations.Test;
 
 public class BuyCreditCase extends AbstractCase{
 	
-	@Test
-	public void buyCreditLoggedNormalUserGlobalCollectTest(){
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedNormalUserGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(40);
+		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditPage.getVATPercent();
+		Double VATValue = Double.valueOf(buyCreditPage.getVATValue());
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
-//		buyCreditProceedPage.verifyDefaultPaymentBlock("Spain");
-		buyCreditProceedPage.verifyDefaultData(
-				"GL Testing", "gltesting13@gmail.com", "+380979029368", "+380979029368",
-				"Spain", "00001", "Street", "Full",
-				"Spain",
-				"40", "21", "48.4");
-		buyCreditProceedPage.setPaymentBlockData("American Express", "Belgium");
+		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
+				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
+				currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
 		
-		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(
-				"GL Testing", "gltesting13@gmail.com", "+380979029368", "+380979029368",
-				"Spain", "00001", "Street", "Full",
-				"American Express", "Belgium",
-				"40", "21", "48.4");
+		buyCreditProceedPage.setPaymentBlockData(cardType, countryOfCredit);
 
-		BuyCreditConfirmPagePending buyCreditConfirmPagePending = buyCreditConfirmPage.setCreditCardDataAndClickContinue("34343434343434", "06", "17", "042");
+		@SuppressWarnings("unused")
+		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
+				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
+				cardType, countryOfCredit,
+				currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
+
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void payAmericanExpressGlobalCollectPendingTest(FullCardEntity fullCardEntity){
+
+		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
+
+		BuyCreditConfirmPagePending buyCreditConfirmPagePending = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinue(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+
 		String transactionID = buyCreditConfirmPagePending.getTransactionNumber();
 		String paymentStatus = buyCreditConfirmPagePending.getPaymentStatus();
 		Assert.assertTrue(buyCreditConfirmPagePending.isTransactionPending(), 
 				"Transaction is not pending, current status is: " + buyCreditConfirmPagePending.getPaymentStatus());
-		normalAccountPage = buyCreditConfirmPagePending.clickBackToNormalUserDashboardButton();
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData("normaltester", transactionID);
 		LOGGER.info("transactionID " + transactionID + " was added to Excel");
+		@SuppressWarnings("unused")
+		NormalAccountPage normalAccountPage = buyCreditConfirmPagePending.clickBackToNormalUserDashboardButton();
 	}
-/*	
-	@Test
-	public void writeExcelTest(){
-
-		ExcelUtils.setTransactionDataFromStart(Starter.TRANSACTIONS_FILE_PATH, "Transactions", "normaltester", "3391378432");
-		ExcelUtils.addTransactionData(Starter.TRANSACTIONS_FILE_PATH, "Transactions", "normaltester", "3391378432");
-		LOGGER.info("transaction ID was added to Excel");
-	}
-*/	
 }

@@ -11,12 +11,16 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import nymgoAutomation.data.entity.FullCardEntity;
+import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.enums.CARD_PARAMS;
+import nymgoAutomation.data.enums.USER_PARAMS;
+import nymgoAutomation.data.testCases.ExcelCases;
 import nymgoAutomation.tests.navigation.Starter;
-import nymgoAutomation.tests.testCases.AbstractCase;
 
 public class ExcelUtils {
 	
-	private static Logger LOGGER = AbstractCase.LOGGER;
+	private static Logger LOGGER = ExcelCases.EXCEL_LOGGER;
 
 	private static XSSFSheet excelWSheet;
 	private static XSSFWorkbook excelWBook;
@@ -35,6 +39,9 @@ public class ExcelUtils {
 			excelWBook = new XSSFWorkbook(ExcelFile);
 			excelWSheet = excelWBook.getSheet(sheetName);
 		} 
+		catch (FileNotFoundException e){
+			LOGGER.fatal("Excel file was not found on path '" + filePath + "'");
+		}
 		catch (Exception e){
 			throw (e);
 		}
@@ -94,40 +101,94 @@ public class ExcelUtils {
 		return(tabArray);
 	}
 
-	public static Object[] getUserArray(String filePath, String sheetName)	
+	private static String getParameterFromExcelSheet(String parameterName){
+	
+		String result = "";
+		try{
+			int paramCol = 0;
+			int startRow = 0;
+			int totalRows = getLastRowNumber();
+			for (int j = startRow; j < totalRows; j++)
+			{
+				if(getCellData(j, paramCol).equals(parameterName)){
+					result = getCellData(j, paramCol + 1);
+				}				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public static FullUserEntity getFullUserEntity(String filePath, String sheetName)	
 	{   
 
-		String[] tabArray = null;
+		FullUserEntity fullUserEntity = new FullUserEntity();
 		try{
 
 			setExcelFile(filePath, sheetName);
-			int startCol = 1;
-			int startRow = 0;
-			int cj=0;
-			int totalRows = 14;
-			tabArray = new String[totalRows];;
-			for (int j = startRow; j < totalRows; j++, cj++)
-			{
-				tabArray[cj]=getCellData(j, startCol);				
-//				System.out.println(tabArray[ci][cj]);
-			}
+			fullUserEntity.setUsername(getParameterFromExcelSheet(USER_PARAMS.USERNAME.toString()));
+			fullUserEntity.setPassword(getParameterFromExcelSheet(USER_PARAMS.PASSWORD.toString()));
+			fullUserEntity.setFullName(getParameterFromExcelSheet(USER_PARAMS.FULL_NAME.toString()));
+			fullUserEntity.setEmail(getParameterFromExcelSheet(USER_PARAMS.EMAIL.toString()));
+			fullUserEntity.setMobile(getParameterFromExcelSheet(USER_PARAMS.MOBILE.toString()));
+			fullUserEntity.setPhone(getParameterFromExcelSheet(USER_PARAMS.PHONE.toString()));
+			fullUserEntity.setCountryOfResidence(getParameterFromExcelSheet(USER_PARAMS.COUNTRY_OF_RESIDENCE.toString()));
+			fullUserEntity.setCity(getParameterFromExcelSheet(USER_PARAMS.CITY.toString()));
+			fullUserEntity.setFullAddress(getParameterFromExcelSheet(USER_PARAMS.FULL_ADDRESS.toString()));
+			fullUserEntity.setStreet(getParameterFromExcelSheet(USER_PARAMS.STREET.toString()));
+			fullUserEntity.setPostalCode(getParameterFromExcelSheet(USER_PARAMS.POSTAL_CODE.toString()));
+			fullUserEntity.setDisplayCurrency(getParameterFromExcelSheet(USER_PARAMS.DISPLAY_CURRENCY.toString()));
+			fullUserEntity.setPaymentCurrency(getParameterFromExcelSheet(USER_PARAMS.PAYMENT_CURRENCY.toString()));
+			fullUserEntity.setLanguage(getParameterFromExcelSheet(USER_PARAMS.LANGUAGE.toString()));
 		}
 		catch (FileNotFoundException e)
 		{
 
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		}
 		catch (IOException e)
 		{
 
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return(tabArray);
+		return fullUserEntity;
+	}
+
+	public static FullCardEntity getFullCardEntity(String filePath, String sheetName)	
+	{   
+
+		FullCardEntity fullCardEntity = new FullCardEntity();
+		try{
+
+			setExcelFile(filePath, sheetName);
+			fullCardEntity.setCardNumber(CARD_PARAMS.CARD_NUMBER.toString());
+			fullCardEntity.setExpirationMonth(CARD_PARAMS.EXPIRATION_MONTH.toString());
+			fullCardEntity.setExpirationYear(CARD_PARAMS.EXPIRATION_YEAR.toString());
+			fullCardEntity.setCvv(CARD_PARAMS.CVV.toString());
+		}
+		catch (FileNotFoundException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fullCardEntity;
 	}
 
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
@@ -290,7 +351,7 @@ public class ExcelUtils {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		int lastRow = excelWSheet.getPhysicalNumberOfRows();
+		int lastRow = getLastRowNumber();
 		try{
 			for (int i = 0; i < lastRow; i++ ){
 				excelWSheet.removeRow(excelWSheet.getRow(i));
@@ -301,21 +362,18 @@ public class ExcelUtils {
 	          fileOut.close();			
 		}
 		catch (Exception e){
-			System.out.println("Could not clear sheet");
+//			System.out.println("Could not clear sheet");
+			LOGGER.fatal("Could not clear sheet");			
 		}
 	}
 
-//	private static int getLastRowNumber(String filePath, String sheetName){
 	private static int getLastRowNumber(){	
-/*		
-		try {
-			setExcelFile(filePath, sheetName);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+
+		int result = excelWSheet.getLastRowNum();
+		if (result == 0){
+			return excelWSheet.getPhysicalNumberOfRows();
 		}
-*/
-		return excelWSheet.getPhysicalNumberOfRows();
+		return result;
 	}
 
 	public static String getLastTransactionByUsername(String username){

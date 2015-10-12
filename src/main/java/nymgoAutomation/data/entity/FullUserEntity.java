@@ -132,6 +132,24 @@ public class FullUserEntity {
 		this.language = language;
 	}
 	
+	public FullUserEntity(){
+		
+		this.username = "";
+		this.password = "";
+		this.fullName = "";
+		this.email = "";
+		this.mobile = "";
+		this.phone = "";
+		this.countryOfResidence = "";
+		this.city = "";
+		this.fullAddress = "";
+		this.street = "";
+		this.postalCode = "";
+		this.displayCurrency = "";
+		this.paymentCurrency = "";
+		this.language = "";
+	}
+	
 	public FullUserEntity(Object[] obj){
 		setUsername(String.valueOf(obj[0]));
 		setPassword(String.valueOf(obj[1]));

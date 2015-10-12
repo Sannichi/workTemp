@@ -4,6 +4,16 @@
     
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
+   
+    <test name="Test - Clear Transactions file" preserve-order="true">
+        <classes>
+            <class name="nymgoAutomation.data.testCases.ExcelCases">
+                <methods>
+                    <include name="clearTransactionsExcelTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
     
     <test name="Test - BuyCredut Normal User" preserve-order="true">
         <parameter name="normalLogin" value="NormalTester" />        
@@ -27,7 +37,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserTest" />
+                    <include name="buyCreditLoggedNormalUserGlobalCollectTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminSignInCase">

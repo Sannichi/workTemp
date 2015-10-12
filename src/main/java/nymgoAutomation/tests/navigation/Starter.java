@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
 import nymgoAutomation.tests.enums.BROWSERS;
 import nymgoAutomation.tests.enums.FILES_NAMES;
@@ -35,7 +36,8 @@ public class Starter {
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE = "params.file.name";
     public static String USERS_FILE_PATH = "";
-    public static String TRANSACTIONS_FILE_PATH = "";
+    public static String TRANSACTIONS_FILE_PATH = "D:\\work\\nymgo\\Transactions.xlsx"; //default value
+    public static String CREDIT_CARDS_FILE_PATH = "D:\\work\\nymgo\\CreditCards.xlsx"; //default value
     public static int IMPLICITLY_WAIT_TIME = 30;
     public static int CORRECT_PAGE_WAIT_TIME = 5;
     public static int ELEMENT_WAIT_TIME = 5;
@@ -46,6 +48,7 @@ public class Starter {
     public String BROWSER;
     public String LOCALE;
     public String SERVER;
+    public String LOGGER_LEVEL;
     
     private static Starter instance;
 	public WebDriver driver = null;
@@ -89,6 +92,7 @@ public class Starter {
         BROWSER = PROPS.getProperty(PROPERTIES.BROWSER.name());
         LOCALE = PROPS.getProperty(PROPERTIES.LOCALE.name());
         SERVER = PROPS.getProperty(PROPERTIES.SERVER.name());
+        LOGGER_LEVEL = PROPS.getProperty(PROPERTIES.LOGGER_LEVEL.name());
         LOGGER.info("Finished to initialize properties");
     }
 
@@ -111,6 +115,7 @@ public class Starter {
         }
         USERS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.USERS_FILE_PATH.name());
         TRANSACTIONS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.TRANSACTIONS_FILE_PATH.name());
+        CREDIT_CARDS_FILE_PATH = PARAMS.getProperty(CARD_PARAMS.CREDIT_CARDS_FILE_PATH.name());
         IMPLICITLY_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.IMPLICITLY_WAIT_TIME.name()));
         CORRECT_PAGE_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.CORRECT_PAGE_WAIT_TIME.name()));
         ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ELEMENT_WAIT_TIME.name()));        

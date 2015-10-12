@@ -5,7 +5,6 @@ import java.util.Map;
 import org.testng.Assert;
 
 import nymgoAutomation.tests.fragments.admin.widgets.MemberPaymentHistoryWidgetFragment;
-import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.PopupNavigation;
 import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.popups.TransactionAcceptedPopup;
@@ -126,18 +125,6 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 	
     public void closeMemberPaymentHistoryWidget(){
     	
-		for(int i = 0; i < 5; i++){
-			delay(2000);
-	    	if(isWidgetExist()){
-				clickOnCloseButton();
-		        delay(2000);
-		        LOGGER.info("Closing the Member Payment History Widget");            
-		    	Assert.assertFalse(isWidgetExist(), "Member Payment History Widget was not closed");
-				break;
-			}
-			if (i == 4){
-		        LOGGER.fatal("Member Payment History Widget was not appeared in 10 seconds");            
-			}
-		}
+    	closeWidget(getPageName());
     }
 }

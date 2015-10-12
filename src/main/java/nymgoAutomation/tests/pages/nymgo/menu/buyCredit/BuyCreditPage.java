@@ -90,4 +90,44 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		navigation.NavigatedTo();
 		return buyCreditProceedPageGlobalCollect;
 	} 
+
+	public BuyCreditProceedPageGlobalCollect selectAmountAndClickContinueToGlobalCollect(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+		clickContinueButton();
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPageGlobalCollect = new BuyCreditProceedPageGlobalCollect(starter);
+		PageNavigation<BuyCreditProceedPageGlobalCollect> navigation = new PageNavigation<BuyCreditProceedPageGlobalCollect>(buyCreditProceedPageGlobalCollect);
+		navigation.NavigatedTo();
+		return buyCreditProceedPageGlobalCollect;
+	} 
+	
+	public void selectAmountAndVerifyVAT(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Double.valueOf(getVATPercent()) / 100) + "'");
+	} 
+	
+	public String getVATPercent(){
+		
+		return buyCreditPageFragment.getVATPercent();
+	}
+
+	public String getVATValue(){
+		
+		return buyCreditPageFragment.getVATValue();
+	}
+	
+	public boolean verifyVATValue(int nymgoCreditAmount){
+		
+		boolean result = false;
+		Double asIs = Double.valueOf(getVATValue());
+//		String asIs = getVATValue();
+		Double shouldBe = nymgoCreditAmount * Double.valueOf(getVATPercent()) / 100;		
+//		String shouldBe = String.valueOf(nymgoCreditAmount * Double.valueOf(getVATPercent()) / 100);
+		
+		result = shouldBe.equals(asIs);
+		return result;
+	}
 }

@@ -2,27 +2,36 @@ package nymgoAutomation.data.enums;
 
 public enum USER_PARAMS {
 
-    INTER_NORMAL_WHITELIST_GC_USERNAME,
-    INTER_NORMAL_WHITELIST_GC_PASSWORD,
-
-    MOBILE_REGEXP,
-    MOBILE_PLACEHOLDER,
-    BILLING_PROVIDER,
-
     USERS_FILE_PATH,
     TRANSACTIONS_FILE_PATH,
-    USERNAME,
-    PASSWORD,
-    FULL_NAME,
-    EMAIL,
-    MOBILE,
-    PHONE,
-    COUNTRY_OF_RESIDENCE,
-    CITY,
-    FULL_ADDRESS,
-    STREET,
-    POSTAL_CODE,
-    DISPLAY_CURRENCY,
-    PAYMENT_CURRENCY,
-    LANGUAGE
+    USERNAME( "Username"),
+    PASSWORD( "Password"),
+    FULL_NAME( "FullName"),
+    EMAIL( "Email"),
+    MOBILE( "Mobile"),
+    PHONE( "Phone"),
+    COUNTRY_OF_RESIDENCE( "CountryOfResidence"),
+    CITY( "City"),
+    FULL_ADDRESS( "FullAddress"),
+    STREET( "Street"),
+    POSTAL_CODE( "PostalCode"),
+    DISPLAY_CURRENCY( "DisplayCurrency"),
+    PAYMENT_CURRENCY( "PaymentCurrency"),
+    LANGUAGE( "Language");
+    
+    private USER_PARAMS(){
+    	
+    }
+    
+    private String text = "";
+
+    private USER_PARAMS(final String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return text;
+    }
+    
 }

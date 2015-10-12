@@ -2,7 +2,8 @@ package nymgoAutomation.tests.enums;
 
 public enum LOGS {
 
-    LOGGER_NAME("nymgoLogger");
+    LOGGER_NAME( "nymgoLogger"),
+    LOGGER_NAME_EXCEL( "nymgoLoggerExcel");
 
     private final String text;
 

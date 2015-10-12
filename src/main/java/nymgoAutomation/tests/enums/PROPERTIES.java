@@ -8,4 +8,5 @@ public enum PROPERTIES {
     LOCALE,
     SERVER,
     PARAMS_FILE,
+    LOGGER_LEVEL;
 }

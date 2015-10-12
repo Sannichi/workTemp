@@ -1,5 +1,7 @@
 package nymgoAutomation.tests.pages.admin.popups;
 
+import org.testng.Assert;
+
 import nymgoAutomation.tests.fragments.admin.popups.BasePopupFragment;
 import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
@@ -52,4 +54,27 @@ public abstract class AbstractPopup extends AbstractPage{
     	
     	basePopupFragment.clickOnCloseButton();
     }
+
+    protected void closePopup(String popupName){
+    	
+		for(int i = 0; i < 5; i++){
+			delay(2000);
+			if(isPopupExist()){
+				clickOnCloseButton();
+		        for (int j = 0; j < 5; j++){
+		        	if (isPopupExist())
+		        		delay(2000);
+		        	else
+		        		break;
+		        }
+		        LOGGER.info("Closing the " + popupName);            
+		    	Assert.assertFalse(isPopupExist(), popupName + " was not closed within 10 seconds");
+				break;
+			}
+			if(i == 4){
+				LOGGER.fatal(popupName + " was not appeared in 10 seconds");
+			}
+		}
+    }
+    
 }

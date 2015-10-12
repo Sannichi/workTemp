@@ -116,12 +116,12 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 	
 	public BuyCreditConfirmPageGlobalCollect verifyDataAndClickContinue(String fullName, String email, String mobile, String phone,
 			String countryOfResidence, String postalCode, String street, String address,
-			String cardType, String country,
+			String cardType, String countryOfCredit,
 			String nymgoCreditValue, String VAT, String totalAmountCharged){
 		
 		verifyAccountInfoBlock(fullName, email, mobile, phone);
 		verifyAddressBlock(countryOfResidence, postalCode, street, address);
-		verifyPaymentBlock(cardType, country);
+		verifyPaymentBlock(cardType, countryOfCredit);
 		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
 		clickContinueButton();
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
@@ -129,15 +129,18 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		navigation.NavigatedTo();
 		return buyCreditConfirmPageGlobalCollect;
 	} 
-
+/*
 	public void verifyDefaultData(String fullName, String email, String mobile, String phone,
 			String countryOfResidence, String postalCode, String street, String address,
 			String country,
 			String nymgoCreditValue, String VAT, String totalAmountCharged){
-		
+*/		
+	public void verifyDefaultData(String fullName, String email, String mobile, String phone,
+			String countryOfResidence, String postalCode, String street, String address,
+			String nymgoCreditValue, String VAT, String totalAmountCharged){
 		verifyAccountInfoBlock(fullName, email, mobile, phone);
 		verifyAddressBlock(countryOfResidence, postalCode, street, address);
-		verifyDefaultPaymentBlock(country);
+		verifyDefaultPaymentBlock(countryOfResidence);
 		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
 	} 
 }

@@ -77,9 +77,9 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 		Assert.assertTrue(getSelectedCardType().equals(cardType), "Card Type is not correct! Current value is '" + getSelectedCardType() + 
 				"', should be '" + cardType + "'");
 		LOGGER.info("Card Type is correct");
-		Assert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Residence is not correct! Current value is '" + getSelectedCountryOfCredit() + 
+		Assert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Credit is not correct! Current value is '" + getSelectedCountryOfCredit() + 
 				"', should be '" + country + "'");
-		LOGGER.info("Country of Residence is correct");
+		LOGGER.info("Country of Credit is correct");
 	}
 
 	protected void verifyDefaultPaymentBlock(String country){
@@ -89,7 +89,7 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 		LOGGER.info("Card Type is correct");
 		Assert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Residence is not correct! Current value is '" + getSelectedCountryOfCredit() + 
 				"', should be '" + country + "'");
-		LOGGER.info("Country of Residence is correct");
+		LOGGER.info("Country of Credit is correct");
 	}
 
 	public AbstractBuyCreditProceedPage setPaymentBlockData(String paymentCardType, String countryOfCredit){

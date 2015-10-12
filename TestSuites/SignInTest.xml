@@ -15,7 +15,9 @@
         <classes>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInNormalUserTest" />
+<!--                    <include name="signInNormalUserTest" /> -->
+                    <include name="signInEuroNormalWhitelistUserTest" />
+                    
                     <include name="signInResellerTest" />
                     <include name="signInMasterTest" />
                 </methods>

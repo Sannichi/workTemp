@@ -35,7 +35,21 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(normalAccountPage.isUserLogged(username));
     }
 	
-	@Test
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void signInEuroNormalWhitelistUserTest(FullUserEntity fullUserEntity){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+		HomePage homePage = nymgoPage.setDefaultState();
+
+		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
+
+		String username = fullUserEntity.getUsername();
+		String password = fullUserEntity.getPassword();
+		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(username, password);
+		Assert.assertTrue(normalAccountPage.isUserLogged(username));
+    }
+	
+    @Test
 	@Parameters({"resellerLogin", "resellerPassword"})
 	public void signInResellerTest(String login, String password){
 		

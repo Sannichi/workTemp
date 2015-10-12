@@ -1,8 +1,5 @@
 package nymgoAutomation.tests.pages.admin.popups;
 
-import org.testng.Assert;
-
-//import nymgoAutomation.tests.fragments.admin.popups.TransactionAcceptedPopupFragment;
 import nymgoAutomation.tests.navigation.Starter;
 
 public class TransactionDeclinedPopup extends AbstractPopup{
@@ -13,7 +10,7 @@ public class TransactionDeclinedPopup extends AbstractPopup{
 		
 	}
 	
-	private static final String TRANSACTION_DECLINED_POPUP_NAME_ENG = "TransactionDeclinedPopup"; 
+	private static final String TRANSACTION_DECLINED_POPUP_NAME_ENG = "Transaction Declined Popup"; 
 	private static final String TRANSACTION_DECLINED_POPUP_TEXT_ENG = "  transaction declined successfully And queued successfully"; 
 	
 	
@@ -31,20 +28,8 @@ public class TransactionDeclinedPopup extends AbstractPopup{
 	}
 	
     public void closeTransactionDeclinedPopup(){
-    	
-		for(int i = 0; i < 5; i++){
-			delay(2000);
-			if(isPopupExist()){
-				clickOnCloseButton();
-		        delay(2000);
-		        LOGGER.info("Closing the Transaction Declined Popup");            
-		    	Assert.assertFalse(isPopupExist(), "Transaction Declined Popup was not closed");
-				break;
-			}
-			if(i == 4){
-				LOGGER.fatal("Transaction Declined Popup was not appeared in 10 seconds");
-			}
-		}
+
+    	closePopup(getPageName());
     }
 	
 }

@@ -11,6 +11,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 public class AbstractCase {
@@ -59,6 +60,8 @@ public class AbstractCase {
 
         LOGGER.info("Initializing Starter");
         starter = Starter.getInstance();
+        LOGGER.setLevel(Level.toLevel(starter.LOGGER_LEVEL));
+        LOGGER.info("Setting LOGGER level to " + starter.LOGGER_LEVEL);
         starter.LOGGER = LOGGER;
         LOGGER.info("Finished to initialize Starter");
     }

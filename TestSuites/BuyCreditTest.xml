@@ -6,21 +6,22 @@
     <parameter name="params.file.name" value="params.properties" />
     
     <test name="Test - BuyCredut Normal User" preserve-order="true">
-        <parameter name="normalLogin" value="NormalTester" />        
-        <parameter name="normalPassword" value="Tester13" />        
-        <parameter name="resellerLogin" value="Tester" />        
-        <parameter name="resellerPassword" value="Tester13" />        
-        <parameter name="masterLogin" value="MasterTester" />        
-        <parameter name="masterPassword" value="Tester13" />        
+        <parameter name="paymentCurrency" value="AED" />        
+        <parameter name="countryOfCredit" value="Belgium" />        
+        <parameter name="cardType" value="American Express" />        
+        <parameter name="gatewayName" value="GlobalCollect" />        
+        <parameter name="currencyAmount" value="40" />        
+        <parameter name="conversionRate" value="" />        
         <classes>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInNormalUserTest" />
+                    <include name="signInEuroNormalWhitelistUserTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserTest" />
+                    <include name="buyCreditLoggedNormalUserGlobalCollectTest" />
+                    <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
         </classes>
