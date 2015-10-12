@@ -29,6 +29,8 @@ public class AbstractCase {
         initStarter();
 //    	AbstractCase.LOGGER = starter.LOGGER;
     	starter.start(context);
+        LOGGER.setLevel(Level.toLevel(starter.LOGGER_LEVEL));
+        LOGGER.info("Setting LOGGER level to " + starter.LOGGER_LEVEL);
     }    
 
     @BeforeTest
@@ -60,8 +62,6 @@ public class AbstractCase {
 
         LOGGER.info("Initializing Starter");
         starter = Starter.getInstance();
-        LOGGER.setLevel(Level.toLevel(starter.LOGGER_LEVEL));
-        LOGGER.info("Setting LOGGER level to " + starter.LOGGER_LEVEL);
         starter.LOGGER = LOGGER;
         LOGGER.info("Finished to initialize Starter");
     }
