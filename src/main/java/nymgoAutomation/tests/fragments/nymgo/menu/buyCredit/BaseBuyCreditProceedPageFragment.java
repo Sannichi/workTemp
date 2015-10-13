@@ -11,12 +11,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
-import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
+import nymgoAutomation.tests.fragments.nymgo.account.BaseProfileInfoFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
 import nymgoAutomation.tests.navigation.Starter;
 
-public class BaseBuyCreditProceedPageFragment extends BaseLoggedInFragment{
+//public class BaseBuyCreditProceedPageFragment extends BaseLoggedInFragment{
+public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 
 	public BaseBuyCreditProceedPageFragment(WebDriver driver) {
 		super(driver);

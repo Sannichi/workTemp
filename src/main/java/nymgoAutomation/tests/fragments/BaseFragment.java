@@ -45,7 +45,7 @@ public class BaseFragment {
 	}
 	
 	//input with only text
-	public void clickButton(WebElement button){
+	protected void clickButton(WebElement button){
 		
 		String text = button.getText();
 		button.click();
@@ -53,7 +53,7 @@ public class BaseFragment {
 	}
 	
 	//input with title
-	public void clickSubmitButton(WebElement button){
+	protected void clickSubmitButton(WebElement button){
 		
 		String title = button.getAttribute("title");
 		button.click();
@@ -61,48 +61,55 @@ public class BaseFragment {
 	}
 	
 	//input with only value
-	public void clickInputButton(WebElement button){
+	protected void clickInputButton(WebElement button){
 		
 		String value = button.getAttribute("value");
 		button.click();
 		LOGGER.info("Button '" + value + "' was clicked");
 	}
 	
-	public void clickLink(WebElement link){
+	protected void clickLink(WebElement link){
 		
 		String text = link.getText();
 		link.click();
 		LOGGER.info("Link '" + text + "' was clicked");
 	}
 	
-	public void clickTitleLink(WebElement link){
+	protected void clickTitleLink(WebElement link){
 		
 		String title = link.getAttribute("title");
 		link.click();
 		LOGGER.info("Link '" + title + "' was clicked");
 	}
 	
-	public void clickWidget(WebElement widget){
+	protected void expandClickableContent(WebElement element){
+		
+		String text = element.getText();
+		element.click();
+		LOGGER.info("Clickable content '" + text + "' was expanded");
+	}
+
+	protected void clickWidget(WebElement widget){
 		
 		String alt = widget.getAttribute("alt");
 		widget.click();
 		LOGGER.info("Widget '" + alt + "' was clicked");
 	}
 	
-	public void clickWidgetTabImage(WebElement tab){
+	protected void clickWidgetTabImage(WebElement tab){
 		
 		String alt = tab.getAttribute("alt");
 		tab.click();
 		LOGGER.info("Widget tab '" + alt + "' was clicked");
 	}
 	
-	public void setTextToEditField(WebElement editField, String textToSet){
+	protected void setTextToEditField(WebElement editField, String textToSet){
 		
 		editField.sendKeys(textToSet);
 		LOGGER.info("Text '" + textToSet + "' was set to editField");
 	}
 	
-	public void selectValueFromSelectByLocaleText(WebElement elementWithSelect, String localeText){
+	protected void selectValueFromSelectByLocaleText(WebElement elementWithSelect, String localeText){
 		
 		String localeName = LocaleGenerator.getLocaleKeyNameByValue(localeText);
 		Select select = new Select(elementWithSelect);
@@ -111,7 +118,7 @@ public class BaseFragment {
 		LOGGER.info("Value " + localeText + " was selected from Select");
 	}
 
-	public void selectValueFromSelectByVisibleText(WebElement elementWithSelect, String visibleText){
+	protected void selectValueFromSelectByVisibleText(WebElement elementWithSelect, String visibleText){
 		
 		Select select = new Select(elementWithSelect);
 		select.selectByVisibleText(visibleText);

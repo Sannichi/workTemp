@@ -28,8 +28,10 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	
 	private static final String accountMyBalanceBlockClassName = "block my-balance";
 	private static final String accountBuyCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/buy-credits']";
+	private static final String viewFullAccountXpath = "//a[@href='" + language + "/user/account/view/profile']";
 	
 	private WebElement accountBuyCreditButton;
+	private WebElement viewFullAccountButton;
 
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
@@ -42,10 +44,20 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		accountBuyCreditButton = driver.findElement(By.xpath(accountBuyCreditXpath));
 	}
 	
+	private void initializeViewFullAccountButton() throws NoSuchElementException{
+		
+		accountBuyCreditButton = driver.findElement(By.xpath(viewFullAccountXpath));
+	}
+	
 	public void clickAccountBuyCreditButton(){
 		
 		initializeBuyCreditButton();
-//		accountBuyCreditButton.click();
 		clickSubmitButton(accountBuyCreditButton);
+	}
+
+	public void clickViewFullAccountButton(){
+		
+		initializeViewFullAccountButton();
+		clickSubmitButton(viewFullAccountButton);
 	}
 }

@@ -4,6 +4,8 @@ public class PROVIDER_CONST {
 
     public final static String EURO_NORMAL_WHITELIST_PROVIDER = "euroNormalWhitelistProvider";
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS = "euroNormalWhitelistProviderWithParams";
+    public final static String EURO_NORMAL_WHITELIST_PROVIDER_SET_PARAMS = "euroNormalWhitelistProviderSetParams";
+    public final static String SET_NORMAL_USER_PARAMS_PROVIDER = "setNormalUserParamsProvider";    
 
     public final static String INTER_NORMAL_WHITELIST_GC_PROVIDER = "interNormalWhitelistGCProvider";
     public final static String INTER_NORMAL_WHITELIST_ADYEN_PROVIDER = "interNormalWhitelistAdyenProvider";

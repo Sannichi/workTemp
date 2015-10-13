@@ -30,4 +30,5 @@ public abstract class AbstractAccountPage extends AbstractLoggedInPage{
 		navigation.NavigatedTo();
 		return buyCreditPage;
 	}
+
 }
