@@ -32,7 +32,7 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 	private WebElement mobile;
 
 	@FindBy(xpath = "//input[@id='home-el']")	
-	private List<WebElement> phoneAndStreet;
+	private List<WebElement> phoneAndCityAndStreet;
 
 	@FindBy(id = "pobox-el")
 	private WebElement postalCode;
@@ -48,6 +48,9 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 
 	@FindBy(id = "language_id")
 	private WebElement languageSelect;
+
+	@FindBy(id = "save-el")
+	private WebElement saveButton;
 
 	protected void selectCountryOfResidence(String countryOfResidence){
 
@@ -125,12 +128,22 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 
 	protected String getPhone(){
 		
-		return phoneAndStreet.get(0).getAttribute("value");		
+		return phoneAndCityAndStreet.get(0).getAttribute("value");		
 	}
 
 	protected void setPhone(String phone){
 		
-		setTextToEditField(this.phoneAndStreet.get(0), phone);
+		setTextToEditField(this.phoneAndCityAndStreet.get(0), phone);
+	}
+
+	protected String getCity(){
+		
+		return phoneAndCityAndStreet.get(1).getAttribute("value");		
+	}
+
+	protected void setCity(String city){
+		
+		setTextToEditField(this.phoneAndCityAndStreet.get(1), city);
 	}
 
 	protected String getPostalCode(){
@@ -145,12 +158,12 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 
 	protected String getStreet(){
 		
-		return phoneAndStreet.get(1).getAttribute("value");
+		return phoneAndCityAndStreet.get(2).getAttribute("value");
 	}
 
 	protected void setStreet(String street){
 		
-		setTextToEditField(this.phoneAndStreet.get(1), street);
+		setTextToEditField(this.phoneAndCityAndStreet.get(2), street);
 	}
 
 	protected String getAddress(){
@@ -163,4 +176,8 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 		setTextToEditField(this.address, address);
 	}
 
+	protected void clickSaveButton(){
+		
+		clickSubmitButton(saveButton);
+	}
 }

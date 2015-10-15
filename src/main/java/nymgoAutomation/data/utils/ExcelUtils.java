@@ -86,13 +86,13 @@ public class ExcelUtils {
 		catch (FileNotFoundException e)
 		{
 
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		}
 		catch (IOException e)
 		{
 
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -108,7 +108,7 @@ public class ExcelUtils {
 			int paramCol = 0;
 			int startRow = 0;
 			int totalRows = getLastRowNumber();
-			for (int j = startRow; j < totalRows; j++)
+			for (int j = startRow; j <= totalRows; j++)
 			{
 				if(getCellData(j, paramCol).equals(parameterName)){
 					result = getCellData(j, paramCol + 1);
@@ -142,6 +142,8 @@ public class ExcelUtils {
 			fullUserEntity.setDisplayCurrency(getParameterFromExcelSheet(USER_PARAMS.DISPLAY_CURRENCY.toString()));
 			fullUserEntity.setPaymentCurrency(getParameterFromExcelSheet(USER_PARAMS.PAYMENT_CURRENCY.toString()));
 			fullUserEntity.setLanguage(getParameterFromExcelSheet(USER_PARAMS.LANGUAGE.toString()));
+			fullUserEntity.setGeoIpCountry(getParameterFromExcelSheet(USER_PARAMS.GEOIP_COUNTRY.toString()));
+			fullUserEntity.setVat(getParameterFromExcelSheet(USER_PARAMS.VAT.toString()));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -168,10 +170,10 @@ public class ExcelUtils {
 		try{
 
 			setExcelFile(filePath, sheetName);
-			fullCardEntity.setCardNumber(CARD_PARAMS.CARD_NUMBER.toString());
-			fullCardEntity.setExpirationMonth(CARD_PARAMS.EXPIRATION_MONTH.toString());
-			fullCardEntity.setExpirationYear(CARD_PARAMS.EXPIRATION_YEAR.toString());
-			fullCardEntity.setCvv(CARD_PARAMS.CVV.toString());
+			fullCardEntity.setCardNumber(getParameterFromExcelSheet(CARD_PARAMS.CARD_NUMBER.toString()));
+			fullCardEntity.setExpirationMonth(getParameterFromExcelSheet(CARD_PARAMS.EXPIRATION_MONTH.toString()));
+			fullCardEntity.setExpirationYear(getParameterFromExcelSheet(CARD_PARAMS.EXPIRATION_YEAR.toString()));
+			fullCardEntity.setCvv(getParameterFromExcelSheet(CARD_PARAMS.CVV.toString()));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -204,38 +206,8 @@ public class ExcelUtils {
 		}
 	}
 
-	private static int getRowContains(String sTestCaseName, int colNum) throws Exception{
-
-		int i;
-		try {
-			int rowCount = ExcelUtils.getRowUsed();
-			for ( i=0 ; i<rowCount; i++){
-				if  (ExcelUtils.getCellData(i,colNum).equalsIgnoreCase(sTestCaseName)){
-					break;
-				}
-			}
-			return i;
-		}
-		catch (Exception e){
-			throw(e);
-		}
-	}
-
-	public static int getRowUsed() throws Exception {
-
-		try{
-			int rowCount = excelWSheet.getLastRowNum();
-			return rowCount;
-		}
-		catch (Exception e){
-			System.out.println(e.getMessage());
-			throw (e);
-		}
-	}
-	
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
 	@SuppressWarnings("static-access")
-//	private static void setCellData(String filePath, int RowNum, int ColNum, String str) throws Exception{
 	private static void setCellData(int RowNum, int ColNum, String str) throws Exception{	
 		try{
 			row = excelWSheet.getRow(RowNum);
@@ -247,20 +219,12 @@ public class ExcelUtils {
 				cell = row.createCell(ColNum);
 			}  
 			cell.setCellValue(str);
-/*			
-			// Constant variables Test Data path and Test Data file name
-			FileOutputStream fileOut = new FileOutputStream(filePath);
-			excelWBook.write(fileOut);
-			fileOut.flush();
-			fileOut.close();
-*/						
 		}
 		catch (Exception e){
 			throw (e);
 		}
 	}
 
-//	public static boolean setTransactionDataFromStart(String filePath, String sheetName, String username, String transactionID){
 	public static boolean setTransactionDataFromStart(String username, String transactionID){	
 
 		try{
@@ -280,7 +244,7 @@ public class ExcelUtils {
 		catch (FileNotFoundException e)
 		{
 	
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -308,7 +272,39 @@ public class ExcelUtils {
 		}
 	}
 
-//	public static boolean addTransactionData(String filePath, String sheetName, String username, String transactionID){
+	public static boolean addTransactionData(String transactionID){
+
+		try{
+			
+			setExcelFile(transactionFilePath, transactionSheetName);
+			int startCol = 0;
+			int startRow = getFirstEmptyRow();
+			try {
+				setCellData(startRow, startCol + 1, transactionID);				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			writeExcelFile(transactionFilePath);
+		}
+		catch (FileNotFoundException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	} 
+
 	public static boolean addTransactionData(String username, String transactionID){
 
 		try{
@@ -328,13 +324,13 @@ public class ExcelUtils {
 		catch (FileNotFoundException e)
 		{
 	
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		}
 		catch (IOException e)
 		{
 	
-			System.out.println("Could not read the Excel sheet");
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -379,8 +375,7 @@ public class ExcelUtils {
 	public static String getLastTransactionByUsername(String username){
 
 		try{
-//			setExcelFile(filePath, sheetName);
-			setExcelFile(Starter.TRANSACTIONS_FILE_PATH, "Transactions");			
+			setExcelFile(transactionFilePath, transactionSheetName);			
 			int startCol = 0;
 			int startRow = 0;
 			int lastRow = getLastRowNumber();
@@ -391,7 +386,22 @@ public class ExcelUtils {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		return null;
+	} 
+
+	public static String getLastTransaction(){
+
+		try{
+			setExcelFile(transactionFilePath, transactionSheetName);			
+			int startCol = 0;
+			int lastRow = getLastRowNumber();
+			return getCellData(lastRow, startCol + 1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	} 
 }

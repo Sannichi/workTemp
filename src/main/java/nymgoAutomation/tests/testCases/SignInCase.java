@@ -35,7 +35,7 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(normalAccountPage.isUserLogged(username));
     }
 	
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class, groups = "euroNormalSignIn")
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void signInEuroNormalWhitelistUserTest(FullUserEntity fullUserEntity){    
 
     	NymgoPage nymgoPage = new NymgoPage(starter);

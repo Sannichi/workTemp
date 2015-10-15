@@ -1,5 +1,8 @@
 package nymgoAutomation.tests.testCases;
 
+import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.enums.PROVIDER_CONST;
+import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.data.utils.ExcelUtils;
 import nymgoAutomation.tests.pages.admin.TransactionsAdminPage;
 import nymgoAutomation.tests.pages.admin.base.AdminPage;
@@ -43,6 +46,27 @@ public class AdminTransactionsCase extends AbstractCase{
 		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		transactionDeclinedPopup.closeTransactionDeclinedPopup();
+		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+		LOGGER.info("End");
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void declineEuroNormalUserTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		AdminPage adminPage = new AdminPage(starter);
+
+//		String transactionID = ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername());
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
+		transactionsAdminPage.searchIDExactMatch(transactionID);
+		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), 
+				String.valueOf(Double.valueOf(currencyAmount)*Double.valueOf(fullUserEntity.getVat())/100 + Integer.valueOf(currencyAmount))+paymentCurrency+"/"
+						+(String.valueOf(String.valueOf((Double.valueOf(currencyAmount)*Double.valueOf(fullUserEntity.getVat())/100 + Integer.valueOf(currencyAmount))*Integer.valueOf(conversionRate))))+"$", 
+				paymentCurrency, "$"+currencyAmount, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();

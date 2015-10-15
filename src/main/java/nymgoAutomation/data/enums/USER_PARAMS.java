@@ -17,7 +17,9 @@ public enum USER_PARAMS {
     POSTAL_CODE( "PostalCode"),
     DISPLAY_CURRENCY( "DisplayCurrency"),
     PAYMENT_CURRENCY( "PaymentCurrency"),
-    LANGUAGE( "Language");
+    LANGUAGE( "Language"),
+    GEOIP_COUNTRY( "GeoIpCountry"),
+    VAT( "VAT");
     
     private USER_PARAMS(){
     	

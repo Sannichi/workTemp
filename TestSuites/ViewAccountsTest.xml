@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="1" name="FindByTheme" preserve-order="true">
+    
+    <parameter name="config.file.name" value="config.dev.properties" />
+    <parameter name="params.file.name" value="params.properties" />
+    
+    <test name="Test - View Full Accounts Test" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="changeEuroNormalUserAccountTest" />
+                </methods>
+            </class>
+        
+        </classes>
+    </test>
+    
+</suite>

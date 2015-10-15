@@ -73,7 +73,7 @@ public class Starter {
         LOGGER.info("Initializing config.properties");
         PROPS = new Properties();
         try {
-            System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        	LOGGER.info("Working Directory = " + System.getProperty("user.dir"));
             try{
                 String configFile = context.getCurrentXmlTest().getParameter(CONFIG_FILE_NAME);
                 PROPS.load(new FileInputStream(configFile));

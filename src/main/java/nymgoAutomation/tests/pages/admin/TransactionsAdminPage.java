@@ -131,8 +131,8 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 		
-		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
-				"', should be '" + username + "'");
+		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
+				"', should be '" + username.toLowerCase() + "'");
 		LOGGER.info("Username is correct");
 		Assert.assertTrue(isTransactionAmountCorrect(transactionDetails, amount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
 				"', should be '" + amount + "'");

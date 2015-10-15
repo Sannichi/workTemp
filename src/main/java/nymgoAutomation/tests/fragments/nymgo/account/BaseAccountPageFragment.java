@@ -9,8 +9,10 @@ import nymgoAutomation.tests.navigation.Starter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,27 +30,35 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	
 	private static final String accountMyBalanceBlockClassName = "block my-balance";
 	private static final String accountBuyCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/buy-credits']";
-	private static final String viewFullAccountXpath = "//a[@href='" + language + "/user/account/view/profile']";
+//	private static final String viewFullAccountXpath = "//a[@href='" + language + "/user/account/view/profile']";
+	
+	@FindBy(xpath = "//a[@class='view-profile']")
+	private WebElement viewFullAccountButton;
 	
 	private WebElement accountBuyCreditButton;
-	private WebElement viewFullAccountButton;
 
-	public boolean isCorrectURL() {
+	public boolean isCorrectURL(){
 		// TODO Auto-generated method stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlToBe(ACCOUNT_PAGE_URL_EN));
+		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
+		try{
+			wait.until(ExpectedConditions.urlToBe(ACCOUNT_PAGE_URL_EN));
+			return true;
+		}
+		catch(TimeoutException e){
+			return false;
+		}
 	}
     
 	private void initializeBuyCreditButton() throws NoSuchElementException{
 		
 		accountBuyCreditButton = driver.findElement(By.xpath(accountBuyCreditXpath));
 	}
-	
+/*	
 	private void initializeViewFullAccountButton() throws NoSuchElementException{
 		
 		accountBuyCreditButton = driver.findElement(By.xpath(viewFullAccountXpath));
 	}
-	
+*/	
 	public void clickAccountBuyCreditButton(){
 		
 		initializeBuyCreditButton();
@@ -57,7 +67,7 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 
 	public void clickViewFullAccountButton(){
 		
-		initializeViewFullAccountButton();
+//		initializeViewFullAccountButton();
 		clickSubmitButton(viewFullAccountButton);
 	}
 }

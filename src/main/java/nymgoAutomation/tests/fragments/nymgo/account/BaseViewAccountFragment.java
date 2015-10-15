@@ -118,6 +118,16 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment implements 
 		super.setPhone(phone);
 	}
 
+	public String getCity(){
+		
+		return super.getCity();
+	}
+
+	public void setCity(String city){
+		
+		super.setCity(city);
+	}
+
 	public String getPostalCode(){
 		
 		return super.getPostalCode();
@@ -178,6 +188,11 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment implements 
 		super.selectLanguage(language);		
 	}
 
+	public void clickSaveButton(){
+		
+		super.clickSaveButton();
+	}
+	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);

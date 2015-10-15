@@ -56,7 +56,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(buyCreditConfirmPagePending.isTransactionPending(), 
 				"Transaction is not pending, current status is: " + buyCreditConfirmPagePending.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-		ExcelUtils.addTransactionData("normaltester", transactionID);
+//		ExcelUtils.addTransactionData("NormalTester", transactionID);
+		ExcelUtils.addTransactionData(transactionID);		
 		LOGGER.info("transactionID " + transactionID + " was added to Excel");
 		@SuppressWarnings("unused")
 		NormalAccountPage normalAccountPage = buyCreditConfirmPagePending.clickBackToNormalUserDashboardButton();

@@ -55,9 +55,20 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
     	return wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_PAGE_URL));
 	}
 
+	@Override
+	public void setStreet(String street){
+	
+		setCity(street);
+	}
+	
+	@Override
+	public String getStreet(){
+	
+		return getCity();
+	}
+
 	public void clickContinueButton(){
-		
-//		continueButton.click();
+
 		clickSubmitButton(continueButton);
 	}
 /*	

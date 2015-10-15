@@ -19,6 +19,8 @@ public class FullUserEntity {
     String displayCurrency;
     String paymentCurrency;
     String language;
+    String geoIpCountry;
+    String VAT;
 
 	public String getUsername() {
         return username;
@@ -132,6 +134,22 @@ public class FullUserEntity {
 		this.language = language;
 	}
 	
+	public String getGeoIpCountry() {
+		return geoIpCountry;
+	}
+
+	public void setGeoIpCountry(String geoIpCountry) {
+		this.geoIpCountry = geoIpCountry;
+	}
+	
+	public String getVat() {
+		return VAT;
+	}
+
+	public void setVat(String VAT) {
+		this.VAT = VAT;
+	}
+	
 	public FullUserEntity(){
 		
 		this.username = "";
@@ -148,6 +166,8 @@ public class FullUserEntity {
 		this.displayCurrency = "";
 		this.paymentCurrency = "";
 		this.language = "";
+		this.geoIpCountry = "";
+		this.VAT = "";
 	}
 	
 	public FullUserEntity(Object[] obj){
