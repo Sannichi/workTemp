@@ -27,7 +27,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		LOGGER.info("Last transaction ID = " + transactionID);
 		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
-		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
+//		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
@@ -45,7 +45,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
-		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
+//		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -63,10 +63,8 @@ public class AdminTransactionsCase extends AbstractCase{
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
-		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), 
-				String.valueOf(Double.valueOf(currencyAmount)*Double.valueOf(fullUserEntity.getVat())/100 + Integer.valueOf(currencyAmount))+paymentCurrency+"/"
-						+(String.valueOf(String.valueOf((Double.valueOf(currencyAmount)*Double.valueOf(fullUserEntity.getVat())/100 + Integer.valueOf(currencyAmount))*Integer.valueOf(conversionRate))))+"$", 
-				paymentCurrency, "$"+currencyAmount, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();

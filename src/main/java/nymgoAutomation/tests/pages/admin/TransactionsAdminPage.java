@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.testng.Assert;
 
+import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
 import nymgoAutomation.tests.fragments.admin.TransactionsAdminPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
@@ -127,21 +128,32 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		return transactionsAdminPageFragment.getTransactionCountry(transactionDetails);
 	}
 	
-	public void verifyTransactionData(String transactionID, String username, String amount, String currency, String product, String service, String method, String country){
+	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String conversionRate, String currency, String service, String method, String country){
 		
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 		
+		String fullAmount = String.valueOf(Double.valueOf(amount)*Double.valueOf(VAT)/100 + Integer.valueOf(amount))+currency+"/"
+		+(String.valueOf(String.valueOf((Double.valueOf(amount)*Double.valueOf(VAT)/100 + Integer.valueOf(amount))*Integer.valueOf(conversionRate))))+"$";
+		
+		String fullProduct = "";
+		if(currency.equals(CURRENCY_SIGNS.USD.toString())){
+			fullProduct = "$" + amount;
+		}
+		else{
+			fullProduct = currency + " " + amount;
+		}
+				
 		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
 				"', should be '" + username.toLowerCase() + "'");
 		LOGGER.info("Username is correct");
-		Assert.assertTrue(isTransactionAmountCorrect(transactionDetails, amount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
-				"', should be '" + amount + "'");
+		Assert.assertTrue(isTransactionAmountCorrect(transactionDetails, fullAmount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
+				"', should be '" + fullAmount + "'");
 		LOGGER.info("Amount is correct");
 		Assert.assertTrue(isTransactionCurrencyCorrect(transactionDetails, currency), "Currency is not correct! Current value is '" + getTransactionCurrency(transactionDetails) + 
 				"', should be '" + currency + "'");
 		LOGGER.info("Currency is correct");
-		Assert.assertTrue(isTransactionProductCorrect(transactionDetails, product), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
-				"', should be '" + product + "'");
+		Assert.assertTrue(isTransactionProductCorrect(transactionDetails, fullProduct), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
+				"', should be '" + fullProduct + "'");
 		LOGGER.info("Product is correct");
 		Assert.assertTrue(isTransactionServiceCorrect(transactionDetails, service), "Service is not correct! Current value is '" + getTransactionService(transactionDetails) + 
 				"', should be '" + service + "'");
