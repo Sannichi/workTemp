@@ -53,9 +53,19 @@ public class BaseWidgetFragment extends BaseFragment{
     	return widgetContainer.findElement(By.id("drag-contentarea"));
     };
 
+    protected WebElement getCloseButton() throws NotFoundException{
+    	
+    	return widgetContainer.findElement(By.xpath(".//img[@title='Close']"));
+    };
+
     public void clickOnCloseButton(){
-        driver.findElement(By.xpath(".//img[@title='Close']")).click();
+    	
+        getCloseButton().click();
         LOGGER.info("Widget close button was clicked");
+    }
+
+    public boolean isContentAreaDisplayed(){
+	    return getWidgetContentArea().isDisplayed();
     }
 
     public void clickOnTabByAltText(String tabText){

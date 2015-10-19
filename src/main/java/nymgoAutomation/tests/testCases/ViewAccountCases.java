@@ -21,8 +21,6 @@ public class ViewAccountCases extends AbstractCase{
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
 		viewNormalAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
-		LOGGER.info("mess");
-
 	}
 
 }

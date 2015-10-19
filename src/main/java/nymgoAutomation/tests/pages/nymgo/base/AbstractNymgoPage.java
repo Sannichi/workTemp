@@ -110,7 +110,8 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 		{
 			baseLoggedInFragment.clickLogOut();
 		}
-		if (getCurrentURL() != baseNymgoFragment.getHomeURL()){
+		if (!getCurrentURL().equals(baseNymgoFragment.getHomeURL())){
+			LOGGER.info("Current URL = '" + getCurrentURL() + "'");
 			clickHomepageLink();
 		}
 		baseNymgoFragment.setLanguage(starter.LOCALE);

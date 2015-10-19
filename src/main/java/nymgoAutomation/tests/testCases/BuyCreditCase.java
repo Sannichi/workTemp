@@ -24,17 +24,21 @@ public class BuyCreditCase extends AbstractCase{
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		Double VATValue = Double.valueOf(buyCreditPage.getVATValue());
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
 				currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
-		
+		if(countryOfCredit == null){
+			countryOfCredit = fullUserEntity.getCountryOfResidence();
+		}
 		buyCreditProceedPage.setPaymentBlockData(cardType, countryOfCredit);
-
+		
 		@SuppressWarnings("unused")
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),

@@ -21,6 +21,11 @@ public abstract class AbstractWidget extends AbstractPage{
         return baseWidgetFragment.isWidgetExist();
     }
 
+    public boolean isContentAreaDisplayed(){
+
+        return baseWidgetFragment.isContentAreaDisplayed();
+    }
+
     protected void delay(final long amount) {
         try {
             Thread.sleep(amount);
@@ -54,21 +59,31 @@ public abstract class AbstractWidget extends AbstractPage{
     	baseWidgetFragment.clickOnCloseButton();
     }
 
+    public void waitForCloseButton(){
+    	
+    	baseWidgetFragment.clickOnCloseButton();
+    }
+
     protected void closeWidget(String widgetName){
     	
 		for(int i = 0; i < 5; i++){
 			delay(2000);
+	        LOGGER.info("Waiting 2 seconds...");
 	    	if(isWidgetExist()){
-				clickOnCloseButton();
-		        LOGGER.info("Closing the " + widgetName);
-		        for (int j = 0; j < 5; j++){
-		        	if (isWidgetExist())
-		        		delay(2000);
-		        	else
-		        		break;
-		        }
-		    	Assert.assertFalse(isWidgetExist(), widgetName + " was not closed within 10 seconds");
-				break;
+	    		if(isContentAreaDisplayed()){
+					clickOnCloseButton();
+			        LOGGER.info("Closing the " + widgetName);
+			        for (int j = 0; j < 5; j++){
+			        	if (isWidgetExist()){
+			        		delay(2000);
+			    	        LOGGER.info("Waiting 2 seconds for closing...");
+			        	}
+			        	else
+			        		break;
+			        }
+			    	Assert.assertFalse(isWidgetExist(), widgetName + " was not closed within 10 seconds");
+					break;
+	    		}
 			}
 			if (i == 4){
 		        LOGGER.fatal(widgetName + " was not appeared in 10 seconds");            

@@ -60,6 +60,16 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		return this;
 	}
 
+	public AbstractLoggedAdminPageWithSearch searchUsernameExactMatch(String criteria){
+
+		typeCriteria(criteria);
+		selectField("Username");
+		selectType("Exact Match");
+		clickGoButton();
+		waitSearchCriteria();
+		return this;
+	}
+
 	private boolean isSearchResultEmpty(){
 		
 		return baseLoggedAdminPageWithSearchFragment.isSearchResultEmpty();

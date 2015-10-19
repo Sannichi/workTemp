@@ -16,7 +16,7 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
         baseLoggedAdminFragment = new BaseLoggedAdminFragment(driver);
     }
 
-    public MembersAdminPage clickMembersLink()
+    private MembersAdminPage clickMembersLink()
 	{
 		
 		baseLoggedAdminFragment.clickMembersLink();
@@ -26,7 +26,17 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 		return membersAdminPage;
 	}
 
-    public TransactionsAdminPage clickTransactionsLink()
+    public MembersAdminPage navigateMembersTab()
+	{
+    	MembersAdminPage membersAdminPage = new MembersAdminPage(starter);
+    	if (!getCurrentURL().equals(membersAdminPage.isCorrectPage())){
+    		membersAdminPage = clickMembersLink();
+    	}
+    	LOGGER.info("Current page is already " + membersAdminPage.getPageName());
+    	return membersAdminPage;
+	}
+
+    private TransactionsAdminPage clickTransactionsLink()
 	{
 		
     	baseLoggedAdminFragment.clickTransactionsLink();
@@ -36,7 +46,17 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 		return transactionsAdminPage;
 	}
 
-	public boolean isAdminLogged()
+    public TransactionsAdminPage navigateTransactionsTab()
+	{
+    	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
+    	if (!getCurrentURL().equals(transactionsAdminPage.isCorrectPage())){
+    		transactionsAdminPage = clickTransactionsLink();
+    	}
+    	LOGGER.info("Current page is already " + transactionsAdminPage.getPageName());
+    	return transactionsAdminPage;
+	}
+
+    public boolean isAdminLogged()
 	{
 		return baseLoggedAdminFragment.isAdminLogged();
 	}

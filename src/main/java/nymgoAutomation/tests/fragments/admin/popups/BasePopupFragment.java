@@ -45,7 +45,7 @@ public class BasePopupFragment extends BaseFragment{
 
     public void clickOnCloseButton(){
     	
-        driver.findElement(By.xpath(".//img[@title='close']")).click();
+    	popup.findElement(By.xpath(".//img[@title='close']")).click();
         LOGGER.info("Popup close button was clicked");
     }
 }

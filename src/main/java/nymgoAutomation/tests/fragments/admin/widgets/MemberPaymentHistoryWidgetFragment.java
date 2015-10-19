@@ -106,13 +106,11 @@ public class MemberPaymentHistoryWidgetFragment extends BaseWidgetFragment{
 */
 	public void clickAcceptTransaction(){
 		
-//		acceptTransactionButton.click();
 		clickSubmitButton(acceptTransactionButton);
 	}
 
 	public void clickCancelTransaction(){
 		
-//		cancelTransactionButton.click();
 		clickButton(cancelTransactionButton);
 	}
 	

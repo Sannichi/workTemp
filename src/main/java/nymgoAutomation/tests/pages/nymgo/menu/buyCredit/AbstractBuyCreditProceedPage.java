@@ -95,7 +95,9 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 	public AbstractBuyCreditProceedPage setPaymentBlockData(String paymentCardType, String countryOfCredit){
 		
 		selectPaymentCardType(paymentCardType);
-		selectCountryOfCredit(countryOfCredit);
+		if (countryOfCredit != null){
+			selectCountryOfCredit(countryOfCredit);
+		}
 		return this;
 	}
 	

@@ -26,11 +26,7 @@ public class AbstractCase {
         LOGGER.info("Initializing configuration");
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.Jdk14Logger");        
 
-        initStarter();
-//    	AbstractCase.LOGGER = starter.LOGGER;
-    	starter.start(context);
-        LOGGER.setLevel(Level.toLevel(starter.LOGGER_LEVEL));
-        LOGGER.info("Setting LOGGER level to " + starter.LOGGER_LEVEL);
+        initStarter(context);
     }    
 
     @BeforeTest
@@ -58,11 +54,32 @@ public class AbstractCase {
     	starter.quiteDriver();
 	}
 	
-    public void initStarter(){
+    public String getTestStatus(int status){
+
+    	switch(status){
+    		case 1: 
+    			return "SUCCESS";
+    		case 2: 
+    			return "FAILURE";
+    		case 3: 
+    			return "SKIP";
+    		case 4: 
+    			return "SUCCESS_PERCENTAGE_FAILURE";
+    		case 16: 
+    			return "STARTED";
+    		default:
+    			return "UNDEFINED";
+    	}
+    }
+
+    public void initStarter(ITestContext context){
 
         LOGGER.info("Initializing Starter");
         starter = Starter.getInstance();
         starter.LOGGER = LOGGER;
+    	starter.start(context);
+        LOGGER.setLevel(Level.toLevel(starter.LOGGER_LEVEL));
+        LOGGER.info("Setting LOGGER level to " + starter.LOGGER_LEVEL);
         LOGGER.info("Finished to initialize Starter");
     }
 }

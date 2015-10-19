@@ -25,7 +25,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		transactionID = ExcelUtils.getLastTransactionByUsername(username);
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		LOGGER.info("Last transaction ID = " + transactionID);
-		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
+		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 //		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
@@ -43,7 +43,7 @@ public class AdminTransactionsCase extends AbstractCase{
 
 		transactionID = ExcelUtils.getLastTransactionByUsername(username);
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
+		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 //		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
@@ -61,7 +61,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //		String transactionID = ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername());
 		String transactionID = ExcelUtils.getLastTransaction();		
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
+		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());

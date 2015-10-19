@@ -23,14 +23,14 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		return BUY_CREDIT_PROCEED_PAGE_GC_NAME_ENG;
 	}
 
-	private String getSelectedCountryOfResidence(){
-		
-		return buyCreditProceedPageGlobalCollectFragment.getSelectedCountryOfResidence();
-	}
-
 	private String getFullName(){
 		
 		return buyCreditProceedPageGlobalCollectFragment.getFullName();
+	}
+
+	private void setFullName(String fullName){
+		
+		buyCreditProceedPageGlobalCollectFragment.setFullName(fullName);
 	}
 
 	private String getEmail(){
@@ -38,9 +38,19 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		return buyCreditProceedPageGlobalCollectFragment.getEmail();
 	}
 
+	private void setEmail(String email){
+		
+		buyCreditProceedPageGlobalCollectFragment.setEmail(email);
+	}
+
 	private String getMobile(){
 		
 		return buyCreditProceedPageGlobalCollectFragment.getMobile();
+	}
+
+	private void setMobile(String mobile){
+		
+		buyCreditProceedPageGlobalCollectFragment.setMobile(mobile);
 	}
 
 	private String getPhone(){
@@ -48,9 +58,19 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		return buyCreditProceedPageGlobalCollectFragment.getPhone();
 	}
 
+	private void setPhone(String phone){
+		
+		buyCreditProceedPageGlobalCollectFragment.setPhone(phone);
+	}
+
 	private String getPostalCode(){
 		
 		return buyCreditProceedPageGlobalCollectFragment.getPostalCode();
+	}
+
+	private void setPostalCode(String postalCode){
+		
+		buyCreditProceedPageGlobalCollectFragment.setPostalCode(postalCode);
 	}
 
 	private String getStreet(){
@@ -58,11 +78,26 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		return buyCreditProceedPageGlobalCollectFragment.getStreet();
 	}
 
+	private void setStreet(String street){
+		
+		buyCreditProceedPageGlobalCollectFragment.setStreet(street);
+	}
+
 	private String getAddress(){
 		
 		return buyCreditProceedPageGlobalCollectFragment.getAddress();
 	}
 	
+	private void setAddress(String address){
+		
+		buyCreditProceedPageGlobalCollectFragment.setAddress(address);
+	}
+
+	private String getSelectedCountryOfResidence(){
+		
+		return buyCreditProceedPageGlobalCollectFragment.getSelectedCountryOfResidence();
+	}
+
 	private void selectCountryOfResidence(String countryOfResidence){
 		
 		buyCreditProceedPageGlobalCollectFragment.selectCountryOfResidence(countryOfResidence);
@@ -88,6 +123,46 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 
 	public BuyCreditProceedPageGlobalCollect setAccountInfoBlockData(String fullName, String email, String mobile, String phone){
 		
+		boolean edited = false;
+		if (fullName != null){
+			if (!getFullName().equals(fullName)){
+				setFullName(fullName);
+				Assert.assertTrue(getFullName().equals(fullName), "Full Name was not updated. Current value is '"
+				+ getFullName() + "', should be '" + fullName + "'");
+				edited = true;
+				LOGGER.info("Full Name is updated with " + fullName);
+			}
+		}
+		if (email != null){
+			if (!getEmail().equals(email)){
+				setEmail(email);
+				Assert.assertTrue(getEmail().equals(email), "Email was not updated. Current value is '"
+				+ getEmail() + "', should be '" + email + "'");
+				edited = true;
+				LOGGER.info("Email is updated with " + email);
+			}
+		}
+		if(mobile != null){
+			if (!getMobile().equals(mobile)){
+				setMobile(mobile);
+				Assert.assertTrue(getMobile().equals(mobile), "Mobile was not updated. Current value is '"
+				+ getMobile() + "', should be '" + mobile + "'");
+				edited = true;
+				LOGGER.info("Mobile is updated with " + mobile);
+			}
+		}
+		if(phone != null){
+			if (!getPhone().equals(phone)){
+				setPhone(phone);
+				Assert.assertTrue(getPhone().equals(phone), "Phone was not updated. Current value is '"
+				+ getPhone() + "', should be '" + phone + "'");
+				edited = true;
+				LOGGER.info("Phone is updated with " + phone);
+			}
+		}
+		if (!edited){
+			LOGGER.info("Nothing to change in account info block");
+		}
 		return this;
 	}
 	
@@ -110,7 +185,46 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 	
 	public BuyCreditProceedPageGlobalCollect setAddressBlockData(String countryOfResidence, String postalCode, String street, String address){
 		
-		selectCountryOfResidence(countryOfResidence);
+		boolean edited = false;
+		if (countryOfResidence != null){
+			if (!getSelectedCountryOfResidence().equals(countryOfResidence)){
+				selectCountryOfResidence(countryOfResidence);
+				Assert.assertTrue(getSelectedCountryOfResidence().equals(countryOfResidence), "Country of Residence was not updated. Current value is '"
+				+ getSelectedCountryOfResidence() + "', should be '" + countryOfResidence + "'");
+				edited = true;
+				LOGGER.info("Country of Residence is updated with " + countryOfResidence);
+			}
+		}
+		if (postalCode != null){
+			if (!getPostalCode().equals(postalCode)){
+				setPostalCode(postalCode);
+				Assert.assertTrue(getPostalCode().equals(postalCode), "Postal Code was not updated. Current value is '"
+				+ getPostalCode() + "', should be '" + postalCode + "'");
+				edited = true;
+				LOGGER.info("Postal Code is updated with " + postalCode);
+			}
+		}
+		if(street != null){
+			if (!getStreet().equals(street)){
+				setStreet(street);
+				Assert.assertTrue(getStreet().equals(postalCode), "Street was not updated. Current value is '"
+				+ getStreet() + "', should be '" + street + "'");
+				edited = true;
+				LOGGER.info("Street is updated with " + street);
+			}
+		}
+		if(address != null){
+			if (!getAddress().equals(address)){
+				setAddress(address);
+				Assert.assertTrue(getAddress().equals(postalCode), "Address was not updated. Current value is '"
+				+ getAddress() + "', should be '" + address + "'");
+				edited = true;
+				LOGGER.info("Address is updated with " + address);
+			}
+		}
+		if (!edited){
+			LOGGER.info("Nothing to change in address block");
+		}
 		return this;
 	}
 	

@@ -43,7 +43,7 @@ public class AdminSignInCase extends AbstractCase{
 		memberListWidget.clickOnTabByAltText("Infos");;		
 		System.out.println("End");
 */
-		TransactionsAdminPage transactionsAdminPage = adminPage.clickTransactionsLink();
+		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		String transactionID = "3324265152";
 		String username = transactionsAdminPage.getColumnRowValueByColumnRowValue(TRANSACTIONS_TABLE_COLUMNS.ID.toString(), transactionID, 
 				TRANSACTIONS_TABLE_COLUMNS.USERNAME.toString());

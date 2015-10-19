@@ -33,7 +33,6 @@ public class MembersAdminPageFragment extends BaseLoggedAdminPageWithSearchFragm
 		if (rowIndex != -1){
 			WebElement rowToClick = getResultsList().get(rowIndex);
 			WebElement editWidget = rowToClick.findElement(By.xpath(".//img[@class='edit']"));			
-//			editWidget.click();
 			clickWidget(editWidget);
 		}
 	}

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="1" verbose="1" name="FindByTheme" preserve-order="true">
-    
+	<listeners>
+		<listener class-name="nymgoAutomation.tests.listeners.LoggerTestListener" />
+	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
 <!--      
@@ -15,9 +17,9 @@
         </classes>
     </test>
 -->
-    <test name="Test - BuyCredut Normal User" preserve-order="true">
+    <test name="Test - BuyCredut Normal User USD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
-        <parameter name="countryOfCredit" value="Belgium" />        
+<!--        <parameter name="countryOfCredit" value="Belgium" /> -->        
         <parameter name="cardType" value="American Express" />     
         <parameter name="gatewayName" value="Global Collect" />     
         <parameter name="currencyAmount" value="10" />     
@@ -56,4 +58,44 @@
         </classes>
     </test>
     
+    <test name="Test - BuyCredut Normal User USD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
+<!--        <parameter name="countryOfCredit" value="Belgium" /> -->        
+        <parameter name="cardType" value="American Express" />     
+        <parameter name="gatewayName" value="Global Collect" />     
+        <parameter name="currencyAmount" value="10" />     
+        <parameter name="conversionRate" value="1" />     
+        
+        <parameter name="adminLogin" value="luliia.khikmatova" />        
+        <parameter name="adminPassword" value="13theBest" />    
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroNormalUserAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedNormalUserGlobalCollectTest" />
+                    <include name="payAmericanExpressGlobalCollectPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="declineEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
