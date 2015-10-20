@@ -9,6 +9,7 @@ public class FullCardEntity {
     String expirationMonth;
     String expirationYear;
     String cvv;
+    String cardholdersName;
 
 	public String getCardNumber() {
 		return cardNumber;
@@ -42,12 +43,21 @@ public class FullCardEntity {
 		this.cvv = cvv;
 	}
 
+	public String getCardholdersName() {
+		return cardholdersName;
+	}
+
+	public void setCardholdersName(String cardholdersName) {
+		this.cardholdersName = cardholdersName;
+	}
+
 	public FullCardEntity(){
 		
 		this.cardNumber = "";
 		this.expirationMonth = "";
 		this.expirationYear= "";
 		this.cvv = "";
+		this.cardholdersName = "";
 	}
 	
 }

@@ -31,10 +31,10 @@ public class PopupNavigation<T extends AbstractPopup>
 			result = isCorrectPage();
 		}
 		catch (TimeoutException e){
-			LOGGER.fatal("Could not navigate to page: " + getPageName());
+			LOGGER.fatal("Could not navigate to popup: " + getPageName());
 		}
-		Assert.assertTrue(result, "Could not navigate to page: " + getPageName() + ", current Popup text is " + page.getPopupText());
-		LOGGER.info("Successfully navigated to page: " + getPageName());		
+		Assert.assertTrue(result, "Could not navigate to popup: " + getPageName() + ", current Popup text is " + page.getPopupText());
+		LOGGER.info("Successfully navigated to popup: " + getPageName());		
 	}
 	
 }

@@ -45,6 +45,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 //		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
@@ -63,11 +64,31 @@ public class AdminTransactionsCase extends AbstractCase{
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
+		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+		LOGGER.info("End");
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void acceptEuroNormalUserTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		AdminPage adminPage = new AdminPage(starter);
+
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		transactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+		transactionAcceptedPopup.closeTransactionAcceptedPopup();
 		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 		LOGGER.info("End");
 	}

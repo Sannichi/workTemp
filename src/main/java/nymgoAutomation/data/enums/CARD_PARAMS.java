@@ -9,7 +9,8 @@ public enum CARD_PARAMS {
     CARD_NUMBER( "CardNumber"),
     EXPIRATION_MONTH( "ExpirationMonth"),
     EXPIRATION_YEAR( "ExpirationYear"),
-    CVV( "CVV");
+    CVV( "CVV"),
+    CARDHOLDERS_NAME( "CardholdersName");
 	
     private CARD_PARAMS(){
     	

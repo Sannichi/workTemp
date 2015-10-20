@@ -15,7 +15,7 @@ import nymgoAutomation.tests.pages.admin.widgets.MemberListWidget;
 public class AdminNormalMembersCase extends AbstractCase{
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void declineEuroNormalUserTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+	public void editNormalUserGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -23,10 +23,7 @@ public class AdminNormalMembersCase extends AbstractCase{
 		String username = fullUserEntity.getUsername();
 		membersAdminPage.searchUsernameExactMatch(username);
 		MemberListWidget memberListWidget = membersAdminPage.openEditUserWidgetByUsername(username);
-//		TransactionDeclinedPopup transactionDeclinedPopup = 
-				memberListWidget.editUserPaymentMethod(gatewayName);
-//		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		memberListWidget.closeMemberListWidget();
+		memberListWidget.editUserPaymentMethod(gatewayName);
 		LOGGER.info("End");
 	}
 	

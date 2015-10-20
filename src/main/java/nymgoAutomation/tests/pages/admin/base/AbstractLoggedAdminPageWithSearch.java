@@ -70,7 +70,7 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		return this;
 	}
 
-	private boolean isSearchResultEmpty(){
+	public boolean isSearchResultEmpty(){
 		
 		return baseLoggedAdminPageWithSearchFragment.isSearchResultEmpty();
 	}

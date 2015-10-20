@@ -102,6 +102,17 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditProceedPageGlobalCollect;
 	} 
 	
+	public BuyCreditProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+		clickContinueButton();
+		BuyCreditProceedPageWorldpay buyCreditProceedPageWorldpay = new BuyCreditProceedPageWorldpay(starter);
+		PageNavigation<BuyCreditProceedPageWorldpay> navigation = new PageNavigation<BuyCreditProceedPageWorldpay>(buyCreditProceedPageWorldpay);
+		navigation.NavigatedTo();
+		return buyCreditProceedPageWorldpay;
+	} 
+	
 	public void selectAmountAndVerifyVAT(String amount){
 		
 		int intAmount = Integer.valueOf(amount);

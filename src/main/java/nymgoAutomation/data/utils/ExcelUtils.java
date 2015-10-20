@@ -174,6 +174,7 @@ public class ExcelUtils {
 			fullCardEntity.setExpirationMonth(getParameterFromExcelSheet(CARD_PARAMS.EXPIRATION_MONTH.toString()));
 			fullCardEntity.setExpirationYear(getParameterFromExcelSheet(CARD_PARAMS.EXPIRATION_YEAR.toString()));
 			fullCardEntity.setCvv(getParameterFromExcelSheet(CARD_PARAMS.CVV.toString()));
+			fullCardEntity.setCardholdersName(CARD_PARAMS.CARDHOLDERS_NAME.toString());
 		}
 		catch (FileNotFoundException e)
 		{

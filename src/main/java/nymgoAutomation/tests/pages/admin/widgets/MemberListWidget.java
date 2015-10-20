@@ -1,7 +1,10 @@
 package nymgoAutomation.tests.pages.admin.widgets;
 
 import nymgoAutomation.tests.fragments.admin.widgets.MemberListWidgetFragment;
+import nymgoAutomation.tests.navigation.AlertNavigation;
+import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.admin.alerts.MemberEditAlert;
 
 public class MemberListWidget extends AbstractWidget{
 
@@ -48,6 +51,10 @@ public class MemberListWidget extends AbstractWidget{
 		navigateToUserPaymentMethodTab();
 		selectPaymentMethod(paymentMethodName);
 		clickEditPaymentMethodButton();
+		MemberEditAlert memberEditAlert = new MemberEditAlert(starter);
+		AlertNavigation<MemberEditAlert> navigation = new AlertNavigation<MemberEditAlert>(memberEditAlert);
+		navigation.NavigatedTo();
+		memberEditAlert.acceptAlert();
 	}
 
     public void closeMemberListWidget(){

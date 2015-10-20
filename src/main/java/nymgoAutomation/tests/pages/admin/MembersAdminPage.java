@@ -42,7 +42,7 @@ public class MembersAdminPage extends AbstractLoggedAdminPageWithSearch{
 
 	public MemberListWidget openEditUserWidgetByUsername(String username){
 
-		membersAdminPageFragment.clickEditUserByUsername(username);
+		membersAdminPageFragment.clickEditUserByUsername(username.toLowerCase());
 		MemberListWidget memberListWidget = new MemberListWidget(starter);
 		PageNavigation<MemberListWidget> navigation = new PageNavigation<MemberListWidget>(memberListWidget);
 		navigation.NavigatedTo();

@@ -40,6 +40,9 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 
 	private void selectExpireDateYear(String expireDateYear){
 		
+		if(expireDateYear.length()==4){
+			expireDateYear = expireDateYear.substring(2);
+		}
 		buyCreditConfirmPageGlobalCollectFragment.selectExpireDateYearByLCName(expireDateYear);
 	}
 
@@ -59,17 +62,17 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 	}
 	
 	//TODO instead of void
-	public BuyCreditConfirmPagePending setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCreditConfirmPagePendingGlobalCollect setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		selectExpireDateMonth(expireDateMonth);
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
 		clickContinueButton();
-		BuyCreditConfirmPagePending buyCreditConfirmPagePending = new BuyCreditConfirmPagePending(starter);
-		PageNavigation<BuyCreditConfirmPagePending> navigation = new PageNavigation<BuyCreditConfirmPagePending>(buyCreditConfirmPagePending);
+		BuyCreditConfirmPagePendingGlobalCollect buyCreditConfirmPagePendingGlobalCollect = new BuyCreditConfirmPagePendingGlobalCollect(starter);
+		PageNavigation<BuyCreditConfirmPagePendingGlobalCollect> navigation = new PageNavigation<BuyCreditConfirmPagePendingGlobalCollect>(buyCreditConfirmPagePendingGlobalCollect);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPagePending;
+		return buyCreditConfirmPagePendingGlobalCollect;
 	}
 
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){

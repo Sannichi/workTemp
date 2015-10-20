@@ -125,4 +125,12 @@ public class BaseFragment {
 		
 		LOGGER.info("Value " + visibleText + " was selected from Select");
 	}
+
+	protected void selectValueFromSelectByValue(WebElement elementWithSelect, String value){
+		
+		Select select = new Select(elementWithSelect);
+		select.selectByValue(value);
+		
+		LOGGER.info("Value " + value + " was selected from Select");
+	}
 }
