@@ -1,4 +1,4 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base;
 
 import java.util.List;
 

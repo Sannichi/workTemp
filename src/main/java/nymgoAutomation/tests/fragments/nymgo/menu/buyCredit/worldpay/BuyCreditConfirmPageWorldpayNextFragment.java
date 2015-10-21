@@ -1,4 +1,4 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageFragment;
 import nymgoAutomation.tests.navigation.Starter;
 
 /**

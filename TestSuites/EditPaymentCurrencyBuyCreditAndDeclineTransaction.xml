@@ -16,10 +16,30 @@
             </class>
         </classes>
     </test>
+-->
+    <test name="Test - Change Normal User Gateway to Global Collect" preserve-order="true">
+        <parameter name="gatewayName" value="Global Collect" />     
+        
+        <parameter name="adminLogin" value="luliia.khikmatova" />        
+        <parameter name="adminPassword" value="13theBest" />    
+          
+        <classes>
+			<class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminNormalMembersCase">
+                <methods>
+                    <include name="editNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
 
     <test name="Test - BuyCredut Normal User USD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
-        <parameter name="cardType" value="American Express" />     
+        <parameter name="cardType" value="American Express" />    
         <parameter name="gatewayName" value="Global Collect" />     
         <parameter name="currencyAmount" value="10" />     
         <parameter name="conversionRate" value="1" />     
@@ -28,6 +48,11 @@
         <parameter name="adminPassword" value="13theBest" />    
           
         <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
                     <include name="signInEuroNormalWhitelistUserTest" />
@@ -56,7 +81,27 @@
             </class>
         </classes>
     </test>
--->    
+
+    <test name="Test - Change Normal User Gateway to Worldpay" preserve-order="true">
+        <parameter name="gatewayName" value="Worldpay" />     
+        
+        <parameter name="adminLogin" value="luliia.khikmatova" />        
+        <parameter name="adminPassword" value="13theBest" />    
+          
+        <classes>
+			<class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminNormalMembersCase">
+                <methods>
+                    <include name="editNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
     <test name="Test - BuyCredut Normal User USD Worldpay" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="American Express" />     
@@ -67,17 +112,11 @@
         <parameter name="adminLogin" value="luliia.khikmatova" />        
         <parameter name="adminPassword" value="13theBest" />    
         <classes>
-<!--            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
                 <methods>
-                    <include name="signInAdminTest" />
+                    <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminNormalMembersCase">
-                <methods>
-                    <include name="editNormalUserGatewayAdminTest" />
-                </methods>
-            </class>
--->
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
                     <include name="signInEuroNormalWhitelistUserTest" />
@@ -104,6 +143,62 @@
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
                     <include name="declineEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Change Normal User Gateway to Adyen" preserve-order="true">
+        <parameter name="gatewayName" value="Adyen" />     
+        
+        <parameter name="adminLogin" value="luliia.khikmatova" />        
+        <parameter name="adminPassword" value="13theBest" />    
+          
+        <classes>
+			<class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminNormalMembersCase">
+                <methods>
+                    <include name="editNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Normal User USD Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
+        <parameter name="cardType" value="American Express" />     
+        <parameter name="gatewayName" value="Adyen" />     
+        <parameter name="currencyAmount" value="10" />     
+        <parameter name="conversionRate" value="1" />     
+        
+        <parameter name="adminLogin" value="luliia.khikmatova" />        
+        <parameter name="adminPassword" value="13theBest" />    
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+<!--
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroNormalUserAccountTest" />
+                </methods>
+            </class>
+-->
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedNormalUserAdyenTest" />
+                    <include name="payAmericanExpressAdyenDeclinedTest" />
                 </methods>
             </class>
         </classes>

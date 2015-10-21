@@ -2,10 +2,11 @@ package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelledFragment;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPageNext;
 
 public class BuyCreditConfirmPageCancelled extends AbstractBuyCreditConfirmPageNext{
 
-	BuyCreditConfirmPageCancelledFragment buyCreditConfirmPageCancelledFragment;
+	private BuyCreditConfirmPageCancelledFragment buyCreditConfirmPageCancelledFragment;
 	
 	public BuyCreditConfirmPageCancelled(Starter starter) {
 		super(starter);

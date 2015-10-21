@@ -25,9 +25,11 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(homePage.isCorrectPage());	
         System.out.println("Navigated to " + homePage.getPageName() + " page.");
 		*/
+    	/*
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		HomePage homePage = nymgoPage.setDefaultState();
-		
+		*/
+		HomePage homePage = new HomePage(starter);
 		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
 		String username = fullUserEntities[0].getUsername();
 		String password = fullUserEntities[0].getPassword();
@@ -37,10 +39,11 @@ public class SignInCase extends AbstractCase{
 	
     @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void signInEuroNormalWhitelistUserTest(FullUserEntity fullUserEntity){    
-
+/*
     	NymgoPage nymgoPage = new NymgoPage(starter);
 		HomePage homePage = nymgoPage.setDefaultState();
-
+*/
+		HomePage homePage = new HomePage(starter);
 		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
 
 		String username = fullUserEntity.getUsername();

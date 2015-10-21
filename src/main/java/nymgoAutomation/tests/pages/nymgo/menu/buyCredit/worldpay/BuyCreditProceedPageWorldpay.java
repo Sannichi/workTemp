@@ -1,8 +1,9 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditProceedPageWorldpayFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay.BuyCreditProceedPageWorldpayFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditProceedPage;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

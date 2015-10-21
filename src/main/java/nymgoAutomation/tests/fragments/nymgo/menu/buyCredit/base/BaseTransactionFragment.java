@@ -1,32 +1,27 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base;
 
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
+import nymgoAutomation.tests.fragments.BaseFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
-//import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.navigation.Starter;
 
-public class BaseBuyCreditConfirmPageNextFragment extends BaseBuyCreditConfirmPageFragment{
+/**
+ * Created by Iuliia Khikmatova on Oct 21, 2015
+ */
+public class BaseTransactionFragment extends BaseFragment{
 
-	public BaseBuyCreditConfirmPageNextFragment(WebDriver driver) {
+	public BaseTransactionFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.IFRAME_WAIT_TIME);
-    	wait.until(ExpectedConditions.visibilityOf(backToDashboardButton));
 	}
 
 	@FindBy(css = "div[class='padd']")
 	private List<WebElement> paddsList;
-
-	@FindBy(className = "button-normal")
-	private WebElement backToDashboardButton;
 
 	@FindBy(css = "div.float30")
 	private List<WebElement> amountNumberDate;
@@ -39,12 +34,6 @@ public class BaseBuyCreditConfirmPageNextFragment extends BaseBuyCreditConfirmPa
 	public String getPaymentStatus(){
 		
 		return paddsList.get(0).getText();		
-	}
-
-	public void clickBackToDashboardButton(){
-		
-//		backToDashboardButton.click();
-		clickButton(backToDashboardButton);
 	}
 
 	public String getTransactionAmountValue(){
@@ -70,5 +59,10 @@ public class BaseBuyCreditConfirmPageNextFragment extends BaseBuyCreditConfirmPa
 	public boolean isTransactionPending(){
 		
 		return getPaymentStatus().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PAYMENT_PENDING));
+	}
+
+	public boolean isTransactionDeclined(){
+		
+		return getPaymentStatus().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PAYMENT_DECLINED));
 	}
 }

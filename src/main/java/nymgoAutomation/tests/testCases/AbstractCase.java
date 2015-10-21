@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 
 import nymgoAutomation.tests.enums.LOGS;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.nymgo.HomePage;
+import nymgoAutomation.tests.pages.nymgo.base.NymgoPage;
 
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +13,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 

@@ -1,6 +1,8 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect;
 
 import org.openqa.selenium.WebDriver;
+
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditProceedPageFragment;
 
 public class BuyCreditProceedPageGlobalCollectFragment extends BaseBuyCreditProceedPageFragment{
 

@@ -1,5 +1,6 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,82 +8,88 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-//import nymgoAutomation.tests.generators.LocaleGenerator;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageFragment;
 import nymgoAutomation.tests.navigation.Starter;
 
-public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConfirmPageFragment{
+/**
+ * Created by Iuliia Khikmatova on Oct 20, 2015
+ */
+public class BuyCreditConfirmPageWorldpayFragment extends BaseBuyCreditConfirmPageFragment{
 
-	public BuyCreditConfirmPageGlobalCollectFragment(WebDriver driver) {
+	public BuyCreditConfirmPageWorldpayFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.IFRAME_WAIT_TIME);
     	wait.until(ExpectedConditions.visibilityOf(cardNumber));
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_URL = "https://secure-test.worldpay.com/wcc/card?Lang=";	
 
-	@FindBy(name = "CREDITCARDNUMBER")
+	@FindBy(id = "cardNoInput")
 	private WebElement cardNumber;
 	
-	@FindBy(name = "EXPIRYDATE_MM")
+	@FindBy(name = "cardExp.month")
 	private WebElement expireDateMonth;
 
-	@FindBy(name = "EXPIRYDATE_YY")
+	@FindBy(name = "cardExp.year")
 	private WebElement expireDateYear;
 
-	@FindBy(name = "CVV")
+	@FindBy(id = "cardCVV")
 	private WebElement cvv;
 
-	@FindBy(id = "btnSubmit")
-	private WebElement continueButton;
+	@FindBy(id = "name")
+	private WebElement nameOnCard;
 
-	@FindBy(id = "btnCancel")
+	@FindBy(id = "op-PMMakePayment")
+	private WebElement makePaymentButton;
+
+	@FindBy(css = "img[src='/i/300210/cancel.png']")
 	private WebElement cancelButton;
 	
-//	@Override
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
+    	try{
+    		wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_WP_URL));
+    		return true;
+    	}
+    	catch(TimeoutException e){
+    		return false;
+    	}
 	}
 
 	public void setCardNumberValue(String cardNumberValue){
 		
-//		cardNumber.sendKeys(cardNumberValue);
 		setTextToEditField(cardNumber, cardNumberValue);
 	}
 	
 	public void selectExpireDateMonthByLCName(String monthValue){
 		
-//		Select select = new Select(expireDateMonth);
-//		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
-//		select.selectByVisibleText(monthValue);
 		selectValueFromSelectByVisibleText(expireDateMonth, monthValue);
 	}
 	
 	public void selectExpireDateYearByLCName(String yearValue){
 		
-//		Select select = new Select(expireDateYear);
-//		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
-//		select.selectByVisibleText(yearValue);
 		selectValueFromSelectByVisibleText(expireDateYear, yearValue);
 	}
 	
 	public void setCVVValue(String cvvValue){
 		
-//		cvv.sendKeys(cvvValue);
 		setTextToEditField(cvv, cvvValue);
 	}
 
-	public void clickContinueButton(){
+	public void setCardholdersName(String cardholdersName){
 		
-//		continueButton.click();
-		clickInputButton(continueButton);
+		setTextToEditField(nameOnCard, cardholdersName);
+	}
+
+	public void clickMakePaymentButton(){
+		
+		clickInputButton(makePaymentButton);
 	}
 
 	public void clickCancelButton(){
 		
-//		cancelButton.click();
 		clickInputButton(cancelButton);
 	}
 

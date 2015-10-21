@@ -5,7 +5,11 @@ import java.util.Map;
 import org.testng.Assert;
 
 import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
+import nymgoAutomation.tests.enums.GATEWAY_CONST;
+import nymgoAutomation.tests.enums.LOCALE_CONST;
+import nymgoAutomation.tests.enums.METHODS_CONST;
 import nymgoAutomation.tests.fragments.admin.TransactionsAdminPageFragment;
+import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
@@ -128,7 +132,7 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		return transactionsAdminPageFragment.getTransactionCountry(transactionDetails);
 	}
 	
-	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String conversionRate, String currency, String service, String method, String country){
+	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String conversionRate, String currency, String service, String cardType, String country){
 		
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 		
@@ -141,6 +145,16 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		}
 		else{
 			fullProduct = currency + " " + amount;
+		}
+		
+		String method = cardType;
+		if(service.equals(GATEWAY_CONST.WORLDPAY.toString())){
+			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.AMERICAN_EXPRESS))){
+				method = METHODS_CONST.AMEX_SSL.toString();
+			}
+			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA))){
+				method = METHODS_CONST.VISA_SSL.toString();
+			}
 		}
 				
 		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 

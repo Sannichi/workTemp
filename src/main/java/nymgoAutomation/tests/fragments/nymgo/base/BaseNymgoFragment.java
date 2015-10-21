@@ -121,6 +121,11 @@ public class BaseNymgoFragment extends BaseFragment{
 		return homeURL;
 	}
 	
+	public String getSecureHomeURL(){
+
+		return secureHomeURL;
+	}
+	
     public void clickHomepageLink()
 	{
 		

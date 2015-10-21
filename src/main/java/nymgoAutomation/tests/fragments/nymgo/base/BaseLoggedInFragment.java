@@ -2,6 +2,7 @@ package nymgoAutomation.tests.fragments.nymgo.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -32,9 +33,13 @@ public class BaseLoggedInFragment extends BaseNymgoFragment{
 		Actions actions = new Actions(driver);
 		actions.moveToElement(accountButton).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Starter.INITIALIZED_ELEMENT_WAIT_TIME);
-		WebElement webElement = wait.until(ExpectedConditions.visibilityOf(logOutDropdown)); 
-//		webElement.click();
-		clickButton(webElement);
+		try{
+			WebElement webElement = wait.until(ExpectedConditions.visibilityOf(logOutDropdown));
+			clickButton(webElement);
+		}
+		catch(TimeoutException e){
+			LOGGER.fatal("Sign out dropdown was not shown");
+		}
 	}
 
 	public void clickMyAccountDropdown(){

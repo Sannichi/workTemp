@@ -33,7 +33,6 @@ public class BaseLoggedAdminFragment extends BaseAdminFragment{
     public void clickTransactionsLink()
 	{
 		
-//		transactionsLink.click();
     	clickLink(transactionsLink);
 	}
 

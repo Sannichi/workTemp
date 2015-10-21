@@ -1,6 +1,8 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay;
 
 import org.openqa.selenium.WebDriver;
+
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditProceedPageFragment;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

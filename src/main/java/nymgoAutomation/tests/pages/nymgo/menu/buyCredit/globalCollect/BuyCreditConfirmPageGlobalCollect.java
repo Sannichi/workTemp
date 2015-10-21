@@ -1,12 +1,14 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditConfirmPageGlobalCollectFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollectFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelled;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPage;
 
 public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmPage{
 
-	BuyCreditConfirmPageGlobalCollectFragment buyCreditConfirmPageGlobalCollectFragment;
+	private BuyCreditConfirmPageGlobalCollectFragment buyCreditConfirmPageGlobalCollectFragment;
 	
 	public BuyCreditConfirmPageGlobalCollect(Starter starter) {
 		super(starter);
@@ -62,17 +64,17 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 	}
 	
 	//TODO instead of void
-	public BuyCreditConfirmPagePendingGlobalCollect setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCreditConfirmPageNextPendingGlobalCollect setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		selectExpireDateMonth(expireDateMonth);
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
 		clickContinueButton();
-		BuyCreditConfirmPagePendingGlobalCollect buyCreditConfirmPagePendingGlobalCollect = new BuyCreditConfirmPagePendingGlobalCollect(starter);
-		PageNavigation<BuyCreditConfirmPagePendingGlobalCollect> navigation = new PageNavigation<BuyCreditConfirmPagePendingGlobalCollect>(buyCreditConfirmPagePendingGlobalCollect);
+		BuyCreditConfirmPageNextPendingGlobalCollect buyCreditConfirmPageNextPendingGlobalCollect = new BuyCreditConfirmPageNextPendingGlobalCollect(starter);
+		PageNavigation<BuyCreditConfirmPageNextPendingGlobalCollect> navigation = new PageNavigation<BuyCreditConfirmPageNextPendingGlobalCollect>(buyCreditConfirmPageNextPendingGlobalCollect);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPagePendingGlobalCollect;
+		return buyCreditConfirmPageNextPendingGlobalCollect;
 	}
 
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){

@@ -1,10 +1,11 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect;
 
 import org.testng.Assert;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditProceedPageGlobalCollectFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect.BuyCreditProceedPageGlobalCollectFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditProceedPage;
 
 public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedPage{
 

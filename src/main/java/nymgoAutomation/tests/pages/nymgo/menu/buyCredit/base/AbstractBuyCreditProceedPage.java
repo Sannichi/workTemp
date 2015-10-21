@@ -1,21 +1,21 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base;
 
 import org.testng.Assert;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BaseBuyCreditProceedPageFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditProceedPageFragment;
 import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
 
 public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 
+	private BaseBuyCreditProceedPageFragment baseBuyCreditProceedPageFragment;
+	
 	public AbstractBuyCreditProceedPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
         baseBuyCreditProceedPageFragment = new BaseBuyCreditProceedPageFragment(driver);
 	}
 
-	private BaseBuyCreditProceedPageFragment baseBuyCreditProceedPageFragment;
-	
 //	abstract void verifyDataAndClickContinue();
 	
 	@Override

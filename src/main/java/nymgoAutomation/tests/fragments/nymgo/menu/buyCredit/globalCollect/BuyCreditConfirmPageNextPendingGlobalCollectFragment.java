@@ -1,15 +1,16 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageNextFragment;
 //import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.navigation.Starter;
 
-public class BuyCreditConfirmPagePendingGlobalCollectFragment extends BaseBuyCreditConfirmPageNextFragment{
+public class BuyCreditConfirmPageNextPendingGlobalCollectFragment extends BaseBuyCreditConfirmPageNextFragment{
 
-	public BuyCreditConfirmPagePendingGlobalCollectFragment(WebDriver driver) {
+	public BuyCreditConfirmPageNextPendingGlobalCollectFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}

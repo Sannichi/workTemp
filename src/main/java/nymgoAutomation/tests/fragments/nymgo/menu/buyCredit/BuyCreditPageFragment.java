@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,7 +52,13 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasUR
     public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_PAGE_URL));
+    	try{
+    		wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_PAGE_URL));
+    		return true;
+    	}
+    	catch(TimeoutException e){
+    		return false;
+    	}
 	}
 
 	private String getAmountCurrencyIcon(WebElement option){

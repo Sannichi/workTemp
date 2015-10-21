@@ -1,4 +1,4 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.thoughtworks.selenium.Wait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
@@ -37,10 +35,10 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment impl
 	@FindBy(css = "input[data-encrypted-name='holderName']")
 	private WebElement nameOnCard;
 	
-	@FindBy(css = "input[data-encrypted-name='expiryMonth']")
+	@FindBy(css = "select[data-encrypted-name='expiryMonth']")
 	private WebElement expiryMonthSelect;
 
-	@FindBy(css = "input[data-encrypted-name='expiryYear']")
+	@FindBy(css = "select[data-encrypted-name='expiryYear']")
 	private WebElement expiryYearSelect;
 
 	@FindBy(css = "input[data-encrypted-name='cvc']")
@@ -64,9 +62,14 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment impl
 		}
 	}
 
-	public void setCardNumberValue(String cardNumberValue){
+	public void setCardNumber(String cardNumberValue){
 		
 		setTextToEditField(cardNumber, cardNumberValue);
+	}
+	
+	public String getCardNumber(){
+		
+		return cardNumber.getText();
 	}
 	
 	public void selectExpireDateMonthByValue(String monthValue){
@@ -74,21 +77,49 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment impl
 		selectValueFromSelectByValue(expiryMonthSelect, monthValue);
 	}
 	
+	public String getSelectedExpireDateMonthValue(){
+		
+		Select select = new Select(expiryMonthSelect);
+		return select.getFirstSelectedOption().getCssValue("value");
+	}
+	
+	public String getSelectedExpireDateMonth(){
+		
+		Select select = new Select(expiryMonthSelect);
+		return select.getFirstSelectedOption().getText();
+	}
+	
 	public void selectExpireDateYearByLCName(String yearValue){
 		
 		selectValueFromSelectByVisibleText(expiryYearSelect, yearValue);
 	}
 	
-	public void setCVVValue(String cvvValue){
+	public String getSelectedExpireDateYear(){
+		
+		Select select = new Select(expiryYearSelect);
+		return select.getFirstSelectedOption().getText();
+	}
+	
+	public void setCVV(String cvvValue){
 		
 		setTextToEditField(cvv, cvvValue);
 	}
 
+	public String getCVV(){
+		
+		return cvv.getText();
+	}
+	
 	public void setCardholdersName(String cardholdersName){
 		
 		setTextToEditField(nameOnCard, cardholdersName);
 	}
 
+	public String getCardholdersName(){
+		
+		return nameOnCard.getText();
+	}
+	
 	public void clickPayButton(){
 		
 		clickInputButton(payButton);
@@ -97,17 +128,5 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment impl
 	public void clickCancelButton(){
 		
 		clickInputButton(cancelButton);
-	}
-
-	public String getSelectedExpireDateMonth(){
-		
-		Select select = new Select(expiryMonthSelect);
-		return select.getFirstSelectedOption().getText();
-	}
-	
-	public String getSelectedExpireDateYear(){
-		
-		Select select = new Select(expiryYearSelect);
-		return select.getFirstSelectedOption().getText();
 	}
 }

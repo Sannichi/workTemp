@@ -1,15 +1,16 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditConfirmPageWorldpayNextFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpayNextFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPage;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
 public class BuyCreditConfirmPageWorldpayNext  extends AbstractBuyCreditConfirmPage{
 
-	BuyCreditConfirmPageWorldpayNextFragment buyCreditConfirmPageWorldpayNextFragment;
+	private BuyCreditConfirmPageWorldpayNextFragment buyCreditConfirmPageWorldpayNextFragment;
 	
 	public BuyCreditConfirmPageWorldpayNext(Starter starter) {
 		super(starter);
@@ -36,13 +37,13 @@ public class BuyCreditConfirmPageWorldpayNext  extends AbstractBuyCreditConfirmP
 		buyCreditConfirmPageWorldpayNextFragment.clickContinueButton();
 	}
 
-	public BuyCreditConfirmPagePendingWorldpay continuePayment(){
+	public BuyCreditConfirmPageNextPendingWorldpay continuePayment(){
 		
 		clickContinueButton();
-		BuyCreditConfirmPagePendingWorldpay buyCreditConfirmPagePendingWorldpay = new BuyCreditConfirmPagePendingWorldpay(starter);
-		PageNavigation<BuyCreditConfirmPagePendingWorldpay> navigation = new PageNavigation<BuyCreditConfirmPagePendingWorldpay>(buyCreditConfirmPagePendingWorldpay);
+		BuyCreditConfirmPageNextPendingWorldpay buyCreditConfirmPageNextPendingWorldpay = new BuyCreditConfirmPageNextPendingWorldpay(starter);
+		PageNavigation<BuyCreditConfirmPageNextPendingWorldpay> navigation = new PageNavigation<BuyCreditConfirmPageNextPendingWorldpay>(buyCreditConfirmPageNextPendingWorldpay);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPagePendingWorldpay;
+		return buyCreditConfirmPageNextPendingWorldpay;
 	}
 
 	

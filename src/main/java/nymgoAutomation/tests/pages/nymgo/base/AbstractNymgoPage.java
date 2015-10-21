@@ -6,6 +6,7 @@ import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
 import nymgoAutomation.tests.pages.nymgo.HomePage;
+import nymgoAutomation.tests.pages.nymgo.SecureHomePage;
 import nymgoAutomation.tests.pages.nymgo.menu.AppsPage;
 import nymgoAutomation.tests.pages.nymgo.menu.PricesPage;
 import nymgoAutomation.tests.pages.nymgo.menu.ResellersPage;
@@ -107,12 +108,16 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	{
 
 		if (!getCurrentURL().equals(baseNymgoFragment.getHomeURL())){
-			LOGGER.info("Current URL = '" + getCurrentURL() + "'");
+//			LOGGER.info("Current URL = '" + getCurrentURL() + "'");
 			navigateToHomePage();
 		}
 		if (isUserLogged())
 		{
 			baseLoggedInFragment.clickLogOut();
+			SecureHomePage secureHomePage = new SecureHomePage(starter);
+			PageNavigation<SecureHomePage> navigation = new PageNavigation<SecureHomePage>(secureHomePage);
+			navigation.NavigatedTo();
+			navigateToHomePage();
 		}
 /*		
 		if (!getCurrentURL().equals(baseNymgoFragment.getHomeURL())){

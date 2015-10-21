@@ -3,7 +3,8 @@ package nymgoAutomation.tests.pages.nymgo.base;
 import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
-import nymgoAutomation.tests.pages.nymgo.HomePage;
+//import nymgoAutomation.tests.pages.nymgo.HomePage;
+import nymgoAutomation.tests.pages.nymgo.SecureHomePage;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
 import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
 
@@ -22,13 +23,19 @@ public abstract class AbstractLoggedInPage extends AbstractNymgoPage{
 		baseLoggedInFragment.clickLogOut();
 	}
 
-	public HomePage logout(){
+	public SecureHomePage logout(){
 
 		clickLogOut();
+/*		
 		HomePage homePage = new HomePage(starter);
 		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage);
 		navigation.NavigatedTo();
 		return homePage;
+*/
+		SecureHomePage secureHomePage = new SecureHomePage(starter);
+		PageNavigation<SecureHomePage> navigation = new PageNavigation<SecureHomePage>(secureHomePage);
+		navigation.NavigatedTo();
+		return secureHomePage;
 
 	}
 

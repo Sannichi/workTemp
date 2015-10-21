@@ -56,7 +56,16 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		selectField("ID");
 		selectType("Exact Match");
 		clickGoButton();
-		waitSearchCriteria();
+		for (int i = 0; i < 5; i++){
+			LOGGER.info("Searching...");
+			waitSearchCriteria();
+			if (getRowsCount() <= 1){
+				break;
+			}
+			if (i == 4){
+				LOGGER.fatal("Search by Exact Match got more than 1 result");
+			}
+		}
 		return this;
 	}
 
@@ -66,13 +75,27 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		selectField("Username");
 		selectType("Exact Match");
 		clickGoButton();
-		waitSearchCriteria();
+		for (int i = 0; i < 5; i++){
+			LOGGER.info("Searching...");
+			waitSearchCriteria();
+			if (getRowsCount() <= 1){
+				break;
+			}
+			if (i == 4){
+				LOGGER.fatal("Search by Exact Match got more than 1 result");
+			}
+		}
 		return this;
 	}
 
 	public boolean isSearchResultEmpty(){
 		
 		return baseLoggedAdminPageWithSearchFragment.isSearchResultEmpty();
+	}
+	
+	public int getRowsCount(){
+		
+		return baseLoggedAdminPageWithSearchFragment.getRowsCount();
 	}
 	
 	private List<String> getColumnNames(){

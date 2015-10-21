@@ -1,10 +1,9 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base;
 
-//import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BaseBuyCreditConfirmPageFragment;
 import nymgoAutomation.tests.navigation.Starter;
-import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
+import nymgoAutomation.tests.pages.nymgo.base.AbstractTransactionPage;
 
-public abstract class AbstractBuyCreditConfirmPage extends AbstractLoggedInPage{
+public abstract class AbstractBuyCreditConfirmPage extends AbstractTransactionPage{
 
 //	BaseBuyCreditConfirmPageFragment baseBuyCreditConfirmPageFragment;
 	

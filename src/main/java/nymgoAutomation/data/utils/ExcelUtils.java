@@ -174,7 +174,7 @@ public class ExcelUtils {
 			fullCardEntity.setExpirationMonth(getParameterFromExcelSheet(CARD_PARAMS.EXPIRATION_MONTH.toString()));
 			fullCardEntity.setExpirationYear(getParameterFromExcelSheet(CARD_PARAMS.EXPIRATION_YEAR.toString()));
 			fullCardEntity.setCvv(getParameterFromExcelSheet(CARD_PARAMS.CVV.toString()));
-			fullCardEntity.setCardholdersName(CARD_PARAMS.CARDHOLDERS_NAME.toString());
+			fullCardEntity.setCardholdersName(getParameterFromExcelSheet(CARD_PARAMS.CARDHOLDERS_NAME.toString()));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -306,6 +306,40 @@ public class ExcelUtils {
 		return false;
 	} 
 
+	public static boolean addTransactionData(String transactionID, String status){
+
+		try{
+			
+			setExcelFile(transactionFilePath, transactionSheetName);
+			int startCol = 0;
+			int startRow = getFirstEmptyRow();
+			try {
+				setCellData(startRow, startCol + 1, transactionID);				
+				setCellData(startRow, startCol + 2, status);				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			writeExcelFile(transactionFilePath);
+		}
+		catch (FileNotFoundException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	} 
+/*
 	public static boolean addTransactionData(String username, String transactionID){
 
 		try{
@@ -339,7 +373,7 @@ public class ExcelUtils {
 		}
 		return false;
 	} 
-
+*/
 	public static void clearSheet(String filePath, String sheetName){
 		
 		try {

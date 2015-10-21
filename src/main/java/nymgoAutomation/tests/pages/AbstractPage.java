@@ -42,6 +42,7 @@ public abstract class AbstractPage {
 
 	public HomePage navigateToHomePage(){
 
+		LOGGER.info("Navigating to Nymgo Home page...");
 		baseFragment.navigateHomePage();
 		HomePage homePage = new HomePage(starter);
 		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage); 
@@ -51,6 +52,7 @@ public abstract class AbstractPage {
 
 	public LoginAdminPage navigateToAdminLoginPage(){
 
+		LOGGER.info("Navigating to Nymgo Admin page...");
 		baseFragment.navigateAdminLoginPage();
 		LoginAdminPage loginAdminPage = new LoginAdminPage(starter);
 		PageNavigation<LoginAdminPage> navigation = new PageNavigation<LoginAdminPage>(loginAdminPage); 

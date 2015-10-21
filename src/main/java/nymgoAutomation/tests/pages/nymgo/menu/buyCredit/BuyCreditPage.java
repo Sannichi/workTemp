@@ -9,6 +9,9 @@ import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragmen
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyen;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditProceedPageGlobalCollect;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditProceedPageWorldpay;
 
 public class BuyCreditPage extends AbstractLoggedInPage{
 
@@ -111,6 +114,17 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		PageNavigation<BuyCreditProceedPageWorldpay> navigation = new PageNavigation<BuyCreditProceedPageWorldpay>(buyCreditProceedPageWorldpay);
 		navigation.NavigatedTo();
 		return buyCreditProceedPageWorldpay;
+	} 
+	
+	public BuyCreditProceedPageAdyen selectAmountAndClickContinueToAdyen(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+		clickContinueButton();
+		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = new BuyCreditProceedPageAdyen(starter);
+		PageNavigation<BuyCreditProceedPageAdyen> navigation = new PageNavigation<BuyCreditProceedPageAdyen>(buyCreditProceedPageAdyen);
+		navigation.NavigatedTo();
+		return buyCreditProceedPageAdyen;
 	} 
 	
 	public void selectAmountAndVerifyVAT(String amount){

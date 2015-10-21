@@ -45,34 +45,37 @@ public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragme
 	
 	public void typeCriteria(String criteria){
 		
-//		searchCrieteriaInput.sendKeys(crieteria);
 		setTextToEditField(searchCrieteriaInput, criteria);
 	}
 
 	public void selectField(String searchField){
-/*		
-		Select select = new Select(searchFieldSelect);
-		select.selectByVisibleText(searchField);
-*/
+
 		selectValueFromSelectByVisibleText(searchFieldSelect, searchField);
 	}
 
 	public void selectType(String searchType){
-/*		
-		Select select = new Select(searchTypeSelect);
-		select.selectByVisibleText(searchType);
-*/
+
 		selectValueFromSelectByVisibleText(searchTypeSelect, searchType);
-		}
+	}
 	
 	public void clickGoButton(){
 		
-//		goButton.click();
 		clickInputButton(goButton);
 	}
 
+    protected void delay(final long amount) {
+        try {
+            Thread.sleep(amount);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+	
 	public void waitSearchCriteria(){
 
+		delay(1000);
 		WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);
         try{
     		wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.id("c_1"))));        	
@@ -94,6 +97,11 @@ public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragme
 
 		List<WebElement> searchedElements = driver.findElements(By.cssSelector("div[id^='c_']"));
 		return searchedElements;
+	}
+
+	public int getRowsCount(){
+		
+		return getResultsList().size();
 	}
 
 	public boolean isSearchResultEmpty(){
