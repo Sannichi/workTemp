@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BaseBuyCreditConfirmPageNextFragment extends BaseBuyCreditConfirmPageFragment{
 

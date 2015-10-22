@@ -2,8 +2,8 @@ package nymgoAutomation.tests.pages.admin;
 
 import nymgoAutomation.tests.fragments.admin.LoginAdminPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.base.AbstractAdminPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class LoginAdminPage extends AbstractAdminPage{
 

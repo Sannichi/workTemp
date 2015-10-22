@@ -3,7 +3,6 @@ package nymgoAutomation.tests.pages.nymgo.base;
 import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.fragments.nymgo.base.BaseNymgoFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
 import nymgoAutomation.tests.pages.nymgo.HomePage;
 import nymgoAutomation.tests.pages.nymgo.SecureHomePage;
@@ -12,6 +11,7 @@ import nymgoAutomation.tests.pages.nymgo.menu.PricesPage;
 import nymgoAutomation.tests.pages.nymgo.menu.ResellersPage;
 import nymgoAutomation.tests.pages.nymgo.menu.SupportPage;
 import nymgoAutomation.tests.pages.nymgo.menu.signIn.NormalUserSignInPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractNymgoPage extends AbstractPage{
 

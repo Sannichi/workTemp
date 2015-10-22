@@ -4,11 +4,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import nymgoAutomation.tests.enums.LOCALE_CONST;
-
 import org.apache.log4j.Logger;
 
-public class LocaleGenerator {
+import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
+
+/**
+ * Created by Iuliia Khikmatova on Oct 22, 2015
+ */
+public class CurrencyConversionRateGenerator {
 
     protected static Properties props;
     static Logger LOGGER = Logger.getLogger("nymgoLogger");
@@ -24,19 +27,7 @@ public class LocaleGenerator {
 
    }
 
-   public static String getLocaleKey(LOCALE_CONST localeKey){
-       return props.getProperty(localeKey.name());
-   }
-
-   public static String getLocaleKeyNameByValue(String localeKeyValue){
-	  
-	   if (props.containsValue(localeKeyValue)){
-		   for( String s: props.stringPropertyNames()){
-			   if (props.getProperty(s).equals(localeKeyValue))
-				   return s;
-		   }
-	   }
-	   LOGGER.fatal("There is no locale property with value " + localeKeyValue);
-       return null;
+   public static String getConversionRate(CURRENCY_SIGNS currencySign){
+       return props.getProperty(currencySign.name());
    }
 }

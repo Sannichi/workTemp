@@ -9,6 +9,7 @@ import nymgoAutomation.tests.pages.admin.base.AdminPage;
 import nymgoAutomation.tests.pages.admin.popups.TransactionAcceptedPopup;
 import nymgoAutomation.tests.pages.admin.popups.TransactionDeclinedPopup;
 import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
+import nymgoAutomation.tests.utils.CurrencyUtils;
 
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -65,6 +66,9 @@ public class AdminTransactionsCase extends AbstractCase{
 		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);
+		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
@@ -84,6 +88,9 @@ public class AdminTransactionsCase extends AbstractCase{
 		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);
+		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);

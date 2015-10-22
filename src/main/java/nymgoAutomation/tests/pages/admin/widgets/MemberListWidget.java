@@ -3,8 +3,8 @@ package nymgoAutomation.tests.pages.admin.widgets;
 import nymgoAutomation.tests.fragments.admin.widgets.MemberListWidgetFragment;
 import nymgoAutomation.tests.navigation.AlertNavigation;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.alerts.MemberEditAlert;
+import nymgoAutomation.tests.starter.Starter;
 
 public class MemberListWidget extends AbstractWidget{
 

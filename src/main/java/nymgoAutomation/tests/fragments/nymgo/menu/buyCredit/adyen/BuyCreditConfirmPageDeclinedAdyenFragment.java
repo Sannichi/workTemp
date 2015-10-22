@@ -11,7 +11,7 @@ import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.fragments.HasURL;
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseTransactionFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015

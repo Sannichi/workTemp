@@ -1,5 +1,6 @@
 package nymgoAutomation.tests.pages.admin;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 import org.testng.Assert;
@@ -11,9 +12,11 @@ import nymgoAutomation.tests.enums.METHODS_CONST;
 import nymgoAutomation.tests.fragments.admin.TransactionsAdminPageFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
+import nymgoAutomation.tests.starter.Starter;
+import nymgoAutomation.tests.utils.CurrencyDescriptionMap;
+import nymgoAutomation.tests.utils.CurrencyUtils;
 
 public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 
@@ -132,12 +135,35 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		return transactionsAdminPageFragment.getTransactionCountry(transactionDetails);
 	}
 	
+	/**
+     * Round to certain number of decimals
+     * 
+     * @param d
+     * @param decimalPlace
+     * @return
+     */
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
+    }
+    
 	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String conversionRate, String currency, String service, String cardType, String country){
-		
+
+		/*
+		 * if amount == null - minimum value for current currency is got
+		 * 
+		 */
+		if(amount == null){
+			amount = String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionBySign(currency).getFirstValue());
+		}
+
+		conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
+		LOGGER.info("Conversion rate is '" + conversionRate + "'");
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 		
-		String fullAmount = String.valueOf(Double.valueOf(amount)*Double.valueOf(VAT)/100 + Integer.valueOf(amount))+currency+"/"
-		+(String.valueOf(String.valueOf((Double.valueOf(amount)*Double.valueOf(VAT)/100 + Integer.valueOf(amount))*Integer.valueOf(conversionRate))))+"$";
+		String fullAmount = String.valueOf(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount)) + currency + "/" +
+			String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))*Float.valueOf(conversionRate), 2))+"$";
 		
 		String fullProduct = "";
 		if(currency.equals(CURRENCY_SIGNS.USD.toString())){

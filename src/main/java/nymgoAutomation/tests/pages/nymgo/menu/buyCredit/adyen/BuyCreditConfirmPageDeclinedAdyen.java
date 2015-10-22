@@ -2,9 +2,9 @@ package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen.BuyCreditConfirmPageDeclinedAdyenFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractTransactionPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

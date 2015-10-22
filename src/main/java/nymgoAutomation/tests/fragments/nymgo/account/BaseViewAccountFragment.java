@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.fragments.HasURL;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015

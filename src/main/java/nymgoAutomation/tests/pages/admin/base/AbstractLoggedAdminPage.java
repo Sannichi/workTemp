@@ -2,10 +2,10 @@ package nymgoAutomation.tests.pages.admin.base;
 
 import nymgoAutomation.tests.fragments.admin.base.BaseLoggedAdminFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
 import nymgoAutomation.tests.pages.admin.MembersAdminPage;
 import nymgoAutomation.tests.pages.admin.TransactionsAdminPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 

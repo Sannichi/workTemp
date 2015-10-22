@@ -9,7 +9,10 @@ public enum FILES_NAMES {
     LOCALE_TU( "LOCALE_TU.properties"),
     DEV( "DEV.properties"),
     STAGING( "STAGING.properties"),
-    LIVE( "LIVE.properties");
+    LIVE( "LIVE.properties"),
+    CONVERSION_RATES_DEV( "conversionRates.DEV.properties"),
+    CONVERSION_RATES_STAGING( "conversionRates.STAGING.properties"),
+    CONVERSION_RATES_LIVE( "conversionRates.LIVE.properties");
 
     private final String text;
 

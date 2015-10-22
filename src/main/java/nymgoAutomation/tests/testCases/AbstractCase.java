@@ -3,9 +3,9 @@ package nymgoAutomation.tests.testCases;
 import java.lang.reflect.Method;
 
 import nymgoAutomation.tests.enums.LOGS;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.HomePage;
 import nymgoAutomation.tests.pages.nymgo.base.NymgoPage;
+import nymgoAutomation.tests.starter.Starter;
 
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;

@@ -4,7 +4,7 @@ import nymgoAutomation.data.adapters.BaseAdapter;
 import nymgoAutomation.data.entity.FullCardEntity;
 import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.utils.ExcelUtils;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class DataAdapter extends BaseAdapter {
 

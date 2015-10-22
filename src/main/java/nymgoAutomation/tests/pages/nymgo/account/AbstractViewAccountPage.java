@@ -4,10 +4,10 @@ import org.testng.Assert;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.fragments.nymgo.account.BaseViewAccountFragment;
-import nymgoAutomation.tests.generators.CurrencyGenerator;
+import nymgoAutomation.tests.generators.CurrencyNameGenerator;
 import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015
@@ -238,7 +238,7 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 			}
 		}
 		if (paymentCurrency != null){
-			String paymenCurrencyName = CurrencyGenerator.getCurrencyKeyBySign(paymentCurrency); 
+			String paymenCurrencyName = CurrencyNameGenerator.getCurrencyKeyBySign(paymentCurrency); 
 			if (!getSelectedPaymentCurrency().equals(paymenCurrencyName)){
 				selectPaymentCurrency(paymenCurrencyName);
 				Assert.assertTrue(getSelectedPaymentCurrency().equals(paymenCurrencyName), "Payment Currency was not updated. Current value is '"

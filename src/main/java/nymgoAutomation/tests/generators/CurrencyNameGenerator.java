@@ -1,32 +1,18 @@
 package nymgoAutomation.tests.generators;
-
+/*
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
+*/
 import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 /**
  * Created by Iuliia Khikmatova on Oct 15, 2015
  */
-public class CurrencyGenerator {
+public class CurrencyNameGenerator {
 
-    protected static Properties props;
-    static Logger LOGGER = Logger.getLogger("nymgoLogger");
-
-   public static void setProps(String fileName) {
-       props = new Properties();
-       try {
-           props.load(new FileInputStream(fileName));
-       } catch (IOException e) {
-           LOGGER.fatal("There was a problem to load the config file from " + fileName);
-           e.printStackTrace();
-       }
-
-   }
-   
 	public static String getCurrencyKeyBySign(String currencySign){
 		
 		CURRENCY_SIGNS CURR_SIGN = CURRENCY_SIGNS.valueOf(currencySign);

@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.admin.base;
 
 import nymgoAutomation.tests.fragments.admin.base.AdminPageWithSearchFragment;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /*
  * 

@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo.base;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseTransactionFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015

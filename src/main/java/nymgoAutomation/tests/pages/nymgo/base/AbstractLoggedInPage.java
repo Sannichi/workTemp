@@ -2,11 +2,11 @@ package nymgoAutomation.tests.pages.nymgo.base;
 
 import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 //import nymgoAutomation.tests.pages.nymgo.HomePage;
 import nymgoAutomation.tests.pages.nymgo.SecureHomePage;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
 import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractLoggedInPage extends AbstractNymgoPage{
 	

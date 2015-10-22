@@ -2,9 +2,9 @@ package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollectFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelled;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmPage{
 

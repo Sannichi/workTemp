@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import nymgoAutomation.tests.enums.URL_CONST;
 import nymgoAutomation.tests.fragments.admin.base.BaseLoggedAdminFragment;
 import nymgoAutomation.tests.generators.ServerGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class HomeAdminPageFragment extends BaseLoggedAdminFragment{
 

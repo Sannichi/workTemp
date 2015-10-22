@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import nymgoAutomation.data.utils.ExcelUtils;
 import nymgoAutomation.tests.enums.LOGS;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 9, 2015

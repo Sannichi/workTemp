@@ -2,8 +2,7 @@ package nymgoAutomation.tests.pages.admin.popups;
 
 import org.testng.Assert;
 
-//import nymgoAutomation.tests.fragments.admin.popups.TransactionAcceptedPopupFragment;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class TransactionAcceptedPopup extends AbstractPopup{
 	

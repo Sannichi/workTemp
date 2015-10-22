@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.nymgo.account;
 
 import nymgoAutomation.tests.fragments.nymgo.account.MasterAccountPageFragment;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class MasterAccountPage extends AbstractAccountPage{
 	

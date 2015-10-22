@@ -13,7 +13,7 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragment{
 
@@ -154,8 +154,13 @@ public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragme
 			if(!isSearchResultEmpty()){
 				for(int i = 0; i < displayElements.size(); i++){
 					List<WebElement> spans = displayElements.get(i).findElements(By.cssSelector("span"));
-					if (spans.get(columnIndex).getText().equals(fieldValueInTable)){
-						return result = i;
+					if (spans.size() >= 1){
+						if (spans.get(columnIndex).getText().equals(fieldValueInTable)){
+							return result = i;
+						}
+					}
+					else{
+						LOGGER.fatal("Search Result seems empty");
 					}
 				}
 			}
@@ -174,8 +179,13 @@ public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragme
 			if(!isSearchResultEmpty()){
 				for(int i = 0; i < displayElements.size(); i++){
 					List<WebElement> spans = displayElements.get(i).findElements(By.cssSelector("span"));
-					if (spans.get(columnByIndex).getText().equals(fieldValueByInTable)){
-						return spans.get(columnGetIndex).getText().substring(1);
+					if (spans.size() >= 1){
+						if (spans.get(columnByIndex).getText().equals(fieldValueByInTable)){
+							return spans.get(columnGetIndex).getText().substring(1);
+						}
+					}
+					else{
+						LOGGER.fatal("Search Result seems empty");
 					}
 				}
 			}

@@ -4,8 +4,8 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

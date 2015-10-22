@@ -18,7 +18,7 @@ import nymgoAutomation.tests.fragments.HasURL;
 import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasURL{
 
@@ -123,7 +123,10 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasUR
 		
 		if (!isOptionByValueChecked(value)){
 			if (!isValueDisabled(value)){
-				returnOptionByValue(value).click();
+				WebElement element = returnOptionByValue(value);
+				if(element != null){
+					element.click();
+				}
 			}
 		}
 		else{

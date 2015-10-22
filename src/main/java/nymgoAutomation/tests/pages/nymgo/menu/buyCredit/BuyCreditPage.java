@@ -5,13 +5,15 @@ import java.util.List;
 
 import org.testng.Assert;
 
+import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyen;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditProceedPageGlobalCollect;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditProceedPageWorldpay;
+import nymgoAutomation.tests.starter.Starter;
+import nymgoAutomation.tests.utils.CurrencyDescriptionMap;
 
 public class BuyCreditPage extends AbstractLoggedInPage{
 
@@ -84,20 +86,29 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		clickContinueButton();
 	} 
 
-	public BuyCreditProceedPageGlobalCollect selectAmountAndClickContinueToGlobalCollect(int amount){
-		
-		checkOptionByValue(amount);
-		clickContinueButton();
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPageGlobalCollect = new BuyCreditProceedPageGlobalCollect(starter);
-		PageNavigation<BuyCreditProceedPageGlobalCollect> navigation = new PageNavigation<BuyCreditProceedPageGlobalCollect>(buyCreditProceedPageGlobalCollect);
-		navigation.NavigatedTo();
-		return buyCreditProceedPageGlobalCollect;
-	} 
-
 	public BuyCreditProceedPageGlobalCollect selectAmountAndClickContinueToGlobalCollect(String amount){
 		
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
+		return clickContinueToGlobalCollect();
+	} 
+	
+	public BuyCreditProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+		return clickContinueToWorldpay();
+	} 
+	
+	public BuyCreditProceedPageAdyen selectAmountAndClickContinueToAdyen(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+		return clickContinueToAdyen();
+	} 
+	
+	public BuyCreditProceedPageGlobalCollect clickContinueToGlobalCollect(){
+		
 		clickContinueButton();
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPageGlobalCollect = new BuyCreditProceedPageGlobalCollect(starter);
 		PageNavigation<BuyCreditProceedPageGlobalCollect> navigation = new PageNavigation<BuyCreditProceedPageGlobalCollect>(buyCreditProceedPageGlobalCollect);
@@ -105,10 +116,8 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditProceedPageGlobalCollect;
 	} 
 	
-	public BuyCreditProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
+	public BuyCreditProceedPageWorldpay clickContinueToWorldpay(){
 		
-		int intAmount = Integer.valueOf(amount);
-		checkOptionByValue(intAmount);
 		clickContinueButton();
 		BuyCreditProceedPageWorldpay buyCreditProceedPageWorldpay = new BuyCreditProceedPageWorldpay(starter);
 		PageNavigation<BuyCreditProceedPageWorldpay> navigation = new PageNavigation<BuyCreditProceedPageWorldpay>(buyCreditProceedPageWorldpay);
@@ -116,22 +125,30 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditProceedPageWorldpay;
 	} 
 	
-	public BuyCreditProceedPageAdyen selectAmountAndClickContinueToAdyen(String amount){
+	public BuyCreditProceedPageAdyen clickContinueToAdyen(){
 		
-		int intAmount = Integer.valueOf(amount);
-		checkOptionByValue(intAmount);
 		clickContinueButton();
 		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = new BuyCreditProceedPageAdyen(starter);
 		PageNavigation<BuyCreditProceedPageAdyen> navigation = new PageNavigation<BuyCreditProceedPageAdyen>(buyCreditProceedPageAdyen);
 		navigation.NavigatedTo();
 		return buyCreditProceedPageAdyen;
 	} 
+
+	public void selectMinAmountByCurrency(String paymentCurrency){
+		
+		checkOptionByValue(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstValue());
+	}
 	
+	public void selectMaxAmountByCurrency(String paymentCurrency){
+		
+		checkOptionByValue(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getThirdValue());
+	}
+
 	public void selectAmountAndVerifyVAT(String amount){
 		
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
-		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Double.valueOf(getVATPercent()) / 100) + "'");
+		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Float.valueOf(getVATPercent()) / 100) + "'");
 	} 
 	
 	public String getVATPercent(){
@@ -147,10 +164,8 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 	public boolean verifyVATValue(int nymgoCreditAmount){
 		
 		boolean result = false;
-		Double asIs = Double.valueOf(getVATValue());
-//		String asIs = getVATValue();
-		Double shouldBe = nymgoCreditAmount * Double.valueOf(getVATPercent()) / 100;		
-//		String shouldBe = String.valueOf(nymgoCreditAmount * Double.valueOf(getVATPercent()) / 100);
+		Float asIs = Float.valueOf(getVATValue());
+		Float shouldBe = nymgoCreditAmount * Float.valueOf(getVATPercent()) / 100;		
 		
 		result = shouldBe.equals(asIs);
 		return result;

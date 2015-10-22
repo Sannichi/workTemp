@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.admin.base;
 
 import nymgoAutomation.tests.fragments.admin.base.BaseAdminFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractAdminPage extends AbstractPage{
 	

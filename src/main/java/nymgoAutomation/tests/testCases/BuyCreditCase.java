@@ -17,6 +17,7 @@ import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfir
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpay;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpayNext;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditProceedPageWorldpay;
+import nymgoAutomation.tests.utils.CurrencyUtils;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -33,13 +34,16 @@ public class BuyCreditCase extends AbstractCase{
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		Double VATValue = Double.valueOf(buyCreditPage.getVATValue());
+		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -49,7 +53,7 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
 
 	}
 
@@ -63,11 +67,14 @@ public class BuyCreditCase extends AbstractCase{
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		Double VATValue = Double.valueOf(buyCreditPage.getVATValue());
+		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
 		BuyCreditProceedPageWorldpay buyCreditProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
-		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
+		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -75,7 +82,7 @@ public class BuyCreditCase extends AbstractCase{
 		
 		@SuppressWarnings("unused")
 		BuyCreditConfirmPageWorldpay buyCreditConfirmPageWorldpay = buyCreditProceedPageWorldpay.verifyDataAndClickContinue(cardType, countryOfCredit,
-				currencyAmount, VATPercent, String.valueOf(Double.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
 
 	}
 
@@ -89,6 +96,9 @@ public class BuyCreditCase extends AbstractCase{
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCreditProceedPageAdyen.verifyDefaultData();

@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageNextPendingGlobalCollectFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPageNext;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BuyCreditConfirmPageNextPendingGlobalCollect extends AbstractBuyCreditConfirmPageNext{
 

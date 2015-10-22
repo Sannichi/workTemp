@@ -1,6 +1,6 @@
 package nymgoAutomation.tests.pages.admin.popups;
 
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class TransactionDeclinedPopup extends AbstractPopup{
 	

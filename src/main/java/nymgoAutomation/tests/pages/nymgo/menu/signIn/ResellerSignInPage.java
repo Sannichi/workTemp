@@ -2,9 +2,9 @@ package nymgoAutomation.tests.pages.nymgo.menu.signIn;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.signIn.ResellerSignInPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractNymgoPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class ResellerSignInPage extends AbstractNymgoPage{
 	

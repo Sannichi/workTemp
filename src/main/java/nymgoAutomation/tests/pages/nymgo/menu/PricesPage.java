@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo.menu;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.PricesPageFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractNymgoPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class PricesPage extends AbstractNymgoPage{
 	

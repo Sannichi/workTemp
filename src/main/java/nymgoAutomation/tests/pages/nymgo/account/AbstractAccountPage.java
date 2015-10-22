@@ -2,9 +2,9 @@ package nymgoAutomation.tests.pages.nymgo.account;
 
 import nymgoAutomation.tests.fragments.nymgo.account.BaseAccountPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractAccountPage extends AbstractLoggedInPage{
 	

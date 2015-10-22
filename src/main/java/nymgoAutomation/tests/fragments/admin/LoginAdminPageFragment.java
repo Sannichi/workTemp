@@ -3,7 +3,7 @@ package nymgoAutomation.tests.fragments.admin;
 import nymgoAutomation.tests.enums.URL_CONST;
 import nymgoAutomation.tests.fragments.admin.base.BaseAdminFragment;
 import nymgoAutomation.tests.generators.ServerGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

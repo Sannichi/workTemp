@@ -4,8 +4,8 @@ import org.testng.Assert;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect.BuyCreditProceedPageGlobalCollectFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditProceedPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedPage{
 

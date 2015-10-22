@@ -6,9 +6,9 @@ import org.testng.Assert;
 
 import nymgoAutomation.tests.fragments.admin.widgets.MemberPaymentHistoryWidgetFragment;
 import nymgoAutomation.tests.navigation.PopupNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.popups.TransactionAcceptedPopup;
 import nymgoAutomation.tests.pages.admin.popups.TransactionDeclinedPopup;
+import nymgoAutomation.tests.starter.Starter;
 
 public class MemberPaymentHistoryWidget extends AbstractWidget{
 

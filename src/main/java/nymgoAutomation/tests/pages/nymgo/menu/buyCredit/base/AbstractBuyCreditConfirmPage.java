@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base;
 
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractTransactionPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractBuyCreditConfirmPage extends AbstractTransactionPage{
 

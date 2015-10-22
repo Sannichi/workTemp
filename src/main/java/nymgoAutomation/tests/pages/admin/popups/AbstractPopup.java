@@ -3,8 +3,8 @@ package nymgoAutomation.tests.pages.admin.popups;
 import org.testng.Assert;
 
 import nymgoAutomation.tests.fragments.admin.popups.BasePopupFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractPopup extends AbstractPage{
 	

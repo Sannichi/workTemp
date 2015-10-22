@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.nymgo.base;
 
 import nymgoAutomation.tests.fragments.nymgo.base.LoggedNymgoPageFragment;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /*
  * 

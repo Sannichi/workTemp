@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo;
 
 import nymgoAutomation.tests.fragments.nymgo.HomePageFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractNymgoPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class HomePage extends AbstractNymgoPage{
 

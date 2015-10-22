@@ -2,7 +2,7 @@ package nymgoAutomation.tests.pages.nymgo.account;
 
 import nymgoAutomation.tests.fragments.nymgo.account.NormalAccountPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class NormalAccountPage extends AbstractAccountPage{
 	

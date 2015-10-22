@@ -8,7 +8,7 @@ import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015

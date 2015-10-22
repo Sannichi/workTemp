@@ -1,6 +1,6 @@
 package nymgoAutomation.tests.pages.admin.alerts;
 
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

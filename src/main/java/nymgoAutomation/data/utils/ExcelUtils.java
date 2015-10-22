@@ -16,7 +16,7 @@ import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
 import nymgoAutomation.data.testCases.ExcelCases;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class ExcelUtils {
 	

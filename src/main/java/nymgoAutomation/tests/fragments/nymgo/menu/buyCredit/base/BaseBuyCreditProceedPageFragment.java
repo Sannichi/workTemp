@@ -15,9 +15,8 @@ import nymgoAutomation.tests.fragments.HasURL;
 import nymgoAutomation.tests.fragments.nymgo.account.BaseProfileInfoFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
-//public class BaseBuyCreditProceedPageFragment extends BaseLoggedInFragment{
 public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment implements HasURL{
 
 	public BaseBuyCreditProceedPageFragment(WebDriver driver) {
@@ -72,18 +71,9 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment im
 
 		clickSubmitButton(continueButton);
 	}
-/*	
-	private void selectPaymentCardByLCName(String localeName){
-		
-		Select select = new Select(paymentCardSelect);
-		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
-	}
-*/	
+
 	public void selectPaymentCard(String paymentCardType){
-/*		
-		String localeName = LocaleGenerator.getLocaleKeyNameByValue(paymentCardType);
-		selectPaymentCardByLCName(localeName);
-*/
+
 		selectValueFromSelectByLocaleText(paymentCardSelect, paymentCardType);
 	}
 	
@@ -97,18 +87,9 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment im
 		Select select = new Select(paymentCardSelect);
 		return select.getFirstSelectedOption().getText();
 	}
-/*
-	private void selectCountryOfCreditByLCName(String localeName){
-		
-		Select select = new Select(countryOfCreditSelect);
-		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
-	}
-*/	
+
 	public void selectCountryOfCredit(String countryOfCredit){
-/*		
-		String localeName = LocaleGenerator.getLocaleKeyNameByValue(countryOfCredit);
-		selectCountryOfCreditByLCName(localeName);
-*/
+
 		selectValueFromSelectByLocaleText(countryOfCreditSelect, countryOfCredit);
 	}
 
@@ -120,7 +101,6 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment im
 
 	public String getNymgoCreditValue(){
 		
-//		return nymgoCredit.getText();
 		return nymgoCreditVATAmount.get(0).getText().split("\n")[1].split(" ")[0];		
 	}
 

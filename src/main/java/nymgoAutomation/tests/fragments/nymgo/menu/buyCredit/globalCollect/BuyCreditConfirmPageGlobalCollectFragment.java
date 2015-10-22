@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageFragment;
-//import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConfirmPageFragment{
 
@@ -40,7 +39,6 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConf
 	@FindBy(id = "btnCancel")
 	private WebElement cancelButton;
 	
-//	@Override
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
@@ -49,41 +47,31 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConf
 
 	public void setCardNumberValue(String cardNumberValue){
 		
-//		cardNumber.sendKeys(cardNumberValue);
 		setTextToEditField(cardNumber, cardNumberValue);
 	}
 	
 	public void selectExpireDateMonthByLCName(String monthValue){
 		
-//		Select select = new Select(expireDateMonth);
-//		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
-//		select.selectByVisibleText(monthValue);
 		selectValueFromSelectByVisibleText(expireDateMonth, monthValue);
 	}
 	
 	public void selectExpireDateYearByLCName(String yearValue){
 		
-//		Select select = new Select(expireDateYear);
-//		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
-//		select.selectByVisibleText(yearValue);
 		selectValueFromSelectByVisibleText(expireDateYear, yearValue);
 	}
 	
 	public void setCVVValue(String cvvValue){
 		
-//		cvv.sendKeys(cvvValue);
 		setTextToEditField(cvv, cvvValue);
 	}
 
 	public void clickContinueButton(){
 		
-//		continueButton.click();
 		clickInputButton(continueButton);
 	}
 
 	public void clickCancelButton(){
 		
-//		cancelButton.click();
 		clickInputButton(cancelButton);
 	}
 

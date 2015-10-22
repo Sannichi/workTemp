@@ -6,9 +6,9 @@ import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyenFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelled;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

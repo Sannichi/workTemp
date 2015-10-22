@@ -3,8 +3,8 @@ package nymgoAutomation.tests.pages.admin.widgets;
 import org.testng.Assert;
 
 import nymgoAutomation.tests.fragments.admin.widgets.BaseWidgetFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.AbstractPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractWidget extends AbstractPage{
 	

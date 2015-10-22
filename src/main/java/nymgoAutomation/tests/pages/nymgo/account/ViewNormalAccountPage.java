@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.nymgo.account;
 
 import nymgoAutomation.tests.fragments.nymgo.account.ViewNormalAccountPageFragment;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015

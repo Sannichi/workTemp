@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo;
 
 import nymgoAutomation.tests.fragments.nymgo.SecureHomePageFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractNymgoPage;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015

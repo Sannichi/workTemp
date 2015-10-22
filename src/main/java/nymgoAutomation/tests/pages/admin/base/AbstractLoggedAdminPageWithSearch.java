@@ -3,7 +3,7 @@ package nymgoAutomation.tests.pages.admin.base;
 import java.util.List;
 
 import nymgoAutomation.tests.fragments.admin.base.BaseLoggedAdminPageWithSearchFragment;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAdminPage{
 
@@ -82,7 +82,7 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 				break;
 			}
 			if (i == 4){
-				LOGGER.fatal("Search by Exact Match got more than 1 result");
+				LOGGER.fatal("Search by Exact Match got more than 1 result: " + getRowsCount());
 			}
 		}
 		return this;

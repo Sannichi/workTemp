@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo.menu;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.AppsPageFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractNymgoPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public class AppsPage extends AbstractNymgoPage{
 	

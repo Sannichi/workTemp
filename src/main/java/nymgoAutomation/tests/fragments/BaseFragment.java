@@ -113,7 +113,7 @@ public class BaseFragment {
 		
 		String localeName = LocaleGenerator.getLocaleKeyNameByValue(localeText);
 		Select select = new Select(elementWithSelect);
-		select.selectByVisibleText(LocaleGenerator.getLocaleKeyByLocaleName(localeName));
+		select.selectByVisibleText(LocaleGenerator.getLocaleKey(LOCALE_CONST.valueOf(localeName)));		
 		
 		LOGGER.info("Value " + localeText + " was selected from Select");
 	}

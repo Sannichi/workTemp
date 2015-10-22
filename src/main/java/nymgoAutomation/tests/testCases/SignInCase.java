@@ -34,7 +34,7 @@ public class SignInCase extends AbstractCase{
 		String username = fullUserEntities[0].getUsername();
 		String password = fullUserEntities[0].getPassword();
 		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(username, password);
-		Assert.assertTrue(normalAccountPage.isUserLogged(username));
+		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
     }
 	
     @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -49,7 +49,7 @@ public class SignInCase extends AbstractCase{
 		String username = fullUserEntity.getUsername();
 		String password = fullUserEntity.getPassword();
 		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(username, password);
-		Assert.assertTrue(normalAccountPage.isUserLogged(username));
+		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
     }
 	
     @Test

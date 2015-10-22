@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 
 import nymgoAutomation.tests.fragments.HasURL;
-import nymgoAutomation.tests.navigation.Starter;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class BaseBuyCreditConfirmPageFragment extends BaseTransactionFragment implements HasURL{
 

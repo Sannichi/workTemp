@@ -1,8 +1,8 @@
 package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageNextPendingWorldpayFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPageNext;
+import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015

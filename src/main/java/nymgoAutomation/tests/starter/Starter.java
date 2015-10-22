@@ -1,4 +1,4 @@
-package nymgoAutomation.tests.navigation;
+package nymgoAutomation.tests.starter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import nymgoAutomation.tests.enums.PROPERTIES;
 import nymgoAutomation.tests.enums.SERVERS;
 import nymgoAutomation.tests.enums.URL_CONST;
 import nymgoAutomation.tests.enums.WAIT_TIME;
+import nymgoAutomation.tests.generators.CurrencyConversionRateGenerator;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
 
@@ -69,7 +70,7 @@ public class Starter {
     	initBrowser();
     }
     
-    public void initProperties(ITestContext context){
+    private void initProperties(ITestContext context){
         LOGGER.info("Initializing config.properties");
         PROPS = new Properties();
         try {
@@ -96,7 +97,7 @@ public class Starter {
         LOGGER.info("Finished to initialize properties");
     }
 
-    public void initParams(ITestContext context){
+    private void initParams(ITestContext context){
         LOGGER.info("Initializing params.properties");
         PARAMS = new Properties();
         try {
@@ -125,7 +126,7 @@ public class Starter {
         LOGGER.info("Finished to initialize parameters");
     }
 
-    public void initLocale(){
+    private void initLocale(){
 
         LOCALES LOC = LOCALES.valueOf(PROPS.getProperty(PROPERTIES.LOCALE.name()));
         switch (LOC)
@@ -151,27 +152,43 @@ public class Starter {
         }
     }
 
-    public void initTestServer(){
+    private void initTestServer(){
 
         SERVERS SERV = SERVERS.valueOf(PROPS.getProperty(PROPERTIES.SERVER.name()));
         switch (SERV)
         {
             case DEV:
                 ServerGenerator.setProps(FILES_NAMES.DEV.toString());
+                CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_DEV.toString());
                 break;
             case STAGING:
             	ServerGenerator.setProps(FILES_NAMES.STAGING.toString());
+                CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_STAGING.toString());
                 break;
             case LIVE:
             	ServerGenerator.setProps(FILES_NAMES.LIVE.toString());
+                CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_LIVE.toString());
                 break;
             default:
                 ServerGenerator.setProps(FILES_NAMES.DEV.toString());
+                CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_DEV.toString());
                 break;
         }
     }
-
-	public WebDriver getBrowser() {
+/*
+    public void initConversionRates(ITestContext context){
+        LOGGER.info("Initializing conversionRates.file.properties");
+        //TODO add testServer dependency
+        try{
+            CurrencyConversionRateGenerator.setProps(context.getCurrentXmlTest().getParameter(CONVERSION_RATES_FILE));
+        }
+        catch (NullPointerException e){
+            LOGGER.warn("could not find the conversion rates file name in the xml suite, going to use the default " + CONVERSION_RATES_FILE);
+        }
+        LOGGER.info("Finished to initialize conversion rates");
+    }
+*/
+	private WebDriver getBrowser() {
 		BROWSERS BROWSER = BROWSERS.valueOf(PROPS.getProperty(PROPERTIES.BROWSER.name()));
         switch (BROWSER)
         {
@@ -188,7 +205,7 @@ public class Starter {
         }
 	}
 
-	public void initBrowser(){
+	private void initBrowser(){
 		
         driver = getBrowser();
         driver.manage().window().maximize();

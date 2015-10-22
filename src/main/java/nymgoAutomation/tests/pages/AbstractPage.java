@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 import nymgoAutomation.tests.fragments.BaseFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
 import nymgoAutomation.tests.pages.nymgo.HomePage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractPage {
 

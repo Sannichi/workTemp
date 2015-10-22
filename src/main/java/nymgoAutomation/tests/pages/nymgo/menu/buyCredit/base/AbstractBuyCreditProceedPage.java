@@ -3,8 +3,8 @@ package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base;
 import org.testng.Assert;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditProceedPageFragment;
-import nymgoAutomation.tests.navigation.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
+import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 
