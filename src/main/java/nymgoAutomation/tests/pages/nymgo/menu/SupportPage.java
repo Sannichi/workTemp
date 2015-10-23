@@ -27,5 +27,11 @@ public class SupportPage extends AbstractNymgoPage{
 		// TODO Auto-generated method stub
 		return SUPPORT_PAGE_NAME_EN;
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return supportPageFragment.getCorrectURL();
+	}
     
 }

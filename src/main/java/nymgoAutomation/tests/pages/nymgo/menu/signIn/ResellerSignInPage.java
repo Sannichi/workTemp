@@ -17,6 +17,24 @@ public class ResellerSignInPage extends AbstractNymgoPage{
 	}
 
 	private static final String RESELLER_ACCOUNT_PAGE_NAME_EN = "ResellerSignInPage";
+
+	@Override
+	public boolean isCorrectPage() {
+		// TODO Auto-generated method stub
+		return resellerSignInPageFragment.isCorrectURL();
+	}
+
+	@Override
+	public String getPageName() {
+		// TODO Auto-generated method stub
+		return RESELLER_ACCOUNT_PAGE_NAME_EN;
+	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return resellerSignInPageFragment.getCorrectURL();
+	}
 	
     private ResellerSignInPage typeUsername(String login){
     	
@@ -50,16 +68,4 @@ public class ResellerSignInPage extends AbstractNymgoPage{
 		navigation.NavigatedTo();
 		return resellerAccountPage;
     }
-
-	@Override
-	public boolean isCorrectPage() {
-		// TODO Auto-generated method stub
-		return resellerSignInPageFragment.isCorrectURL();
-	}
-
-	@Override
-	public String getPageName() {
-		// TODO Auto-generated method stub
-		return RESELLER_ACCOUNT_PAGE_NAME_EN;
-	}
 }

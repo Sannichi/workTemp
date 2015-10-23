@@ -38,6 +38,12 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditPageFragment.isCorrectURL();
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return buyCreditPageFragment.getCorrectURL();
+	}
+
 	public List<String> getAllAdyenOptionsDescription(){
 		
 		return buyCreditPageFragment.getAllAdyenOptionsDescription();

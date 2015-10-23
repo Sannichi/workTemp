@@ -16,10 +16,14 @@ public abstract class AbstractAccountPage extends AbstractLoggedInPage{
 		baseAccountPageFragment =  new BaseAccountPageFragment(driver);
 	}
 
-	@Override
 	public boolean isCorrectPage() {
 		// TODO Auto-generated method stub
 		return baseAccountPageFragment.isCorrectURL();
+	}
+	
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return baseAccountPageFragment.getCorrectURL();
 	}
     
 	public BuyCreditPage clickAccountBuyCreditButton(){

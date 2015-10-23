@@ -26,4 +26,9 @@ public class SupportPageFragment extends BaseNymgoFragment{
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlToBe(SUPPORT_PAGE_URL));
 	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return SUPPORT_PAGE_URL;
+	}
 }

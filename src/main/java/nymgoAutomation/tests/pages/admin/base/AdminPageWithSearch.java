@@ -5,11 +5,11 @@ import nymgoAutomation.tests.starter.Starter;
 
 /*
  * 
- * Any Admin logged page  
+ * Any Admin logged page with search possibility 
  * 
  */
 
-public class AdminPageWithSearch extends AbstractLoggedAdminPage{
+public class AdminPageWithSearch extends AbstractLoggedAdminPageWithSearch{
 
 	private AdminPageWithSearchFragment adminPageWithSearchFragment;
 	
@@ -30,6 +30,12 @@ public class AdminPageWithSearch extends AbstractLoggedAdminPage{
 	public String getPageName() {
 		// TODO Auto-generated method stub
 		return ADMIN_PAGE_NAME_ENG;
+	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return adminPageWithSearchFragment.getCorrectURL();
 	}
     
 }

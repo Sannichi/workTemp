@@ -31,5 +31,11 @@ public class AdminPage extends AbstractLoggedAdminPage{
 		// TODO Auto-generated method stub
 		return ADMIN_PAGE_NAME_ENG;
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return adminPageFragment.getCorrectURL();
+	}
     
 }

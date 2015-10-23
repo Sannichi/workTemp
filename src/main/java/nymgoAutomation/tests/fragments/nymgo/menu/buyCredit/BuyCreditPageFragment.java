@@ -14,13 +14,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
-import nymgoAutomation.tests.fragments.HasURL;
 import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
 import nymgoAutomation.tests.starter.Starter;
 
-public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasURL{
+public class BuyCreditPageFragment extends BaseLoggedInFragment{
 
 	public BuyCreditPageFragment(WebDriver driver) {
 		super(driver);
@@ -59,6 +58,11 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment implements HasUR
     	catch(TimeoutException e){
     		return false;
     	}
+	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return BUY_CREDIT_PAGE_URL;
 	}
 
 	private String getAmountCurrencyIcon(WebElement option){

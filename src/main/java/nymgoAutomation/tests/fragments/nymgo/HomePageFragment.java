@@ -19,4 +19,9 @@ public HomePageFragment(WebDriver driver) {
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlToBe(getHomeURL()));
 	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return getHomeURL();
+	}
 }

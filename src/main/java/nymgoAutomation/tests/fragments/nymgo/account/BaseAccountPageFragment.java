@@ -24,6 +24,7 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	}
 
 	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+//	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	
 	private static final String language = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL);
@@ -48,17 +49,17 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 			return false;
 		}
 	}
-    
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return ACCOUNT_PAGE_URL_EN;
+	}
+	
 	private void initializeBuyCreditButton() throws NoSuchElementException{
 		
 		accountBuyCreditButton = driver.findElement(By.xpath(accountBuyCreditXpath));
 	}
-/*	
-	private void initializeViewFullAccountButton() throws NoSuchElementException{
-		
-		accountBuyCreditButton = driver.findElement(By.xpath(viewFullAccountXpath));
-	}
-*/	
+
 	public void clickAccountBuyCreditButton(){
 		
 		initializeBuyCreditButton();
@@ -67,7 +68,7 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 
 	public void clickViewFullAccountButton(){
 		
-//		initializeViewFullAccountButton();
 		clickSubmitButton(viewFullAccountButton);
 	}
+
 }

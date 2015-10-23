@@ -30,7 +30,13 @@ public class TransactionAcceptedPopup extends AbstractPopup{
 		return getPopupText().equals(TRANSACTION_ACCEPTED_POPUP_TEXT_ENG);
 	}
 	
-    public void closeTransactionAcceptedPopup(){
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return TRANSACTION_ACCEPTED_POPUP_TEXT_ENG;
+	}
+
+	public void closeTransactionAcceptedPopup(){
     	
 		for(int i = 0; i < 5; i++){
 			delay(2000);

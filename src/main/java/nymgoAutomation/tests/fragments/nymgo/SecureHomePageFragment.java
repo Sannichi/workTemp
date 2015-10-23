@@ -5,14 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.fragments.nymgo.base.BaseNymgoFragment;
+import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015
  */
-public class SecureHomePageFragment extends BaseNymgoFragment{
-
+public class SecureHomePageFragment extends BaseLoggedInFragment{
 
 	public SecureHomePageFragment(WebDriver driver) {
 		super(driver);
@@ -29,5 +28,10 @@ public class SecureHomePageFragment extends BaseNymgoFragment{
     	catch(TimeoutException e){
     		return false;	
     	}
+	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return getSecureHomeURL();
 	}
 }

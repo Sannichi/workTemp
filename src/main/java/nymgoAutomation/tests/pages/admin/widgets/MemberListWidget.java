@@ -2,7 +2,6 @@ package nymgoAutomation.tests.pages.admin.widgets;
 
 import nymgoAutomation.tests.fragments.admin.widgets.MemberListWidgetFragment;
 import nymgoAutomation.tests.navigation.AlertNavigation;
-import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.admin.alerts.MemberEditAlert;
 import nymgoAutomation.tests.starter.Starter;
 
@@ -30,6 +29,12 @@ public class MemberListWidget extends AbstractWidget{
 		return getPageName().equals(WIDGET_MEMBERS_LIST_NAME_ENG);
 	}
 	
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return WIDGET_MEMBERS_LIST_NAME_ENG;
+	}
+
 	private MemberListWidget navigateToUserPaymentMethodTab(){
 		
 		memberListWidgetFragment.navigateToUserPaymentMethodTab();

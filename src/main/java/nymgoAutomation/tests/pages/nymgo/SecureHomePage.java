@@ -30,4 +30,11 @@ public class SecureHomePage extends AbstractNymgoPage{
 		// TODO Auto-generated method stub
 		return secureHomePageFragment.isCorrectURL();
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return secureHomePageFragment.getCorrectURL();
+	}
+
 }

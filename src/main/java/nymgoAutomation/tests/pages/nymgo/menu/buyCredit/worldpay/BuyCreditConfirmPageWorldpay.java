@@ -33,6 +33,12 @@ public class BuyCreditConfirmPageWorldpay extends AbstractBuyCreditConfirmPage{
 		return buyCreditConfirmPageWorldpayFragment.isCorrectURL();
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return buyCreditConfirmPageWorldpayFragment.getCorrectURL();
+	}
+
 	private void setCardNumber(String cardNumberValue){
 		
 		buyCreditConfirmPageWorldpayFragment.setCardNumberValue(cardNumberValue);

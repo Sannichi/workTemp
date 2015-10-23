@@ -11,13 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
-import nymgoAutomation.tests.fragments.HasURL;
-import nymgoAutomation.tests.fragments.nymgo.account.BaseProfileInfoFragment;
+import nymgoAutomation.tests.fragments.nymgo.account.baseProfile.BaseProfileInfoFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
 import nymgoAutomation.tests.starter.Starter;
 
-public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment implements HasURL{
+public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 
 	public BaseBuyCreditProceedPageFragment(WebDriver driver) {
 		super(driver);
@@ -55,6 +54,11 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment im
     	return wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_PAGE_URL));
 	}
 
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return BUY_CREDIT_PAGE_URL;
+	}
+	
 	@Override
 	public void setStreet(String street){
 	
@@ -113,4 +117,5 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment im
 		
 		return nymgoCreditVATAmount.get(2).getText().split("\n")[1].split(" ")[0];
 	}
+
 }

@@ -27,4 +27,9 @@ public class PricesPageFragment extends BaseNymgoFragment{
     	return wait.until(ExpectedConditions.urlToBe(PRICES_PAGE_URL));
 	}
 
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return PRICES_PAGE_URL;
+	}
+
 }

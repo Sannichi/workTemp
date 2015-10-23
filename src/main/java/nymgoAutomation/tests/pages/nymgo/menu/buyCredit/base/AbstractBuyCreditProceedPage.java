@@ -24,6 +24,12 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 		return baseBuyCreditProceedPageFragment.isCorrectURL();
 	}
 	
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return baseBuyCreditProceedPageFragment.getCorrectURL();
+	} 
+
 	protected void clickContinueButton(){
 		
 		baseBuyCreditProceedPageFragment.clickContinueButton();

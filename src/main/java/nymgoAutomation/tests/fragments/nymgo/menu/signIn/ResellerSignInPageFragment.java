@@ -32,27 +32,29 @@ public class ResellerSignInPageFragment extends BaseNymgoFragment{
 	private static final String RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/";
 	
-    public void typeUsername(String login){
-    	
-//    	this.username.sendKeys(login);
-    	setTextToEditField(this.username, login);
-    }
-    
-    public void typePassword(String password){
-    	
-//    	this.password.sendKeys(password);
-    	setTextToEditField(this.password, password);
-    }
-
-    public void clickSignIn(){
-
-//    	signInButton.click();
-    	clickSubmitButton(signInButton);
-    }
-    
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlToBe(RESELLER_ACCOUNT_PAGE_URL));
 	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return RESELLER_ACCOUNT_PAGE_URL;
+	}
+
+	public void typeUsername(String login){
+    	
+    	setTextToEditField(this.username, login);
+    }
+    
+    public void typePassword(String password){
+    	
+    	setTextToEditField(this.password, password);
+    }
+
+    public void clickSignIn(){
+
+    	clickSubmitButton(signInButton);
+    }
 }

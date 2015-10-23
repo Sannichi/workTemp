@@ -7,13 +7,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
 import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-public class BuyCreditConfirmPageWorldpayNextFragment extends BaseBuyCreditConfirmPageFragment{
+public class BuyCreditConfirmPageWorldpayNextFragment extends BaseIframePageFragment{
 
 	public BuyCreditConfirmPageWorldpayNextFragment(WebDriver driver) {
 		super(driver);
@@ -37,6 +37,11 @@ public class BuyCreditConfirmPageWorldpayNextFragment extends BaseBuyCreditConfi
     	catch(TimeoutException e){
     		return false;
     	}
+	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return BUY_CREDIT_CONFIRM_PAGE_WP_NEXT_URL;
 	}
 
 	public void clickContinueButton(){

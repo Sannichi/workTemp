@@ -41,5 +41,5 @@ public class BuyCreditProceedPageWorldpay extends AbstractBuyCreditProceedPage{
 	public void verifyDefaultData(String countryOfResidence, String nymgoCreditValue, String VAT, String totalAmountCharged){
 		verifyDefaultPaymentBlock(countryOfResidence);
 		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
-	} 
+	}
 }

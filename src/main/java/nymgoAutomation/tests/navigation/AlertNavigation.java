@@ -5,7 +5,6 @@ import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
 import nymgoAutomation.tests.pages.admin.alerts.AbstractAlert;
-import nymgoAutomation.tests.pages.admin.popups.AbstractPopup;
 import nymgoAutomation.tests.testCases.AbstractCase;
 
 /**
@@ -37,7 +36,8 @@ public class AlertNavigation<T extends AbstractAlert>
 		catch (TimeoutException e){
 			LOGGER.fatal("Could not navigate to page: " + getPageName());
 		}
-		Assert.assertTrue(result, "Could not navigate to alert: " + getPageName() + ", current Alert text is " + alert.getAlertText());
+		Assert.assertTrue(result, "Could not navigate to alert: " + getPageName() + ", current Alert text is " + alert.getAlertText() + "', should be '" + 
+				alert.getPageURL() + "'");
 		LOGGER.info("Successfully navigated to alert: " + getPageName());		
 	}
 	

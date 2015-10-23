@@ -16,11 +16,14 @@ import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
 import nymgoAutomation.data.testCases.ExcelCases;
+import nymgoAutomation.tests.enums.LOGS;
 import nymgoAutomation.tests.starter.Starter;
 
 public class ExcelUtils {
 	
-	private static Logger LOGGER = ExcelCases.EXCEL_LOGGER;
+//	private static Logger LOGGER = ExcelCases.EXCEL_LOGGER;
+	
+	private static Logger LOGGER = Logger.getLogger(LOGS.LOGGER_NAME_EXCEL.toString());
 
 	private static XSSFSheet excelWSheet;
 	private static XSSFWorkbook excelWBook;
@@ -255,13 +258,12 @@ public class ExcelUtils {
 	} 
 
 	private static int getFirstEmptyRow(){
-		//hope 50 transactions are maximum for one test suite
+		//hope 100 transactions are maximum for one test suite
 		int i = 0;
-		int maxRows = 50;
+		int maxRows = 100;
 		try{
 			while (excelWSheet.getRow(i) != null){
 				if (i > maxRows){
-					LOGGER.fatal("Rows number is more than 50");
 					break;
 				}
 				i++;
@@ -280,6 +282,7 @@ public class ExcelUtils {
 			setExcelFile(transactionFilePath, transactionSheetName);
 			int startCol = 0;
 			int startRow = getFirstEmptyRow();
+			LOGGER.info("Start row = " + startRow);
 			try {
 				setCellData(startRow, startCol + 1, transactionID);				
 			} catch (Exception e) {
@@ -300,7 +303,8 @@ public class ExcelUtils {
 			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
+			LOGGER.fatal("Could not read the Excel sheet");
 			e.printStackTrace();
 		}
 		return false;

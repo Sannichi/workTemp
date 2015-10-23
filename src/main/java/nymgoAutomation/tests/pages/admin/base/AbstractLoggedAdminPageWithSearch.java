@@ -2,42 +2,42 @@ package nymgoAutomation.tests.pages.admin.base;
 
 import java.util.List;
 
-import nymgoAutomation.tests.fragments.admin.base.BaseLoggedAdminPageWithSearchFragment;
+import nymgoAutomation.tests.fragments.admin.base.AdminPageWithSearchFragment;
 import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAdminPage{
 
-	private BaseLoggedAdminPageWithSearchFragment baseLoggedAdminPageWithSearchFragment;
+	private AdminPageWithSearchFragment adminPageWithSearchFragment;
 	
     public AbstractLoggedAdminPageWithSearch(Starter starter) {
 
     	super(starter);
-    	baseLoggedAdminPageWithSearchFragment = new BaseLoggedAdminPageWithSearchFragment(driver);
+    	adminPageWithSearchFragment = new AdminPageWithSearchFragment(driver);
     }
 	
 	private void typeCriteria(String crieteria){
 		
-		baseLoggedAdminPageWithSearchFragment.typeCriteria(crieteria);
+		adminPageWithSearchFragment.typeCriteria(crieteria);
 	}
 
 	private void selectField(String searchField){
 		
-		baseLoggedAdminPageWithSearchFragment.selectField(searchField);
+		adminPageWithSearchFragment.selectField(searchField);
 	}
 
 	private void selectType(String searchType){
 		
-		baseLoggedAdminPageWithSearchFragment.selectType(searchType);
+		adminPageWithSearchFragment.selectType(searchType);
 	}
 	
 	private void clickGoButton(){
 		
-		baseLoggedAdminPageWithSearchFragment.clickGoButton();
+		adminPageWithSearchFragment.clickGoButton();
 	}
 	
 	private void waitSearchCriteria(){
 		
-		baseLoggedAdminPageWithSearchFragment.waitSearchCriteria();
+		adminPageWithSearchFragment.waitSearchCriteria();
 	}
 
 	public AbstractLoggedAdminPageWithSearch searchCriteria(String criteria, String searchField, String searchType){
@@ -63,7 +63,7 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 				break;
 			}
 			if (i == 4){
-				LOGGER.fatal("Search by Exact Match got more than 1 result");
+				LOGGER.fatal("Search by Exact Match got more than 1 result :" + getRowsCount());
 			}
 		}
 		return this;
@@ -90,33 +90,33 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 
 	public boolean isSearchResultEmpty(){
 		
-		return baseLoggedAdminPageWithSearchFragment.isSearchResultEmpty();
+		return adminPageWithSearchFragment.isSearchResultEmpty();
 	}
 	
 	public int getRowsCount(){
 		
-		return baseLoggedAdminPageWithSearchFragment.getRowsCount();
+		return adminPageWithSearchFragment.getRowsCount();
 	}
 	
 	private List<String> getColumnNames(){
 
-		return baseLoggedAdminPageWithSearchFragment.getColumnNames();
+		return adminPageWithSearchFragment.getColumnNames();
 	}
 	
 	//return column index if exists, -1 if not
 	private int isColumnPresent(String columnName){
 
-		return baseLoggedAdminPageWithSearchFragment.isColumnPresent(columnName);
+		return adminPageWithSearchFragment.isColumnPresent(columnName);
 	}
 
 	//return row index if exists, -1 if not
 	private int isValueDisplays(String columnName, String fieldValue){
 		
-		return baseLoggedAdminPageWithSearchFragment.isValueDisplays(columnName, fieldValue);
+		return adminPageWithSearchFragment.isValueDisplays(columnName, fieldValue);
 	}
 	
 	public String getColumnRowValueByColumnRowValue( String columnNameBy, String fieldValueBy, String columnNameGet){
 		
-		return baseLoggedAdminPageWithSearchFragment.getColumnRowValueByColumnRowValue(columnNameBy, fieldValueBy, columnNameGet);
+		return adminPageWithSearchFragment.getColumnRowValueByColumnRowValue(columnNameBy, fieldValueBy, columnNameGet);
 	}
 }

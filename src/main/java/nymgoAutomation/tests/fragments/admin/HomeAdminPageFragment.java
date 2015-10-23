@@ -23,4 +23,9 @@ public class HomeAdminPageFragment extends BaseLoggedAdminFragment{
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlMatches(HOME_PAGE_URL_ENG));
 	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return HOME_PAGE_URL_ENG;
+	}
 }

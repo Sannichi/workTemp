@@ -3,7 +3,6 @@ package nymgoAutomation.tests.pages.admin;
 import nymgoAutomation.tests.fragments.admin.MembersAdminPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
-import nymgoAutomation.tests.pages.admin.base.AdminPageWithSearch;
 import nymgoAutomation.tests.pages.admin.widgets.MemberListWidget;
 import nymgoAutomation.tests.starter.Starter;
 
@@ -29,6 +28,12 @@ public class MembersAdminPage extends AbstractLoggedAdminPageWithSearch{
 	public String getPageName() {
 		// TODO Auto-generated method stub
 		return MEMBERS_PAGE_NAME_ENG;
+	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return membersAdminPageFragment.getCorrectURL();
 	}
 	
 	public MemberListWidget clickEditUserByUsername(String username){

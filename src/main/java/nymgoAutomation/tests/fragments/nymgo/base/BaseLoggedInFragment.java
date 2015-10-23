@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.starter.Starter;
 
-public class BaseLoggedInFragment extends BaseNymgoFragment{
+public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 	
 	public BaseLoggedInFragment(WebDriver driver) {
 		super(driver);
@@ -49,7 +49,6 @@ public class BaseLoggedInFragment extends BaseNymgoFragment{
 		actions.moveToElement(accountButton).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Starter.INITIALIZED_ELEMENT_WAIT_TIME);
 		WebElement webElement = wait.until(ExpectedConditions.visibilityOf(myAccountDropdown)); 
-//		webElement.click();
 		clickButton(webElement);
 	}
 }

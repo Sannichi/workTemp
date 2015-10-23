@@ -8,15 +8,15 @@ import nymgoAutomation.data.utils.ExcelUtils;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
 import nymgoAutomation.tests.pages.nymgo.base.LoggedNymgoPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCreditConfirmPageDeclinedAdyen;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyen;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.DeclinedTransactionAdyenPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollect;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageNextPendingGlobalCollect;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditProceedPageGlobalCollect;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageNextPendingWorldpay;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpay;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpayNext;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditProceedPageWorldpay;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpayPage;
 import nymgoAutomation.tests.utils.CurrencyUtils;
 
 import org.testng.Assert;
@@ -109,19 +109,19 @@ public class BuyCreditCase extends AbstractCase{
 
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
 
-		BuyCreditConfirmPageNextPendingGlobalCollect buyCreditConfirmPageNextPendingGlobalCollect = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinue(fullCardEntity.getCardNumber(), 
+		PendingTransactionGlobalCollectPage pendingTransactionGlobalCollectPage = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinue(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
-		String transactionID = buyCreditConfirmPageNextPendingGlobalCollect.getTransactionNumber();
-		String paymentStatus = buyCreditConfirmPageNextPendingGlobalCollect.getPaymentStatus();
-		Assert.assertTrue(buyCreditConfirmPageNextPendingGlobalCollect.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + buyCreditConfirmPageNextPendingGlobalCollect.getPaymentStatus());
+		String transactionID = pendingTransactionGlobalCollectPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionGlobalCollectPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionGlobalCollectPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionGlobalCollectPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 //		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
 		LOGGER.info("transactionID " + transactionID + " was added to Excel");
 		@SuppressWarnings("unused")
-		NormalAccountPage normalAccountPage = buyCreditConfirmPageNextPendingGlobalCollect.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionGlobalCollectPage.clickBackToNormalUserDashboardButton();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -132,18 +132,18 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCreditConfirmPageWorldpayNext buyCreditConfirmPageWorldpayNext = buyCreditConfirmPageWorldpay.setCreditCardDataAndClickContinue(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv(), fullCardEntity.getCardholdersName());
 
-		BuyCreditConfirmPageNextPendingWorldpay buyCreditConfirmPageNextPendingWorldpay = buyCreditConfirmPageWorldpayNext.continuePayment();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
 
-		String transactionID = buyCreditConfirmPageNextPendingWorldpay.getTransactionNumber();
-		String paymentStatus = buyCreditConfirmPageNextPendingWorldpay.getPaymentStatus();
-		Assert.assertTrue(buyCreditConfirmPageNextPendingWorldpay.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + buyCreditConfirmPageNextPendingWorldpay.getPaymentStatus());
+		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 //		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
 		LOGGER.info("transactionID " + transactionID + " was added to Excel");
 		@SuppressWarnings("unused")
-		NormalAccountPage normalAccountPage = buyCreditConfirmPageNextPendingWorldpay.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -151,17 +151,17 @@ public class BuyCreditCase extends AbstractCase{
 
 		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = new BuyCreditProceedPageAdyen(starter);
 		
-		BuyCreditConfirmPageDeclinedAdyen buyCreditConfirmPageDeclinedAdyen = buyCreditProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCreditProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
-		String transactionID = buyCreditConfirmPageDeclinedAdyen.getTransactionNumber();
-		String paymentStatus = buyCreditConfirmPageDeclinedAdyen.getPaymentStatus();
-		Assert.assertFalse(buyCreditConfirmPageDeclinedAdyen.isTransactionDeclined(), 
-				"Transaction is not declined, current status is: " + buyCreditConfirmPageDeclinedAdyen.getPaymentStatus());
+		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
+		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
+		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
+				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData(transactionID, paymentStatus);		
 		LOGGER.info("transactionID " + transactionID + " was added to Excel");
 		@SuppressWarnings("unused")
-		BuyCreditPage buyCreditPage = buyCreditConfirmPageDeclinedAdyen.clickTryAgainBuyCreditButton();
+		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
 	}
 }

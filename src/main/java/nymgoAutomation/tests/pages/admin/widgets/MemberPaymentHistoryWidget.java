@@ -34,6 +34,12 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 		return getPageName().equals(WIDGET_MEMBERS_PAYMENT_HISTORY_NAME_ENG);
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return WIDGET_MEMBERS_PAYMENT_HISTORY_NAME_ENG;
+	}
+
 	public MemberPaymentHistoryWidget navigateToPaymentActionTab(){
 		
 		memberPaymentHistoryWidgetFragment.navigateToPaymentActionTab();

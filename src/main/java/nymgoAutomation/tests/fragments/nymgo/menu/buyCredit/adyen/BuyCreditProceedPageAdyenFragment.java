@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
-import nymgoAutomation.tests.fragments.HasURL;
 import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
@@ -19,8 +18,8 @@ import nymgoAutomation.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment implements HasURL{
-
+public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment{
+	
 	public BuyCreditProceedPageAdyenFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -60,6 +59,11 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment impl
 		catch(TimeoutException e){
 			return false;
 		}
+	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return BUY_CREDIT_PAGE_PROOCEED_ADYEN_URL;
 	}
 
 	public void setCardNumber(String cardNumberValue){

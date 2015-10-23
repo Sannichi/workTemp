@@ -15,11 +15,12 @@ import nymgoAutomation.tests.enums.LOCALES;
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.URL_CONST;
 import nymgoAutomation.tests.fragments.BaseFragment;
+import nymgoAutomation.tests.fragments.HasURL;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.generators.ServerGenerator;
 import nymgoAutomation.tests.starter.Starter;
 
-public class BaseNymgoFragment extends BaseFragment{
+public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	
 	public BaseNymgoFragment(WebDriver driver) {
 		super(driver);
@@ -36,8 +37,10 @@ public class BaseNymgoFragment extends BaseFragment{
 	private static final String nymgoSupportXpath = "//a[@href='" + homeURL + "/support/']";	
 	private static final String nymgoResellersXpath = "//a[@href='" + secureHomeURL + "/reseller/home']";	
 	private static final String nymgoBuyCreditXpath = "//a[@href='" + secureHomeURL + "/buy-credits']";	
-	protected static final String nymgoNormalUserSignInXpath = "//a[@href='" + secureHomeURL + "/login']";	
+	protected static final String nymgoNormalUserSignInXpath = "//a[@href='" + secureHomeURL + "/login']";
+//	protected static final String nymgoNormalUserSignInXpath = "//a[@href='" + homeURL + "/login']";
 	protected static final String nymgoMyAccountXpath = ".//a[@href='" + secureHomeURL + "/user/dashboard']";	
+//	protected static final String nymgoMyAccountXpath = ".//a[@href='" + homeURL + "/user/dashboard']";	
 	protected static final String nymgoLogOutXpath = ".//a[@href='" + secureHomeURL + "/logout']";	
 
 	private WebElement nymgoHomepageLink;
@@ -112,7 +115,7 @@ public class BaseNymgoFragment extends BaseFragment{
 		try{
 			normalUserSignInButton = driver.findElement(By.xpath(nymgoNormalUserSignInXpath));
 		} catch (NoSuchElementException e){
-			
+			LOGGER.fatal("Normal user Sign In button was not found");
 		}
 	}
 	

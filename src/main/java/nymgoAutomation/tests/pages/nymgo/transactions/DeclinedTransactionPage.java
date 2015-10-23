@@ -1,14 +1,13 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
+package nymgoAutomation.tests.pages.nymgo.transactions;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelledFragment;
-import nymgoAutomation.tests.pages.nymgo.transactions.AbstractTransactionPage;
 import nymgoAutomation.tests.starter.Starter;
 
-public class BuyCreditConfirmPageCancelled extends AbstractTransactionPage{
+public abstract class DeclinedTransactionPage extends AbstractTransactionPage{
 
 	private BuyCreditConfirmPageCancelledFragment buyCreditConfirmPageCancelledFragment;
-	
-	public BuyCreditConfirmPageCancelled(Starter starter) {
+
+	public DeclinedTransactionPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
 		buyCreditConfirmPageCancelledFragment = new BuyCreditConfirmPageCancelledFragment(driver);
@@ -26,11 +25,5 @@ public class BuyCreditConfirmPageCancelled extends AbstractTransactionPage{
 	public boolean isCorrectPage(){
 		
 		return buyCreditConfirmPageCancelledFragment.isCorrectURL();
-	}
-
-	@Override
-	public String getPageURL() {
-		// TODO Auto-generated method stub
-		return buyCreditConfirmPageCancelledFragment.getCorrectURL();
 	}
 }

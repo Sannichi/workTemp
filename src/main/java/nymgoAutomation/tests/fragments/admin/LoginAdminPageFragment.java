@@ -34,7 +34,12 @@ public class LoginAdminPageFragment extends BaseAdminFragment{
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlMatches(LOGIN_PAGE_URL_ENG));
 	}
-	
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return LOGIN_PAGE_URL_ENG;
+	}
+    
     public void typeUsername(String login){
     	
 //    	this.username.sendKeys(login);
@@ -52,5 +57,4 @@ public class LoginAdminPageFragment extends BaseAdminFragment{
 //    	loginButton.click();
     	clickSubmitButton(loginButton);
     }
-    
 }

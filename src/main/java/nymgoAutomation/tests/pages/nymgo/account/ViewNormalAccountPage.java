@@ -29,4 +29,10 @@ public class ViewNormalAccountPage extends AbstractViewAccountPage{
 		// TODO Auto-generated method stub
 		return viewNormalAccountPageFragment.isCorrectURL();
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return viewNormalAccountPageFragment.getCorrectURL();
+	}
 }

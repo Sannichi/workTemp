@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.nymgo.base;
 
-import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
-import nymgoAutomation.tests.fragments.nymgo.base.BaseNymgoFragment;
+import nymgoAutomation.tests.fragments.nymgo.base.LoggedNymgoPageFragment;
+import nymgoAutomation.tests.fragments.nymgo.base.NymgoPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.AbstractPage;
 import nymgoAutomation.tests.pages.nymgo.HomePage;
@@ -15,22 +15,23 @@ import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractNymgoPage extends AbstractPage{
 
-	private BaseNymgoFragment baseNymgoFragment;
-	private BaseLoggedInFragment baseLoggedInFragment;
+	private NymgoPageFragment nymgoPageFragment;
+	private LoggedNymgoPageFragment loggedNymgoPageFragment;
+	
 	
 	
 	public AbstractNymgoPage(Starter starter) {
 
 		super(starter);
-		baseNymgoFragment = new BaseNymgoFragment(driver); 
-		baseLoggedInFragment = new BaseLoggedInFragment(driver);
+		nymgoPageFragment = new NymgoPageFragment(driver); 
+		loggedNymgoPageFragment = new LoggedNymgoPageFragment(driver); 
     }
 
 			 
     public HomePage clickHomepageLink()
 	{
 
-    	baseNymgoFragment.clickHomepageLink();
+    	nymgoPageFragment.clickHomepageLink();
 		HomePage homePage = new HomePage(starter);
 		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage); 
 		navigation.NavigatedTo();
@@ -40,7 +41,7 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	public AppsPage clickAppsLink()
 	{
 		
-    	baseNymgoFragment.clickAppsLink();
+		nymgoPageFragment.clickAppsLink();
 		AppsPage appsPage = new AppsPage(starter);
 		PageNavigation<AppsPage> navigation = new PageNavigation<AppsPage>(appsPage); 
 		navigation.NavigatedTo();
@@ -50,7 +51,7 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	public PricesPage clickPricesLink()
 	{
 		
-    	baseNymgoFragment.clickPricesLink();
+		nymgoPageFragment.clickPricesLink();
 		PricesPage pricesPage = new PricesPage(starter);
 		PageNavigation<PricesPage> navigation = new PageNavigation<PricesPage>(pricesPage); 
 		navigation.NavigatedTo();
@@ -60,7 +61,7 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	public SupportPage clickSupportLink()
 	{
 		
-    	baseNymgoFragment.clickSupportLink();
+		nymgoPageFragment.clickSupportLink();
 		SupportPage supportPage = new SupportPage(starter);
 		PageNavigation<SupportPage> navigation = new PageNavigation<SupportPage>(supportPage); 
 		navigation.NavigatedTo();
@@ -70,7 +71,7 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	public ResellersPage clickResellersLink()
 	{
 		
-    	baseNymgoFragment.clickResellersLink();
+		nymgoPageFragment.clickResellersLink();
 		ResellersPage resellersPage = new ResellersPage(starter);
 		PageNavigation<ResellersPage> navigation = new PageNavigation<ResellersPage>(resellersPage); 
 		navigation.NavigatedTo();
@@ -81,13 +82,13 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	public void clickMenuBuyCreditButton()
 	{
 
-    	baseNymgoFragment.clickMenuBuyCreditButton();
+		nymgoPageFragment.clickMenuBuyCreditButton();
 	}
 
 	public NormalUserSignInPage clickMenuNormalUserSignInButton()
     {
 
-		baseNymgoFragment.clickMenuNormalUserSignInButton();
+		nymgoPageFragment.clickMenuNormalUserSignInButton();
     	NormalUserSignInPage normalUserSignInPage = new NormalUserSignInPage(starter);
 		PageNavigation<NormalUserSignInPage> navigation = new PageNavigation<NormalUserSignInPage>(normalUserSignInPage); 
 		navigation.NavigatedTo();
@@ -96,24 +97,24 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	
 	public boolean isUserLogged()
 	{
-		return baseNymgoFragment.isUserLogged();
+		return nymgoPageFragment.isUserLogged();
 	}
 
 	public boolean isUserLogged(String username)
 	{
-		return baseNymgoFragment.isUserLogged(username);
+		return nymgoPageFragment.isUserLogged(username);
 	}
 	
 	public HomePage setDefaultState()
 	{
 
-		if (!getCurrentURL().equals(baseNymgoFragment.getHomeURL())){
+		if (!getCurrentURL().equals(nymgoPageFragment.getHomeURL())){
 //			LOGGER.info("Current URL = '" + getCurrentURL() + "'");
 			navigateToHomePage();
 		}
 		if (isUserLogged())
 		{
-			baseLoggedInFragment.clickLogOut();
+			loggedNymgoPageFragment.clickLogOut();
 			SecureHomePage secureHomePage = new SecureHomePage(starter);
 			PageNavigation<SecureHomePage> navigation = new PageNavigation<SecureHomePage>(secureHomePage);
 			navigation.NavigatedTo();
@@ -126,7 +127,7 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 			navigateToHomePage();
 		}
 */		
-		baseNymgoFragment.setLanguage(starter.LOCALE);
+		nymgoPageFragment.setLanguage(starter.LOCALE);
 		HomePage homePage = new HomePage(starter);
 		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage); 
 		navigation.NavigatedTo();

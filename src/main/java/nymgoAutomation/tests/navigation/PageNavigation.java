@@ -33,7 +33,8 @@ public class PageNavigation<T extends AbstractPage>
 		catch (TimeoutException e){
 			LOGGER.fatal("Could not navigate to page: " + getPageName());
 		}
-		Assert.assertTrue(result, "Could not navigate to page: " + getPageName() + ", current URL is '" + page.getCurrentURL() + "'");
+		Assert.assertTrue(result, "Could not navigate to page: " + getPageName() + ", current URL is '" + page.getCurrentURL() + "', should be '" + 
+				page.getPageURL() + "'");
 		LOGGER.info("Successfully navigated to page: " + getPageName());		
 	}
 	

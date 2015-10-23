@@ -32,19 +32,23 @@ public class BuyCreditConfirmPageWorldpayNext  extends AbstractBuyCreditConfirmP
 		return buyCreditConfirmPageWorldpayNextFragment.isCorrectURL();
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return buyCreditConfirmPageWorldpayNextFragment.getCorrectURL();
+	}
+
 	private void clickContinueButton(){
 		
 		buyCreditConfirmPageWorldpayNextFragment.clickContinueButton();
 	}
 
-	public BuyCreditConfirmPageNextPendingWorldpay continuePayment(){
+	public PendingTransactionWorldpayPage continuePayment(){
 		
 		clickContinueButton();
-		BuyCreditConfirmPageNextPendingWorldpay buyCreditConfirmPageNextPendingWorldpay = new BuyCreditConfirmPageNextPendingWorldpay(starter);
-		PageNavigation<BuyCreditConfirmPageNextPendingWorldpay> navigation = new PageNavigation<BuyCreditConfirmPageNextPendingWorldpay>(buyCreditConfirmPageNextPendingWorldpay);
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPageNextPendingWorldpay;
+		return pendingTransactionWorldpayPage;
 	}
-
-	
 }

@@ -30,6 +30,12 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 		return buyCreditConfirmPageGlobalCollectFragment.isCorrectURL();
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return buyCreditConfirmPageGlobalCollectFragment.getCorrectURL();
+	}
+
 	private void setCardNumber(String cardNumberValue){
 		
 		buyCreditConfirmPageGlobalCollectFragment.setCardNumberValue(cardNumberValue);
@@ -64,17 +70,17 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 	}
 	
 	//TODO instead of void
-	public BuyCreditConfirmPageNextPendingGlobalCollect setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
+	public PendingTransactionGlobalCollectPage setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		selectExpireDateMonth(expireDateMonth);
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
 		clickContinueButton();
-		BuyCreditConfirmPageNextPendingGlobalCollect buyCreditConfirmPageNextPendingGlobalCollect = new BuyCreditConfirmPageNextPendingGlobalCollect(starter);
-		PageNavigation<BuyCreditConfirmPageNextPendingGlobalCollect> navigation = new PageNavigation<BuyCreditConfirmPageNextPendingGlobalCollect>(buyCreditConfirmPageNextPendingGlobalCollect);
+		PendingTransactionGlobalCollectPage pendingTransactionGlobalCollectPage = new PendingTransactionGlobalCollectPage(starter);
+		PageNavigation<PendingTransactionGlobalCollectPage> navigation = new PageNavigation<PendingTransactionGlobalCollectPage>(pendingTransactionGlobalCollectPage);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPageNextPendingGlobalCollect;
+		return pendingTransactionGlobalCollectPage;
 	}
 
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){

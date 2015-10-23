@@ -29,6 +29,7 @@ public abstract class AbstractPage {
 
 	public abstract String getPageName();
 	public abstract boolean isCorrectPage();
+	public abstract String getPageURL();
 	
 	public String getCurrentURL(){
 

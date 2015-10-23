@@ -20,5 +20,4 @@ public class MasterAccountPage extends AbstractAccountPage{
 		// TODO Auto-generated method stub
     	return MASTER_ACCOUNT_PAGE_NAME_EN;
 	}
-    
 }

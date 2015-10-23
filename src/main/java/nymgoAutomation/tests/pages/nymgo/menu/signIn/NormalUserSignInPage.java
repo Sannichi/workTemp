@@ -30,6 +30,12 @@ public class NormalUserSignInPage extends AbstractNymgoPage{
 		return NORMAL_ACCOUNT_PAGE_NAME_EN;
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return normalUserSignInPageFragment.getCorrectURL();
+	}
+
 	private NormalUserSignInPage typeUsername(String login){
 
     	normalUserSignInPageFragment.typeUsername(login);

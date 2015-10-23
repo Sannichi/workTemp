@@ -1,4 +1,4 @@
-package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base;
+package nymgoAutomation.tests.fragments.nymgo.transactions;
 
 import java.util.List;
 
@@ -7,15 +7,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
-import nymgoAutomation.tests.fragments.BaseFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015
  */
-public class BaseTransactionFragment extends BaseFragment{
-
-	public BaseTransactionFragment(WebDriver driver) {
+public class BaseIframeTransactionFragment extends BaseIframePageFragment{
+	
+	public BaseIframeTransactionFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
@@ -25,12 +25,7 @@ public class BaseTransactionFragment extends BaseFragment{
 
 	@FindBy(css = "div.float30")
 	private List<WebElement> amountNumberDate;
-	
-	public boolean isCorrectURL() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+
 	public String getPaymentStatus(){
 		
 		return paddsList.get(0).getText();		

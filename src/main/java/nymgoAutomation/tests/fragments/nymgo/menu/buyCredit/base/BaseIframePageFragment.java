@@ -4,12 +4,13 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
-import nymgoAutomation.tests.fragments.HasURL;
+import nymgoAutomation.tests.fragments.BaseFragment;
 import nymgoAutomation.tests.starter.Starter;
 
-public abstract class BaseBuyCreditConfirmPageFragment extends BaseTransactionFragment implements HasURL{
+//public abstract class BaseIframePageFragment extends BaseTransactionFragment{
+public abstract class BaseIframePageFragment extends BaseFragment{
 
-	public BaseBuyCreditConfirmPageFragment(WebDriver driver) {
+	public BaseIframePageFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
     	driver.manage().timeouts().implicitlyWait(Starter.IFRAME_WAIT_TIME, TimeUnit.SECONDS);

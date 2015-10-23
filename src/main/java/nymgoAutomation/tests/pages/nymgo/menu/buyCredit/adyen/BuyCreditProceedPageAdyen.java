@@ -6,9 +6,9 @@ import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyenFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.navigation.PageNavigation;
+import nymgoAutomation.tests.starter.Starter;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelled;
-import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
@@ -35,6 +35,12 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 	public boolean isCorrectPage() {
 		// TODO Auto-generated method stub
 		return buyCreditProceedPageAdyenFragment.isCorrectURL();
+	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return buyCreditProceedPageAdyenFragment.getCorrectURL();
 	}
 
 	private void setCardNumber(String cardNumberValue){
@@ -113,7 +119,7 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 		return this;
 	}
 
-	public BuyCreditConfirmPageDeclinedAdyen setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public DeclinedTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		setCardholdersName(cardholdersName);
@@ -121,10 +127,10 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
 		clickPayButton();
-		BuyCreditConfirmPageDeclinedAdyen buyCreditConfirmPageDeclinedAdyen = new BuyCreditConfirmPageDeclinedAdyen(starter);
-		PageNavigation<BuyCreditConfirmPageDeclinedAdyen> navigation = new PageNavigation<BuyCreditConfirmPageDeclinedAdyen>(buyCreditConfirmPageDeclinedAdyen);
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = new DeclinedTransactionAdyenPage(starter);
+		PageNavigation<DeclinedTransactionAdyenPage> navigation = new PageNavigation<DeclinedTransactionAdyenPage>(declinedTransactionAdyenPage);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPageDeclinedAdyen;
+		return declinedTransactionAdyenPage;
 	}
 
 	public BuyCreditProceedPageAdyen verifyDefaultData(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
@@ -169,7 +175,7 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 		return this;
 	}
 
-	public BuyCreditConfirmPageDeclinedAdyen verifyDataAndClickContinue(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public DeclinedTransactionAdyenPage verifyDataAndClickContinue(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
 				"', should be '" + cardNumberValue + "'");
@@ -184,10 +190,10 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 				"', should be '" + expireDateYear + "'");
 		LOGGER.info("Expire Date Year is correct");
 		clickPayButton();
-		BuyCreditConfirmPageDeclinedAdyen buyCreditConfirmPageDeclinedAdyen = new BuyCreditConfirmPageDeclinedAdyen(starter);
-		PageNavigation<BuyCreditConfirmPageDeclinedAdyen> navigation = new PageNavigation<BuyCreditConfirmPageDeclinedAdyen>(buyCreditConfirmPageDeclinedAdyen);
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = new DeclinedTransactionAdyenPage(starter);
+		PageNavigation<DeclinedTransactionAdyenPage> navigation = new PageNavigation<DeclinedTransactionAdyenPage>(declinedTransactionAdyenPage);
 		navigation.NavigatedTo();
-		return buyCreditConfirmPageDeclinedAdyen;
+		return declinedTransactionAdyenPage;
 	}
 
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){

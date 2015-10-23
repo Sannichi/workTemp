@@ -1,22 +1,22 @@
 package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen.BuyCreditConfirmPageDeclinedAdyenFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen.DeclinedTransactionAdyenFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
-import nymgoAutomation.tests.pages.nymgo.base.AbstractTransactionPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
+import nymgoAutomation.tests.pages.nymgo.transactions.DeclinedTransactionPage;
 import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-public class BuyCreditConfirmPageDeclinedAdyen extends AbstractTransactionPage{
+public class DeclinedTransactionAdyenPage extends DeclinedTransactionPage{
 
-	private BuyCreditConfirmPageDeclinedAdyenFragment buyCreditConfirmPageDeclinedAdyenFragment;
+	private DeclinedTransactionAdyenFragment declinedTransactionAdyenFragment;
 	
-	public BuyCreditConfirmPageDeclinedAdyen(Starter starter) {
+	public DeclinedTransactionAdyenPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		buyCreditConfirmPageDeclinedAdyenFragment = new BuyCreditConfirmPageDeclinedAdyenFragment(driver);
+		declinedTransactionAdyenFragment = new DeclinedTransactionAdyenFragment(driver);
 	}
 
 	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_NAME_ENG = "BuyCreditConfirmPageCancelledAdyen"; 
@@ -30,12 +30,18 @@ public class BuyCreditConfirmPageDeclinedAdyen extends AbstractTransactionPage{
 	@Override
 	public boolean isCorrectPage() {
 		// TODO Auto-generated method stub
-		return buyCreditConfirmPageDeclinedAdyenFragment.isCorrectURL();
+		return declinedTransactionAdyenFragment.isCorrectURL();
+	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return declinedTransactionAdyenFragment.getCorrectURL();
 	}
 
 	private void clickTryAgainButton(){
 		
-		buyCreditConfirmPageDeclinedAdyenFragment.clickTryAgainButton();
+		declinedTransactionAdyenFragment.clickTryAgainButton();
 	}
 
 	public BuyCreditPage clickTryAgainBuyCreditButton(){

@@ -32,4 +32,9 @@ public class AdminPageFragment extends BaseLoggedAdminFragment implements HasURL
 			return false;
 		}
 	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return "*admin.nymgo.page*";
+	}
 }

@@ -30,6 +30,7 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
 	private WebElement signInButton;
 	
 	private static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+//	private static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
 	
 	public boolean isCorrectURL() {
@@ -38,21 +39,24 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
     	return wait.until(ExpectedConditions.urlToBe(NORMAL_ACCOUNT_PAGE_URL));
 	}
 
-    public void typeUsername(String login){
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return NORMAL_ACCOUNT_PAGE_URL;
+	}
+
+	public void typeUsername(String login){
     	
-//    	this.username.sendKeys(login);
     	setTextToEditField(this.username, login);
     }
     
     public void typePassword(String password){
     	
-//    	this.password.sendKeys(password);
     	setTextToEditField(this.password, password);
     }
 
     public void clickSignIn(){
 
-//    	signInButton.click();
     	clickSubmitButton(signInButton);
     }
+
 }

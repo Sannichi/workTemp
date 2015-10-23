@@ -1,4 +1,4 @@
-package nymgoAutomation.tests.fragments.nymgo.account;
+package nymgoAutomation.tests.fragments.nymgo.account.baseProfile;
 
 import java.util.List;
 

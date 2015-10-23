@@ -36,4 +36,9 @@ public class MembersAdminPageFragment extends BaseLoggedAdminPageWithSearchFragm
 			clickWidget(editWidget);
 		}
 	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return MEMBERS_PAGE_URL_ENG;
+	}
 }

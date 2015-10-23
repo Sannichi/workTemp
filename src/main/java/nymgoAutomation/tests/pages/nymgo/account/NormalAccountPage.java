@@ -21,7 +21,7 @@ public class NormalAccountPage extends AbstractAccountPage{
 		// TODO Auto-generated method stub
     	return NORMAL_ACCOUNT_PAGE_NAME_EN;
 	}
-    
+
 	public ViewNormalAccountPage clickViewFullNormalAccountButton(){
 		
 		normalAccountPageFragment.clickViewFullAccountButton();

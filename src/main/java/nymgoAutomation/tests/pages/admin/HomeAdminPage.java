@@ -27,5 +27,11 @@ public class HomeAdminPage extends AbstractLoggedAdminPage{
 		// TODO Auto-generated method stub
 		return HOME_PAGE_NAME_ENG;
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return homeAdminPageFragment.getCorrectURL();
+	}
     
 }

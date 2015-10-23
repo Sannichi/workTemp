@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nymgoAutomation.tests.starter.Starter;
 
-public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragment{
+public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragment{
 
     public BaseLoggedAdminPageWithSearchFragment(WebDriver driver) {
 		super(driver);
@@ -107,11 +107,11 @@ public class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragme
 	public boolean isSearchResultEmpty(){
 		
 		List<WebElement> displayElements = getResultsList();
-		if (displayElements.size() == 1){
+		if (displayElements.size() <= 2){
+//			LOGGER.info("elements count = " + displayElements.size());
 			List<WebElement> spans = displayElements.get(0).findElements(By.cssSelector("span"));
-			if (spans.size() == 0){
-//				System.out.println("Search result is empty!");
-				LOGGER.info("Search result is empty!");				
+			if (spans.size() < 1){
+//				LOGGER.info("Search result is empty! Span count = " + spans.size());				
 				return true;
 			}
 		}

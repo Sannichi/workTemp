@@ -28,4 +28,10 @@ public class MemberEditAlert extends AbstractAlert{
 		return getAlertText().equals(MEMBER_EDIT_ALERT_TEXT_ENG);
 	}
 
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return MEMBER_EDIT_ALERT_TEXT_ENG;
+	}
+
 }

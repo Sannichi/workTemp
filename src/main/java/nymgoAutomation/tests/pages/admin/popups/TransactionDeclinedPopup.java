@@ -27,9 +27,15 @@ public class TransactionDeclinedPopup extends AbstractPopup{
 		return getPopupText().equals(TRANSACTION_DECLINED_POPUP_TEXT_ENG);
 	}
 	
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return TRANSACTION_DECLINED_POPUP_TEXT_ENG;
+	}
+	
     public void closeTransactionDeclinedPopup(){
 
     	closePopup(getPageName());
     }
-	
+
 }

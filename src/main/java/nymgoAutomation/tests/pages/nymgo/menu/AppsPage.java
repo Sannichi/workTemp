@@ -26,5 +26,11 @@ public class AppsPage extends AbstractNymgoPage{
 		// TODO Auto-generated method stub
 		return APPS_PAGE_NAME_EN;
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return appsPageFragment.getCorrectURL();
+	}
     
 }

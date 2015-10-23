@@ -41,6 +41,12 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		// TODO Auto-generated method stub
 		return TRANSACTIONS_PAGE_NAME_ENG;
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return transactionsAdminPageFragment.getCorrectURL();
+	}
 	
 	public MemberPaymentHistoryWidget openViewTransactionsWidgedByID(String stringID){
 

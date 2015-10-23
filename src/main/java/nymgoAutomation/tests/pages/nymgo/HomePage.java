@@ -27,4 +27,10 @@ public class HomePage extends AbstractNymgoPage{
 		// TODO Auto-generated method stub
 		return homePageFragment.isCorrectURL();
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return homePageFragment.getCorrectURL();
+	}
 }

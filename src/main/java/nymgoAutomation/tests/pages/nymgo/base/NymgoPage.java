@@ -12,11 +12,11 @@ import nymgoAutomation.tests.starter.Starter;
 public class NymgoPage extends AbstractNymgoPage{
 
 	private NymgoPageFragment nymgoPageFragment;
+
 	private static final String NYMGO_PAGE_NAME_ENG = "NymgoPage"; 
 			
     public NymgoPage(Starter starter) {
         super(starter);
-        
         nymgoPageFragment = new NymgoPageFragment(driver);
     }
 	
@@ -30,5 +30,11 @@ public class NymgoPage extends AbstractNymgoPage{
 	public String getPageName() {
 		// TODO Auto-generated method stub
 		return NYMGO_PAGE_NAME_ENG;
+	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return nymgoPageFragment.getCorrectURL();
 	}
 }

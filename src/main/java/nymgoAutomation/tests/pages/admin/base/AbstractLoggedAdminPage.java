@@ -1,6 +1,6 @@
 package nymgoAutomation.tests.pages.admin.base;
 
-import nymgoAutomation.tests.fragments.admin.base.BaseLoggedAdminFragment;
+import nymgoAutomation.tests.fragments.admin.base.AdminPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
 import nymgoAutomation.tests.pages.admin.MembersAdminPage;
@@ -9,17 +9,18 @@ import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 
-	private BaseLoggedAdminFragment baseLoggedAdminFragment;
+//	private BaseLoggedAdminFragment baseLoggedAdminFragment;
+	private AdminPageFragment adminPageFragment;
 	
 	public AbstractLoggedAdminPage(Starter starter) {
         super(starter);
-        baseLoggedAdminFragment = new BaseLoggedAdminFragment(driver);
+        adminPageFragment = new AdminPageFragment(driver);
     }
 
     private MembersAdminPage clickMembersLink()
 	{
 		
-		baseLoggedAdminFragment.clickMembersLink();
+    	adminPageFragment.clickMembersLink();
 		MembersAdminPage membersAdminPage = new MembersAdminPage(starter);
 		PageNavigation<MembersAdminPage> navigation = new PageNavigation<MembersAdminPage>(membersAdminPage); 
 		navigation.NavigatedTo();
@@ -39,7 +40,7 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
     private TransactionsAdminPage clickTransactionsLink()
 	{
 		
-    	baseLoggedAdminFragment.clickTransactionsLink();
+    	adminPageFragment.clickTransactionsLink();
     	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
 		PageNavigation<TransactionsAdminPage> navigation = new PageNavigation<TransactionsAdminPage>(transactionsAdminPage); 
 		navigation.NavigatedTo();
@@ -59,12 +60,12 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 
     public boolean isAdminLogged()
 	{
-		return baseLoggedAdminFragment.isAdminLogged();
+		return adminPageFragment.isAdminLogged();
 	}
 
 	public LoginAdminPage logout()
 	{
-		baseLoggedAdminFragment.clickLogout();
+		adminPageFragment.clickLogout();
 		return null;
 		
 	}

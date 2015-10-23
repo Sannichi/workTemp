@@ -56,4 +56,10 @@ public class LoginAdminPage extends AbstractAdminPage{
 		// TODO Auto-generated method stub
 		return loginAdminPageFragment.isCorrectURL();
 	}
+
+	@Override
+	public String getPageURL() {
+		// TODO Auto-generated method stub
+		return loginAdminPageFragment.getCorrectURL();
+	}
 }

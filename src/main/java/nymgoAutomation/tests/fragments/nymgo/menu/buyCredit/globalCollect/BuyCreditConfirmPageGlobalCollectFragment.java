@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
 import nymgoAutomation.tests.starter.Starter;
 
-public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConfirmPageFragment{
+public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFragment{
 
 	public BuyCreditConfirmPageGlobalCollectFragment(WebDriver driver) {
 		super(driver);
@@ -43,6 +43,11 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseBuyCreditConf
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
+	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
 	}
 
 	public void setCardNumberValue(String cardNumberValue){

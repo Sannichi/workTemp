@@ -1,20 +1,20 @@
-package nymgoAutomation.tests.pages.nymgo.base;
+package nymgoAutomation.tests.pages.nymgo.transactions;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseTransactionFragment;
+import nymgoAutomation.tests.fragments.nymgo.transactions.BaseIframeTransactionFragment;
 import nymgoAutomation.tests.pages.AbstractPage;
 import nymgoAutomation.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015
  */
-public abstract class AbstractTransactionPage extends AbstractPage{
+public abstract class AbstractIframeTransactionPage extends AbstractPage{
 	
-	BaseTransactionFragment baseTransactionFragment;
+	BaseIframeTransactionFragment baseTransactionFragment;
 
-	public AbstractTransactionPage(Starter starter) {
+	public AbstractIframeTransactionPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		baseTransactionFragment = new BaseTransactionFragment(driver);
+		baseTransactionFragment = new BaseIframeTransactionFragment(driver);
 	}
 
 	public String getPaymentStatus(){

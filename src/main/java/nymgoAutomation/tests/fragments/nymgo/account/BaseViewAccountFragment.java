@@ -2,25 +2,42 @@ package nymgoAutomation.tests.fragments.nymgo.account;
 
 import java.util.List;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.fragments.HasURL;
+import nymgoAutomation.tests.fragments.nymgo.account.baseProfile.BaseProfileInfoFragment;
 import nymgoAutomation.tests.starter.Starter;
-
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015
  */
-public class BaseViewAccountFragment extends BaseProfileInfoFragment implements HasURL{
+public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 
 	public BaseViewAccountFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public boolean isCorrectURL() {
+		// TODO Auto-generated method stub
+    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
+    	try{
+    		wait.until(ExpectedConditions.urlContains("/account/view/profile"));
+    		return true;
+    	}
+    	catch(TimeoutException e){
+    		return false;
+    	}
+	}
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return "/account/view/profile*";
+	}
+
 	@FindBy(css = "div[class='clickable active']")
 	private WebElement activeClickableContent;
 	
@@ -193,10 +210,4 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment implements 
 		super.clickSaveButton();
 	}
 	
-	public boolean isCorrectURL() {
-		// TODO Auto-generated method stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlContains("/account/view/profile"));
-	}
-
 }

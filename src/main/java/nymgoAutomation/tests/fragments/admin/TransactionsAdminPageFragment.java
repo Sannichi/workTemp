@@ -37,6 +37,11 @@ public class TransactionsAdminPageFragment extends BaseLoggedAdminPageWithSearch
     	}
 	}
 
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return TRANSACTIONS_PAGE_URL_ENG;
+	}
+
 	public void clickViewTransactionsByID(String stringID){
 
 		int rowIndex = isValueDisplays(TRANSACTIONS_TABLE_COLUMNS.ID.toString(), stringID); 

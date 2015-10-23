@@ -257,5 +257,5 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		verifyAddressBlock(countryOfResidence, postalCode, street, address);
 		verifyDefaultPaymentBlock(countryOfResidence);
 		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
-	} 
+	}
 }

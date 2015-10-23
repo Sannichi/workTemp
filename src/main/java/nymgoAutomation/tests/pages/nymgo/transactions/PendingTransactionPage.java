@@ -1,24 +1,27 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base;
+package nymgoAutomation.tests.pages.nymgo.transactions;
 
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditConfirmPageNextFragment;
+import nymgoAutomation.tests.fragments.nymgo.transactions.PendingTransactionFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
 import nymgoAutomation.tests.starter.Starter;
 
-public abstract class AbstractBuyCreditConfirmPageNext extends AbstractBuyCreditConfirmPage{
+/**
+ * Created by Iuliia Khikmatova on Oct 23, 2015
+ */
+public abstract class PendingTransactionPage extends AbstractIframeTransactionPage{
 
-	private BaseBuyCreditConfirmPageNextFragment baseBuyCreditConfirmPageNextFragment;
+	private PendingTransactionFragment pendingTransactionFragment;
 	
-	public AbstractBuyCreditConfirmPageNext(Starter starter) {
+	public PendingTransactionPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		baseBuyCreditConfirmPageNextFragment = new BaseBuyCreditConfirmPageNextFragment(driver); 
+		pendingTransactionFragment = new PendingTransactionFragment(driver);
 	}
 
 	//can return Normal user, Reseller and Master pages
 	protected void clickBackToDashboardButton(){
 		
-		baseBuyCreditConfirmPageNextFragment.clickBackToDashboardButton();
+		pendingTransactionFragment.clickBackToDashboardButton();
 	}
 
 	public NormalAccountPage clickBackToNormalUserDashboardButton(){

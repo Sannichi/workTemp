@@ -26,12 +26,18 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 	private static final String ResellerSingInButtonXpath = "//a[@href='" + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/']";
 
 	private WebElement resellerSignInButton;
-/*	
-	private void initializeElements() throws NoSuchElementException{
 
-		initializeResellerSignInButton();
+	public boolean isCorrectURL() {
+		// TODO Auto-generated method stub
+    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
+    	return wait.until(ExpectedConditions.urlToBe(RESELLERS_PAGE_URL));
 	}
-*/	
+
+	public String getCorrectURL() {
+		// TODO Auto-generated method stub
+		return RESELLERS_PAGE_URL;
+	}
+
 	private void initializeResellerSignInButton() throws NoSuchElementException{
 
 		resellerSignInButton = driver.findElement(By.xpath(ResellerSingInButtonXpath));
@@ -40,14 +46,6 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 	public void clickResellerSignInButton(){
 
 		initializeResellerSignInButton();
-//    	resellerSignInButton.click();
 		clickButton(resellerSignInButton);
     }
-
-
-	public boolean isCorrectURL() {
-		// TODO Auto-generated method stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlToBe(RESELLERS_PAGE_URL));
-	}
 }
