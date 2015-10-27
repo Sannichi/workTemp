@@ -31,6 +31,15 @@ public abstract class AbstractPage {
 	public abstract boolean isCorrectPage();
 	public abstract String getPageURL();
 	
+    protected void delay(final long amount) {
+        try {
+            Thread.sleep(amount);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 	public String getCurrentURL(){
 
 		return baseFragment.getCurrentURL();

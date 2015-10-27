@@ -388,7 +388,7 @@ public class ExcelUtils {
 		}
 		int lastRow = getLastRowNumber();
 		try{
-			for (int i = 0; i < lastRow; i++ ){
+			for (int i = 0; i <= lastRow; i++ ){
 				excelWSheet.removeRow(excelWSheet.getRow(i));
 			}
 	          FileOutputStream fileOut = new FileOutputStream(filePath);
@@ -405,8 +405,17 @@ public class ExcelUtils {
 	private static int getLastRowNumber(){	
 
 		int result = excelWSheet.getLastRowNum();
+//		LOGGER.debug("Last Row result = " + result + " " + getCellData(result, 1));
+//		LOGGER.debug("Last Row result = " + result);
 		if (result == 0){
-			return excelWSheet.getPhysicalNumberOfRows();
+			LOGGER.debug("PhysicalNumberOfRows result = " + excelWSheet.getPhysicalNumberOfRows());
+			if (excelWSheet.getPhysicalNumberOfRows() == 1){
+				return result;
+			}
+			else if (excelWSheet.getPhysicalNumberOfRows() == 0){
+				LOGGER.warn("There are no any rows in the sheet");
+				return -1;
+			}
 		}
 		return result;
 	}
@@ -418,7 +427,8 @@ public class ExcelUtils {
 			int startCol = 0;
 			int startRow = 0;
 			int lastRow = getLastRowNumber();
-			for (int i = lastRow - 1; i >= startRow; i --)
+//			for (int i = lastRow - 1; i >= startRow; i --)
+			for (int i = lastRow; i >= startRow; i --)			
 			if (getCellData(i, startCol).equals(username)){
 				return getCellData(i, startCol + 1);
 			}
@@ -436,7 +446,13 @@ public class ExcelUtils {
 			setExcelFile(transactionFilePath, transactionSheetName);			
 			int startCol = 0;
 			int lastRow = getLastRowNumber();
-			return getCellData(lastRow, startCol + 1);
+			if (lastRow != -1){
+				return getCellData(lastRow, startCol + 1);
+			}
+			else{
+				LOGGER.fatal("There is no any transaction");
+				return null;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

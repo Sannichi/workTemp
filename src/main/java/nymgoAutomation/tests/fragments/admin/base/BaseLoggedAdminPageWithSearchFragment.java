@@ -20,6 +20,8 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
     public BaseLoggedAdminPageWithSearchFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
+    	WebDriverWait wait = new WebDriverWait(driver, Starter.IFRAME_WAIT_TIME);
+    	wait.until(ExpectedConditions.visibilityOf(searchCrieteriaInput));
 	}
 
 	@FindBy(id = "search")

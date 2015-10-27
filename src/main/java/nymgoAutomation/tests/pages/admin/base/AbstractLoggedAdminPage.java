@@ -41,6 +41,7 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 	{
 		
     	adminPageFragment.clickTransactionsLink();
+    	delay(1500);
     	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
 		PageNavigation<TransactionsAdminPage> navigation = new PageNavigation<TransactionsAdminPage>(transactionsAdminPage); 
 		navigation.NavigatedTo();

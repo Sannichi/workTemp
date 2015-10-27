@@ -21,15 +21,6 @@ public abstract class AbstractPopup extends AbstractPage{
         return basePopupFragment.isPopupExist();
     }
 
-    protected void delay(final long amount) {
-        try {
-            Thread.sleep(amount);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void closePopups(){
     	
     	TransactionAcceptedPopup transactionAcceptedPopup = new TransactionAcceptedPopup(starter);

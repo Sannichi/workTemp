@@ -42,7 +42,7 @@ public class CurrencyNameGenerator {
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.SAUDI_ARABIA_RIYALS);
 			case AED:
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.UNITED_ARAB_EMIRATES_DIRHAMS);
-			case GBR:
+			case GBP:
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.BRITISH_POUNDS);
 			case KWD:
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.KUWAIT_DINARS);

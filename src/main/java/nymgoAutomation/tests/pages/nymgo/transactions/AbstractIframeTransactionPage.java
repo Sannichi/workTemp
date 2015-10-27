@@ -9,46 +9,46 @@ import nymgoAutomation.tests.starter.Starter;
  */
 public abstract class AbstractIframeTransactionPage extends AbstractPage{
 	
-	BaseIframeTransactionFragment baseTransactionFragment;
+	BaseIframeTransactionFragment baseIframeTransactionFragment;
 
 	public AbstractIframeTransactionPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		baseTransactionFragment = new BaseIframeTransactionFragment(driver);
+		baseIframeTransactionFragment = new BaseIframeTransactionFragment(driver);
 	}
 
 	public String getPaymentStatus(){
 		
-		return baseTransactionFragment.getPaymentStatus();		
+		return baseIframeTransactionFragment.baseTransactionFragment.getPaymentStatus();		
 	}
 
 	public String getTransactionAmountValue(){
 		
-		return baseTransactionFragment.getTransactionAmountValue();		
+		return baseIframeTransactionFragment.baseTransactionFragment.getTransactionAmountValue();		
 	}
 
 	public String getTransactionNumber(){
 		
-		return baseTransactionFragment.getTransactionNumber();
+		return baseIframeTransactionFragment.baseTransactionFragment.getTransactionNumber();
 	}
 
 	public String getTransactionDate(){
 		
-		return baseTransactionFragment.getTransactionDate();
+		return baseIframeTransactionFragment.baseTransactionFragment.getTransactionDate();
 	}
 
 	public String getTransactionTime(){
 		
-		return baseTransactionFragment.getTransactionTime();
+		return baseIframeTransactionFragment.baseTransactionFragment.getTransactionTime();
 	}
 	
 	public boolean isTransactionPending(){
 		
-		return baseTransactionFragment.isTransactionPending();
+		return baseIframeTransactionFragment.baseTransactionFragment.isTransactionPending();
 	}
 
 	public boolean isTransactionDeclined(){
 		
-		return baseTransactionFragment.isTransactionPending();
+		return baseIframeTransactionFragment.baseTransactionFragment.isTransactionPending();
 	}
 }

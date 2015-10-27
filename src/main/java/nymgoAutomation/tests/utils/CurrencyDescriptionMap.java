@@ -22,7 +22,7 @@ public class CurrencyDescriptionMap {
 		currencyMap.put(CURRENCY_SIGNS.QAR, new CurrencyDescription(5, 10, 40, 75, 200, "QR", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.QAR)));
 		currencyMap.put(CURRENCY_SIGNS.SAR, new CurrencyDescription(5, 10, 40, 75, 200, "﷼", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.SAR)));
 		currencyMap.put(CURRENCY_SIGNS.AED, new CurrencyDescription(5, 10, 40, 75, 200, "DH", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.AED)));
-		currencyMap.put(CURRENCY_SIGNS.GBR, new CurrencyDescription(5, 10, 10, 20, 50, "£", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.GBR)));
+		currencyMap.put(CURRENCY_SIGNS.GBP, new CurrencyDescription(5, 10, 10, 20, 50, "£", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.GBP)));
 		currencyMap.put(CURRENCY_SIGNS.KWD, new CurrencyDescription(5, 10, 4, 6, 15, "KD", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.KWD)));
 		currencyMap.put(CURRENCY_SIGNS.MYR, new CurrencyDescription(5, 10, 40, 80, 200, "RM", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.MYR)));
 	}

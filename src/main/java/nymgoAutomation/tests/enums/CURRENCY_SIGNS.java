@@ -14,7 +14,7 @@ public enum CURRENCY_SIGNS {
 	QAR( "QAR"),
 	SAR( "SAR"),
 	AED( "AED"),
-	GBR( "GBR"),
+	GBP( "GBP"),
 	KWD( "KWD"),
 	MYR( "MYR");
 	

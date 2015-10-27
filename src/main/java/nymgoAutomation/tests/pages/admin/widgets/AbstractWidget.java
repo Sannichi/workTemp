@@ -26,15 +26,6 @@ public abstract class AbstractWidget extends AbstractPage{
         return baseWidgetFragment.isContentAreaDisplayed();
     }
 
-    protected void delay(final long amount) {
-        try {
-            Thread.sleep(amount);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void closeWidgets(){
         MemberListWidget memberListWidget = new MemberListWidget(starter);
         if(memberListWidget.isWidgetExist()){

@@ -169,7 +169,7 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 		
 		String fullAmount = String.valueOf(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount)) + currency + "/" +
-			String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))*Float.valueOf(conversionRate), 2))+"$";
+			String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2))+"$";
 		
 		String fullProduct = "";
 		if(currency.equals(CURRENCY_SIGNS.USD.toString())){

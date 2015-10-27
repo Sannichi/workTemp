@@ -43,7 +43,8 @@ public class BuyCreditCase extends AbstractCase{
 
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+//				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -74,7 +75,10 @@ public class BuyCreditCase extends AbstractCase{
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
 		BuyCreditProceedPageWorldpay buyCreditProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
-		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+//		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), 
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));
+						
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -82,8 +86,8 @@ public class BuyCreditCase extends AbstractCase{
 		
 		@SuppressWarnings("unused")
 		BuyCreditConfirmPageWorldpay buyCreditConfirmPageWorldpay = buyCreditProceedPageWorldpay.verifyDataAndClickContinue(cardType, countryOfCredit,
-				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
-
+//				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)

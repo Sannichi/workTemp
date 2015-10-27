@@ -37,8 +37,8 @@ public class Starter {
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE = "params.file.name";
     public static String USERS_FILE_PATH = "";
-    public static String TRANSACTIONS_FILE_PATH = "D:\\work\\nymgo\\Transactions.xlsx"; //default value
-    public static String CREDIT_CARDS_FILE_PATH = "D:\\work\\nymgo\\CreditCards.xlsx"; //default value
+    public static String TRANSACTIONS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\Transactions.xlsx"; //default value
+    public static String CREDIT_CARDS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\CreditCards.xlsx"; //default value
     public static int IMPLICITLY_WAIT_TIME = 30;
     public static int CORRECT_PAGE_WAIT_TIME = 5;
     public static int ELEMENT_WAIT_TIME = 5;

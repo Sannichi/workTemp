@@ -23,4 +23,19 @@ public class CurrencyUtils {
 		
 		return CurrencyConversionRateGenerator.getConversionRate(currencySign);
 	}
+
+	public static String getStringCurrencyValueFromFloat(Float amount){
+		
+		String stringValue = Float.toString(amount);
+		String[] fullAray = stringValue.split("\\.");
+		String beforeDot = fullAray[0];
+		String afterDot = fullAray[1];
+		char[] charArray = afterDot.toCharArray();
+		for (char a : charArray){
+			if (a != '0'){
+				return stringValue;
+			}
+		}
+		return beforeDot;
+	}
 }

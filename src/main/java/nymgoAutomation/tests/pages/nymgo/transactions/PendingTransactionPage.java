@@ -27,6 +27,7 @@ public abstract class PendingTransactionPage extends AbstractIframeTransactionPa
 	public NormalAccountPage clickBackToNormalUserDashboardButton(){
 		
 		clickBackToDashboardButton();
+		delay(1500);
 		NormalAccountPage normalAccountPage = new NormalAccountPage(starter);
 		PageNavigation<NormalAccountPage> navigation = new PageNavigation<NormalAccountPage>(normalAccountPage);
 		navigation.NavigatedTo();
