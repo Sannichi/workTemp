@@ -1,5 +1,8 @@
 package nymgoAutomation.tests.testCases;
 
+import nymgoAutomation.data.entity.AdminEntity;
+import nymgoAutomation.data.enums.PROVIDER_CONST;
+import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.tests.enums.TRANSACTIONS_TABLE_COLUMNS;
 import nymgoAutomation.tests.enums.TRANSACTION_INFORMATION_ROWS;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
@@ -16,10 +19,12 @@ import org.testng.Assert;
 
 public class AdminSignInCase extends AbstractCase{
 	
-	@Test
-	@Parameters({"adminLogin", "adminPassword"})
-	public void signInAdminTest(String login, String password){
+    @Test(dataProvider = PROVIDER_CONST.ADMIN_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void signInAdminTest(AdminEntity adminEntity){
 
+    	String login = adminEntity.getUsername();
+    	String password = adminEntity.getPassword();
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		LoginAdminPage loginAdminPage = nymgoPage.navigateToAdminLoginPage();
 		

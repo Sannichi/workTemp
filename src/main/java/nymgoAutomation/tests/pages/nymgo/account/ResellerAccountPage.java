@@ -1,6 +1,7 @@
 package nymgoAutomation.tests.pages.nymgo.account;
 
 import nymgoAutomation.tests.fragments.nymgo.account.ResellerAccountPageFragment;
+import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.starter.Starter;
 
 public class ResellerAccountPage extends AbstractAccountPage{
@@ -21,4 +22,13 @@ public class ResellerAccountPage extends AbstractAccountPage{
 		return RESELLER_ACCOUNT_PAGE_NAME_EN;
 	}
     
+	public ViewResellerAccountPage clickViewAccountDetailsButton(){
+		
+		resellerAccountPageFragment.clickViewAccountDetailsButton();
+		ViewResellerAccountPage viewResellerAccountPage = new ViewResellerAccountPage(starter);
+		PageNavigation<ViewResellerAccountPage> navigation = new PageNavigation<ViewResellerAccountPage>(viewResellerAccountPage);
+		navigation.NavigatedTo();
+		return viewResellerAccountPage;
+	}
+
 }

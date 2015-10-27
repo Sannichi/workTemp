@@ -2,6 +2,8 @@ package nymgoAutomation.data.enums;
 
 public class PROVIDER_CONST {
 
+    public final static String ADMIN_PROVIDER = "adminProvider";
+
     public final static String EURO_NORMAL_WHITELIST_PROVIDER = "euroNormalWhitelistProvider";
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS = "euroNormalWhitelistProviderWithParams";
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_SET_PARAMS = "euroNormalWhitelistProviderSetParams";
@@ -11,6 +13,9 @@ public class PROVIDER_CONST {
     public final static String INTER_NORMAL_WHITELIST_ADYEN_PROVIDER = "interNormalWhitelistAdyenProvider";
     public final static String INTER_NORMAL_WHITELIST_WORLDPAY_PROVIDER = "interNormalWhitelistWorldpayProvider";
     public final static String EURO_NORMAL_WHITELIST_GC_PROVIDER = "euroNormalWhitelistGCProvider";
+
+    public final static String EURO_RESELLER_PROVIDER_W_PARAMS = "euroResellerProviderWithParams";
+    public final static String SET_RESELLER_PARAMS_PROVIDER = "setResellerParamsProvider";    
 
     public final static String AMERICAN_EXPRESS_CARD_PROVIDER = "americanExpressCardProvider";
 

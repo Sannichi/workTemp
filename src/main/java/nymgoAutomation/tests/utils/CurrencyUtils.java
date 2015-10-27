@@ -13,6 +13,11 @@ public class CurrencyUtils {
 		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstValue());
 	}
 	
+	public static String getMinResellerBuyCurrencyValue(String paymentCurrency){
+		
+		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstReselerValue());
+	}
+	
 	public static String getConversionRateByCurrencyName(String paymentCurrency){
 		
 		CURRENCY_SIGNS currencySign = CURRENCY_SIGNS.valueOf(paymentCurrency);

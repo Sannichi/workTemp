@@ -11,8 +11,10 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import nymgoAutomation.data.entity.AdminEntity;
 import nymgoAutomation.data.entity.FullCardEntity;
 import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.enums.ADMIN_PARAMS;
 import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
 import nymgoAutomation.data.testCases.ExcelCases;
@@ -124,6 +126,34 @@ public class ExcelUtils {
 		return result;
 	}
 	
+	public static AdminEntity getAdminEntity(String filePath, String sheetName)	
+	{   
+
+		AdminEntity adminEntity = new AdminEntity();
+		try{
+
+			setExcelFile(filePath, sheetName);
+			adminEntity.setUsername(getParameterFromExcelSheet(ADMIN_PARAMS.USERNAME.toString()));
+			adminEntity.setPassword(getParameterFromExcelSheet(ADMIN_PARAMS.PASSWORD.toString()));
+		}
+		catch (FileNotFoundException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return adminEntity;
+	}
+
 	public static FullUserEntity getFullUserEntity(String filePath, String sheetName)	
 	{   
 

@@ -59,6 +59,17 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
     	return transactionsAdminPage;
 	}
 
+    public TransactionsAdminPage navigateBusinessTransactionsTab()
+	{
+    	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
+    	if (!getCurrentURL().equals(transactionsAdminPage.isCorrectPage())){
+    		LOGGER.info("Current URL is '" + getCurrentURL() + "', navigating to Transactions... ");
+    		transactionsAdminPage = clickTransactionsLink();
+    	}
+    	LOGGER.info("Current page is already " + transactionsAdminPage.getPageName());
+    	return transactionsAdminPage;
+	}
+
     public boolean isAdminLogged()
 	{
 		return adminPageFragment.isAdminLogged();

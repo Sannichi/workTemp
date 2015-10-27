@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import nymgoAutomation.data.enums.ADMIN_PARAMS;
 import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
 import nymgoAutomation.tests.enums.BROWSERS;
@@ -36,7 +37,8 @@ public class Starter {
     public final  static String CONFIG_FILE_NAME = "config.file.name";
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE = "params.file.name";
-    public static String USERS_FILE_PATH = "";
+    public static String ADMIN_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\AdminUsers.xlsx"; //default value
+    public static String USERS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\NymgoUsers.xlsx"; //default value
     public static String TRANSACTIONS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\Transactions.xlsx"; //default value
     public static String CREDIT_CARDS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\CreditCards.xlsx"; //default value
     public static int IMPLICITLY_WAIT_TIME = 30;
@@ -44,6 +46,7 @@ public class Starter {
     public static int ELEMENT_WAIT_TIME = 5;
     public static int INITIALIZED_ELEMENT_WAIT_TIME = 2;
     public static int IFRAME_WAIT_TIME = 30;
+    public static int ADMIN_TAB_WAIT_TIME = 30;
     public String VERSION;
     public String PLATFORM;
     public String BROWSER;
@@ -114,6 +117,7 @@ public class Starter {
             LOGGER.fatal("There was a problem to load the config file from " + PARAMS_FILE);
             e.printStackTrace();
         }
+        ADMIN_FILE_PATH = PARAMS.getProperty(ADMIN_PARAMS.ADMIN_FILE_PATH.name());
         USERS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.USERS_FILE_PATH.name());
         TRANSACTIONS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.TRANSACTIONS_FILE_PATH.name());
         CREDIT_CARDS_FILE_PATH = PARAMS.getProperty(CARD_PARAMS.CREDIT_CARDS_FILE_PATH.name());
@@ -122,6 +126,7 @@ public class Starter {
         ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ELEMENT_WAIT_TIME.name()));        
         INITIALIZED_ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.INITIALIZED_ELEMENT_WAIT_TIME.name()));
         IFRAME_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.IFRAME_WAIT_TIME.name()));
+        ADMIN_TAB_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ADMIN_TAB_WAIT_TIME.name()));
         
         LOGGER.info("Finished to initialize parameters");
     }

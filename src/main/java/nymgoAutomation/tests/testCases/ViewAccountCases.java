@@ -5,7 +5,9 @@ import org.testng.annotations.Test;
 import nymgoAutomation.data.enums.PROVIDER_CONST;
 import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
+import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
 import nymgoAutomation.tests.pages.nymgo.account.ViewNormalAccountPage;
+import nymgoAutomation.tests.pages.nymgo.account.ViewResellerAccountPage;
 import nymgoAutomation.tests.pages.nymgo.base.LoggedNymgoPage;
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015
@@ -21,6 +23,17 @@ public class ViewAccountCases extends AbstractCase{
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
 		viewNormalAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editEuroResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
+		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
+		viewResellerAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
 }

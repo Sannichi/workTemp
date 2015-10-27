@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import nymgoAutomation.tests.enums.MEMBERS_TABLE_COLUMNS;
 import nymgoAutomation.tests.starter.Starter;
 
 public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragment{
@@ -20,7 +21,7 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
     public BaseLoggedAdminPageWithSearchFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.IFRAME_WAIT_TIME);
+    	WebDriverWait wait = new WebDriverWait(driver, Starter.ADMIN_TAB_WAIT_TIME);
     	wait.until(ExpectedConditions.visibilityOf(searchCrieteriaInput));
 	}
 

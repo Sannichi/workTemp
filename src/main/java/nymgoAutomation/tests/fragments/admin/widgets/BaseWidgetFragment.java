@@ -44,7 +44,6 @@ public class BaseWidgetFragment extends BaseFragment{
         catch (NotFoundException e){
             return false;
         }
-        boolean result = widgetContainer.isDisplayed();
         return widgetContainer.isDisplayed();
     }
 

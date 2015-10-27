@@ -99,4 +99,27 @@ public class AdminTransactionsCase extends AbstractCase{
 		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 		LOGGER.info("End");
 	}
+
+	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void declineEuroResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		AdminPage adminPage = new AdminPage(starter);
+
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		transactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);
+		}
+		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		transactionDeclinedPopup.closeTransactionDeclinedPopup();
+		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+		LOGGER.info("End");
+	}
+
 }

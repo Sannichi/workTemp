@@ -6,6 +6,7 @@ import nymgoAutomation.data.enums.PROVIDER_CONST;
 import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.data.utils.ExcelUtils;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
+import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
 import nymgoAutomation.tests.pages.nymgo.base.LoggedNymgoPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyen;
@@ -102,6 +103,90 @@ public class BuyCreditCase extends AbstractCase{
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+		}
+		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
+		buyCreditProceedPageAdyen.verifyDefaultData();
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
+		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		String VATPercent = buyCreditPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+		}
+		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
+
+		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
+				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
+//				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
+		if(countryOfCredit == null){
+			countryOfCredit = fullUserEntity.getCountryOfResidence();
+		}
+		buyCreditProceedPage.setPaymentBlockData(cardType, countryOfCredit);
+		
+		@SuppressWarnings("unused")
+		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
+				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
+				cardType, countryOfCredit,
+				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
+		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		String VATPercent = buyCreditPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+		}
+		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
+		BuyCreditProceedPageWorldpay buyCreditProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
+
+//		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), 
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));
+						
+		if(countryOfCredit == null){
+			countryOfCredit = fullUserEntity.getCountryOfResidence();
+		}
+		buyCreditProceedPageWorldpay.setPaymentBlockData(cardType, countryOfCredit);
+		
+		@SuppressWarnings("unused")
+		BuyCreditConfirmPageWorldpay buyCreditConfirmPageWorldpay = buyCreditProceedPageWorldpay.verifyDataAndClickContinue(cardType, countryOfCredit,
+//				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
+		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		String VATPercent = buyCreditPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
