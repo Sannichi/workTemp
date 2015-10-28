@@ -10,7 +10,7 @@ public class CurrencyUtils {
 
 	public static String getMinBuyCurrencyValue(String paymentCurrency){
 		
-		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstValue());
+		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstNormalValue());
 	}
 	
 	public static String getMinResellerBuyCurrencyValue(String paymentCurrency){

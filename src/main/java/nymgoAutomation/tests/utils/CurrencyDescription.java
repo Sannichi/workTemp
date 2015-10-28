@@ -5,11 +5,10 @@ package nymgoAutomation.tests.utils;
  */
 public class CurrencyDescription {
 
-	private int firstBuyFirstValue;
-	private int firstBuySecondValue;
-	private int firstValue;
-	private int secondValue;
-	private int thirdValue;
+	private int firstBuyNormalValue;
+	private int firstNormalValue;
+	private int secondNormalValue;
+	private int thirdNormalValue;
 	private int firstBuyResellerValue;
 	private int firstResellerValue;
 	private int secondResellerValue;
@@ -20,17 +19,16 @@ public class CurrencyDescription {
 	private String icon;
 	private Float conversionRate;
 	
-	public CurrencyDescription(int firstBuyFirstValue, int firstBuySecondValue, 
-			int firstValue, int secondValue, int thirdValue,
+	public CurrencyDescription(int firstBuyNormalValue, 
+			int firstNormalValue, int secondNormalValue, int thirdNormalValue,
 			int firstBuyResellerValue, int firstResellerValue, int secondResellerValue, int thirdResellerValue, 
 			int forthResellerValue, int fifthResellerValue, int sixthResellerValue,
 			String icon, String conversionRate){
 		
-		this.firstBuyFirstValue = firstBuyFirstValue;
-		this.firstBuySecondValue = firstBuySecondValue;
-		this.firstValue = firstValue;
-		this.secondValue = secondValue;
-		this.thirdValue = thirdValue;
+		this.firstBuyNormalValue = firstBuyNormalValue;
+		this.firstNormalValue = firstNormalValue;
+		this.secondNormalValue = secondNormalValue;
+		this.thirdNormalValue = thirdNormalValue;
 		this.firstBuyResellerValue = firstBuyResellerValue;
 		this.firstResellerValue = firstResellerValue;
 		this.secondResellerValue = secondResellerValue;
@@ -42,35 +40,37 @@ public class CurrencyDescription {
 		this.conversionRate = Float.valueOf(conversionRate);
 	}
 	
-	public int[] getCurrencyValues(){
+	public int[] getCurrencyNormalValues(){
 		
-		int[] currencyDescription = {firstBuyFirstValue, firstBuySecondValue, firstValue, secondValue, thirdValue};
+		int[] currencyDescription = {firstBuyNormalValue, firstNormalValue, secondNormalValue, thirdNormalValue};
 		return currencyDescription;
 	}
 
-	public int getFirstBuyFirstValue(){
+	public int[] getCurrencyResellerValues(){
 		
-		return firstBuyFirstValue;
+		int[] currencyDescription = {firstBuyResellerValue, firstResellerValue, secondResellerValue, thirdResellerValue, 
+				forthResellerValue, fifthResellerValue, sixthResellerValue};
+		return currencyDescription;
 	}
 
-	public int getFirstBuySecondValue(){
+	public int getFirstBuyNormalValue(){
 		
-		return firstBuySecondValue;
+		return firstBuyNormalValue;
+	}
+
+	public int getFirstNormalValue(){
+		
+		return firstNormalValue;
 	}
 	
-	public int getFirstValue(){
+	public int getSecondNormalValue(){
 		
-		return firstValue;
+		return secondNormalValue;
 	}
 	
-	public int getSecondValue(){
+	public int getThirdNormalValue(){
 		
-		return secondValue;
-	}
-	
-	public int getThirdValue(){
-		
-		return thirdValue;
+		return thirdNormalValue;
 	}
 	
 	public int getFirstBuyReselerValue(){

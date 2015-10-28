@@ -18,7 +18,7 @@ public class BusinessMemberListWidget extends AbstractWidget{
 		businessMemberListWidgetFragment = new BusinessMemberListWidgetFragment(driver);
 	}
 
-	private static final String WIDGET_BUSINESS_MEMBERS_LIST_NAME_ENG = "Business Member List"; 
+	private static final String WIDGET_BUSINESS_MEMBERS_LIST_NAME_ENG = "Info"; 
 	
 	@Override
 	public String getPageName() {

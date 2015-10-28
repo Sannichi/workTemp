@@ -15,12 +15,17 @@ public abstract class AbstractWidget extends AbstractPage{
 		// TODO Auto-generated constructor stub
 		baseWidgetFragment = new BaseWidgetFragment(driver);
 	}
-
+	
     public boolean isWidgetExist(){
 
         return baseWidgetFragment.isWidgetExist();
     }
 
+    public String getWidgetName(){
+    	
+    	return baseWidgetFragment.getWidgetName();
+    }
+    
     public boolean isContentAreaDisplayed(){
 
         return baseWidgetFragment.isContentAreaDisplayed();

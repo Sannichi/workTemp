@@ -38,10 +38,11 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 		return "/account/view/profile*";
 	}
 
-	@FindBy(css = "div[class='clickable active']")
+//	@FindBy(css = "div[class='clickable active']")
+	@FindBy(css = "div[class$='active']")	
 	private WebElement activeClickableContent;
 	
-	@FindBy(css = "div[class^='clickable active']")
+	@FindBy(css = "div[class^='clickable']")
 	private List<WebElement> allClickableContent;
 	
 	private WebElement getActiveContent(){
@@ -209,5 +210,4 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 		
 		super.clickSaveButton();
 	}
-	
 }

@@ -1,6 +1,7 @@
 package nymgoAutomation.tests.fragments.admin;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,7 +25,13 @@ public class MembersAdminPageFragment extends BaseLoggedAdminPageWithSearchFragm
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlMatches(MEMBERS_PAGE_URL_ENG));
+    	try {
+    		wait.until(ExpectedConditions.urlMatches(MEMBERS_PAGE_URL_ENG));
+    		return true;
+    	}
+    	catch(TimeoutException e){
+    		return false;
+    	}
 	}
 
 	public void clickEditUserByUsername(String username){

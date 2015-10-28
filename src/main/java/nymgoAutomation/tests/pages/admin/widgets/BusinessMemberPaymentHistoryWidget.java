@@ -4,66 +4,70 @@ import java.util.Map;
 
 import org.testng.Assert;
 
-import nymgoAutomation.tests.fragments.admin.widgets.MemberPaymentHistoryWidgetFragment;
+import nymgoAutomation.tests.fragments.admin.widgets.BusinessMemberPaymentHistoryWidgetFragment;
 import nymgoAutomation.tests.navigation.PopupNavigation;
 import nymgoAutomation.tests.pages.admin.popups.TransactionAcceptedPopup;
 import nymgoAutomation.tests.pages.admin.popups.TransactionDeclinedPopup;
 import nymgoAutomation.tests.starter.Starter;
 
-public class MemberPaymentHistoryWidget extends AbstractWidget{
+/**
+ * Created by Iuliia Khikmatova on Oct 28, 2015
+ */
+public class BusinessMemberPaymentHistoryWidget extends AbstractWidget{
 
-	MemberPaymentHistoryWidgetFragment memberPaymentHistoryWidgetFragment;
+	BusinessMemberPaymentHistoryWidgetFragment businessMemberPaymentHistoryWidgetFragment;
 	
-	public MemberPaymentHistoryWidget(Starter starter) {
+	public BusinessMemberPaymentHistoryWidget(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		memberPaymentHistoryWidgetFragment = new MemberPaymentHistoryWidgetFragment(driver);
+		businessMemberPaymentHistoryWidgetFragment = new BusinessMemberPaymentHistoryWidgetFragment(driver);
 	}
 
-	private static final String WIDGET_MEMBERS_PAYMENT_HISTORY_NAME_ENG = "Member Payment History"; 
+	private static final String WIDGET_BUSINESS_MEMBERS_PAYMENT_HISTORY_NAME_ENG = "Transaction Business Member Payment History"; 
 
 	@Override
 	public String getPageName() {
 		// TODO Auto-generated method stub
-		return memberPaymentHistoryWidgetFragment.getWidgetName();
+		return businessMemberPaymentHistoryWidgetFragment.getWidgetName();
 	}
 
 	@Override
 	public boolean isCorrectPage() {
 		// TODO Auto-generated method stub
-		return getPageName().equals(WIDGET_MEMBERS_PAYMENT_HISTORY_NAME_ENG);
+		return getPageName().equals(WIDGET_BUSINESS_MEMBERS_PAYMENT_HISTORY_NAME_ENG);
 	}
 
 	@Override
 	public String getPageURL() {
 		// TODO Auto-generated method stub
-		return WIDGET_MEMBERS_PAYMENT_HISTORY_NAME_ENG;
+		return WIDGET_BUSINESS_MEMBERS_PAYMENT_HISTORY_NAME_ENG;
 	}
 
-	public MemberPaymentHistoryWidget navigateToPaymentActionTab(){
+
+	public BusinessMemberPaymentHistoryWidget navigateToBusinessPaymentActionTab(){
 		
-		memberPaymentHistoryWidgetFragment.navigateToPaymentActionTab();
+		businessMemberPaymentHistoryWidgetFragment.navigateToBusinessPaymentActionTab();
 		return this;
 	}
 	
 	public String getTransactionInformationRowValueByRowName(String rowName){
 		
-		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getTransactionInformationRowValueByRowName(rowName);
+		return businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.getTransactionInformationRowValueByRowName(rowName);
 	}
 
 	public String getUserInformationRowValueByRowName(String rowName){
 		
-		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getUserInformationRowValueByRowName(rowName);
+		return businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.getUserInformationRowValueByRowName(rowName);
 	}
 
 	public String getUserSummaryRowValueByRowName(String rowName){
 		
-		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getUserSummaryRowValueByRowName(rowName);
+		return businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.getUserSummaryRowValueByRowName(rowName);
 	}
 
 	private Map<String, String> getAllTransactionInformation(){
 		
-		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getAllTransactionInformation();
+		return businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.getAllTransactionInformation();
 	}
 /*
 	public Map<String, String> getAllUserInformation(){
@@ -78,12 +82,12 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 */
 	protected void clickAcceptTransaction(){
 		
-		memberPaymentHistoryWidgetFragment.paymentActionFragment.clickAcceptTransaction();
+		businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.clickAcceptTransaction();
 	}
 
 	protected void clickCancelTransaction(){
 		
-		memberPaymentHistoryWidgetFragment.paymentActionFragment.clickCancelTransaction();
+		businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.clickCancelTransaction();
 	}
 
 	public Map<String, String> acceptAndReturnTransactionInformation(){
@@ -102,12 +106,12 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 	
 	public String getPaymentActionTransactionID(){
 		
-		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getPaymentActionTransactionID();
+		return businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.getPaymentActionTransactionID();
 	}
 	
 	public TransactionAcceptedPopup verifyTransactionInformationAndAccept(String transactionID){
 		
-		navigateToPaymentActionTab();
+		navigateToBusinessPaymentActionTab();
 		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
 		LOGGER.info("Transaction ID is correct");
 		clickAcceptTransaction();
@@ -119,7 +123,7 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 	
 	public TransactionDeclinedPopup verifyTransactionInformationAndCancel(String transactionID){
 		
-		navigateToPaymentActionTab();
+		navigateToBusinessPaymentActionTab();
 		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
 		LOGGER.info("Transaction ID is correct");
 		clickCancelTransaction();
@@ -129,7 +133,7 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 		return transactionDeclinedPopup;
 	}
 	
-	public void closeMemberPaymentHistoryWidget(){
+	public void closeBusinessMemberPaymentHistoryWidget(){
     	
     	closeWidget(getPageName());
     }

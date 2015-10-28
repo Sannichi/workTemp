@@ -4,10 +4,12 @@ import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.enums.PROVIDER_CONST;
 import nymgoAutomation.data.providers.GeneralDataProvider;
 import nymgoAutomation.data.utils.ExcelUtils;
-import nymgoAutomation.tests.pages.admin.TransactionsAdminPage;
+import nymgoAutomation.tests.pages.admin.BusinessTransactionsAdminPage;
+import nymgoAutomation.tests.pages.admin.NormalTransactionsAdminPage;
 import nymgoAutomation.tests.pages.admin.base.AdminPage;
 import nymgoAutomation.tests.pages.admin.popups.TransactionAcceptedPopup;
 import nymgoAutomation.tests.pages.admin.popups.TransactionDeclinedPopup;
+import nymgoAutomation.tests.pages.admin.widgets.BusinessMemberPaymentHistoryWidget;
 import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
 import nymgoAutomation.tests.utils.CurrencyUtils;
 
@@ -26,10 +28,10 @@ public class AdminTransactionsCase extends AbstractCase{
 		transactionID = ExcelUtils.getLastTransactionByUsername(username);
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
 		LOGGER.info("Last transaction ID = " + transactionID);
-		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 //		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
 		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
@@ -44,11 +46,11 @@ public class AdminTransactionsCase extends AbstractCase{
 
 		transactionID = ExcelUtils.getLastTransactionByUsername(username);
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 //		transactionsAdminPage.verifyTransactionData(transactionID, username, amount, currency, product, service, method, country);
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
 		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
@@ -63,7 +65,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //		String transactionID = ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername());
 		String transactionID = ExcelUtils.getLastTransaction();		
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		if(currencyAmount == null){
@@ -71,7 +73,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
 		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
@@ -85,7 +87,7 @@ public class AdminTransactionsCase extends AbstractCase{
 
 		String transactionID = ExcelUtils.getLastTransaction();		
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		if(currencyAmount == null){
@@ -93,7 +95,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
 		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
@@ -107,18 +109,18 @@ public class AdminTransactionsCase extends AbstractCase{
 
 		String transactionID = ExcelUtils.getLastTransaction();		
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
-		transactionsAdminPage.searchIDExactMatch(transactionID);
-		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
+		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
-		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
+		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), conversionRate,
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
-		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
+		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		LOGGER.info("End");
 	}
 

@@ -7,7 +7,7 @@ import nymgoAutomation.tests.enums.TRANSACTIONS_TABLE_COLUMNS;
 import nymgoAutomation.tests.enums.TRANSACTION_INFORMATION_ROWS;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
 import nymgoAutomation.tests.pages.admin.MembersAdminPage;
-import nymgoAutomation.tests.pages.admin.TransactionsAdminPage;
+import nymgoAutomation.tests.pages.admin.NormalTransactionsAdminPage;
 import nymgoAutomation.tests.pages.admin.base.AdminPage;
 import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
 import nymgoAutomation.tests.pages.nymgo.base.NymgoPage;
@@ -48,7 +48,7 @@ public class AdminSignInCase extends AbstractCase{
 		memberListWidget.clickOnTabByAltText("Infos");;		
 		System.out.println("End");
 */
-		TransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		String transactionID = "3324265152";
 		String username = transactionsAdminPage.getColumnRowValueByColumnRowValue(TRANSACTIONS_TABLE_COLUMNS.ID.toString(), transactionID, 
 				TRANSACTIONS_TABLE_COLUMNS.USERNAME.toString());
@@ -64,7 +64,7 @@ public class AdminSignInCase extends AbstractCase{
 				TRANSACTIONS_TABLE_COLUMNS.METHOD.toString());
 		String country = transactionsAdminPage.getColumnRowValueByColumnRowValue(TRANSACTIONS_TABLE_COLUMNS.ID.toString(), transactionID, 
 				TRANSACTIONS_TABLE_COLUMNS.COUNTRY.toString());
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgedByID(transactionID);
+		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 //		Map<String, String> trInf = memberPaymentHistoryWidget.getAllTransactionInformation();
 		String amountString = memberPaymentHistoryWidget.getTransactionInformationRowValueByRowName(TRANSACTION_INFORMATION_ROWS.AMOUNT_PAID.toString());
 		memberPaymentHistoryWidget.clickOnCloseButton();

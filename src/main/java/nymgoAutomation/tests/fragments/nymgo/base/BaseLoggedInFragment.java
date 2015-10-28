@@ -23,8 +23,13 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 	
 	private void initializeWebElements() throws NoSuchElementException{
 		
-		myAccountDropdown = driver.findElement(By.xpath("//div[@class='dropdown-holder']")).findElement(By.xpath(nymgoMyAccountXpath));
-		logOutDropdown = driver.findElement(By.xpath("//div[@class='dropdown-holder']")).findElement(By.xpath(nymgoLogOutXpath));
+		try{
+			myAccountDropdown = driver.findElement(By.xpath("//div[@class='dropdown-holder']")).findElement(By.xpath(nymgoMyAccountXpath));
+			logOutDropdown = driver.findElement(By.xpath("//div[@class='dropdown-holder']")).findElement(By.xpath(nymgoLogOutXpath));
+		}
+		catch(NoSuchElementException e){
+			LOGGER.fatal("There are no such elements on the page");
+		}
 	}
 	
 	public void clickLogOut(){

@@ -3,6 +3,7 @@ package nymgoAutomation.tests.pages.nymgo.transactions;
 import nymgoAutomation.tests.fragments.nymgo.transactions.PendingTransactionFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
+import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
 import nymgoAutomation.tests.starter.Starter;
 
 /**
@@ -32,6 +33,17 @@ public abstract class PendingTransactionPage extends AbstractIframeTransactionPa
 		PageNavigation<NormalAccountPage> navigation = new PageNavigation<NormalAccountPage>(normalAccountPage);
 		navigation.NavigatedTo();
 		return normalAccountPage;
+		
+	}
+
+	public ResellerAccountPage clickBackToResellerDashboardButton(){
+		
+		clickBackToDashboardButton();
+		delay(1500);
+		ResellerAccountPage resellerAccountPage = new ResellerAccountPage(starter);
+		PageNavigation<ResellerAccountPage> navigation = new PageNavigation<ResellerAccountPage>(resellerAccountPage);
+		navigation.NavigatedTo();
+		return resellerAccountPage;
 		
 	}
 }

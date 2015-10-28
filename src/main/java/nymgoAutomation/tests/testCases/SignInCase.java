@@ -52,10 +52,12 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
     }
 	
-    @Test
-	@Parameters({"resellerLogin", "resellerPassword"})
-	public void signInResellerTest(String login, String password){
+    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void signInResellerTest(FullUserEntity fullUserEntity){
 		
+    	String login = fullUserEntity.getUsername();
+    	String password = fullUserEntity.getPassword();
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		HomePage homePage = nymgoPage.setDefaultState();
 

@@ -55,7 +55,9 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+//				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
+				
 
 	}
 
@@ -109,7 +111,7 @@ public class BuyCreditCase extends AbstractCase{
 		buyCreditProceedPageAdyen.verifyDefaultData();
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
 	public void buyCreditLoggedResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -139,11 +141,12 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+//				currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
+				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
 	public void buyCreditLoggedResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -175,7 +178,7 @@ public class BuyCreditCase extends AbstractCase{
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
 	public void buyCreditLoggedResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);

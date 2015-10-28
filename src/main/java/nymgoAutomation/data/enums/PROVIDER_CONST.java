@@ -14,6 +14,7 @@ public class PROVIDER_CONST {
     public final static String INTER_NORMAL_WHITELIST_WORLDPAY_PROVIDER = "interNormalWhitelistWorldpayProvider";
     public final static String EURO_NORMAL_WHITELIST_GC_PROVIDER = "euroNormalWhitelistGCProvider";
 
+    public final static String EURO_RESELLER_PROVIDER = "euroResellerProvider";
     public final static String EURO_RESELLER_PROVIDER_W_PARAMS = "euroResellerProviderWithParams";
     public final static String SET_RESELLER_PARAMS_PROVIDER = "setResellerParamsProvider";    
 

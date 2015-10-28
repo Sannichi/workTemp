@@ -139,7 +139,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		navigation.NavigatedTo();
 		return buyCreditProceedPageAdyen;
 	} 
-
+/*
 	public void selectMinAmountByCurrency(String paymentCurrency){
 		
 		checkOptionByValue(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstValue());
@@ -149,7 +149,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		checkOptionByValue(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getThirdValue());
 	}
-
+*/
 	public void selectAmountAndVerifyVAT(String amount){
 		
 		int intAmount = Integer.valueOf(amount);

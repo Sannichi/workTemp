@@ -1,7 +1,7 @@
 package nymgoAutomation.tests.pages.admin;
 
 import nymgoAutomation.tests.fragments.admin.BusinessMembersAdminPageFragment;
-import nymgoAutomation.tests.navigation.PageNavigation;
+import nymgoAutomation.tests.navigation.WidgetNavigation;
 import nymgoAutomation.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import nymgoAutomation.tests.pages.admin.widgets.BusinessMemberListWidget;
 import nymgoAutomation.tests.starter.Starter;
@@ -37,21 +37,17 @@ public class BusinessMembersAdminPage extends AbstractLoggedAdminPageWithSearch{
 		// TODO Auto-generated method stub
 		return businessMembersAdminPageFragment.getCorrectURL();
 	}
-	
-	public BusinessMemberListWidget clickEditBusinessUserByUsername(String username){
 
+	public void clickEditUserByUsername(String username){
+		
 		businessMembersAdminPageFragment.clickEditUserByUsername(username);
-		BusinessMemberListWidget businessMemberListWidget = new BusinessMemberListWidget(starter);
-		PageNavigation<BusinessMemberListWidget> navigation = new PageNavigation<BusinessMemberListWidget>(businessMemberListWidget);
-		navigation.NavigatedTo();
-		return businessMemberListWidget;
 	}
-
+	
 	public BusinessMemberListWidget openEditBusinessUserWidgetByUsername(String username){
 
-		businessMembersAdminPageFragment.clickEditUserByUsername(username.toLowerCase());
+		clickEditUserByUsername(username.toLowerCase());
 		BusinessMemberListWidget businessMemberListWidget = new BusinessMemberListWidget(starter);
-		PageNavigation<BusinessMemberListWidget> navigation = new PageNavigation<BusinessMemberListWidget>(businessMemberListWidget);
+		WidgetNavigation<BusinessMemberListWidget> navigation = new WidgetNavigation<BusinessMemberListWidget>(businessMemberListWidget);
 		navigation.NavigatedTo();
 		return businessMemberListWidget;
 	}

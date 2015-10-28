@@ -23,12 +23,14 @@ public class ViewResellerAccountPageFragment extends BaseViewAccountFragment{
 	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/account/account-details/account-profile";
 
+	@Override
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	return wait.until(ExpectedConditions.urlToBe(VIEW_RESELLER_ACCOUNT_PAGE_URL));
 	}
     
+	@Override
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
 		return VIEW_RESELLER_ACCOUNT_PAGE_URL;

@@ -16,9 +16,9 @@ import nymgoAutomation.tests.fragments.admin.base.BaseLoggedAdminPageWithSearchF
 import nymgoAutomation.tests.generators.ServerGenerator;
 import nymgoAutomation.tests.starter.Starter;
 
-public class TransactionsAdminPageFragment extends BaseLoggedAdminPageWithSearchFragment{
+public class BaseTransactionsAdminPageFragment extends BaseLoggedAdminPageWithSearchFragment{
 
-	public TransactionsAdminPageFragment(WebDriver driver) {
+	public BaseTransactionsAdminPageFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}

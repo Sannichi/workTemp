@@ -17,16 +17,27 @@ public abstract class BaseLoggedAdminFragment extends BaseAdminFragment{
 	@FindBy(xpath = "//a[@href='/modules/users/index.php']")
 	private WebElement membersLink;
 
+	@FindBy(xpath = "//a[@href='/modules/bus_users/index.php']")
+	private WebElement businessMembersLink;
+
 	@FindBy(xpath = "//a[@href='/modules/transactions/index.php']")
 	private WebElement transactionsLink;
+
+	@FindBy(xpath = "//a[@href='/modules/bus_transactions/index.php']")
+	private WebElement businessTransactionsLink;
 
 	@FindBy(xpath = "//a[@href='/logout.php']")
 	private WebElement logOutButton;
 	
+    public void clickBusinessMembersLink()
+	{
+		
+    	clickLink(businessMembersLink);
+	}
+
     public void clickMembersLink()
 	{
 		
-//		membersLink.click();
     	clickLink(membersLink);
 	}
 
@@ -34,6 +45,12 @@ public abstract class BaseLoggedAdminFragment extends BaseAdminFragment{
 	{
 		
     	clickLink(transactionsLink);
+	}
+
+    public void clickBusinessTransactionsLink()
+	{
+		
+    	clickLink(businessTransactionsLink);
 	}
 
 	public boolean isAdminLogged()

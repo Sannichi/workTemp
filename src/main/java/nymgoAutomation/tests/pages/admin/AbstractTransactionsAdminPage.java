@@ -9,25 +9,23 @@ import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
 import nymgoAutomation.tests.enums.GATEWAY_CONST;
 import nymgoAutomation.tests.enums.LOCALE_CONST;
 import nymgoAutomation.tests.enums.METHODS_CONST;
-import nymgoAutomation.tests.fragments.admin.TransactionsAdminPageFragment;
+import nymgoAutomation.tests.fragments.admin.BaseTransactionsAdminPageFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
-import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
 import nymgoAutomation.tests.starter.Starter;
 import nymgoAutomation.tests.utils.CurrencyDescriptionMap;
 import nymgoAutomation.tests.utils.CurrencyUtils;
 
-public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
+public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 
-	TransactionsAdminPageFragment transactionsAdminPageFragment;
+	BaseTransactionsAdminPageFragment transactionsAdminPageFragment;
 	
-	public TransactionsAdminPage(Starter starter) {
+	public AbstractTransactionsAdminPage(Starter starter) {
 
     	super(starter);
-    	transactionsAdminPageFragment = new TransactionsAdminPageFragment(driver);
+    	transactionsAdminPageFragment = new BaseTransactionsAdminPageFragment(driver);
     }
-
+/*
 	private static final String TRANSACTIONS_PAGE_NAME_ENG = "AdminTransactionsPage"; 
 	
 	@Override
@@ -47,25 +45,7 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		// TODO Auto-generated method stub
 		return transactionsAdminPageFragment.getCorrectURL();
 	}
-	
-	public MemberPaymentHistoryWidget openViewTransactionsWidgedByID(String stringID){
-
-		transactionsAdminPageFragment.clickViewTransactionsByID(stringID);
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = new MemberPaymentHistoryWidget(starter);
-		PageNavigation<MemberPaymentHistoryWidget> navigation = new PageNavigation<MemberPaymentHistoryWidget>(memberPaymentHistoryWidget);
-		navigation.NavigatedTo();
-		return memberPaymentHistoryWidget;
-	}
-
-	public MemberPaymentHistoryWidget clickFirstViewTransactionsByUsername(String username){
-
-		transactionsAdminPageFragment.clickFirstViewTransactionsByUsername(username);
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = new MemberPaymentHistoryWidget(starter);
-		PageNavigation<MemberPaymentHistoryWidget> navigation = new PageNavigation<MemberPaymentHistoryWidget>(memberPaymentHistoryWidget);
-		navigation.NavigatedTo();
-		return memberPaymentHistoryWidget;
-	}
-	
+*/	
 	private Map<String, String> getTransactionDetailsByID(String transactionID){
 	
 		return transactionsAdminPageFragment.getTransactionDetailsById(transactionID);
@@ -160,10 +140,11 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		 * if amount == null - minimum value for current currency is got
 		 * 
 		 */
+		/*
 		if(amount == null){
-			amount = String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionBySign(currency).getFirstValue());
+			amount = String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionBySign(currency).getFirstNormalValue());
 		}
-
+		*/
 		conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
 		LOGGER.info("Conversion rate is '" + conversionRate + "'");
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
@@ -171,12 +152,14 @@ public class TransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 		String fullAmount = String.valueOf(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount)) + currency + "/" +
 			String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2))+"$";
 		
-		String fullProduct = "";
+		String fullProduct = currency + " " + amount;
 		if(currency.equals(CURRENCY_SIGNS.USD.toString())){
-			fullProduct = "$" + amount;
-		}
-		else{
-			fullProduct = currency + " " + amount;
+			if (getCurrentURL().equals(new NormalTransactionsAdminPage(starter).getPageURL())){
+				fullProduct = "$" + amount;
+			}
+			else if(getCurrentURL().equals(new BusinessTransactionsAdminPage(starter).getPageURL())){
+				fullProduct = "$" + " " + amount;
+			}
 		}
 		
 		String method = cardType;

@@ -157,6 +157,15 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.EURO_RESELLER_PROVIDER)
+    public static Object[][] euroResellerDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
     @DataProvider(name=PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS)
     public static Object[][] euroResellerDataProviderWithParams(ITestContext context) throws Exception {
 

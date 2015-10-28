@@ -1,5 +1,6 @@
 package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +17,12 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
 		super(driver);
 		// TODO Auto-generated constructor stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.IFRAME_WAIT_TIME);
-    	wait.until(ExpectedConditions.visibilityOf(cardNumber));
+    	try{
+    		wait.until(ExpectedConditions.visibilityOf(cardNumber));
+    	}
+    	catch(TimeoutException e){
+    		LOGGER.fatal("There is no element CardNumber on this page");
+    	}
 	}
 
 	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	

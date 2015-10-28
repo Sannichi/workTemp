@@ -2,9 +2,11 @@ package nymgoAutomation.tests.pages.admin.base;
 
 import nymgoAutomation.tests.fragments.admin.base.AdminPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
+import nymgoAutomation.tests.pages.admin.BusinessMembersAdminPage;
+import nymgoAutomation.tests.pages.admin.BusinessTransactionsAdminPage;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
 import nymgoAutomation.tests.pages.admin.MembersAdminPage;
-import nymgoAutomation.tests.pages.admin.TransactionsAdminPage;
+import nymgoAutomation.tests.pages.admin.NormalTransactionsAdminPage;
 import nymgoAutomation.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
@@ -27,6 +29,16 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 		return membersAdminPage;
 	}
 
+    private BusinessMembersAdminPage clickBusinessMembersLink()
+	{
+		
+    	adminPageFragment.clickBusinessMembersLink();
+    	BusinessMembersAdminPage businessMembersAdminPage = new BusinessMembersAdminPage(starter);
+		PageNavigation<BusinessMembersAdminPage> navigation = new PageNavigation<BusinessMembersAdminPage>(businessMembersAdminPage); 
+		navigation.NavigatedTo();
+		return businessMembersAdminPage;
+	}
+
     public MembersAdminPage navigateMembersTab()
 	{
     	MembersAdminPage membersAdminPage = new MembersAdminPage(starter);
@@ -37,20 +49,41 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
     	return membersAdminPage;
 	}
 
-    private TransactionsAdminPage clickTransactionsLink()
+    public BusinessMembersAdminPage navigateBusinessMembersTab()
+	{
+    	BusinessMembersAdminPage businessMembersAdminPage = new BusinessMembersAdminPage(starter);
+    	if (!getCurrentURL().equals(businessMembersAdminPage.isCorrectPage())){
+    		businessMembersAdminPage = clickBusinessMembersLink();
+    	}
+    	LOGGER.info("Current page is already " + businessMembersAdminPage.getPageName());
+    	return businessMembersAdminPage;
+	}
+
+    private NormalTransactionsAdminPage clickTransactionsLink()
 	{
 		
     	adminPageFragment.clickTransactionsLink();
     	delay(1500);
-    	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
-		PageNavigation<TransactionsAdminPage> navigation = new PageNavigation<TransactionsAdminPage>(transactionsAdminPage); 
+    	NormalTransactionsAdminPage transactionsAdminPage = new NormalTransactionsAdminPage(starter);
+		PageNavigation<NormalTransactionsAdminPage> navigation = new PageNavigation<NormalTransactionsAdminPage>(transactionsAdminPage); 
 		navigation.NavigatedTo();
 		return transactionsAdminPage;
 	}
 
-    public TransactionsAdminPage navigateTransactionsTab()
+    private BusinessTransactionsAdminPage clickBusinessTransactionsLink()
 	{
-    	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
+		
+    	adminPageFragment.clickBusinessTransactionsLink();
+    	delay(1500);
+    	BusinessTransactionsAdminPage businessTransactionsAdminPage = new BusinessTransactionsAdminPage(starter);
+		PageNavigation<BusinessTransactionsAdminPage> navigation = new PageNavigation<BusinessTransactionsAdminPage>(businessTransactionsAdminPage); 
+		navigation.NavigatedTo();
+		return businessTransactionsAdminPage;
+	}
+
+    public NormalTransactionsAdminPage navigateTransactionsTab()
+	{
+    	NormalTransactionsAdminPage transactionsAdminPage = new NormalTransactionsAdminPage(starter);
     	if (!getCurrentURL().equals(transactionsAdminPage.isCorrectPage())){
     		LOGGER.info("Current URL is '" + getCurrentURL() + "', navigating to Transactions... ");
     		transactionsAdminPage = clickTransactionsLink();
@@ -59,12 +92,12 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
     	return transactionsAdminPage;
 	}
 
-    public TransactionsAdminPage navigateBusinessTransactionsTab()
+    public BusinessTransactionsAdminPage navigateBusinessTransactionsTab()
 	{
-    	TransactionsAdminPage transactionsAdminPage = new TransactionsAdminPage(starter);
+    	BusinessTransactionsAdminPage transactionsAdminPage = new BusinessTransactionsAdminPage(starter);
     	if (!getCurrentURL().equals(transactionsAdminPage.isCorrectPage())){
-    		LOGGER.info("Current URL is '" + getCurrentURL() + "', navigating to Transactions... ");
-    		transactionsAdminPage = clickTransactionsLink();
+    		LOGGER.info("Current URL is '" + getCurrentURL() + "', navigating to Business Transactions... ");
+    		transactionsAdminPage = clickBusinessTransactionsLink();
     	}
     	LOGGER.info("Current page is already " + transactionsAdminPage.getPageName());
     	return transactionsAdminPage;

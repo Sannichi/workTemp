@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.enums.PROVIDER_CONST;
 import nymgoAutomation.data.providers.GeneralDataProvider;
-import nymgoAutomation.tests.pages.admin.MembersAdminPage;
+import nymgoAutomation.tests.pages.admin.BusinessMembersAdminPage;
 import nymgoAutomation.tests.pages.admin.base.AdminPage;
-import nymgoAutomation.tests.pages.admin.widgets.MemberListWidget;
+import nymgoAutomation.tests.pages.admin.widgets.BusinessMemberListWidget;
 
 /**
  * Created by Iuliia Khikmatova on Oct 19, 2015
@@ -19,11 +19,11 @@ public class AdminResellersCase extends AbstractCase{
 
 		AdminPage adminPage = new AdminPage(starter);
 
-		MembersAdminPage membersAdminPage = adminPage.navigateMembersTab();
+		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();
 		String username = fullUserEntity.getUsername();
-		membersAdminPage.searchUsernameExactMatch(username);
-		MemberListWidget memberListWidget = membersAdminPage.openEditUserWidgetByUsername(username);
-		memberListWidget.editUserPaymentMethod(gatewayName);
+		businessMembersAdminPage.searchUsernameExactMatch(username);
+		BusinessMemberListWidget businessMemberListWidget = businessMembersAdminPage.openEditBusinessUserWidgetByUsername(username);
+		businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
 		LOGGER.info("End");
 	}
 	
