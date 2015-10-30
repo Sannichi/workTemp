@@ -37,6 +37,7 @@ public enum LOCALE_CONST {
     AMERICAN_EXPRESS,
     MASTER_CARD,
     VISA,
+    VISA_WP,
     
     CARD_ISSUED_IN_COUNTRY,
     AUSTIRA,

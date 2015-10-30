@@ -148,8 +148,9 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
 		LOGGER.info("Conversion rate is '" + conversionRate + "'");
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
-		
-		String fullAmount = String.valueOf(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount)) + currency + "/" +
+
+		String currencyAmount = CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount));
+		String fullAmount = currencyAmount + currency + "/" +
 			String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2))+"$";
 		
 		String fullProduct = currency + " " + amount;
@@ -167,7 +168,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.AMERICAN_EXPRESS))){
 				method = METHODS_CONST.AMEX_SSL.toString();
 			}
-			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA))){
+			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA)) || cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA_WP))){
 				method = METHODS_CONST.VISA_SSL.toString();
 			}
 		}

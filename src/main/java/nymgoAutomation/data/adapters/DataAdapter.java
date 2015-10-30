@@ -49,9 +49,33 @@ public class DataAdapter extends BaseAdapter {
     	return fullUserEntity;
 	}
 
+    public static FullUserEntity getEuroMasterReseller() throws Exception{
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"EuroMasterReseller");    	
+    	return fullUserEntity;
+	}
+
     public static FullCardEntity getAmericanExpressCard() throws Exception{
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"AmericanExpress");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getVisaCard() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"Visa");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getMasterCardCard() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"MasterCard");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getVisaAdyenCard() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"VisaAdyen");    	
     	return fullCardEntity;
 	}
 }

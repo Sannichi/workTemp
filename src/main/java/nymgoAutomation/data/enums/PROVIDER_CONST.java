@@ -18,6 +18,13 @@ public class PROVIDER_CONST {
     public final static String EURO_RESELLER_PROVIDER_W_PARAMS = "euroResellerProviderWithParams";
     public final static String SET_RESELLER_PARAMS_PROVIDER = "setResellerParamsProvider";    
 
+    public final static String EURO_MASTER_RESELLER_PROVIDER = "euroMasterResellerProvider";
+    public final static String EURO_MASTER_RESELLER_PROVIDER_W_PARAMS = "euroMasterResellerProviderWithParams";
+    public final static String SET_MASTER_RESELLER_PARAMS_PROVIDER = "setMasterResellerParamsProvider";    
+
     public final static String AMERICAN_EXPRESS_CARD_PROVIDER = "americanExpressCardProvider";
+    public final static String VISA_CARD_PROVIDER = "visaCardProvider";
+    public final static String MASTER_CARD_CARD_PROVIDER = "masterCardCardProvider";
+    public final static String VISA_ADYEN_CARD_PROVIDER = "visaAdyenCardProvider";
 
 }

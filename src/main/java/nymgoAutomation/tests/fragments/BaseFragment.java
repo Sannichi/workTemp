@@ -1,6 +1,7 @@
 package nymgoAutomation.tests.fragments;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -113,7 +114,7 @@ public class BaseFragment {
 		
 		String localeName = LocaleGenerator.getLocaleKeyNameByValue(localeText);
 		Select select = new Select(elementWithSelect);
-		select.selectByVisibleText(LocaleGenerator.getLocaleKey(LOCALE_CONST.valueOf(localeName)));		
+		select.selectByVisibleText(LocaleGenerator.getLocaleKey(LOCALE_CONST.valueOf(localeName)));
 		
 		LOGGER.info("Value " + localeText + " was selected from Select");
 	}

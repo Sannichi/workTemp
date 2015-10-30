@@ -27,4 +27,17 @@ public class AdminResellersCase extends AbstractCase{
 		LOGGER.info("End");
 	}
 	
+	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void editMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+
+		AdminPage adminPage = new AdminPage(starter);
+
+		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();
+		String username = fullUserEntity.getUsername();
+		businessMembersAdminPage.searchUsernameExactMatch(username);
+		BusinessMemberListWidget businessMemberListWidget = businessMembersAdminPage.openEditBusinessUserWidgetByUsername(username);
+		businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
+		LOGGER.info("End");
+	}
+	
 }

@@ -67,6 +67,21 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
 	}
 
+    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void signInEuroResellerTest(FullUserEntity fullUserEntity){
+		
+    	String login = fullUserEntity.getUsername();
+    	String password = fullUserEntity.getPassword();
+    	
+		NymgoPage nymgoPage = new NymgoPage(starter);
+		HomePage homePage = nymgoPage.setDefaultState();
+
+		ResellersPage resellersPage = homePage.clickResellersLink();
+		ResellerSignInPage resellerSignInPage = resellersPage.clickResellerSignInButton();
+		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
+		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
+	}
+
 	@Test
 	@Parameters({"masterLogin", "masterPassword"})
 	public void signInMasterTest(String login, String password){
@@ -79,4 +94,20 @@ public class SignInCase extends AbstractCase{
 		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
 	}
+
+	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void signInEuroMasterResellerTest(FullUserEntity fullUserEntity){
+		
+    	String login = fullUserEntity.getUsername();
+    	String password = fullUserEntity.getPassword();
+    	
+		NymgoPage nymgoPage = new NymgoPage(starter);
+		HomePage homePage = nymgoPage.setDefaultState();
+
+		ResellersPage resellersPage = homePage.clickResellersLink();
+		ResellerSignInPage resellerSignInPage = resellersPage.clickResellerSignInButton();
+		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
+		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
+	}
+
 }

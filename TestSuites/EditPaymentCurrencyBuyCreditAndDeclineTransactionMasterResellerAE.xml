@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Reseller Transactions American Express" preserve-order="true">
+<suite thread-count="1" verbose="1" name="Reseller Transactions AmericanExpress Global Collect" preserve-order="true">
 	<listeners>
 		<listener class-name="nymgoAutomation.tests.listeners.LoggerTestListener" />
 	</listeners>      
@@ -28,7 +28,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminResellersCase">
                 <methods>
-                    <include name="editResellerGatewayAdminTest" />
+                    <include name="editMasterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -47,7 +47,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -57,7 +57,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -68,7 +68,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -87,7 +87,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -97,7 +97,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -108,7 +108,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -127,7 +127,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -137,7 +137,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -148,7 +148,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -167,7 +167,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -177,7 +177,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -188,7 +188,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -207,7 +207,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -217,7 +217,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -228,7 +228,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -247,7 +247,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -257,7 +257,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -268,7 +268,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -287,7 +287,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -297,7 +297,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -308,7 +308,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -327,7 +327,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -337,7 +337,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -348,7 +348,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -367,7 +367,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -377,7 +377,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -388,7 +388,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -407,7 +407,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -417,7 +417,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -428,7 +428,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -447,7 +447,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -457,7 +457,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -468,7 +468,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -487,7 +487,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -497,7 +497,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                     <include name="payAmericanExpressGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -508,7 +508,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -525,7 +525,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminResellersCase">
                 <methods>
-                    <include name="editResellerGatewayAdminTest" />
+                    <include name="editMasterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -544,7 +544,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -554,7 +554,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                     <include name="payAmericanExpressWorldpayPendingTest" />
                 </methods>
             </class>
@@ -565,7 +565,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -584,7 +584,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -594,7 +594,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                     <include name="payAmericanExpressWorldpayPendingTest" />
                 </methods>
             </class>
@@ -605,7 +605,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -624,7 +624,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -634,7 +634,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                     <include name="payAmericanExpressWorldpayPendingTest" />
                 </methods>
             </class>
@@ -645,7 +645,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroResellerTransactionAdminTest" />
+                    <include name="declineEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -662,7 +662,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.AdminResellersCase">
                 <methods>
-                    <include name="editResellerGatewayAdminTest" />
+                    <include name="editMasterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -681,7 +681,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -691,7 +691,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
                     <include name="payAmericanExpressAdyenDeclinedTest" />
                 </methods>
             </class>
@@ -711,7 +711,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -721,7 +721,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
                     <include name="payAmericanExpressAdyenDeclinedTest" />
                 </methods>
             </class>
@@ -741,7 +741,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
             <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
@@ -751,7 +751,7 @@
             </class>
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
                     <include name="payAmericanExpressAdyenDeclinedTest" />
                 </methods>
             </class>
