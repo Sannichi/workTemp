@@ -13,7 +13,6 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.enums.MEMBERS_TABLE_COLUMNS;
 import nymgoAutomation.tests.starter.Starter;
 
 public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAdminFragment{

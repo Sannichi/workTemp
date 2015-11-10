@@ -15,7 +15,8 @@ import nymgoAutomation.tests.pages.admin.widgets.BusinessMemberListWidget;
 public class AdminResellersCase extends AbstractCase{
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+	public void editResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
+			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -23,12 +24,18 @@ public class AdminResellersCase extends AbstractCase{
 		String username = fullUserEntity.getUsername();
 		businessMembersAdminPage.searchUsernameExactMatch(username);
 		BusinessMemberListWidget businessMemberListWidget = businessMembersAdminPage.openEditBusinessUserWidgetByUsername(username);
-		businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
+		if (gatewayName != null){
+			businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
+		}
+		if (bonusType != null){
+			businessMemberListWidget.editBusinessUserBonusType(bonusType, bonusTypeValue);
+		}
 		LOGGER.info("End");
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+	public void editMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
+			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -36,7 +43,12 @@ public class AdminResellersCase extends AbstractCase{
 		String username = fullUserEntity.getUsername();
 		businessMembersAdminPage.searchUsernameExactMatch(username);
 		BusinessMemberListWidget businessMemberListWidget = businessMembersAdminPage.openEditBusinessUserWidgetByUsername(username);
-		businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
+		if (gatewayName != null){
+			businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
+		}
+		if (bonusType != null){
+			businessMemberListWidget.editBusinessUserBonusType(bonusType, bonusTypeValue);
+		}
 		LOGGER.info("End");
 	}
 	

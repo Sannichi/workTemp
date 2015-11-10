@@ -27,4 +27,11 @@ public class PROVIDER_CONST {
     public final static String MASTER_CARD_CARD_PROVIDER = "masterCardCardProvider";
     public final static String VISA_ADYEN_CARD_PROVIDER = "visaAdyenCardProvider";
 
+    public final static String WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER = "worldpayAmericanExpressCard3DSProvider";
+    public final static String WP_VISA_CARD_3DS_PROVIDER = "worldpayVisaCard3DSProvider";
+    public final static String WP_MASTER_CARD_CARD_3DS_PROVIDER = "worldpayMasterCardCard3DSProvider";
+
+    public final static String ADYEN_AMERICAN_EXPRESS_CARD_3DS_PROVIDER = "adyenAmericanExpressCard3DSProvider";
+    public final static String ADYEN_VISA_CARD_3DS_PROVIDER = "adyenVisaCard3DSProvider";
+    public final static String ADYEN_MASTER_CARD_CARD_3DS_PROVIDER = "adyenMasterCardCard3DSProvider";
 }

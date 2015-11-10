@@ -1,28 +1,28 @@
 package nymgoAutomation.tests.pages.nymgo.transactions;
 
-import nymgoAutomation.tests.fragments.nymgo.transactions.PendingTransactionFragment;
+import nymgoAutomation.tests.fragments.nymgo.transactions.PendingIframeTransactionFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.nymgo.account.NormalAccountPage;
 import nymgoAutomation.tests.pages.nymgo.account.ResellerAccountPage;
 import nymgoAutomation.tests.starter.Starter;
 
 /**
- * Created by Iuliia Khikmatova on Nov 10, 2015
+ * Created by Iuliia Khikmatova on Oct 23, 2015
  */
-public abstract class PendingTransactionPage extends AbstractTransactionPage{
+public abstract class PendingIframeTransactionPage extends AbstractIframeTransactionPage{
 
-	private PendingTransactionFragment pendingTransactionFragment;
+	private PendingIframeTransactionFragment pendingIframeTransactionFragment;	
 	
-	public PendingTransactionPage(Starter starter) {
+	public PendingIframeTransactionPage(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		pendingTransactionFragment = new PendingTransactionFragment(driver);
+		pendingIframeTransactionFragment = new PendingIframeTransactionFragment(driver);
 	}
 
 	//can return Normal user, Reseller and Master pages
 	protected void clickBackToDashboardButton(){
 		
-		pendingTransactionFragment.clickBackToDashboardButton();
+		pendingIframeTransactionFragment.pendingTransactionFragment.clickBackToDashboardButton();
 	}
 
 	public NormalAccountPage clickBackToNormalUserDashboardButton(){

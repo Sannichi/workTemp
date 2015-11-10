@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
-import nymgoAutomation.tests.pages.AbstractPage;
 import nymgoAutomation.tests.pages.admin.widgets.AbstractWidget;
 import nymgoAutomation.tests.testCases.AbstractCase;
 

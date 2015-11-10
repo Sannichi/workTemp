@@ -10,6 +10,7 @@ public enum METHODS_CONST {
 	VISA( "visa"),
 	VISA_SSL( "VISA-SSL"),
 	MASTERCARD( "mc"),
+	MASTERCARD_SSL( "ECMC-SSL"),
 	IMTU( "imtu");
 	
     private final String text;

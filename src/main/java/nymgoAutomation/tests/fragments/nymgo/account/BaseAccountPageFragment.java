@@ -12,6 +12,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -33,6 +34,9 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 //	private static final String viewFullAccountXpath = "//a[@href='" + language + "/user/account/view/profile']";
 	
 	private WebElement accountBuyCreditButton;
+	
+	@FindBy(xpath = "//div[@class='block my-balance']//div[@class='balance']")
+	private WebElement accountBalance;
 
 	public boolean isCorrectURL(){
 		// TODO Auto-generated method stub
@@ -60,5 +64,20 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		
 		initializeBuyCreditButton();
 		clickSubmitButton(accountBuyCreditButton);
+	}
+	
+	public String getAccountBalance(){
+		
+		return accountBalance.getText();
+	}
+
+	public String getAccountBalanceValue(){
+		
+		return accountBalance.getText().split(" ")[0];
+	}
+
+	public String getAccountBalanceCurrency(){
+		
+		return accountBalance.getText().split(" ")[1];
 	}
 }

@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 /**
- * Created by Iuliia Khikmatova on Oct 23, 2015
+ * Created by Iuliia Khikmatova on Nov 10, 2015
  */
-public class PendingTransactionFragment extends BaseIframeTransactionFragment{
+public class PendingTransactionFragment extends BaseTransactionFragment{
 
 	public PendingTransactionFragment(WebDriver driver) {
 		super(driver);

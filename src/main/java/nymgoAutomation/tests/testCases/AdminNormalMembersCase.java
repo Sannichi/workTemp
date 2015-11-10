@@ -15,7 +15,7 @@ import nymgoAutomation.tests.pages.admin.widgets.MemberListWidget;
 public class AdminNormalMembersCase extends AbstractCase{
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editNormalUserGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String conversionRate){
+	public void editNormalUserGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
 
 		AdminPage adminPage = new AdminPage(starter);
 

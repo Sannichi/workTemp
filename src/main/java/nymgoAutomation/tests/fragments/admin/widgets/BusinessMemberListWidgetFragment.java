@@ -23,6 +23,9 @@ public class BusinessMemberListWidgetFragment extends BaseWidgetFragment{
 	@FindBy(xpath=".//input[@value='EDIT']")
 	private List<WebElement> editButtons;
 	
+	@FindBy(xpath=".//select[@name='bonus']")
+	private List<WebElement> bonusSelects;
+
 	public void navigateToBusinessPaymentMethodTab(){
 		
 		clickOnTabByAltText(BUSINESS_MEMBERS_LIST_TABS.BUSINESS_PAYMENT_METHOD.toString());
@@ -36,5 +39,20 @@ public class BusinessMemberListWidgetFragment extends BaseWidgetFragment{
 	public void clickEditPaymentMethodButton(){
 		
 		clickInputButton(editButtons.get(0));
+	}
+
+	public void navigateToInfoTab(){
+		
+		clickOnTabByAltText(BUSINESS_MEMBERS_LIST_TABS.INFO.toString());
+	}
+
+	public void selectBonusType(String bonusTypeName){
+		
+		selectValueFromSelectByVisibleText(bonusSelects.get(0), bonusTypeName);
+	}
+
+	public void selectBonusTypeValue(String bonusTypeValue){
+		
+		selectValueFromSelectByVisibleText(bonusSelects.get(1), bonusTypeValue);
 	}
 }

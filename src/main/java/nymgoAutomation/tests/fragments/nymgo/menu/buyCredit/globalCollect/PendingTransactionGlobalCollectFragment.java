@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.fragments.nymgo.transactions.PendingTransactionFragment;
+import nymgoAutomation.tests.fragments.nymgo.transactions.PendingIframeTransactionFragment;
 import nymgoAutomation.tests.starter.Starter;
 
-public class PendingTransactionGlobalCollectFragment extends PendingTransactionFragment{
+public class PendingTransactionGlobalCollectFragment extends PendingIframeTransactionFragment{
 
 	public PendingTransactionGlobalCollectFragment(WebDriver driver) {
 		super(driver);

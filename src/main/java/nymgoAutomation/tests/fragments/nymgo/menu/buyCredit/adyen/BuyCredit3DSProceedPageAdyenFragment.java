@@ -1,33 +1,28 @@
 package nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen;
 
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nymgoAutomation.tests.enums.LOCALE_CONST;
-import nymgoAutomation.tests.enums.URL_CONST;
-import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
-import nymgoAutomation.tests.generators.LocaleGenerator;
-import nymgoAutomation.tests.generators.ServerGenerator;
-import nymgoAutomation.tests.starter.Starter;
+//import nymgoAutomation.tests.fragments.nymgo.base.BaseLoggedInFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCredit3DSProceedPageFragment;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment{
+
+//public class BuyCredit3DSProceedPageAdyenFragment extends BaseLoggedInFragment{
+public class BuyCredit3DSProceedPageAdyenFragment extends BaseBuyCredit3DSProceedPageFragment{
 	
-	public BuyCreditProceedPageAdyenFragment(WebDriver driver) {
+	public BuyCredit3DSProceedPageAdyenFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
+/*
 	private static final String BUY_CREDIT_PAGE_PROOCEED_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/proceed";	
-	
+*/	
 	@FindBy(css = "input[data-encrypted-name='number']")
 	private WebElement cardNumber;
 	
@@ -42,13 +37,14 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment{
 
 	@FindBy(css = "input[data-encrypted-name='cvc']")
 	private WebElement cvv;
-	
+/*	
 	@FindBy(css = "input[class='button-normal']")
 	private WebElement payButton;
 	
 	@FindBy(css = "a[class='button-normal cancel']")
 	private WebElement cancelButton;
-
+*/
+/*	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
 		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
@@ -65,7 +61,7 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated method stub
 		return BUY_CREDIT_PAGE_PROOCEED_ADYEN_URL;
 	}
-
+*/
 	public void setCardNumber(String cardNumberValue){
 		
 		setTextToEditField(cardNumber, cardNumberValue);
@@ -123,7 +119,7 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment{
 		
 		return nameOnCard.getText();
 	}
-	
+/*	
 	public void clickPayButton(){
 		
 		clickInputButton(payButton);
@@ -133,4 +129,4 @@ public class BuyCreditProceedPageAdyenFragment extends BaseLoggedInFragment{
 		
 		clickInputButton(cancelButton);
 	}
-}
+*/}

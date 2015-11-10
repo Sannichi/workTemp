@@ -17,8 +17,8 @@ public class CurrencyDescriptionMap {
 		currencyMap.put(CURRENCY_SIGNS.AUD, new CurrencyDescription(7, 14, 30, 65, 80, 160, 400, 500, 800, 1000, 1500, "AU", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.AUD)));
 		currencyMap.put(CURRENCY_SIGNS.CAD, new CurrencyDescription(7, 14, 30, 65, 80, 170, 400, 500, 800, 1000, 1500, "C$", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.CAD)));
 		currencyMap.put(CURRENCY_SIGNS.EUR, new CurrencyDescription(5, 10, 20, 50, 60, 125, 300, 400, 600, 800, 1200, "€", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.EUR)));
-//		currencyMap.put(CURRENCY_SIGNS.INR, new CurrencyDescription(5, 500, 1000, 2500, 4000, 8000, 19000, 25000, 38000, 50000, 76000, "₹", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.INR)));
-		currencyMap.put(CURRENCY_SIGNS.INR, new CurrencyDescription(5, 500, 1000, 2500, 3000, 6500, 15000, 20000, 25000, 30000, 40000, "₹", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.INR)));		
+		currencyMap.put(CURRENCY_SIGNS.INR, new CurrencyDescription(5, 500, 1000, 2500, 4000, 8000, 19000, 25000, 38000, 50000, 76000, "₹", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.INR)));
+//		currencyMap.put(CURRENCY_SIGNS.INR, new CurrencyDescription(5, 500, 1000, 2500, 3000, 6500, 15000, 20000, 25000, 30000, 40000, "₹", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.INR)));		
 		currencyMap.put(CURRENCY_SIGNS.NZD, new CurrencyDescription(8, 16, 32, 80, 90, 200, 450, 600, 900, 1200, 1800, "N$", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.NZD)));
 		currencyMap.put(CURRENCY_SIGNS.QAR, new CurrencyDescription(20, 40, 75, 200, 250, 470, 1125, 1500, 2250, 3000, 4500, "QR", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.QAR)));
 		currencyMap.put(CURRENCY_SIGNS.SAR, new CurrencyDescription(20, 40, 75, 200, 250, 470, 1125, 1500, 2250, 3000, 4500, "﷼", CurrencyUtils.getConversionRate(CURRENCY_SIGNS.SAR)));

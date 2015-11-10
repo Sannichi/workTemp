@@ -1,10 +1,10 @@
 package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect;
 
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectFragment;
-import nymgoAutomation.tests.pages.nymgo.transactions.PendingTransactionPage;
+import nymgoAutomation.tests.pages.nymgo.transactions.PendingIframeTransactionPage;
 import nymgoAutomation.tests.starter.Starter;
 
-public class PendingTransactionGlobalCollectPage extends PendingTransactionPage{
+public class PendingTransactionGlobalCollectPage extends PendingIframeTransactionPage{
 
 	private PendingTransactionGlobalCollectFragment pendingTransactionGlobalCollectFragment;
 	

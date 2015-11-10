@@ -3,13 +3,8 @@ package nymgoAutomation.tests.testCases;
 import nymgoAutomation.data.entity.AdminEntity;
 import nymgoAutomation.data.enums.PROVIDER_CONST;
 import nymgoAutomation.data.providers.GeneralDataProvider;
-import nymgoAutomation.tests.enums.TRANSACTIONS_TABLE_COLUMNS;
-import nymgoAutomation.tests.enums.TRANSACTION_INFORMATION_ROWS;
 import nymgoAutomation.tests.pages.admin.LoginAdminPage;
 import nymgoAutomation.tests.pages.admin.MembersAdminPage;
-import nymgoAutomation.tests.pages.admin.NormalTransactionsAdminPage;
-import nymgoAutomation.tests.pages.admin.base.AdminPage;
-import nymgoAutomation.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
 import nymgoAutomation.tests.pages.nymgo.base.NymgoPage;
 
 import org.testng.annotations.Parameters;
@@ -35,9 +30,9 @@ public class AdminSignInCase extends AbstractCase{
 	@Test
 	@Parameters({"criteria", "searchField", "searchType"})
 	public void searchMembersAdminTest(String criteria, String searchField, String searchType){
-
+/*
 		AdminPage adminPage = new AdminPage(starter);
-/*		
+
 		MembersAdminPage membersAdminPage = adminPage.clickMembersLink();
 
 		List<WebElement> searched = membersAdminPage.searchCriteria(criteria, searchField, searchType);
@@ -48,6 +43,7 @@ public class AdminSignInCase extends AbstractCase{
 		memberListWidget.clickOnTabByAltText("Infos");;		
 		System.out.println("End");
 */
+/*		
 		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 		String transactionID = "3324265152";
 		String username = transactionsAdminPage.getColumnRowValueByColumnRowValue(TRANSACTIONS_TABLE_COLUMNS.ID.toString(), transactionID, 
@@ -70,5 +66,6 @@ public class AdminSignInCase extends AbstractCase{
 		memberPaymentHistoryWidget.clickOnCloseButton();
 //		LOGGER.info("payment amount = " + paymentString);
 		LOGGER.info("End");
+*/		
 	}
 }

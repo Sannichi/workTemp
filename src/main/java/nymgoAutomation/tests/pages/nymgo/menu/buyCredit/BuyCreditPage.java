@@ -1,19 +1,17 @@
 package nymgoAutomation.tests.pages.nymgo.menu.buyCredit;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import org.testng.Assert;
 
-import nymgoAutomation.tests.enums.CURRENCY_SIGNS;
 import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
 import nymgoAutomation.tests.navigation.PageNavigation;
 import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyen;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSProceedPageAdyen;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditProceedPageGlobalCollect;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditProceedPageWorldpay;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSProceedPageWorldpay;
 import nymgoAutomation.tests.starter.Starter;
-import nymgoAutomation.tests.utils.CurrencyDescriptionMap;
 
 public class BuyCreditPage extends AbstractLoggedInPage{
 
@@ -48,7 +46,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		return buyCreditPageFragment.getAllAdyenOptionsDescription();
 	}
-
+/*
 	private ArrayList<Integer> getDisabledAdyenOptionsValues(){
 		
 		return buyCreditPageFragment.getDisabledAdyenOptionsValues();	
@@ -58,7 +56,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		return buyCreditPageFragment.getAllCurencyValuesOptions();	
 	}
-
+*/
 	private String getCheckedOptionDescription(){
 		
 		return buyCreditPageFragment.getCheckedOptionDescription();
@@ -74,12 +72,12 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		buyCreditPageFragment.checkOptionByValue(value);
 		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option!");
 	}
-
+/*
 	private boolean isValueDisabled(int value){
 
 		return buyCreditPageFragment.isValueDisabled(value);
 	}
-	
+*/	
 	private void clickContinueButton(){
 		
 		buyCreditPageFragment.clickContinueButton();
@@ -99,14 +97,14 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return clickContinueToGlobalCollect();
 	} 
 	
-	public BuyCreditProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
+	public BuyCredit3DSProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
 		
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
 		return clickContinueToWorldpay();
 	} 
 	
-	public BuyCreditProceedPageAdyen selectAmountAndClickContinueToAdyen(String amount){
+	public BuyCredit3DSProceedPageAdyen selectAmountAndClickContinueToAdyen(String amount){
 		
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
@@ -122,22 +120,22 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditProceedPageGlobalCollect;
 	} 
 	
-	public BuyCreditProceedPageWorldpay clickContinueToWorldpay(){
+	public BuyCredit3DSProceedPageWorldpay clickContinueToWorldpay(){
 		
 		clickContinueButton();
-		BuyCreditProceedPageWorldpay buyCreditProceedPageWorldpay = new BuyCreditProceedPageWorldpay(starter);
-		PageNavigation<BuyCreditProceedPageWorldpay> navigation = new PageNavigation<BuyCreditProceedPageWorldpay>(buyCreditProceedPageWorldpay);
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
+		PageNavigation<BuyCredit3DSProceedPageWorldpay> navigation = new PageNavigation<BuyCredit3DSProceedPageWorldpay>(buyCredit3DSProceedPageWorldpay);
 		navigation.NavigatedTo();
-		return buyCreditProceedPageWorldpay;
+		return buyCredit3DSProceedPageWorldpay;
 	} 
 	
-	public BuyCreditProceedPageAdyen clickContinueToAdyen(){
+	public BuyCredit3DSProceedPageAdyen clickContinueToAdyen(){
 		
 		clickContinueButton();
-		BuyCreditProceedPageAdyen buyCreditProceedPageAdyen = new BuyCreditProceedPageAdyen(starter);
-		PageNavigation<BuyCreditProceedPageAdyen> navigation = new PageNavigation<BuyCreditProceedPageAdyen>(buyCreditProceedPageAdyen);
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
+		PageNavigation<BuyCredit3DSProceedPageAdyen> navigation = new PageNavigation<BuyCredit3DSProceedPageAdyen>(buyCredit3DSProceedPageAdyen);
 		navigation.NavigatedTo();
-		return buyCreditProceedPageAdyen;
+		return buyCredit3DSProceedPageAdyen;
 	} 
 /*
 	public void selectMinAmountByCurrency(String paymentCurrency){

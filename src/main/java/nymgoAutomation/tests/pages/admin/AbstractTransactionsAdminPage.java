@@ -13,7 +13,6 @@ import nymgoAutomation.tests.fragments.admin.BaseTransactionsAdminPageFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import nymgoAutomation.tests.starter.Starter;
-import nymgoAutomation.tests.utils.CurrencyDescriptionMap;
 import nymgoAutomation.tests.utils.CurrencyUtils;
 
 public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
@@ -134,7 +133,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
         return bd.floatValue();
     }
     
-	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String conversionRate, String currency, String service, String cardType, String country){
+	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String currency, String service, String cardType, String country){
 
 		/*
 		 * if amount == null - minimum value for current currency is got
@@ -145,7 +144,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			amount = String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionBySign(currency).getFirstNormalValue());
 		}
 		*/
-		conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
+		String conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
 		LOGGER.info("Conversion rate is '" + conversionRate + "'");
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 
@@ -167,6 +166,9 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		if(service.equals(GATEWAY_CONST.WORLDPAY.toString())){
 			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.AMERICAN_EXPRESS))){
 				method = METHODS_CONST.AMEX_SSL.toString();
+			}
+			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.MASTER_CARD))){
+				method = METHODS_CONST.MASTERCARD_SSL.toString();
 			}
 			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA)) || cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA_WP))){
 				method = METHODS_CONST.VISA_SSL.toString();

@@ -78,4 +78,41 @@ public class DataAdapter extends BaseAdapter {
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"VisaAdyen");    	
     	return fullCardEntity;
 	}
+
+    public static FullCardEntity getWPAmericanExpressCard3DS() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPAMEX3DS");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getWPVisaCard3DS() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPVISA3DS");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getWPMasterCardCard3DS() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPMC3DS");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getAdyenAmericanExpressCard3DS() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENAMEX3DS");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getAdyenVisaCard3DS() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENVISA3DS");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getAdyenMasterCardCard3DS() throws Exception{
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENMC3DS");    	
+    	return fullCardEntity;
+	}
+
 }

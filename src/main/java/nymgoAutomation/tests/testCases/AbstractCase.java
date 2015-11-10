@@ -3,8 +3,6 @@ package nymgoAutomation.tests.testCases;
 import java.lang.reflect.Method;
 
 import nymgoAutomation.tests.enums.LOGS;
-import nymgoAutomation.tests.pages.nymgo.HomePage;
-import nymgoAutomation.tests.pages.nymgo.base.NymgoPage;
 import nymgoAutomation.tests.starter.Starter;
 
 import org.testng.ITestContext;
@@ -13,7 +11,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 

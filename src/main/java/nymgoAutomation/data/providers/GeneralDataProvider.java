@@ -50,9 +50,8 @@ public class GeneralDataProvider extends BaseDataProvider{
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
         String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
-        String conversionRate = context.getCurrentXmlTest().getParameter("conversionRate");
 
-        Object[][] dataAdapterArray = new Object[1][7]; 
+        Object[][] dataAdapterArray = new Object[1][6]; 
         FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
@@ -60,7 +59,6 @@ public class GeneralDataProvider extends BaseDataProvider{
         dataAdapterArray[0][3] = cardType;    	
         dataAdapterArray[0][4] = gatewayName;    	
         dataAdapterArray[0][5] = currencyAmount;    	
-        dataAdapterArray[0][6] = conversionRate;    	
         return dataAdapterArray;
     }
 
@@ -174,17 +172,19 @@ public class GeneralDataProvider extends BaseDataProvider{
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
         String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
-        String conversionRate = context.getCurrentXmlTest().getParameter("conversionRate");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
-        Object[][] dataAdapterArray = new Object[1][7]; 
+        Object[][] dataAdapterArray = new Object[1][8]; 
         FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
         dataAdapterArray[0][2] = countryOfCredit;    	
         dataAdapterArray[0][3] = cardType;    	
         dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    	
-        dataAdapterArray[0][6] = conversionRate;    	
+        dataAdapterArray[0][5] = currencyAmount;    
+        dataAdapterArray[0][6] = bonusType;
+        dataAdapterArray[0][7] = bonusTypeValue;
         return dataAdapterArray;
     }
 
@@ -235,17 +235,19 @@ public class GeneralDataProvider extends BaseDataProvider{
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
         String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
-        String conversionRate = context.getCurrentXmlTest().getParameter("conversionRate");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
-        Object[][] dataAdapterArray = new Object[1][7]; 
+        Object[][] dataAdapterArray = new Object[1][8]; 
         FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
         dataAdapterArray[0][2] = countryOfCredit;    	
         dataAdapterArray[0][3] = cardType;    	
         dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    	
-        dataAdapterArray[0][6] = conversionRate;    	
+        dataAdapterArray[0][5] = currencyAmount;    
+        dataAdapterArray[0][6] = bonusType;
+        dataAdapterArray[0][7] = bonusTypeValue;
         return dataAdapterArray;
     }
 
@@ -284,4 +286,32 @@ public class GeneralDataProvider extends BaseDataProvider{
         dataAdapterArray[0][0] = fullCardEntity;
         return dataAdapterArray;
     }
+    
+    @DataProvider(name=PROVIDER_CONST.WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER)
+    public static Object[][] wpAmericanExpressCard3DSDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullCardEntity fullCardEntity = DataAdapter.getAmericanExpressCard();
+        dataAdapterArray[0][0] = fullCardEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.WP_VISA_CARD_3DS_PROVIDER)
+    public static Object[][] wpVisaCard3DSDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
+        dataAdapterArray[0][0] = fullCardEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.WP_MASTER_CARD_CARD_3DS_PROVIDER)
+    public static Object[][] wpMasterCardCard3DSDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullCardEntity fullCardEntity = DataAdapter.getMasterCardCard();
+        dataAdapterArray[0][0] = fullCardEntity;
+        return dataAdapterArray;
+    }
+
 }

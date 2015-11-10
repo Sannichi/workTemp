@@ -1,7 +1,9 @@
 package nymgoAutomation.tests.pages.admin.widgets;
 
+import nymgoAutomation.tests.enums.BONUS_TYPE_CONST;
 import nymgoAutomation.tests.fragments.admin.widgets.BusinessMemberListWidgetFragment;
 import nymgoAutomation.tests.navigation.AlertNavigation;
+import nymgoAutomation.tests.pages.admin.alerts.BonusTypeEditAlert;
 import nymgoAutomation.tests.pages.admin.alerts.MemberEditAlert;
 import nymgoAutomation.tests.starter.Starter;
 
@@ -65,7 +67,41 @@ public class BusinessMemberListWidget extends AbstractWidget{
 		memberEditAlert.acceptAlert();
 	}
 
-    public void closeMemberListWidget(){
+	public BusinessMemberListWidget navigateToInfoTab(){
+		
+		businessMemberListWidgetFragment.navigateToInfoTab();
+		return this;
+	}
+
+	public void selectBonusType(String bonusTypeName){
+		
+		businessMemberListWidgetFragment.selectBonusType(bonusTypeName);
+	}
+
+	public void selectBonusTypeValue(String bonusTypeValue){
+		
+		businessMemberListWidgetFragment.selectBonusTypeValue(bonusTypeValue);
+	}
+	
+	public void editBusinessUserBonusType(String bonusType, String bonusTypeValue){
+		
+		navigateToInfoTab();
+		BONUS_TYPE_CONST bonusTypeName = BONUS_TYPE_CONST.valueOf(bonusType.toUpperCase());
+		BONUS_TYPE_CONST bonusValue = BONUS_TYPE_CONST.valueOf(bonusTypeValue);
+		if (bonusTypeName.equals(BONUS_TYPE_CONST.MANUAL)){
+			selectBonusType(bonusType);
+			selectBonusTypeValue(bonusValue.toString());
+		}else{
+			// by default if not MANUAL, set AUTOMATIC
+			selectBonusType(BONUS_TYPE_CONST.AUTOMATIC.toString());
+		}
+		BonusTypeEditAlert bonusTypeEditAlert = new BonusTypeEditAlert(starter);
+		AlertNavigation<BonusTypeEditAlert> navigation = new AlertNavigation<BonusTypeEditAlert>(bonusTypeEditAlert);
+		navigation.NavigatedTo();
+		bonusTypeEditAlert.acceptAlert();
+	}
+
+	public void closeMemberListWidget(){
     	
     	closeWidget(getPageName());
     }

@@ -17,7 +17,7 @@ import nymgoAutomation.data.entity.FullUserEntity;
 import nymgoAutomation.data.enums.ADMIN_PARAMS;
 import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
-import nymgoAutomation.data.testCases.ExcelCases;
+//import nymgoAutomation.data.testCases.ExcelCases;
 import nymgoAutomation.tests.enums.LOGS;
 import nymgoAutomation.tests.starter.Starter;
 
@@ -236,7 +236,7 @@ public class ExcelUtils {
 			return cellData;
 		}
 		catch (Exception e){
-			return"";
+			return "";
 		}
 	}
 
@@ -305,7 +305,7 @@ public class ExcelUtils {
 		}
 	}
 
-	public static boolean addTransactionData(String transactionID){
+	public static boolean addUserAndCurrencyAndBalanceAndAmountData(String username, String currency, String balance, String amount){
 
 		try{
 			
@@ -314,12 +314,62 @@ public class ExcelUtils {
 			int startRow = getFirstEmptyRow();
 			LOGGER.info("Start row = " + startRow);
 			try {
-				setCellData(startRow, startCol + 1, transactionID);				
+				setCellData(startRow, startCol, username);				
+				setCellData(startRow, startCol + 1, username);				
+				setCellData(startRow, startCol + 2, balance);				
+				setCellData(startRow, startCol + 3, amount);				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			writeExcelFile(transactionFilePath);
+		}
+		catch (FileNotFoundException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		return false;
+	} 
+
+	public static boolean addTransactionData(String transactionID){
+
+		try{
+			
+			setExcelFile(transactionFilePath, transactionSheetName);
+			int startCol = 0;
+			int startRow = getFirstEmptyRow();
+			LOGGER.info("Start row = " + startRow);
+			if (startRow != 0){
+				try {
+					if(!getCellData(startRow - 1, startCol + 4).equals("")||!getCellData(startRow - 1, startCol + 4).equals(" ")){
+		//				setCellData(startRow, startCol + 1, transactionID);				
+					setCellData(startRow - 1, startCol + 4, transactionID);	
+					LOGGER.info("transactionID " + transactionID + " was added to Excel");
+					}
+					else{
+						LOGGER.fatal("There is another transaction data in the cell! - '" + getCellData(startRow - 1, startCol + 4) + "'");
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				writeExcelFile(transactionFilePath);
+			}
+			else{
+				LOGGER.fatal("There is no data to add transaction to!");
+			}
 		}
 		catch (FileNotFoundException e)
 		{
@@ -450,7 +500,7 @@ public class ExcelUtils {
 		return result;
 	}
 
-	public static String getLastTransactionByUsername(String username){
+	public static String getLastBalanceByUsername(String username){
 
 		try{
 			setExcelFile(transactionFilePath, transactionSheetName);			
@@ -470,6 +520,45 @@ public class ExcelUtils {
 		return null;
 	} 
 
+	public static String getAccountBalanceBeforeTransaction(String transactionID){
+
+		try{
+			setExcelFile(transactionFilePath, transactionSheetName);			
+			int startCol = 0;
+			int startRow = 0;
+			int lastRow = getLastRowNumber();
+			for (int i = lastRow; i >= startRow; i --)			
+			if (getCellData(i, startCol + 4).equals(transactionID)){
+				return getCellData(i, startCol + 1);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	} 
+
+	public static String getLastTransactionByUsername(String username){
+
+		try{
+			setExcelFile(transactionFilePath, transactionSheetName);			
+			int startCol = 0;
+			int startRow = 0;
+			int lastRow = getLastRowNumber();
+//			for (int i = lastRow - 1; i >= startRow; i --)
+			for (int i = lastRow; i >= startRow; i --)			
+			if (getCellData(i, startCol).equals(username)){
+				return getCellData(i, startCol + 4);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	} 
+
 	public static String getLastTransaction(){
 
 		try{
@@ -477,7 +566,8 @@ public class ExcelUtils {
 			int startCol = 0;
 			int lastRow = getLastRowNumber();
 			if (lastRow != -1){
-				return getCellData(lastRow, startCol + 1);
+//				return getCellData(lastRow, startCol + 1);
+				return getCellData(lastRow, startCol + 4);
 			}
 			else{
 				LOGGER.fatal("There is no any transaction");

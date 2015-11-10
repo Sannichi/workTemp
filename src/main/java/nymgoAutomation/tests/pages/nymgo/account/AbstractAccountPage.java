@@ -35,4 +35,18 @@ public abstract class AbstractAccountPage extends AbstractLoggedInPage{
 		return buyCreditPage;
 	}
 
+	public String getAccountBalance(){
+		
+		return baseAccountPageFragment.getAccountBalance();
+	}
+
+	public String getAccountBalanceValue(){
+		
+		return baseAccountPageFragment.getAccountBalanceValue();
+	}
+
+	public String getAccountBalanceCurrency(){
+		
+		return baseAccountPageFragment.getAccountBalanceCurrency();
+	}
 }

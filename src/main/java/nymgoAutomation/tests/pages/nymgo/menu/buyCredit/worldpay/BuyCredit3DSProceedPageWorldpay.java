@@ -1,28 +1,52 @@
-package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen;
+package nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay;
 
 import org.testng.Assert;
 
 import nymgoAutomation.tests.enums.LOCALE_CONST;
-import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.adyen.BuyCreditProceedPageAdyenFragment;
+import nymgoAutomation.tests.fragments.nymgo.menu.buyCredit.worldpay.BuyCredit3DSProceedPageWorldpayFragment;
 import nymgoAutomation.tests.generators.LocaleGenerator;
 import nymgoAutomation.tests.navigation.PageNavigation;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCredit3DSProceedPage;
 import nymgoAutomation.tests.starter.Starter;
-import nymgoAutomation.tests.pages.nymgo.base.AbstractLoggedInPage;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelled;
 
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
-	
-	private BuyCreditProceedPageAdyenFragment buyCreditProceedPageAdyenFragment;
+public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceedPage{
 
-	public BuyCreditProceedPageAdyen(Starter starter) {
+	private BuyCredit3DSProceedPageWorldpayFragment buyCredit3DSProceedPageWorldpayFragment;
+	
+	public BuyCredit3DSProceedPageWorldpay(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-		buyCreditProceedPageAdyenFragment = new BuyCreditProceedPageAdyenFragment(driver);
+		buyCredit3DSProceedPageWorldpayFragment = new BuyCredit3DSProceedPageWorldpayFragment(driver);
+	}
+/*
+	private static final String BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG = "BuyCreditProceedWorldpayPage"; 
+			
+	@Override
+	public String getPageName() {
+		// TODO Auto-generated method stub
+		return BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG;
 	}
 
+	public BuyCreditConfirmPageWorldpay verifyDataAndClickContinue(String cardType, String countryOfCredit,
+			String nymgoCreditValue, String VAT, String totalAmountCharged){
+		
+		verifyPaymentBlock(cardType, countryOfCredit);
+		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
+		clickContinueButton();
+		BuyCreditConfirmPageWorldpay buyCreditConfirmPageWorldpay = new BuyCreditConfirmPageWorldpay(starter);
+		PageNavigation<BuyCreditConfirmPageWorldpay> navigation = new PageNavigation<BuyCreditConfirmPageWorldpay>(buyCreditConfirmPageWorldpay);
+		navigation.NavigatedTo();
+		return buyCreditConfirmPageWorldpay;
+	} 
+
+	public void verifyDefaultData(String countryOfResidence, String nymgoCreditValue, String VAT, String totalAmountCharged){
+		verifyDefaultPaymentBlock(countryOfResidence);
+		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
+	}
+*/
 	private static final String BUY_CREDIT_PROCEED_PAGE_ADYEN_NAME_ENG = "BuyCreditProceedAdyenPage"; 
 	
 	@Override
@@ -34,82 +58,73 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 	@Override
 	public boolean isCorrectPage() {
 		// TODO Auto-generated method stub
-		return buyCreditProceedPageAdyenFragment.isCorrectURL();
+		return buyCredit3DSProceedPageWorldpayFragment.isCorrectURL();
 	}
 
 	@Override
 	public String getPageURL() {
 		// TODO Auto-generated method stub
-		return buyCreditProceedPageAdyenFragment.getCorrectURL();
+		return buyCredit3DSProceedPageWorldpayFragment.getCorrectURL();
 	}
+
 
 	private void setCardNumber(String cardNumberValue){
 		
-		buyCreditProceedPageAdyenFragment.setCardNumber(cardNumberValue);
+		buyCredit3DSProceedPageWorldpayFragment.setCardNumber(cardNumberValue);
 	}
 
 	private String getCardNumber(){
 		
-		return buyCreditProceedPageAdyenFragment.getCardNumber();
+		return buyCredit3DSProceedPageWorldpayFragment.getCardNumber();
 	}
 
 	private void setCardholdersName(String cardholdersName){
 		
-		buyCreditProceedPageAdyenFragment.setCardholdersName(cardholdersName);
+		buyCredit3DSProceedPageWorldpayFragment.setCardholdersName(cardholdersName);
 	}
 	
 	private String getCardholdersName(){
 		
-		return buyCreditProceedPageAdyenFragment.getCardholdersName();
+		return buyCredit3DSProceedPageWorldpayFragment.getCardholdersName();
 	}
 
 	private void selectExpireDateMonth(String expireDateMonth){
 		
-		buyCreditProceedPageAdyenFragment.selectExpireDateMonthByValue(expireDateMonth);
+		buyCredit3DSProceedPageWorldpayFragment.selectExpireDateMonthByValue(expireDateMonth);
 	}
 
 	private String getSelectedExpireDateMonth(){
 		
-		return buyCreditProceedPageAdyenFragment.getSelectedExpireDateMonth();
+		return buyCredit3DSProceedPageWorldpayFragment.getSelectedExpireDateMonth();
 	}
 
 	private String getSelectedExpireDateMonthValue(){
 		
-		return buyCreditProceedPageAdyenFragment.getSelectedExpireDateMonthValue();
+		return buyCredit3DSProceedPageWorldpayFragment.getSelectedExpireDateMonthValue();
 	}
 
 	private void selectExpireDateYear(String expireDateYear){
 		
-		buyCreditProceedPageAdyenFragment.selectExpireDateYearByLCName(expireDateYear);
+		buyCredit3DSProceedPageWorldpayFragment.selectExpireDateYearByLCName(expireDateYear);
 	}
 
 	private String getSelectedExpireDateYear(){
 		
-		return buyCreditProceedPageAdyenFragment.getSelectedExpireDateYear();
+		return buyCredit3DSProceedPageWorldpayFragment.getSelectedExpireDateYear();
 	}
 
 	private void setCVV(String cvvValue){
 		
-		buyCreditProceedPageAdyenFragment.setCVV(cvvValue);
+		buyCredit3DSProceedPageWorldpayFragment.setCVV(cvvValue);
 	}
 	
 	private String getCVV(){
 		
-		return buyCreditProceedPageAdyenFragment.getCVV();
-	}
-
-	private void clickPayButton(){
-		
-		buyCreditProceedPageAdyenFragment.clickPayButton();
-	}
-	
-	private void clickCancelButton(){
-		
-		buyCreditProceedPageAdyenFragment.clickCancelButton();
+		return buyCredit3DSProceedPageWorldpayFragment.getCVV();
 	}
 	
 	//TODO instead of void
-	public BuyCreditProceedPageAdyen setCreditCardData(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCredit3DSProceedPageWorldpay setCreditCardData(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		setCardholdersName(cardholdersName);
@@ -119,21 +134,7 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 		return this;
 	}
 
-	public DeclinedTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
-		
-		setCardNumber(cardNumberValue);
-		setCardholdersName(cardholdersName);
-		selectExpireDateMonth(expireDateMonth);
-		selectExpireDateYear(expireDateYear);
-		setCVV(cvvValue);
-		clickPayButton();
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = new DeclinedTransactionAdyenPage(starter);
-		PageNavigation<DeclinedTransactionAdyenPage> navigation = new PageNavigation<DeclinedTransactionAdyenPage>(declinedTransactionAdyenPage);
-		navigation.NavigatedTo();
-		return declinedTransactionAdyenPage;
-	}
-
-	public BuyCreditProceedPageAdyen verifyDefaultData(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCredit3DSProceedPageWorldpay verifyDefaultData(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
 				"', should be '" + cardNumberValue + "'");
@@ -153,7 +154,7 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 		return this;
 	}
 
-	public BuyCreditProceedPageAdyen verifyDefaultData(){
+	public BuyCredit3DSProceedPageWorldpay verifyDefaultData(){
 		
 		Assert.assertTrue(getCardNumber().equals(""), "Card Number is not correct! Current value is '" + getCardNumber() + 
 				"', should be empty");
@@ -175,7 +176,21 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 		return this;
 	}
 
-	public DeclinedTransactionAdyenPage verifyDataAndClickContinue(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public PendingTransactionWorldpayPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		navigation.NavigatedTo();
+		return pendingTransactionWorldpayPage;
+	}
+
+	public PendingTransactionWorldpayPage verifyDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
 				"', should be '" + cardNumberValue + "'");
@@ -190,22 +205,10 @@ public class BuyCreditProceedPageAdyen extends AbstractLoggedInPage{
 				"', should be '" + expireDateYear + "'");
 		LOGGER.info("Expire Date Year is correct");
 		clickPayButton();
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = new DeclinedTransactionAdyenPage(starter);
-		PageNavigation<DeclinedTransactionAdyenPage> navigation = new PageNavigation<DeclinedTransactionAdyenPage>(declinedTransactionAdyenPage);
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
 		navigation.NavigatedTo();
-		return declinedTransactionAdyenPage;
+		return pendingTransactionWorldpayPage;
 	}
 
-	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
-		
-		setCardNumber(cardNumberValue);
-		selectExpireDateMonth(expireDateMonth);
-		selectExpireDateYear(expireDateYear);
-		setCVV(cvvValue);
-		clickCancelButton();
-		BuyCreditConfirmPageCancelled buyCreditConfirmPageCancelled = new BuyCreditConfirmPageCancelled(starter);
-		PageNavigation<BuyCreditConfirmPageCancelled> navigation = new PageNavigation<BuyCreditConfirmPageCancelled>(buyCreditConfirmPageCancelled);
-		navigation.NavigatedTo();
-		return buyCreditConfirmPageCancelled;
-	}
 }
