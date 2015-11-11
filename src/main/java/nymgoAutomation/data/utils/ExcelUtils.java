@@ -14,6 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import nymgoAutomation.data.entity.AdminEntity;
 import nymgoAutomation.data.entity.FullCardEntity;
 import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.entity.ThreeDSUserEntity;
 import nymgoAutomation.data.enums.ADMIN_PARAMS;
 import nymgoAutomation.data.enums.CARD_PARAMS;
 import nymgoAutomation.data.enums.USER_PARAMS;
@@ -152,6 +153,34 @@ public class ExcelUtils {
 			e.printStackTrace();
 		}
 		return adminEntity;
+	}
+
+	public static ThreeDSUserEntity getThreeDSUserEntity(String filePath, String sheetName)	
+	{   
+
+		ThreeDSUserEntity threeDSUserEntity = new ThreeDSUserEntity();
+		try{
+
+			setExcelFile(filePath, sheetName);
+			threeDSUserEntity.setUsername(getParameterFromExcelSheet(ADMIN_PARAMS.USERNAME.toString()));
+			threeDSUserEntity.setPassword(getParameterFromExcelSheet(ADMIN_PARAMS.PASSWORD.toString()));
+		}
+		catch (FileNotFoundException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return threeDSUserEntity;
 	}
 
 	public static FullUserEntity getFullUserEntity(String filePath, String sheetName)	
@@ -305,7 +334,7 @@ public class ExcelUtils {
 		}
 	}
 
-	public static boolean addUserAndCurrencyAndBalanceAndAmountData(String username, String currency, String balance, String amount){
+	public static boolean addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(String username, String currency, String balance, String amount, String cardType){
 
 		try{
 			
@@ -315,9 +344,10 @@ public class ExcelUtils {
 			LOGGER.info("Start row = " + startRow);
 			try {
 				setCellData(startRow, startCol, username);				
-				setCellData(startRow, startCol + 1, username);				
+				setCellData(startRow, startCol + 1, currency);				
 				setCellData(startRow, startCol + 2, balance);				
 				setCellData(startRow, startCol + 3, amount);				
+				setCellData(startRow, startCol + 4, cardType);				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -353,13 +383,13 @@ public class ExcelUtils {
 			LOGGER.info("Start row = " + startRow);
 			if (startRow != 0){
 				try {
-					if(!getCellData(startRow - 1, startCol + 4).equals("")||!getCellData(startRow - 1, startCol + 4).equals(" ")){
+					if(!getCellData(startRow - 1, startCol + 5).equals("")||!getCellData(startRow - 1, startCol + 5).equals(" ")){
 		//				setCellData(startRow, startCol + 1, transactionID);				
-					setCellData(startRow - 1, startCol + 4, transactionID);	
+					setCellData(startRow - 1, startCol + 5, transactionID);	
 					LOGGER.info("transactionID " + transactionID + " was added to Excel");
 					}
 					else{
-						LOGGER.fatal("There is another transaction data in the cell! - '" + getCellData(startRow - 1, startCol + 4) + "'");
+						LOGGER.fatal("There is another transaction data in the cell! - '" + getCellData(startRow - 1, startCol + 5) + "'");
 					}
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -389,7 +419,7 @@ public class ExcelUtils {
 		}
 		return false;
 	} 
-
+/*
 	public static boolean addTransactionData(String transactionID, String status){
 
 		try{
@@ -423,6 +453,7 @@ public class ExcelUtils {
 		}
 		return false;
 	} 
+*/	
 /*
 	public static boolean addTransactionData(String username, String transactionID){
 
@@ -528,8 +559,8 @@ public class ExcelUtils {
 			int startRow = 0;
 			int lastRow = getLastRowNumber();
 			for (int i = lastRow; i >= startRow; i --)			
-			if (getCellData(i, startCol + 4).equals(transactionID)){
-				return getCellData(i, startCol + 1);
+			if (getCellData(i, startCol + 5).equals(transactionID)){
+				return getCellData(i, startCol + 2);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -549,7 +580,7 @@ public class ExcelUtils {
 //			for (int i = lastRow - 1; i >= startRow; i --)
 			for (int i = lastRow; i >= startRow; i --)			
 			if (getCellData(i, startCol).equals(username)){
-				return getCellData(i, startCol + 4);
+				return getCellData(i, startCol + 5);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -567,7 +598,7 @@ public class ExcelUtils {
 			int lastRow = getLastRowNumber();
 			if (lastRow != -1){
 //				return getCellData(lastRow, startCol + 1);
-				return getCellData(lastRow, startCol + 4);
+				return getCellData(lastRow, startCol + 5);
 			}
 			else{
 				LOGGER.fatal("There is no any transaction");

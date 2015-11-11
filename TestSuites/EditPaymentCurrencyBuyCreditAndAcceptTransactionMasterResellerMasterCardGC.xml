@@ -58,6 +58,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -103,6 +107,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -148,6 +156,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -193,6 +205,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -238,6 +254,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -283,6 +303,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -328,6 +352,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -373,6 +401,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -418,6 +450,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -463,6 +499,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -508,6 +548,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -553,6 +597,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
@@ -573,7 +621,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - Change Reseller Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -615,6 +663,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
@@ -660,6 +712,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
@@ -705,6 +761,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
@@ -725,7 +785,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -767,6 +827,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
@@ -812,6 +876,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
@@ -857,6 +925,10 @@
             <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>

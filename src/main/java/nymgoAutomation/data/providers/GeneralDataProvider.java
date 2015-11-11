@@ -4,6 +4,7 @@ import nymgoAutomation.data.adapters.DataAdapter;
 import nymgoAutomation.data.entity.AdminEntity;
 import nymgoAutomation.data.entity.FullCardEntity;
 import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.entity.ThreeDSUserEntity;
 import nymgoAutomation.data.enums.PROVIDER_CONST;
 
 import org.testng.ITestContext;
@@ -291,7 +292,7 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] wpAmericanExpressCard3DSDataProvider() throws Exception {
 
         Object[][] dataAdapterArray = new Object[1][1]; 
-        FullCardEntity fullCardEntity = DataAdapter.getAmericanExpressCard();
+        FullCardEntity fullCardEntity = DataAdapter.getWPAmericanExpressCard3DS();
         dataAdapterArray[0][0] = fullCardEntity;
         return dataAdapterArray;
     }
@@ -300,7 +301,7 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] wpVisaCard3DSDataProvider() throws Exception {
 
         Object[][] dataAdapterArray = new Object[1][1]; 
-        FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
+        FullCardEntity fullCardEntity = DataAdapter.getWPVisaCard3DS();
         dataAdapterArray[0][0] = fullCardEntity;
         return dataAdapterArray;
     }
@@ -309,8 +310,41 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] wpMasterCardCard3DSDataProvider() throws Exception {
 
         Object[][] dataAdapterArray = new Object[1][1]; 
-        FullCardEntity fullCardEntity = DataAdapter.getMasterCardCard();
+        FullCardEntity fullCardEntity = DataAdapter.getWPMasterCardCard3DS();
         dataAdapterArray[0][0] = fullCardEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.ADYEN_AMERICAN_EXPRESS_CARD_3DS_PROVIDER)
+    public static Object[][] adyenAmericanExpressCard3DSDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][2]; 
+        FullCardEntity fullCardEntity = DataAdapter.getAdyenAmericanExpressCard3DS();
+        ThreeDSUserEntity threeDSUserEntity = DataAdapter.getThreeDSUser();
+        dataAdapterArray[0][0] = fullCardEntity;
+        dataAdapterArray[0][1] = threeDSUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.ADYEN_VISA_CARD_3DS_PROVIDER)
+    public static Object[][] adyenVisaCard3DSDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][2]; 
+        FullCardEntity fullCardEntity = DataAdapter.getAdyenVisaCard3DS();
+        ThreeDSUserEntity threeDSUserEntity = DataAdapter.getThreeDSUser();
+        dataAdapterArray[0][0] = fullCardEntity;
+        dataAdapterArray[0][1] = threeDSUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.ADYEN_MASTER_CARD_CARD_3DS_PROVIDER)
+    public static Object[][] adyenMasterCardCard3DSDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][2]; 
+        FullCardEntity fullCardEntity = DataAdapter.getAdyenMasterCardCard3DS();
+        ThreeDSUserEntity threeDSUserEntity = DataAdapter.getThreeDSUser();
+        dataAdapterArray[0][0] = fullCardEntity;
+        dataAdapterArray[0][1] = threeDSUserEntity;
         return dataAdapterArray;
     }
 

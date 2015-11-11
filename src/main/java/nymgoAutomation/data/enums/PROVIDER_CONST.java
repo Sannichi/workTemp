@@ -3,6 +3,7 @@ package nymgoAutomation.data.enums;
 public class PROVIDER_CONST {
 
     public final static String ADMIN_PROVIDER = "adminProvider";
+    public final static String THREE_DS_USER_PROVIDER = "3DSUserProvider";
 
     public final static String EURO_NORMAL_WHITELIST_PROVIDER = "euroNormalWhitelistProvider";
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS = "euroNormalWhitelistProviderWithParams";

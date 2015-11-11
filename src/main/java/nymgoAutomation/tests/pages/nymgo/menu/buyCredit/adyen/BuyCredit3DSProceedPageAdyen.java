@@ -189,4 +189,38 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		return declinedTransactionAdyenPage;
 	}
 
+	public BuyCredit3DSConfirmPageAdyen setCreditCardDataAndClickPayToConfirm(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = new BuyCredit3DSConfirmPageAdyen(starter);
+		PageNavigation<BuyCredit3DSConfirmPageAdyen> navigation = new PageNavigation<BuyCredit3DSConfirmPageAdyen>(buyCredit3DSConfirmPageAdyen);
+		navigation.NavigatedTo();
+		return buyCredit3DSConfirmPageAdyen;
+	}
+
+	public BuyCredit3DSConfirmPageAdyen verifyDataAndClickPayToConfirm(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
+				"', should be '" + cardNumberValue + "'");
+		LOGGER.info("Card Number is correct");
+		Assert.assertTrue(getCardholdersName().equals(cardholdersName), "Cardholder's Name is not correct! Current value is '" + getCardholdersName() + 
+				"', should be '" + cardholdersName + "'");
+		LOGGER.info("Cardholder's Name is correct");
+		Assert.assertTrue(getSelectedExpireDateMonthValue().equals(expireDateMonth), "Expire Date Month is not correct! Current value is '" + getSelectedExpireDateMonthValue() + 
+				"', should be '" + expireDateMonth + "'");
+		LOGGER.info("Expire Date Month is correct");
+		Assert.assertTrue(getSelectedExpireDateYear().equals(expireDateYear), "Expire Date Year is not correct! Current value is '" + getSelectedExpireDateYear() + 
+				"', should be '" + expireDateYear + "'");
+		LOGGER.info("Expire Date Year is correct");
+		clickPayButton();
+		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = new BuyCredit3DSConfirmPageAdyen(starter);
+		PageNavigation<BuyCredit3DSConfirmPageAdyen> navigation = new PageNavigation<BuyCredit3DSConfirmPageAdyen>(buyCredit3DSConfirmPageAdyen);
+		navigation.NavigatedTo();
+		return buyCredit3DSConfirmPageAdyen;
+	}
 }

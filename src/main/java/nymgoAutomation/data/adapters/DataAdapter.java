@@ -4,6 +4,7 @@ import nymgoAutomation.data.adapters.BaseAdapter;
 import nymgoAutomation.data.entity.AdminEntity;
 import nymgoAutomation.data.entity.FullCardEntity;
 import nymgoAutomation.data.entity.FullUserEntity;
+import nymgoAutomation.data.entity.ThreeDSUserEntity;
 import nymgoAutomation.data.utils.ExcelUtils;
 import nymgoAutomation.tests.starter.Starter;
 
@@ -35,6 +36,12 @@ public class DataAdapter extends BaseAdapter {
     	
     	AdminEntity adminEntity  = ExcelUtils.getAdminEntity(adminTablePath, "Admin");
     	return adminEntity;
+	}
+
+    public static ThreeDSUserEntity getThreeDSUser() throws Exception{
+    	
+    	ThreeDSUserEntity threeDSUserEntity = ExcelUtils.getThreeDSUserEntity(creditCardsTablePath, "3DSUser");
+    	return threeDSUserEntity;
 	}
 
     public static FullUserEntity getEuroNormalWhitelist() throws Exception{

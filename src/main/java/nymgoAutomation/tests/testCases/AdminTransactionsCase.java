@@ -135,6 +135,7 @@ public class AdminTransactionsCase extends AbstractCase{
 
 		String transactionID = ExcelUtils.getLastTransaction();		
 		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		Assert.assertNotEquals(transactionID, " ", "TransactionID is empty!");
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
