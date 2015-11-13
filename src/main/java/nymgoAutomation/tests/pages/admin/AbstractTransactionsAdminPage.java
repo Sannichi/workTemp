@@ -173,6 +173,10 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA)) || cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA_WP))){
 				method = METHODS_CONST.VISA_SSL.toString();
 			}
+		}else if(service.equals(GATEWAY_CONST.ADYEN.toString())){
+			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.MASTER_CARD))){
+				method = METHODS_CONST.MASTERCARD.toString();
+			}
 		}
 				
 		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 

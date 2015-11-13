@@ -8,26 +8,26 @@ import nymgoAutomation.tests.fragments.nymgo.transactions.PendingTransactionFrag
 import nymgoAutomation.tests.starter.Starter;
 
 /**
- * Created by Iuliia Khikmatova on Nov 11, 2015
+ * Created by Iuliia Khikmatova on Nov 12, 2015
  */
-public class PendingTransactionAdyenFragment extends PendingTransactionFragment{
+public class PendingTransactionAdyen3DSFragment extends PendingTransactionFragment{
 
-	public PendingTransactionAdyenFragment(WebDriver driver) {
+	public PendingTransactionAdyen3DSFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_PENDING_URL = "https://secure-dev.nymgo.com/en/generate";
+	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL = "https://secure-dev.nymgo.com/en/adyen3ds-return/";
 	
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlMatches(BUY_CREDIT_CONFIRM_PAGE_ADYEN_PENDING_URL));
+    	return wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL));    	
 	}
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return BUY_CREDIT_CONFIRM_PAGE_ADYEN_PENDING_URL;
+		return BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL;
 	}
 
 }

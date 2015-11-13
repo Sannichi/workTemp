@@ -53,15 +53,15 @@ public class BuyCredit3DSConfirmPageAdyen extends AbstractLoggedInPage{
 		buyCredit3DSConfirmPageAdyenFragment.clickSubmitButton();
 	}
 	
-	public PendingTransactionAdyenPage setUserDataAndClickSubmit(String username, String password){
+	public PendingTransactionAdyen3DSPage setUserDataAndClickSubmit(String username, String password){
 		
 		setUsername(username);
 		setPassword(password);
 		clickSubmitButton();
-		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
-		PageNavigation<PendingTransactionAdyenPage> navigation = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);
+		PendingTransactionAdyen3DSPage pendingTransactionAdyen3DSPage = new PendingTransactionAdyen3DSPage(starter);
+		PageNavigation<PendingTransactionAdyen3DSPage> navigation = new PageNavigation<PendingTransactionAdyen3DSPage>(pendingTransactionAdyen3DSPage);
 		navigation.NavigatedTo();
-		return pendingTransactionAdyenPage;
+		return pendingTransactionAdyen3DSPage;
 	}
 /*
 	public PendingTransactionAdyenPage verifyDataAndClickPayToPending(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){

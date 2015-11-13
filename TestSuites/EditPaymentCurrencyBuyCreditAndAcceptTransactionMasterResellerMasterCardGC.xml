@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Reseller Transactions MasterCard Global Collect" preserve-order="true">
+<suite thread-count="1" verbose="1" name="Reseller Transactions MasterCard" preserve-order="true">
 	<listeners>
 		<listener class-name="nymgoAutomation.tests.listeners.LoggerTestListener" />
 	</listeners>      
@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Reseller Gateway to Global Collect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -785,7 +785,448 @@
             </class>
         </classes>
     </test>
--->
+
+    <test name="Test - BuyCredut Reseller EUR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="EUR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller INR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="INR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller NZD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="NZD" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller QAR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="QAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller SAR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller AED Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="AED" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller GBP Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="GBP" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller KWD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller MYR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="MYR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpay3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
     <test name="Test - Change Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -903,6 +1344,447 @@
 
     <test name="Test - BuyCredut Reseller CAD Adyen" preserve-order="true">
         <parameter name="paymentCurrency" value="CAD" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller EUR Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="EUR" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller INR Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="INR" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller NZD Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="NZD" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller QAR Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="QAR" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller SAR Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller AED Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="AED" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller GBP Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="GBP" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller KWD Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />     
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardAdyen3DSPendingTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller MYR Adyen" preserve-order="true">
+        <parameter name="paymentCurrency" value="MYR" />        
         <parameter name="cardType" value="MasterCard" />     
         <parameter name="gatewayName" value="Adyen" />     
           

@@ -13,12 +13,14 @@ import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSConfirmPageAdyen;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSProceedPageAdyen;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.DeclinedTransactionAdyenPage;
-import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyenPage;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyen3DSPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollect;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectPage;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSConfirmPageWorldpay;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSProceedPageWorldpay;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpay;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpayNext;
+import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpay3DSPage;
 import nymgoAutomation.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpayPage;
 
 /**
@@ -220,17 +222,20 @@ public class PayCreditCardCase extends AbstractCase{
 //				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv(), fullCardEntity.getCardholdersName());
 
 //		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
-				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 
-		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
-		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
-		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
+		
+		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
+
+		String transactionID = pendingTransactionWorldpay3DSPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionWorldpay3DSPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionWorldpay3DSPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionWorldpay3DSPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 //		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
-		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionWorldpay3DSPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
@@ -244,17 +249,20 @@ public class PayCreditCardCase extends AbstractCase{
 //				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv(), fullCardEntity.getCardholdersName());
 
 //		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
-				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 
-		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
-		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
-		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
+		
+		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
+
+		String transactionID = pendingTransactionWorldpay3DSPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionWorldpay3DSPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionWorldpay3DSPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionWorldpay3DSPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 //		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
-		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionWorldpay3DSPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
@@ -268,17 +276,20 @@ public class PayCreditCardCase extends AbstractCase{
 //				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv(), fullCardEntity.getCardholdersName());
 
 //		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
-				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 
-		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
-		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
-		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
+		
+		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
+
+		String transactionID = pendingTransactionWorldpay3DSPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionWorldpay3DSPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionWorldpay3DSPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionWorldpay3DSPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 //		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
-		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionWorldpay3DSPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
@@ -291,17 +302,16 @@ public class PayCreditCardCase extends AbstractCase{
 		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPayToConfirm(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 		
-		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSConfirmPageAdyen.setUserDataAndClickSubmit(threeDSUserEntity.getUsername(), 
+		PendingTransactionAdyen3DSPage pendingTransactionAdyen3DSPage = buyCredit3DSConfirmPageAdyen.setUserDataAndClickSubmit(threeDSUserEntity.getUsername(), 
 				threeDSUserEntity.getPassword());
 
-		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
-		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();
-		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
+		String transactionID = pendingTransactionAdyen3DSPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionAdyen3DSPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionAdyen3DSPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionAdyen3DSPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
-		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionAdyen3DSPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
@@ -313,17 +323,16 @@ public class PayCreditCardCase extends AbstractCase{
 		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPayToConfirm(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 		
-		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSConfirmPageAdyen.setUserDataAndClickSubmit(threeDSUserEntity.getUsername(), 
+		PendingTransactionAdyen3DSPage pendingTransactionAdyen3DSPage = buyCredit3DSConfirmPageAdyen.setUserDataAndClickSubmit(threeDSUserEntity.getUsername(), 
 				threeDSUserEntity.getPassword());
 
-		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
-		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();
-		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
+		String transactionID = pendingTransactionAdyen3DSPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionAdyen3DSPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionAdyen3DSPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionAdyen3DSPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData("NormalTester", transactionID);
 		ExcelUtils.addTransactionData(transactionID);		
-		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionAdyen3DSPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
@@ -335,16 +344,16 @@ public class PayCreditCardCase extends AbstractCase{
 		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPayToConfirm(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 		
-		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSConfirmPageAdyen.setUserDataAndClickSubmit(threeDSUserEntity.getUsername(), 
+		PendingTransactionAdyen3DSPage pendingTransactionAdyen3DSPage = buyCredit3DSConfirmPageAdyen.setUserDataAndClickSubmit(threeDSUserEntity.getUsername(), 
 				threeDSUserEntity.getPassword());
 
-		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
-		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();
-		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
-				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
+		String transactionID = pendingTransactionAdyen3DSPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionAdyen3DSPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionAdyen3DSPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionAdyen3DSPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData(transactionID);		
-		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
+		NormalAccountPage normalAccountPage = pendingTransactionAdyen3DSPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 

@@ -176,7 +176,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		return this;
 	}
 
-	public PendingTransactionWorldpayPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCredit3DSConfirmPageWorldpay setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		setCardholdersName(cardholdersName);
@@ -184,13 +184,13 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
 		clickPayButton();
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = new PendingTransactionWorldpayPage(starter);
-		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay  = new BuyCredit3DSConfirmPageWorldpay(starter);
+		PageNavigation<BuyCredit3DSConfirmPageWorldpay> navigation = new PageNavigation<BuyCredit3DSConfirmPageWorldpay>(buyCredit3DSConfirmPageWorldpay);
 		navigation.NavigatedTo();
-		return pendingTransactionWorldpayPage;
+		return buyCredit3DSConfirmPageWorldpay;
 	}
 
-	public PendingTransactionWorldpayPage verifyDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCredit3DSConfirmPageWorldpay verifyDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
 				"', should be '" + cardNumberValue + "'");
@@ -205,10 +205,10 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 				"', should be '" + expireDateYear + "'");
 		LOGGER.info("Expire Date Year is correct");
 		clickPayButton();
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = new PendingTransactionWorldpayPage(starter);
-		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay  = new BuyCredit3DSConfirmPageWorldpay(starter);
+		PageNavigation<BuyCredit3DSConfirmPageWorldpay> navigation = new PageNavigation<BuyCredit3DSConfirmPageWorldpay>(buyCredit3DSConfirmPageWorldpay);
 		navigation.NavigatedTo();
-		return pendingTransactionWorldpayPage;
+		return buyCredit3DSConfirmPageWorldpay;
 	}
 
 }
