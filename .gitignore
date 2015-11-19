@@ -16,6 +16,8 @@ test-output/*.*
 logs/*.*
 target/classes/*.*
 target/classes/*
+target/*.*
+target/*
 .hg/
 
 # Eclipse Core
