@@ -10,19 +10,24 @@ public class PROVIDER_CONST {
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_SET_PARAMS = "euroNormalWhitelistProviderSetParams";
     public final static String SET_NORMAL_USER_PARAMS_PROVIDER = "setNormalUserParamsProvider";    
 
-    public final static String INTER_NORMAL_WHITELIST_GC_PROVIDER = "interNormalWhitelistGCProvider";
-    public final static String INTER_NORMAL_WHITELIST_ADYEN_PROVIDER = "interNormalWhitelistAdyenProvider";
-    public final static String INTER_NORMAL_WHITELIST_WORLDPAY_PROVIDER = "interNormalWhitelistWorldpayProvider";
-    public final static String EURO_NORMAL_WHITELIST_GC_PROVIDER = "euroNormalWhitelistGCProvider";
+    public final static String INTER_NORMAL_WHITELIST_PROVIDER = "interNormalWhitelistProvider";
+    public final static String INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS = "interNormalWhitelistProviderWithParams";
+    public final static String INTER_NORMAL_WHITELIST_PROVIDER_SET_PARAMS = "interNormalWhitelistProviderSetParams";
 
     public final static String EURO_RESELLER_PROVIDER = "euroResellerProvider";
     public final static String EURO_RESELLER_PROVIDER_W_PARAMS = "euroResellerProviderWithParams";
     public final static String SET_RESELLER_PARAMS_PROVIDER = "setResellerParamsProvider";    
 
+    public final static String INTER_RESELLER_PROVIDER = "interResellerProvider";
+    public final static String INTER_RESELLER_PROVIDER_W_PARAMS = "interResellerProviderWithParams";
+
     public final static String EURO_MASTER_RESELLER_PROVIDER = "euroMasterResellerProvider";
     public final static String EURO_MASTER_RESELLER_PROVIDER_W_PARAMS = "euroMasterResellerProviderWithParams";
     public final static String SET_MASTER_RESELLER_PARAMS_PROVIDER = "setMasterResellerParamsProvider";    
 
+    public final static String INTER_MASTER_RESELLER_PROVIDER = "interMasterResellerProvider";
+    public final static String INTER_MASTER_RESELLER_PROVIDER_W_PARAMS = "interMasterResellerProviderWithParams";
+    
     public final static String AMERICAN_EXPRESS_CARD_PROVIDER = "americanExpressCardProvider";
     public final static String VISA_CARD_PROVIDER = "visaCardProvider";
     public final static String MASTER_CARD_CARD_PROVIDER = "masterCardCardProvider";

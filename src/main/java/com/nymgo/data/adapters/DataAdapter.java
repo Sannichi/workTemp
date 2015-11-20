@@ -62,6 +62,24 @@ public class DataAdapter extends BaseAdapter {
     	return fullUserEntity;
 	}
 
+    public static FullUserEntity getInterNormalWhitelist() throws Exception{
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterNormalWhitelist");    	
+    	return fullUserEntity;
+	}
+
+    public static FullUserEntity getInterReseller() throws Exception{
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterReseller");    	
+    	return fullUserEntity;
+	}
+
+    public static FullUserEntity getInterMasterReseller() throws Exception{
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterMasterReseller");    	
+    	return fullUserEntity;
+	}
+
     public static FullCardEntity getAmericanExpressCard() throws Exception{
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"AmericanExpress");    	

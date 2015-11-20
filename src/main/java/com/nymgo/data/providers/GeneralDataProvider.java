@@ -22,18 +22,6 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
-    @DataProvider(name=PROVIDER_CONST.INTER_NORMAL_WHITELIST_GC_PROVIDER)
-    public static Object[][] interNormalWhitelistedGCDataProvider() throws Exception {
-
-        return DataAdapter.getInterNormalWhitelistGC();
-    }
-
-    @DataProvider(name=PROVIDER_CONST.EURO_NORMAL_WHITELIST_GC_PROVIDER)
-    public static Object[][] euroNormalWhitelistedGCDataProvider() throws Exception {
-
-        return DataAdapter.getEuroNormalWhitelistGC();
-    }
-
     @DataProvider(name=PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER)
     public static Object[][] euroNormalWhitelistDataProvider() throws Exception {
 
@@ -60,6 +48,167 @@ public class GeneralDataProvider extends BaseDataProvider{
         dataAdapterArray[0][3] = cardType;    	
         dataAdapterArray[0][4] = gatewayName;    	
         dataAdapterArray[0][5] = currencyAmount;    	
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.EURO_RESELLER_PROVIDER)
+    public static Object[][] euroResellerDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS)
+    public static Object[][] euroResellerDataProviderWithParams(ITestContext context) throws Exception {
+
+        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
+        String cardType = context.getCurrentXmlTest().getParameter("cardType");
+        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
+        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
+
+        Object[][] dataAdapterArray = new Object[1][8]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        dataAdapterArray[0][1] = paymentCurrency;   	
+        dataAdapterArray[0][2] = countryOfCredit;    	
+        dataAdapterArray[0][3] = cardType;    	
+        dataAdapterArray[0][4] = gatewayName;    	
+        dataAdapterArray[0][5] = currencyAmount;    
+        dataAdapterArray[0][6] = bonusType;
+        dataAdapterArray[0][7] = bonusTypeValue;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER)
+    public static Object[][] euroMasterResellerDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS)
+    public static Object[][] euroMasterResellerDataProviderWithParams(ITestContext context) throws Exception {
+
+        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
+        String cardType = context.getCurrentXmlTest().getParameter("cardType");
+        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
+        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
+
+        Object[][] dataAdapterArray = new Object[1][8]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        dataAdapterArray[0][1] = paymentCurrency;   	
+        dataAdapterArray[0][2] = countryOfCredit;    	
+        dataAdapterArray[0][3] = cardType;    	
+        dataAdapterArray[0][4] = gatewayName;    	
+        dataAdapterArray[0][5] = currencyAmount;    
+        dataAdapterArray[0][6] = bonusType;
+        dataAdapterArray[0][7] = bonusTypeValue;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER)
+    public static Object[][] interNormalWhitelistDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS)
+    public static Object[][] interNormalWhitelistDataProviderWithParams(ITestContext context) throws Exception {
+
+        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
+        String cardType = context.getCurrentXmlTest().getParameter("cardType");
+        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
+        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
+
+        Object[][] dataAdapterArray = new Object[1][6]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        dataAdapterArray[0][1] = paymentCurrency;   	
+        dataAdapterArray[0][2] = countryOfCredit;    	
+        dataAdapterArray[0][3] = cardType;    	
+        dataAdapterArray[0][4] = gatewayName;    	
+        dataAdapterArray[0][5] = currencyAmount;    	
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.INTER_RESELLER_PROVIDER)
+    public static Object[][] interResellerDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS)
+    public static Object[][] interResellerDataProviderWithParams(ITestContext context) throws Exception {
+
+        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
+        String cardType = context.getCurrentXmlTest().getParameter("cardType");
+        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
+        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
+
+        Object[][] dataAdapterArray = new Object[1][8]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        dataAdapterArray[0][1] = paymentCurrency;   	
+        dataAdapterArray[0][2] = countryOfCredit;    	
+        dataAdapterArray[0][3] = cardType;    	
+        dataAdapterArray[0][4] = gatewayName;    	
+        dataAdapterArray[0][5] = currencyAmount;    
+        dataAdapterArray[0][6] = bonusType;
+        dataAdapterArray[0][7] = bonusTypeValue;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER)
+    public static Object[][] interMasterResellerDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS)
+    public static Object[][] interMasterResellerDataProviderWithParams(ITestContext context) throws Exception {
+
+        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
+        String cardType = context.getCurrentXmlTest().getParameter("cardType");
+        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
+        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
+
+        Object[][] dataAdapterArray = new Object[1][8]; 
+        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+        dataAdapterArray[0][0] = fullUserEntity;
+        dataAdapterArray[0][1] = paymentCurrency;   	
+        dataAdapterArray[0][2] = countryOfCredit;    	
+        dataAdapterArray[0][3] = cardType;    	
+        dataAdapterArray[0][4] = gatewayName;    	
+        dataAdapterArray[0][5] = currencyAmount;    
+        dataAdapterArray[0][6] = bonusType;
+        dataAdapterArray[0][7] = bonusTypeValue;
         return dataAdapterArray;
     }
 
@@ -156,39 +305,6 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
-    @DataProvider(name=PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER)
-    public static Object[][] euroMasterResellerDataProvider() throws Exception {
-
-        Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
-        dataAdapterArray[0][0] = fullUserEntity;
-        return dataAdapterArray;
-    }
-
-    @DataProvider(name=PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS)
-    public static Object[][] euroMasterResellerDataProviderWithParams(ITestContext context) throws Exception {
-
-        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
-        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
-        String cardType = context.getCurrentXmlTest().getParameter("cardType");
-        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
-        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
-        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
-        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
-
-        Object[][] dataAdapterArray = new Object[1][8]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
-        dataAdapterArray[0][0] = fullUserEntity;
-        dataAdapterArray[0][1] = paymentCurrency;   	
-        dataAdapterArray[0][2] = countryOfCredit;    	
-        dataAdapterArray[0][3] = cardType;    	
-        dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    
-        dataAdapterArray[0][6] = bonusType;
-        dataAdapterArray[0][7] = bonusTypeValue;
-        return dataAdapterArray;
-    }
-
     @DataProvider(name=PROVIDER_CONST.SET_MASTER_RESELLER_PARAMS_PROVIDER)
     public static Object[][] setMasterResellerParamsDataProvider(ITestContext context) throws Exception {
 
@@ -216,39 +332,6 @@ public class GeneralDataProvider extends BaseDataProvider{
         dataAdapterArray[0][8] = displayCurrency;    	
         dataAdapterArray[0][9] = paymentCurrency;    	
         dataAdapterArray[0][10] = language;    	
-        return dataAdapterArray;
-    }
-
-    @DataProvider(name=PROVIDER_CONST.EURO_RESELLER_PROVIDER)
-    public static Object[][] euroResellerDataProvider() throws Exception {
-
-        Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
-        dataAdapterArray[0][0] = fullUserEntity;
-        return dataAdapterArray;
-    }
-
-    @DataProvider(name=PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS)
-    public static Object[][] euroResellerDataProviderWithParams(ITestContext context) throws Exception {
-
-        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
-        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
-        String cardType = context.getCurrentXmlTest().getParameter("cardType");
-        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
-        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
-        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
-        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
-
-        Object[][] dataAdapterArray = new Object[1][8]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
-        dataAdapterArray[0][0] = fullUserEntity;
-        dataAdapterArray[0][1] = paymentCurrency;   	
-        dataAdapterArray[0][2] = countryOfCredit;    	
-        dataAdapterArray[0][3] = cardType;    	
-        dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    
-        dataAdapterArray[0][6] = bonusType;
-        dataAdapterArray[0][7] = bonusTypeValue;
         return dataAdapterArray;
     }
 
