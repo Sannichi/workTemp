@@ -32,7 +32,7 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -69,7 +69,7 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -106,7 +106,7 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);

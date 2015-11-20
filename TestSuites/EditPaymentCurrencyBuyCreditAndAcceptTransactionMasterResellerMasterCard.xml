@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Reseller Transactions MasterCard" preserve-order="true">
+<suite thread-count="1" verbose="1" name="Master Reseller Transactions MasterCard" preserve-order="true">
 	<listeners>
-		<listener class-name="nymgoAutomation.tests.listeners.LoggerTestListener" />
+		<listener class-name="com.nymgo.tests.listeners.LoggerTestListener" />
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
 
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
-            <class name="nymgoAutomation.data.testCases.ExcelCases">
+            <class name="com.nymgo.data.testCases.ExcelCases">
                 <methods>
                     <include name="clearTransactionsExcelTest" />
                 </methods>
@@ -21,12 +21,12 @@
         <parameter name="gatewayName" value="Global Collect" />     
         
         <classes>
-			<class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+			<class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminResellersCase">
+            <class name="com.nymgo.AdminResellersCase">
                 <methods>
                     <include name="editMasterResellerGatewayAdminTest" />
                 </methods>
@@ -40,42 +40,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -89,42 +89,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -138,42 +138,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -187,42 +187,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -236,42 +236,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -285,42 +285,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -334,42 +334,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -383,42 +383,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -432,42 +432,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -481,42 +481,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -530,42 +530,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -579,42 +579,42 @@
         <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardGlobalCollectPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -626,12 +626,12 @@
         <parameter name="gatewayName" value="Worldpay" />     
         
         <classes>
-			<class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+			<class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminResellersCase">
+            <class name="com.nymgo.AdminResellersCase">
                 <methods>
                     <include name="editMasterResellerGatewayAdminTest" />
                 </methods>
@@ -645,42 +645,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -694,42 +694,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -743,42 +743,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -792,42 +792,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -841,42 +841,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -890,42 +890,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -939,42 +939,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -988,42 +988,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1037,42 +1037,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1086,42 +1086,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1135,42 +1135,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1184,42 +1184,42 @@
         <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerWorldpayTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardWorldpay3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1231,12 +1231,12 @@
         <parameter name="gatewayName" value="Adyen" />     
         
         <classes>
-			<class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+			<class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminResellersCase">
+            <class name="com.nymgo.AdminResellersCase">
                 <methods>
                     <include name="editMasterResellerGatewayAdminTest" />
                 </methods>
@@ -1250,42 +1250,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1299,42 +1299,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1348,42 +1348,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1397,42 +1397,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1446,42 +1446,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1495,42 +1495,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1544,42 +1544,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1593,42 +1593,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1642,42 +1642,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1691,42 +1691,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1740,42 +1740,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
@@ -1789,42 +1789,42 @@
         <parameter name="gatewayName" value="Adyen" />     
           
         <classes>
-            <class name="nymgoAutomation.tests.testCases.DefaultCase">
+            <class name="com.nymgo.DefaultCase">
                 <methods>
                     <include name="setNymgoDefaultState" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.SignInCase">
+            <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.ViewAccountCases">
+            <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.BuyCreditCase">
+            <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedMasterResellerAdyenTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.PayCreditCardCase">
+            <class name="com.nymgo.PayCreditCardCase">
                 <methods>
                     <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminSignInCase">
+            <class name="com.nymgo.AdminSignInCase">
                 <methods>
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.AdminTransactionsCase">
+            <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="nymgoAutomation.tests.testCases.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>

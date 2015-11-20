@@ -8,7 +8,7 @@ import com.nymgo.tests.generators.CurrencyConversionRateGenerator;
  */
 public class CurrencyUtils {
 
-	public static String getMinBuyCurrencyValue(String paymentCurrency){
+	public static String getMinNormalUserBuyCurrencyValue(String paymentCurrency){
 		
 		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstNormalValue());
 	}

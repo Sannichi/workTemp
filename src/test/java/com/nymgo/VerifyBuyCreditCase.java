@@ -26,7 +26,7 @@ public class VerifyBuyCreditCase extends AbstractCase{
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 /*		String previousAccountBalanceValue = ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()));
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();

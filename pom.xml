@@ -22,6 +22,7 @@
 		<groupId>org.testng</groupId> 
 		<artifactId>testng</artifactId> 
 		<version>6.8</version> 
+		<scope>test</scope>
 	</dependency>
 
     <dependency>
@@ -80,9 +81,9 @@
 			<artifactId>maven-surefire-plugin</artifactId>
 			<version>2.19</version>
 			<configuration>
-				<groups>euroNormalSignIn,editEuroNormalUser</groups>
+				<!--<groups>euroNormalSignIn,editEuroNormalUser</groups>-->
           		<suiteXmlFiles>
-					<suiteXmlFile>TestSuites/GroupsTest.xml</suiteXmlFile>
+					<suiteXmlFile>TestSuites/EditPaymentCurrencyBuyCreditAndAcceptTransactionMasterResellerAmex.xml</suiteXmlFile>
 				</suiteXmlFiles>
 			</configuration>
 		</plugin>

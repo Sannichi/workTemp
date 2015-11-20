@@ -31,7 +31,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
@@ -52,7 +52,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		transactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());

@@ -4,7 +4,8 @@ import org.apache.log4j.Logger;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import com.nymgo.tests.AbstractCase;
+import com.nymgo.tests.enums.LOGS;
+//import com.nymgo.tests.AbstractCase;
 
 /**
  * Created by Iuliia Khikmatova on Oct 19, 2015
@@ -30,7 +31,8 @@ public class LoggerTestListener extends TestListenerAdapter{
 	}
  
 	private void log(String string) {
-		LOGGER = AbstractCase.LOGGER;
+//		LOGGER = AbstractCase.LOGGER;
+		LOGGER = Logger.getLogger(LOGS.LOGGER_NAME.toString());
 		LOGGER.info(string);
 		if (++m_count % 40 == 0) {
 			LOGGER.info("");
