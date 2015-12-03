@@ -23,8 +23,8 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
+//	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	
 	private static final String language = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL);

@@ -20,7 +20,8 @@ public class ViewResellerAccountPageFragment extends BaseViewAccountFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+//	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +    
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/account/account-details/account-profile";
 
 	@Override

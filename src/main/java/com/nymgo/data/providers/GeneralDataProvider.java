@@ -1,5 +1,7 @@
 package com.nymgo.data.providers;
 
+import java.util.List;
+
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 
@@ -9,6 +11,7 @@ import com.nymgo.data.entity.FullCardEntity;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.entity.ThreeDSUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
+import com.nymgo.data.utils.NewEmailUtils;
 
 public class GeneralDataProvider extends BaseDataProvider{
 
@@ -22,6 +25,35 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER)
+    public static Object[][] signUpResellerDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getSignUpReseller();
+        /*
+        List<String> signUpData = NewEmailUtils.getUniqueEmailAndUsername();
+        fullUserEntity.setEmail(signUpData.get(0));
+        fullUserEntity.setUsername(signUpData.get(1));
+        */
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.SIGN_UP_NORMAL_USER_PROVIDER)
+    public static Object[][] signUpNormalUserDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullUserEntity fullUserEntity = DataAdapter.getSignUpNormalUser(); 
+        /*
+        List<String> signUpData = NewEmailUtils.getUniqueEmailAndUsername();
+        fullUserEntity.setEmail(signUpData.get(0));
+        fullUserEntity.setUsername(signUpData.get(1));
+        */
+        dataAdapterArray[0][0] = fullUserEntity;
+        return dataAdapterArray;
+    }
+
+    
     @DataProvider(name=PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER)
     public static Object[][] euroNormalWhitelistDataProvider() throws Exception {
 
@@ -121,7 +153,7 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] interNormalWhitelistDataProvider() throws Exception {
 
         Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+        FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
         dataAdapterArray[0][0] = fullUserEntity;
         return dataAdapterArray;
     }
@@ -136,7 +168,7 @@ public class GeneralDataProvider extends BaseDataProvider{
         String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
 
         Object[][] dataAdapterArray = new Object[1][6]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+        FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
         dataAdapterArray[0][2] = countryOfCredit;    	
@@ -150,7 +182,7 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] interResellerDataProvider() throws Exception {
 
         Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         return dataAdapterArray;
     }
@@ -167,7 +199,7 @@ public class GeneralDataProvider extends BaseDataProvider{
         String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
         Object[][] dataAdapterArray = new Object[1][8]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+        FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
         dataAdapterArray[0][2] = countryOfCredit;    	
@@ -183,7 +215,7 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] interMasterResellerDataProvider() throws Exception {
 
         Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+        FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         return dataAdapterArray;
     }
@@ -200,7 +232,7 @@ public class GeneralDataProvider extends BaseDataProvider{
         String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
         Object[][] dataAdapterArray = new Object[1][8]; 
-        FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+        FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
         dataAdapterArray[0][2] = countryOfCredit;    	

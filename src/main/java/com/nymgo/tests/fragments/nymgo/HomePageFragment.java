@@ -1,6 +1,8 @@
 package com.nymgo.tests.fragments.nymgo;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +16,9 @@ public HomePageFragment(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 	}
 
+	@FindBy(css="a[class='join']")
+	private WebElement joinNowButton;
+	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
@@ -23,5 +28,10 @@ public HomePageFragment(WebDriver driver) {
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
 		return getHomeURL();
+	}
+	
+	public void clickJoinNowButton(){
+		
+		clickButton(joinNowButton);
 	}
 }

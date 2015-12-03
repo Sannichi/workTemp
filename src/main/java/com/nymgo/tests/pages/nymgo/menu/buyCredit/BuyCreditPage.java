@@ -155,6 +155,13 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Float.valueOf(getVATPercent()) / 100) + "'");
 	} 
 	
+	public void selectAmount(String amount){
+		
+		int intAmount = Integer.valueOf(amount);
+		checkOptionByValue(intAmount);
+//		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Float.valueOf(getVATPercent()) / 100) + "'");
+	} 
+	
 	public String getVATPercent(){
 		
 		return buyCreditPageFragment.getVATPercent();

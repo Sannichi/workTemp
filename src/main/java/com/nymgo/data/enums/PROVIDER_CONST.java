@@ -5,6 +5,9 @@ public class PROVIDER_CONST {
     public final static String ADMIN_PROVIDER = "adminProvider";
     public final static String THREE_DS_USER_PROVIDER = "3DSUserProvider";
 
+    public final static String SIGN_UP_NORMAL_USER_PROVIDER = "signUpNormalUserProvider";
+    public final static String SIGN_UP_RESELLER_PROVIDER = "signUpResellerProvider";
+
     public final static String EURO_NORMAL_WHITELIST_PROVIDER = "euroNormalWhitelistProvider";
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS = "euroNormalWhitelistProviderWithParams";
     public final static String EURO_NORMAL_WHITELIST_PROVIDER_SET_PARAMS = "euroNormalWhitelistProviderSetParams";

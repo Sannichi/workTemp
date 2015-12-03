@@ -28,7 +28,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -633,7 +633,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -1238,7 +1238,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>

@@ -120,4 +120,11 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 				"', should be '" + totalAmountCharged + "'");
 		LOGGER.info("Total Amount Charged is correct");
 	}
+
+	public void verifyInternationalSkrillFooterBlock(String nymgoCreditValue, String totalAmountCharged){
+		
+		Assert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
+				"', should be '" + nymgoCreditValue + "'");
+		LOGGER.info("Nymgo Credit Value is correct");
+	}
 }

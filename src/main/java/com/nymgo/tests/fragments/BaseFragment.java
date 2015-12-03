@@ -1,10 +1,16 @@
 package com.nymgo.tests.fragments;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -33,6 +39,39 @@ public class BaseFragment {
 		driver.get(URL);
 	}
 
+	public void openURLInNewTab(String URL){
+	
+		String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,"t");
+		driver.findElement(By.cssSelector("body")).sendKeys(selectLinkOpeninNewTab);
+		navigateToURL(URL);
+
+		//switch driver to the current tab
+//		Set<String> handles = driver.getWindowHandles();
+//	    List<String> handlesList = new ArrayList<String>(handles);
+//	    String tab = handlesList.get(handlesList.size() - 1);
+//	    driver.switchTo().window(tab); 
+}
+	
+	public boolean navigateToTabByURL(String URL){
+
+		Set<String> handles = driver.getWindowHandles();
+	    List<String> handlesList = new ArrayList<String>(handles);
+	    String tab = handlesList.get(handlesList.size() - 1);
+
+		for(int i = 0; i < 10; i++){
+			driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
+			//switch driver to the current tab
+		    driver.switchTo().window(tab); 
+			if (getCurrentURL().equals(URL)){
+				LOGGER.info("Switched to tab with URL: " + URL);
+				return true;
+			}
+		}
+		LOGGER.fatal("There is no tab with URL: " + URL + " within 10 first tabs");
+		return false;
+	}
+	
+	
 	public void navigateHomePage(){
 
 		driver.get(ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
@@ -44,7 +83,9 @@ public class BaseFragment {
 		driver.get(ServerGenerator.getServerKey(URL_CONST.ADMIN_URL));
 	}
 	
-	//input with only text
+	/**
+	*input with only text e.g <a>
+	*/
 	protected void clickButton(WebElement button){
 		
 		String text = button.getText();
@@ -52,7 +93,9 @@ public class BaseFragment {
 		LOGGER.info("Button '" + text + "' was clicked");
 	}
 	
-	//input with title
+	/**
+	*input with title
+	*/
 	protected void clickSubmitButton(WebElement button){
 		
 		String title = button.getAttribute("title");
@@ -60,7 +103,9 @@ public class BaseFragment {
 		LOGGER.info("Button '" + title + "' was clicked");
 	}
 	
-	//input with only value
+	/**
+	*input with only value
+	*/
 	protected void clickInputButton(WebElement button){
 		
 		String value = button.getAttribute("value");

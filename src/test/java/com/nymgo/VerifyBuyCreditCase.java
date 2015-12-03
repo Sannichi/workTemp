@@ -83,4 +83,60 @@ public class VerifyBuyCreditCase extends AbstractCase{
 				+ Float.parseFloat(currencyAmount));
 		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
 	}
+
+    @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedInterNormalUserTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+
+		NymgoPage nymgoPage = new NymgoPage(starter);
+		nymgoPage.navigateToHomePage();
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
+		}
+		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount));
+		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedInterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
+			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		NymgoPage nymgoPage = new NymgoPage(starter);
+		nymgoPage.navigateToHomePage();
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+		
+		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+		}
+		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
+				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount));
+		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+    }
+
+    @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedInterMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
+			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		NymgoPage nymgoPage = new NymgoPage(starter);
+		nymgoPage.navigateToHomePage();
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+		
+		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+		}
+		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
+				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount));
+		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+	}
 }

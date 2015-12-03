@@ -244,6 +244,22 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		navigation.NavigatedTo();
 		return buyCreditConfirmPageGlobalCollect;
 	} 
+
+	public BuyCreditConfirmPageGlobalCollect verifyInternationalDataAndClickContinue(String fullName, String email, String mobile, String phone,
+			String countryOfResidence, String postalCode, String street, String address,
+			String cardType, String countryOfCredit,
+			String nymgoCreditValue, String totalAmountCharged){
+		
+		verifyAccountInfoBlock(fullName, email, mobile, phone);
+		verifyAddressBlock(countryOfResidence, postalCode, street, address);
+		verifyPaymentBlock(cardType, countryOfCredit);
+		verifyInternationalSkrillFooterBlock(nymgoCreditValue, totalAmountCharged);
+		clickContinueButton();
+		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
+		PageNavigation<BuyCreditConfirmPageGlobalCollect> navigation = new PageNavigation<BuyCreditConfirmPageGlobalCollect>(buyCreditConfirmPageGlobalCollect);
+		navigation.NavigatedTo();
+		return buyCreditConfirmPageGlobalCollect;
+	} 
 /*
 	public void verifyDefaultData(String fullName, String email, String mobile, String phone,
 			String countryOfResidence, String postalCode, String street, String address,
@@ -257,5 +273,14 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		verifyAddressBlock(countryOfResidence, postalCode, street, address);
 		verifyDefaultPaymentBlock(countryOfResidence);
 		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
+	}
+
+	public void verifyDefaultInternationalData(String fullName, String email, String mobile, String phone,
+			String countryOfResidence, String postalCode, String street, String address,
+			String nymgoCreditValue, String totalAmountCharged){
+		verifyAccountInfoBlock(fullName, email, mobile, phone);
+		verifyAddressBlock(countryOfResidence, postalCode, street, address);
+		verifyDefaultPaymentBlock(countryOfResidence);
+		verifyInternationalSkrillFooterBlock(nymgoCreditValue, totalAmountCharged);
 	}
 }

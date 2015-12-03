@@ -23,7 +23,8 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+//	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
+	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/proceed";	
 			
 	@FindBy(id = "payment_card")

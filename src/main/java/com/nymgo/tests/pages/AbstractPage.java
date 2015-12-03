@@ -7,6 +7,7 @@ import com.nymgo.tests.fragments.BaseFragment;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.admin.LoginAdminPage;
 import com.nymgo.tests.pages.nymgo.HomePage;
+import com.nymgo.tests.pages.tempMail.TempMailPage;
 import com.nymgo.tests.starter.Starter;
 
 public abstract class AbstractPage {
@@ -17,7 +18,7 @@ public abstract class AbstractPage {
 
     public static Starter starter;
 	private BaseFragment baseFragment;
-	
+	private String TEMP_MAIL_URL = "http://temp-mail.org/en/";
 	
 	public AbstractPage(Starter starter) {	
 
@@ -70,5 +71,24 @@ public abstract class AbstractPage {
   		return loginAdminPage;    		
 	}
 
-	
+	public void openURLInNewTab(String URL){
+		
+		baseFragment.openURLInNewTab(URL);
+	}
+
+	public TempMailPage navigateToTempMailInNewTab(){
+		
+		LOGGER.info("Navigating to TempMail page...");
+		baseFragment.openURLInNewTab(TEMP_MAIL_URL);
+		TempMailPage tempMailPage = new TempMailPage(starter);
+		PageNavigation<TempMailPage> navigation = new PageNavigation<TempMailPage>(tempMailPage); 
+		navigation.NavigatedTo();
+  		return tempMailPage;    		
+	}
+
+	public void navigateToTabByURL(String URL){
+		
+		baseFragment.navigateToTabByURL(URL);
+	}
+
 }
