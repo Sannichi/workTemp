@@ -32,15 +32,13 @@ public class SignUpCase extends AbstractCase{
 		String signUpEmail = tempMailPage.getEmailAddress();
 		String signUpUsername = signUpEmail.split("@")[0] + "Name";
         
-		String fullName = fullUserEntity.getFullName();
-		String username = signUpUsername;
-		String password = fullUserEntity.getPassword();
-		String email = signUpEmail;
-		String mobile = fullUserEntity.getMobile();
+		fullUserEntity.setEmail(signUpEmail);
+		fullUserEntity.setUsername(signUpUsername);
 		tempMailPage.navigateToTabByURL(normalUserSignUpPage.getPageURL());
-		normalUserSignUpPage.setSignUpDataAndClickJoinSuccess(fullName, username, password, email, mobile);
+		normalUserSignUpPage.verifyFullNameUnsuccess(fullUserEntity);
 		
 		LOGGER.info("Link is opened");
+		normalUserSignUpPage.verifyFullNameUnsuccess(fullUserEntity);
 //		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
     }
 	

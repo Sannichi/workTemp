@@ -43,6 +43,7 @@ public class Starter {
     public static String USERS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\NymgoUsers.xlsx"; //default value
     public static String TRANSACTIONS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\Transactions.xlsx"; //default value
     public static String CREDIT_CARDS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\CreditCards.xlsx"; //default value
+    public static String VERIFIES_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\Verifies.xlsx"; //default value
     public static int IMPLICITLY_WAIT_TIME = 30;
     public static int CORRECT_PAGE_WAIT_TIME = 5;
     public static int ELEMENT_WAIT_TIME = 5;

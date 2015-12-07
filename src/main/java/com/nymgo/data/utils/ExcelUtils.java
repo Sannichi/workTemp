@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -34,6 +36,9 @@ public class ExcelUtils {
 	private static String transactionFilePath = Starter.TRANSACTIONS_FILE_PATH;
 	private static String transactionSheetName = "Transactions";
 
+	private static String verifiesFilePath = Starter.VERIFIES_FILE_PATH;
+	private static String verifiesFullnameSheetName = "FullName";
+	
 	//This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
 	private static void setExcelFile(String filePath,String sheetName) throws Exception{
 		try {
@@ -255,6 +260,43 @@ public class ExcelUtils {
 		return fullCardEntity;
 	}
 
+	public static Map<String, String> getVerifyParameters(String filePath, String sheetName)	
+	{   
+
+		Map<String, String> verifyParameters = new HashMap<String, String>();
+		try{
+
+			setExcelFile(filePath, sheetName);
+			int startCol = 0;
+			int startRow = 0;
+			int lastRow = getLastRowNumber();
+			for (int i = startRow; i <= lastRow; i ++){			
+				verifyParameters.put(getCellData(i, startCol), getCellData(i, startCol + 1));
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return verifyParameters;
+	}
+
+	public static Map<String, String> getFullNameVerifyParameters(){
+		
+		return getVerifyParameters(verifiesFilePath, verifiesFullnameSheetName);
+	}
+	
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
 	private static String getCellData(int RowNum, int ColNum){
 		try{

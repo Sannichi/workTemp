@@ -24,26 +24,51 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(id = "full_name-el")
+	private static final String fullNameId = "full_name-el";
+	private static final String usernameId = "Username-Email-el";
+	private static final String passwordXpath = "//input[@name='password']";
+	private static final String confirmPasswordXpath = "//input[@name='confirm_password']";
+	private static final String emailId = "Email-el";
+	private static final String mobileId = "mobile-el";
+	
+	@FindBy(id = fullNameId)
 	private WebElement fullNameEdit;
 
-	@FindBy(id = "Username-Email-el")
+	@FindBy(id = usernameId)
 	private WebElement usernameEdit;
 
-	@FindBy(css = "input[name='password']")
+	@FindBy(xpath = passwordXpath)
 	private WebElement passwordEdit;
 
-	@FindBy(css = "input[name='confirm_password']")
+	@FindBy(xpath = confirmPasswordXpath)
 	private WebElement confirmPasswordEdit;
 
-	@FindBy(id = "Email-el")
+	@FindBy(id = emailId)
 	private WebElement emailEdit;
 
-	@FindBy(id = "mobile-el")
+	@FindBy(id = mobileId)
 	private WebElement mobileEdit;
 
 	@FindBy(id = "send-btn-el")
 	private WebElement joinButton;
+	
+	@FindBy(xpath = "//input[@id='" + fullNameId + "']/../div[@class='validation-msg']")
+	private WebElement fullNameValidationMessage;
+
+	@FindBy(xpath = "//input[@id='" + usernameId + "']/../div[@class='validation-msg']")
+	private WebElement usernameValidationMessage;
+	
+	@FindBy(xpath = passwordXpath + "/../div[@class='validation-msg']")
+	private WebElement passwordValidationMessage;
+	
+	@FindBy(xpath = confirmPasswordXpath + "/../div[@class='validation-msg']")
+	private WebElement confirmPasswordValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + emailId + "']/../div[@class='validation-msg']")
+	private WebElement emailValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + mobileId + "']/../div[@class='validation-msg']")
+	private WebElement mobileValidationMessage;
 
 	private static final String NORMAL_ACCOUNT_SIGN_UP_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 					LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/register";
@@ -100,5 +125,40 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 	public void clickJoinButton(){
 		
 		clickInputButton(joinButton);
+	}
+	
+	private boolean isElementEnabled(WebElement element){
+		
+		return element.isEnabled();
+	}
+	
+	private boolean isFullNameValidationMessageEnabled(){
+		
+		return isElementEnabled(fullNameValidationMessage);
+	}
+
+	private boolean isUsernameValidationMessageEnabled(){
+		
+		return isElementEnabled(usernameValidationMessage);
+	}
+
+	private boolean isEmailValidationMessageEnabled(){
+		
+		return isElementEnabled(emailValidationMessage);
+	}
+
+	private boolean isPasswordValidationMessageEnabled(){
+		
+		return isElementEnabled(passwordValidationMessage);
+	}
+
+	private boolean isConfirmPasswordValidationMessageEnabled(){
+		
+		return isElementEnabled(confirmPasswordValidationMessage);
+	}
+
+	private boolean isMobileValidationMessageEnabled(){
+		
+		return isElementEnabled(mobileValidationMessage);
 	}
 }

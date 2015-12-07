@@ -1,5 +1,11 @@
 package com.nymgo.tests.pages.nymgo.signUp;
 
+import java.util.Map;
+
+import org.testng.Assert;
+
+import com.nymgo.data.entity.FullUserEntity;
+import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.fragments.nymgo.signUp.NormalUserSignUpPageFragment;
 import com.nymgo.tests.pages.nymgo.base.AbstractNymgoPage;
 import com.nymgo.tests.starter.Starter;
@@ -73,14 +79,36 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 	}
 	
 	//TODO instead of void
-	public void setSignUpDataAndClickJoinSuccess(String fullName, String username, String password, String email, String mobile){
+	public void setSignUpDataAndClickJoinSuccess(FullUserEntity fullUserEntity){
 		
-		setFullName(fullName);
-		setUsername(username);
-		setPassword(password);
-		setConfirmPassword(password);
-		setEmail(email);
-		setMobile(mobile);
+		setFullName(fullUserEntity.getFullName());
+		setUsername(fullUserEntity.getUsername());
+		setPassword(fullUserEntity.getPassword());
+		setConfirmPassword(fullUserEntity.getPassword());
+		setEmail(fullUserEntity.getEmail());
+		setMobile(fullUserEntity.getMobile());
 		clickJoinButton();
+	}
+	
+	public void verifyEmptyFields(FullUserEntity fullUserEntity){
+
+		clickJoinButton();
+		Assert.assertTrue(condition, message);
+	}
+
+	public void verifyFullNameUnsuccess(FullUserEntity fullUserEntity){
+
+		setUsername(fullUserEntity.getUsername());
+		setPassword(fullUserEntity.getPassword());
+		setConfirmPassword(fullUserEntity.getPassword());
+		setEmail(fullUserEntity.getEmail());
+		setMobile(fullUserEntity.getMobile());
+		
+		Map<String, String> fullNameVerifies = ExcelUtils.getFullNameVerifyParameters();
+		for (String key : fullNameVerifies.keySet()){
+			setFullName(fullNameVerifies.get(key));
+			clickJoinButton();
+			Assert.assertTrue(true, "");
+		}
 	}
 }
