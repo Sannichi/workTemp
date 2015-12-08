@@ -4,8 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -38,6 +36,8 @@ public class ExcelUtils {
 
 	private static String verifiesFilePath = Starter.VERIFIES_FILE_PATH;
 	private static String verifiesFullnameSheetName = "FullName";
+	private static String verifiesUsernameSheetName = "Username";
+	private static String verifiesPasswordSheetName = "Password";
 	
 	//This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
 	private static void setExcelFile(String filePath,String sheetName) throws Exception{
@@ -259,7 +259,7 @@ public class ExcelUtils {
 		}
 		return fullCardEntity;
 	}
-
+/*
 	public static Map<String, String> getVerifyParameters(String filePath, String sheetName)	
 	{   
 
@@ -297,6 +297,61 @@ public class ExcelUtils {
 		return getVerifyParameters(verifiesFilePath, verifiesFullnameSheetName);
 	}
 	
+	public static Map<String, String> getUsernameVerifyParameters(){
+		
+		return getVerifyParameters(verifiesFilePath, verifiesUsernameSheetName);
+	}
+*/	
+	public static Object[][] getVerifiesArray(String filePath, String sheetName)
+	{
+		String[][] verifiesArray = null;
+		try{
+
+			setExcelFile(filePath, sheetName);
+			int startCol = 0;
+			int startRow = 0;
+			int lastRow = getLastRowNumber();
+			int lastCol = 2;
+			verifiesArray = new String[lastRow][lastCol];
+			for (int i = startRow; i < lastRow; i ++){
+				for (int j = 0; j < lastCol; j++){ 
+					verifiesArray[i][j] = getCellData(i, startCol + j);
+				}
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return verifiesArray;
+	}
+
+	public static Object[][] getFullNameVerifiesArray(){
+		
+			return getVerifiesArray(verifiesFilePath, verifiesFullnameSheetName);
+	} 
+	
+	public static Object[][] getUsernameVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesUsernameSheetName);
+	} 
+
+	public static Object[][] getPasswordVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesPasswordSheetName);
+	} 
+
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
 	private static String getCellData(int RowNum, int ColNum){
 		try{

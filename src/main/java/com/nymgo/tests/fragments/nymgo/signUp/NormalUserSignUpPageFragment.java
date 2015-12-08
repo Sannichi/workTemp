@@ -97,39 +97,64 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		setTextToEditField(fullNameEdit, fullName);
 	}
 	
+	public String getFullName(){
+		
+		return fullNameEdit.getAttribute("value");
+	}
+	
 	public void typeUsername(String username){
 		
 		setTextToEditField(usernameEdit, username);
 	}
 
+	public String getUsername(){
+		
+		return usernameEdit.getAttribute("value");
+	}
+	
 	public void typePassword(String password){
 		
 		setTextToEditField(passwordEdit, password);
 	}
 
+	public String getPassword(){
+		
+		return passwordEdit.getAttribute("value");
+	}
+	
 	public void typeConfirmPassword(String confirmPassword){
 		
 		setTextToEditField(confirmPasswordEdit, confirmPassword);
 	}
 
+	public String getConfirmPassword(){
+		
+		return confirmPasswordEdit.getAttribute("value");
+	}
+	
 	public void typeEmail(String email){
 		
 		setTextToEditField(emailEdit, email);
 	}
 
+	public String getEmail(){
+		
+		return emailEdit.getAttribute("value");
+	}
+	
 	public void typeMobile(String mobile){
 		
 		setTextToEditField(mobileEdit, mobile);
 	}
 
+	public String getMoblie(){
+		
+		return mobileEdit.getAttribute("value");
+	}
+	
 	public void clickJoinButton(){
 		
 		clickInputButton(joinButton);
-	}
-	
-	private boolean isElementEnabled(WebElement element){
-		
-		return element.isEnabled();
 	}
 	
 	private boolean isFullNameValidationMessageEnabled(){
@@ -160,5 +185,63 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 	private boolean isMobileValidationMessageEnabled(){
 		
 		return isElementEnabled(mobileValidationMessage);
+	}
+	
+	public String getFullNameValidationMessage(){
+		
+		if (isFullNameValidationMessageEnabled()){
+			return fullNameValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getUsernameValidationMessage(){
+		
+		if (isUsernameValidationMessageEnabled()){
+			return usernameValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getEmailValidationMessage(){
+		
+		if (isEmailValidationMessageEnabled()){
+			return emailValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getPasswordValidationMessage(){
+		
+		if (isPasswordValidationMessageEnabled()){
+			return passwordValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getConfirmPasswordValidationMessage(){
+		
+		if (isConfirmPasswordValidationMessageEnabled()){
+			return confirmPasswordValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getMobileValidationMessage(){
+		
+		if (isMobileValidationMessageEnabled()){
+			return mobileValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public void clearAllFields(){
+		
+		clearEdit(fullNameEdit);
+		clearEdit(usernameEdit);
+		clearEdit(passwordEdit);
+		clearEdit(confirmPasswordEdit);
+		clearEdit(emailEdit);
+		clearEdit(mobileEdit);
 	}
 }

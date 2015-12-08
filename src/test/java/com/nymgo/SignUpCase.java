@@ -1,23 +1,23 @@
 package com.nymgo;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
-import com.nymgo.data.utils.NewEmailUtils;
+import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.HomePage;
-import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.NymgoPage;
 import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
-import com.nymgo.tests.pages.nymgo.menu.signIn.NormalUserSignInPage;
 import com.nymgo.tests.pages.nymgo.menu.signIn.ResellerSignInPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
 import com.nymgo.tests.pages.tempMail.TempMailPage;
 
-import java.util.List;
+import java.util.Map;
 
 import org.testng.Assert;
 
@@ -26,7 +26,8 @@ public class SignUpCase extends AbstractCase{
     @Test(dataProvider = PROVIDER_CONST.SIGN_UP_NORMAL_USER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
 	public void signUpNormalUserSuccessTest(FullUserEntity fullUserEntity){    
 
-    	HomePage homePage = new HomePage(starter);
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
 		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
 		TempMailPage tempMailPage = normalUserSignUpPage.navigateToTempMailInNewTab();
 		String signUpEmail = tempMailPage.getEmailAddress();
@@ -35,11 +36,36 @@ public class SignUpCase extends AbstractCase{
 		fullUserEntity.setEmail(signUpEmail);
 		fullUserEntity.setUsername(signUpUsername);
 		tempMailPage.navigateToTabByURL(normalUserSignUpPage.getPageURL());
-		normalUserSignUpPage.verifyFullNameUnsuccess(fullUserEntity);
+		//TODO RegistrationPage + success message
+		normalUserSignUpPage.setSignUpDataAndClickJoinSuccess(fullUserEntity);
 		
-		LOGGER.info("Link is opened");
-		normalUserSignUpPage.verifyFullNameUnsuccess(fullUserEntity);
-//		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
+    }
+	
+    @Test    
+	public void signUpNormalUserMandatoryFieldsTest(FullUserEntity fullUserEntity){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyEmptyFields();
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.FULLNAME_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpNormalUserFullNameFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyFullNameUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.USERNAME_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpNormalUserUsernameFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyUsernameUnsuccess(testCaseName, testCaseString);
     }
 	
     @Test(dataProvider = PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    

@@ -1,7 +1,5 @@
 package com.nymgo.data.providers;
 
-import java.util.List;
-
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 
@@ -11,7 +9,7 @@ import com.nymgo.data.entity.FullCardEntity;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.entity.ThreeDSUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
-import com.nymgo.data.utils.NewEmailUtils;
+import com.nymgo.data.utils.ExcelUtils;
 
 public class GeneralDataProvider extends BaseDataProvider{
 
@@ -51,6 +49,20 @@ public class GeneralDataProvider extends BaseDataProvider{
         */
         dataAdapterArray[0][0] = fullUserEntity;
         return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.FULLNAME_SIGN_UP_VERIFIES)
+    public static Object[][] fullNameSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getFullNameVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.USERNAME_SIGN_UP_VERIFIES)
+    public static Object[][] usernameSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getUsernameVerifiesArray();
+    	return dataAdapterArray;
     }
 
     

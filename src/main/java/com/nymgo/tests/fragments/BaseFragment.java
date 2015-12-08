@@ -83,6 +83,17 @@ public class BaseFragment {
 		driver.get(ServerGenerator.getServerKey(URL_CONST.ADMIN_URL));
 	}
 	
+	public boolean isElementEnabled(WebElement element){
+		
+		return element.isEnabled();
+	}
+	
+	public void clearEdit(WebElement editField){
+		
+		editField.clear();
+		LOGGER.info("EditField is cleared");
+	}
+	
 	/**
 	*input with only text e.g <a>
 	*/
@@ -150,6 +161,7 @@ public class BaseFragment {
 	
 	protected void setTextToEditField(WebElement editField, String textToSet){
 		
+		clearEdit(editField);
 		editField.sendKeys(textToSet);
 		LOGGER.info("Text '" + textToSet + "' was set to editField");
 	}

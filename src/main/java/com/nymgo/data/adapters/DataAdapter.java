@@ -140,13 +140,13 @@ public class DataAdapter extends BaseAdapter {
     	return fullCardEntity;
 	}
 
-    public static FullUserEntity getSignUpReseller() throws Exception{
+    public static FullUserEntity getSignUpReseller(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"SignUpReseller");    	
     	return fullUserEntity;
 	}
 
-    public static FullUserEntity getSignUpNormalUser() throws Exception{
+    public static FullUserEntity getSignUpNormalUser(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"SignUpNormalUser");    	
     	return fullUserEntity;
