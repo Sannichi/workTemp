@@ -1,13 +1,10 @@
 package com.nymgo;
 
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
-import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.HomePage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
@@ -16,8 +13,6 @@ import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
 import com.nymgo.tests.pages.nymgo.menu.signIn.ResellerSignInPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
 import com.nymgo.tests.pages.tempMail.TempMailPage;
-
-import java.util.Map;
 
 import org.testng.Assert;
 
@@ -66,6 +61,24 @@ public class SignUpCase extends AbstractCase{
     	HomePage homePage = nymgoPage.setDefaultState();
 		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
 		normalUserSignUpPage.verifyUsernameUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.PASSWORD_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpNormalUserPasswordFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyPasswordUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.CONFIRM_PASSWORD_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpNormalUserConfirmPasswordFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyConfirmPasswordUnsuccess(testCaseName, testCaseString);
     }
 	
     @Test(dataProvider = PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    

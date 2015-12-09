@@ -1,12 +1,9 @@
 package com.nymgo.tests.pages.nymgo.signUp;
 
-import java.util.Map;
-
 import org.testng.Assert;
 
 import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
-import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.signUp.NormalUserSignUpPageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
@@ -281,63 +278,120 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 		if(testName.equals("Empty")){
 			clearAllFields();
 			setFullName(fullUserEntity.getFullName());
-			setUsername(testString);				
-			setPassword(fullUserEntity.getPassword());
+			setUsername(fullUserEntity.getUsername());				
+			setPassword(testString);
 			setConfirmPassword(fullUserEntity.getPassword());
 			setEmail(fullUserEntity.getEmail());
 			setMobile(fullUserEntity.getMobile());
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_REQUIRED)), 
-					"Username required message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username required message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PASSWORD_REQUIRED)), 
+					"Password required message is incorrect: '" + normalUserSignUpPageFragment.getPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Password required message is correct for test '" + testName + "'");
 		}
-		else if(testName.equals("StartWithSpace")){
+		else if(testName.equals("ContainSpace")){
 			clearAllFields();
-			setUsername(testString);				
+			setFullName(fullUserEntity.getFullName());
+			setUsername(fullUserEntity.getUsername());				
+			setPassword(testString);
+			setConfirmPassword(testString);
+			setEmail(fullUserEntity.getEmail());
+			setMobile(fullUserEntity.getMobile());
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username validation message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
+					"Password length message is incorrect: '" + normalUserSignUpPageFragment.getPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Password validation message is correct for test '" + testName + "'");
 		}
-		else if(testName.equals("EndWithSpace")){
+		else if(testName.equals("ContainSemicolon")){
 			clearAllFields();
-			setUsername(testString);				
+			setPassword(testString);
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username validation message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PASSWORD_SEMICOLON_VALIDATION)), 
+					"Password length message is incorrect: '" + normalUserSignUpPageFragment.getPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Password validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("MaxCharacters")){
 			clearAllFields();
-			setUsername(testString);				
+			setPassword(testString);
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_LENGTH_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username validation message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PASSWORD_LENGTH_VALIDATION)), 
+					"Password length message is incorrect: '" + normalUserSignUpPageFragment.getPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Password validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("MinCharacters")){
 			clearAllFields();
-			setUsername(testString);				
+			setPassword(testString);
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_LENGTH_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username validation message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PASSWORD_LENGTH_VALIDATION)), 
+					"Password length message is incorrect: '" + normalUserSignUpPageFragment.getPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Password validation message is correct for test '" + testName + "'");
 		}
-		else if(testName.equals("SpecialSymbols")){
+		else if(testName.equals("IdenticalToUsername")){
 			clearAllFields();
 			setUsername(testString);				
+			setPassword(testString);
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username validation message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PASSWORD_USERNAME_VALIDATION)), 
+					"Password validation message is incorrect: '" + normalUserSignUpPageFragment.getPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Password validation message is correct for test '" + testName + "'");
 		}
-		else if(testName.equals("Existing")){
+		else if(testName.equals("DisplayAs")){
 			clearAllFields();
-			setUsername(testString);				
+			setPassword(testString);
+			String passwordDisplay = "";
+			for (int i = 0; i < testString.toCharArray().length; i++){
+				passwordDisplay += "*";
+			}
+			Assert.assertTrue(normalUserSignUpPageFragment.getPassword().equals(passwordDisplay), 
+					"Password displays incorrect: '" + normalUserSignUpPageFragment.getPassword() + "' for test '" + testName + "'");
+			LOGGER.info("Password displays correct for test '" + testName + "'");
+		}
+	}
+
+	public void verifyConfirmPasswordUnsuccess(String testName, String testString){	
+
+		FullUserEntity fullUserEntity = new FullUserEntity();		
+		fullUserEntity = DataAdapter.getSignUpNormalUser();
+
+		if(testName.equals("Empty")){
+			clearAllFields();
+			setFullName(fullUserEntity.getFullName());
+			setUsername(fullUserEntity.getUsername());				
+			setPassword(fullUserEntity.getPassword());
+			setEmail(fullUserEntity.getEmail());
+			setMobile(fullUserEntity.getMobile());
 			clickJoinButton();
-			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_EXISTING_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
-			LOGGER.info("Username validation message is correct for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getConfirmPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.CONFIRM_PASSWORD_REQUIRED)), 
+					"Confirm Password required message is incorrect: '" + normalUserSignUpPageFragment.getConfirmPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Confirm Password required message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("MatchPassword")){
+			clearAllFields();
+			setPassword(testString);
+			setConfirmPassword("not" + testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getConfirmPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.CONFIRM_PASSWORD_MATCH_PASSWORD_VALIDATION)), 
+					"Confirm Password required message is incorrect: '" + normalUserSignUpPageFragment.getConfirmPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Confirm Password required message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("DisplayAs")){
+			clearAllFields();
+			setPassword(testString);
+			String passwordDisplay = "";
+			for (int i = 0; i < testString.toCharArray().length; i++){
+				passwordDisplay += "*";
+			}
+			Assert.assertTrue(normalUserSignUpPageFragment.getPassword().equals(passwordDisplay), 
+					"Password displays incorrect: '" + normalUserSignUpPageFragment.getPassword() + "' for test '" + testName + "'");
+			LOGGER.info("Password displays correct for test '" + testName + "'");
+		}
+		else if(testName.equals("CaseSensitive")){
+			clearAllFields();
+			setPassword(testString.toUpperCase());
+			setConfirmPassword(testString.toLowerCase());
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getConfirmPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.CONFIRM_PASSWORD_MATCH_PASSWORD_VALIDATION)), 
+					"Confirm Password required message is incorrect: '" + normalUserSignUpPageFragment.getConfirmPasswordValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Confirm Password required message is correct for test '" + testName + "'");
 		}
 	}
 }

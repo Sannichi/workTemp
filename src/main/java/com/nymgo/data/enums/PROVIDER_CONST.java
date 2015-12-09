@@ -9,6 +9,8 @@ public class PROVIDER_CONST {
     public final static String SIGN_UP_NORMAL_USER_PROVIDER_W_VERIFIES = "signUpNormalUserProviderWithVerifies";
     public final static String FULLNAME_SIGN_UP_VERIFIES = "fullNameSignUpVerifies";
     public final static String USERNAME_SIGN_UP_VERIFIES = "usernameSignUpVerifies";
+    public final static String PASSWORD_SIGN_UP_VERIFIES = "passwordSignUpVerifies";
+    public final static String CONFIRM_PASSWORD_SIGN_UP_VERIFIES = "confirmPasswordSignUpVerifies";
     public final static String SIGN_UP_RESELLER_PROVIDER = "signUpResellerProvider";
 
     public final static String EURO_NORMAL_WHITELIST_PROVIDER = "euroNormalWhitelistProvider";

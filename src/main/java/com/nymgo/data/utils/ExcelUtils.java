@@ -38,6 +38,7 @@ public class ExcelUtils {
 	private static String verifiesFullnameSheetName = "FullName";
 	private static String verifiesUsernameSheetName = "Username";
 	private static String verifiesPasswordSheetName = "Password";
+	private static String verifiesConfirmPasswordSheetName = "ConfirmPassword";
 	
 	//This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
 	private static void setExcelFile(String filePath,String sheetName) throws Exception{
@@ -312,8 +313,8 @@ public class ExcelUtils {
 			int startRow = 0;
 			int lastRow = getLastRowNumber();
 			int lastCol = 2;
-			verifiesArray = new String[lastRow][lastCol];
-			for (int i = startRow; i < lastRow; i ++){
+			verifiesArray = new String[lastRow + 1][lastCol];
+			for (int i = startRow; i <= lastRow; i ++){
 				for (int j = 0; j < lastCol; j++){ 
 					verifiesArray[i][j] = getCellData(i, startCol + j);
 				}
@@ -350,6 +351,11 @@ public class ExcelUtils {
 	public static Object[][] getPasswordVerifiesArray(){
 		
 		return getVerifiesArray(verifiesFilePath, verifiesPasswordSheetName);
+	} 
+
+	public static Object[][] getConfirmPasswordVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesConfirmPasswordSheetName);
 	} 
 
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num

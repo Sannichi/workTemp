@@ -14,7 +14,7 @@
             </class>
         </classes>
     </test>
-
+-->    
     <test name="Test - SignUp User FullName Field" preserve-order="true">
         <classes>
             <class name="com.nymgo.SignUpCase">
@@ -24,7 +24,7 @@
             </class>
         </classes>
     </test>
--->    
+    
     <test name="Test - SignUp User Username Field" preserve-order="true">
         <classes>
             <class name="com.nymgo.SignUpCase">
@@ -34,5 +34,25 @@
             </class>
         </classes>
     </test>
-    
+
+    <test name="Test - SignUp User Password Field" preserve-order="true">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpNormalUserPasswordFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp User Confirm Password Field" preserve-order="true">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpNormalUserConfirmPasswordFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
 </suite>
