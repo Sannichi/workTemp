@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -27,12 +28,13 @@ public class AbstractCase {
         LOGGER.info("Initializing configuration");
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.Jdk14Logger");        
 
-        initStarter(context);
+//        initStarter(context);
     }    
 
     @BeforeTest
     public void testName(ITestContext context){
 
+        initStarter(context);    	
     	LOGGER.info("Test '" + context.getName() + "' started");    	
     }
     
@@ -48,13 +50,20 @@ public class AbstractCase {
     	LOGGER.info("Test method '" + method.getName() + "' finished");
     }
 
-    @AfterSuite
+    @AfterTest
 	public void finishTests(){
 		
 //		driver.close();
     	starter.quiteDriver();
 	}
-	
+/*	
+    @AfterSuite
+	public void finishSuite(){
+		
+//		driver.close();
+    	starter.quiteDriver();
+	}
+*/	
     public String getTestStatus(int status){
 
     	switch(status){

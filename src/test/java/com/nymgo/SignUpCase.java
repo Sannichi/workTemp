@@ -81,6 +81,24 @@ public class SignUpCase extends AbstractCase{
 		normalUserSignUpPage.verifyConfirmPasswordUnsuccess(testCaseName, testCaseString);
     }
 	
+    @Test(dataProvider = PROVIDER_CONST.EMAIL_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpNormalUserEmailFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyEmailUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.MOBILE_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpNormalUserMobileFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		normalUserSignUpPage.verifyMobileUnsuccess(testCaseName, testCaseString);
+    }
+	
     @Test(dataProvider = PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
 	public void signUpEuroResellerTest(FullUserEntity fullUserEntity){
 		

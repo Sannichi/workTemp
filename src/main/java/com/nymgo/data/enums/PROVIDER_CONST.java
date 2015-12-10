@@ -11,6 +11,8 @@ public class PROVIDER_CONST {
     public final static String USERNAME_SIGN_UP_VERIFIES = "usernameSignUpVerifies";
     public final static String PASSWORD_SIGN_UP_VERIFIES = "passwordSignUpVerifies";
     public final static String CONFIRM_PASSWORD_SIGN_UP_VERIFIES = "confirmPasswordSignUpVerifies";
+    public final static String EMAIL_SIGN_UP_VERIFIES = "emailSignUpVerifies";
+    public final static String MOBILE_SIGN_UP_VERIFIES = "mobileSignUpVerifies";
     public final static String SIGN_UP_RESELLER_PROVIDER = "signUpResellerProvider";
 
     public final static String EURO_NORMAL_WHITELIST_PROVIDER = "euroNormalWhitelistProvider";

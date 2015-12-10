@@ -224,7 +224,7 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 			setUsername(testString);				
 			clickJoinButton();
 			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
+					"Username validation message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Username validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("Existing")){
@@ -232,7 +232,7 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 			setUsername(testString);				
 			clickJoinButton();
 			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_EXISTING_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
+					"Username validation message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Username validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("NotStartWithLatin")){
@@ -240,7 +240,7 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 			setUsername(testString);				
 			clickJoinButton();
 			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_START_WITH_LATIN_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
+					"Username validation message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Username validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("NotLatinOnly")){
@@ -248,7 +248,7 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 			setUsername(testString);				
 			clickJoinButton();
 			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
+					"Username validation message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Username validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("ConsecutiveSpecial")){
@@ -256,16 +256,15 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 			setUsername(testString);				
 			clickJoinButton();
 			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_CONSECUTIVE_SEPARATORS_VALIDATION)), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
+					"Username validation message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Username validation message is correct for test '" + testName + "'");
 		}
 		else if(testName.equals("Reserved")){
 			clearAllFields();
 			setUsername(testString);				
 			clickJoinButton();
-			Assert.assertTrue((normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_EXISTING_VALIDATION)))
-					|| (normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_LENGTH_VALIDATION))), 
-					"Username length message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
+			Assert.assertTrue(normalUserSignUpPageFragment.getUsernameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_RESERVED_VALIDATION)), 
+					"Username validation message is incorrect: '" + normalUserSignUpPageFragment.getUsernameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Username validation message is correct for test '" + testName + "'");
 		}
 	}
@@ -392,6 +391,118 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 			Assert.assertTrue(normalUserSignUpPageFragment.getConfirmPasswordValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.CONFIRM_PASSWORD_MATCH_PASSWORD_VALIDATION)), 
 					"Confirm Password required message is incorrect: '" + normalUserSignUpPageFragment.getConfirmPasswordValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("Confirm Password required message is correct for test '" + testName + "'");
+		}
+	}
+
+	public void verifyEmailUnsuccess(String testName, String testString){	
+
+		FullUserEntity fullUserEntity = new FullUserEntity();		
+		fullUserEntity = DataAdapter.getSignUpNormalUser();
+
+		if(testName.equals("Empty")){
+			clearAllFields();
+			setFullName(fullUserEntity.getFullName());
+			setUsername(fullUserEntity.getUsername());				
+			setPassword(fullUserEntity.getPassword());
+			setConfirmPassword(fullUserEntity.getPassword());
+			setEmail(testString);
+			setMobile(fullUserEntity.getMobile());
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_REQUIRED)), 
+					"Email required message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email required message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("StartWithDot")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_INVALID_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("EndWithDot")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_INVALID_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("SpecialSymbols")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_SYMBOLS_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("Existing")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_EXISTING_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("ConsecutiveDots")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.USERNAME_SYMBOLS_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("Reserved")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_RESERVED_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("InvalidDomain")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_INVALID_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("ContainSpace")){
+			clearAllFields();
+			setEmail(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getEmailValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.EMAIL_SYMBOLS_VALIDATION)), 
+					"Email validation message is incorrect: '" + normalUserSignUpPageFragment.getEmailValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Email validation message is correct for test '" + testName + "'");
+		}
+	}
+
+	public void verifyMobileUnsuccess(String testName, String testString){	
+
+		FullUserEntity fullUserEntity = new FullUserEntity();		
+		fullUserEntity = DataAdapter.getSignUpNormalUser();
+
+		if(testName.equals("Empty")){
+			clearAllFields();
+			setFullName(fullUserEntity.getFullName());
+			setUsername(fullUserEntity.getUsername());				
+			setPassword(fullUserEntity.getPassword());
+			setConfirmPassword(fullUserEntity.getPassword());
+			setEmail(fullUserEntity.getEmail());
+			setMobile(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getMobileValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.MOBILE_REQUIRED)), 
+					"Mobile required message is incorrect: '" + normalUserSignUpPageFragment.getMobileValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Mobile required message is correct for test '" + testName + "'");
+		}
+		else if(testName.equals("InvalidPattern")){
+			clearAllFields();
+			setMobile(testString);
+			clickJoinButton();
+			Assert.assertTrue(normalUserSignUpPageFragment.getMobileValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.MOBILE_INVALID_PATTERN_VALIDATION)), 
+					"Mobile validation message is incorrect: '" + normalUserSignUpPageFragment.getMobileValidationMessage() + "' for test '" + testName + "'");
+			LOGGER.info("Mobile validation message is correct for test '" + testName + "'");
 		}
 	}
 }

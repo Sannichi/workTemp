@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Sign Up Tests" preserve-order="true">
+<suite verbose="1" name="Sign Up Tests" preserve-order="true" parallel="tests">
     
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
@@ -14,7 +14,7 @@
             </class>
         </classes>
     </test>
--->    
+-->
     <test name="Test - SignUp User FullName Field" preserve-order="true">
         <classes>
             <class name="com.nymgo.SignUpCase">
@@ -55,4 +55,23 @@
         </classes>
     </test>
 
+    <test name="Test - SignUp User Email Field" preserve-order="true">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpNormalUserEmailFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp User Mobile Field" preserve-order="true">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpNormalUserMobileFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

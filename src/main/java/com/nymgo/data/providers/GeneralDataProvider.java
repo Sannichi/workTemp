@@ -79,6 +79,20 @@ public class GeneralDataProvider extends BaseDataProvider{
     	return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.EMAIL_SIGN_UP_VERIFIES)
+    public static Object[][] emailSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getEmailVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.MOBILE_SIGN_UP_VERIFIES)
+    public static Object[][] mobileSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getMobileVerifiesArray();
+    	return dataAdapterArray;
+    }
+
     @DataProvider(name=PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER)
     public static Object[][] euroNormalWhitelistDataProvider() throws Exception {
 
