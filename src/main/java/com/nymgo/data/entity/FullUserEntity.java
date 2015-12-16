@@ -8,6 +8,7 @@ public class FullUserEntity {
 	String username;
     String password;
     String fullName;
+    String businessName;
     String email;
     String mobile;
     String phone;
@@ -44,6 +45,14 @@ public class FullUserEntity {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
     }
 
     public String getEmail() {
@@ -155,6 +164,7 @@ public class FullUserEntity {
 		this.username = "";
 		this.password = "";
 		this.fullName = "";
+		this.businessName = "";
 		this.email = "";
 		this.mobile = "";
 		this.phone = "";

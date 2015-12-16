@@ -7,6 +7,7 @@ public enum USER_PARAMS {
     USERNAME( "Username"),
     PASSWORD( "Password"),
     FULL_NAME( "FullName"),
+    BUSINESS_NAME("BusinessName"),
     EMAIL( "Email"),
     MOBILE( "Mobile"),
     PHONE( "Phone"),

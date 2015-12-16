@@ -35,12 +35,19 @@ public class ExcelUtils {
 	private static String transactionSheetName = "Transactions";
 
 	private static String verifiesFilePath = Starter.VERIFIES_FILE_PATH;
-	private static String verifiesFullnameSheetName = "FullName";
+	private static String verifiesFullNameSheetName = "FullName";
+	private static String verifiesBusinessNameSheetName = "BusinessName";
 	private static String verifiesUsernameSheetName = "Username";
 	private static String verifiesPasswordSheetName = "Password";
 	private static String verifiesConfirmPasswordSheetName = "ConfirmPassword";
 	private static String verifiesEmailSheetName = "Email";
+	private static String verifiesPhoneSheetName = "Phone";
 	private static String verifiesMobileSheetName = "Mobile";
+	private static String verifiesCountryOfResidenceSheetName = "CountryOfResidence";
+	private static String verifiesCitySheetName = "City";
+	private static String verifiesFullAddressSheetName = "FullAddress";
+	private static String verifiesStreetSheetName = "Street";
+	private static String verifiesPostalCodeSheetName = "PostalCode";
 	
 	//This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
 	private static void setExcelFile(String filePath,String sheetName) throws Exception{
@@ -200,6 +207,7 @@ public class ExcelUtils {
 			fullUserEntity.setUsername(getParameterFromExcelSheet(USER_PARAMS.USERNAME.toString()));
 			fullUserEntity.setPassword(getParameterFromExcelSheet(USER_PARAMS.PASSWORD.toString()));
 			fullUserEntity.setFullName(getParameterFromExcelSheet(USER_PARAMS.FULL_NAME.toString()));
+			fullUserEntity.setBusinessName(getParameterFromExcelSheet(USER_PARAMS.BUSINESS_NAME.toString()));
 			fullUserEntity.setEmail(getParameterFromExcelSheet(USER_PARAMS.EMAIL.toString()));
 			fullUserEntity.setMobile(getParameterFromExcelSheet(USER_PARAMS.MOBILE.toString()));
 			fullUserEntity.setPhone(getParameterFromExcelSheet(USER_PARAMS.PHONE.toString()));
@@ -342,9 +350,14 @@ public class ExcelUtils {
 
 	public static Object[][] getFullNameVerifiesArray(){
 		
-			return getVerifiesArray(verifiesFilePath, verifiesFullnameSheetName);
+			return getVerifiesArray(verifiesFilePath, verifiesFullNameSheetName);
 	} 
 	
+	public static Object[][] getBusinessNameVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesBusinessNameSheetName);
+} 
+
 	public static Object[][] getUsernameVerifiesArray(){
 		
 		return getVerifiesArray(verifiesFilePath, verifiesUsernameSheetName);
@@ -365,9 +378,39 @@ public class ExcelUtils {
 		return getVerifiesArray(verifiesFilePath, verifiesEmailSheetName);
 	} 
 
+	public static Object[][] getPhoneVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesPhoneSheetName);
+	} 
+
 	public static Object[][] getMobileVerifiesArray(){
 		
 		return getVerifiesArray(verifiesFilePath, verifiesMobileSheetName);
+	} 
+
+	public static Object[][] getCountryOfResidenceVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesCountryOfResidenceSheetName);
+	} 
+
+	public static Object[][] getCityVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesCitySheetName);
+	} 
+
+	public static Object[][] getFullAddressVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesFullAddressSheetName);
+	} 
+
+	public static Object[][] getStreetVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesStreetSheetName);
+	} 
+
+	public static Object[][] getPostalCodeVerifiesArray(){
+		
+		return getVerifiesArray(verifiesFilePath, verifiesPostalCodeSheetName);
 	} 
 
 	//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num

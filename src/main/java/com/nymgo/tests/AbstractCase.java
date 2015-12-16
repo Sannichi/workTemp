@@ -56,14 +56,15 @@ public class AbstractCase {
 //		driver.close();
     	starter.quiteDriver();
 	}
-/*	
+
     @AfterSuite
 	public void finishSuite(){
 		
 //		driver.close();
-    	starter.quiteDriver();
+//    	starter.quiteDriver();
+    	LOGGER.info("Suite is ended");
 	}
-*/	
+
     public String getTestStatus(int status){
 
     	switch(status){

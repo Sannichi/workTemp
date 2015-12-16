@@ -58,6 +58,13 @@ public class GeneralDataProvider extends BaseDataProvider{
     	return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.BUSINESS_NAME_SIGN_UP_VERIFIES)
+    public static Object[][] businessNameSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getBusinessNameVerifiesArray();
+    	return dataAdapterArray;
+    }
+
     @DataProvider(name=PROVIDER_CONST.USERNAME_SIGN_UP_VERIFIES)
     public static Object[][] usernameSignUpVerifiesDataProvider() throws Exception {
 
@@ -86,10 +93,52 @@ public class GeneralDataProvider extends BaseDataProvider{
     	return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.PHONE_SIGN_UP_VERIFIES)
+    public static Object[][] phoneSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getPhoneVerifiesArray();
+    	return dataAdapterArray;
+    }
+
     @DataProvider(name=PROVIDER_CONST.MOBILE_SIGN_UP_VERIFIES)
     public static Object[][] mobileSignUpVerifiesDataProvider() throws Exception {
 
     	Object[][] dataAdapterArray = ExcelUtils.getMobileVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.COUNTRY_OF_RESIDENCE_SIGN_UP_VERIFIES)
+    public static Object[][] countryOfResidenceSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getCountryOfResidenceVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.CITY_SIGN_UP_VERIFIES)
+    public static Object[][] citySignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getCityVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.FULL_ADDRESS_SIGN_UP_VERIFIES)
+    public static Object[][] fullAddressSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getFullAddressVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.STREET_SIGN_UP_VERIFIES)
+    public static Object[][] streetSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getStreetVerifiesArray();
+    	return dataAdapterArray;
+    }
+
+    @DataProvider(name=PROVIDER_CONST.POSTAL_CODE_SIGN_UP_VERIFIES)
+    public static Object[][] postalCodeSignUpVerifiesDataProvider() throws Exception {
+
+    	Object[][] dataAdapterArray = ExcelUtils.getPostalCodeVerifiesArray();
     	return dataAdapterArray;
     }
 

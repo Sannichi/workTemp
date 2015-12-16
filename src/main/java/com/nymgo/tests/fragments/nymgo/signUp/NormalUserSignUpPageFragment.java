@@ -192,7 +192,7 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		if (isFullNameValidationMessageEnabled()){
 			return fullNameValidationMessage.getText();
 		}
-		return "";
+		return "MessageDisabled";
 	}
 
 	public String getUsernameValidationMessage(){
@@ -200,7 +200,7 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		if (isUsernameValidationMessageEnabled()){
 			return usernameValidationMessage.getText();
 		}
-		return "";
+		return "MessageDisabled";
 	}
 
 	public String getEmailValidationMessage(){
@@ -208,7 +208,7 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		if (isEmailValidationMessageEnabled()){
 			return emailValidationMessage.getText();
 		}
-		return "";
+		return "MessageDisabled";
 	}
 
 	public String getPasswordValidationMessage(){
@@ -216,7 +216,7 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		if (isPasswordValidationMessageEnabled()){
 			return passwordValidationMessage.getText();
 		}
-		return "";
+		return "MessageDisabled";
 	}
 
 	public String getConfirmPasswordValidationMessage(){
@@ -224,7 +224,7 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		if (isConfirmPasswordValidationMessageEnabled()){
 			return confirmPasswordValidationMessage.getText();
 		}
-		return "";
+		return "MessageDisabled";
 	}
 
 	public String getMobileValidationMessage(){
@@ -232,7 +232,7 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		if (isMobileValidationMessageEnabled()){
 			return mobileValidationMessage.getText();
 		}
-		return "";
+		return "MessageDisabled";
 	}
 
 	public void clearAllFields(){

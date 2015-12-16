@@ -97,6 +97,7 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 	
 	public void verifyEmptyFields(){
 
+		clearAllFields();
 		clickJoinButton();
 		Assert.assertEquals(normalUserSignUpPageFragment.getFullNameValidationMessage(), LocaleGenerator.getLocaleKey(LOCALE_CONST.FULL_NAME_REQUIRED));
 		LOGGER.info("FullName required message is correct");

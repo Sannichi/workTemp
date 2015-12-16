@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,6 +29,9 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 
 	private WebElement resellerSignInButton;
 
+	@FindBy(id = "join-reseller")
+	private WebElement joinResellerButton;
+	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
@@ -48,5 +52,10 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 
 		initializeResellerSignInButton();
 		clickButton(resellerSignInButton);
+    }
+
+	public void clickJoinResellerButton(){
+
+		clickButton(joinResellerButton);
     }
 }

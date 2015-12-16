@@ -25,47 +25,103 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(id = "fullname-el")
+	private static final String fullNameId = "fullname-el";
+	private static final String businessNameXpath = "//input[@name='business_name']";;
+	private static final String emailId = "emailaddress-el";
+	private static final String usernameId = "Username-el";
+	private static final String passwordId = "create-password-el";
+	private static final String confirmPasswordId = "confirm-password-el";
+	private static final String phoneId = "phonenumber-el";
+	private static final String mobileXpath = "//input[@name='mobile_number']";
+	private static final String countryOfResidenceId = "country_of_residence";
+	private static final String cityXpath = "//input[@name='city']";
+	private static final String fullAddressXpath = "//input[@name='full_address']";
+	private static final String streetXpath = "//input[@name='street']";
+	private static final String postalCodeXpath = "//input[@name='postal_code']";
+	
+	
+	@FindBy(id = fullNameId)
 	private WebElement fullNameEdit;
 
-	@FindBy(css = "input[name='businessname-el']")
+	@FindBy(xpath = businessNameXpath)
 	private WebElement businessNameEdit;
 
-	@FindBy(id = "emailaddress-el")
+	@FindBy(id = emailId)
 	private WebElement emailEdit;
 
-	@FindBy(id = "Username-el")
+	@FindBy(id = usernameId)
 	private WebElement usernameEdit;
 
-	@FindBy(css = "input[name='password']")
+	@FindBy(id = passwordId)
 	private WebElement passwordEdit;
 
-	@FindBy(css = "input[name='confirm_password']")
+	@FindBy(id = confirmPasswordId)
 	private WebElement confirmPasswordEdit;
 
-	@FindBy(id = "phonenumber-el")	
+	@FindBy(id = phoneId)	
 	private WebElement phoneEdit;
 
-	@FindBy(css = "input[name='mobile_number']")
+	@FindBy(xpath = mobileXpath)
 	private WebElement mobileEdit;
 
-	@FindBy(id = "country_of_residence")
+	@FindBy(id = countryOfResidenceId)
 	private WebElement countryOfResidenceSelect;
 	
-	@FindBy(css = "input[name='city']")
+	@FindBy(xpath = cityXpath)
 	private WebElement cityEdit;
 
-	@FindBy(css = "input[name='full_address']")
+	@FindBy(xpath = fullAddressXpath)
 	private WebElement fullAddressEdit;
 
-	@FindBy(css = "input[name='street']")
+	@FindBy(xpath = streetXpath)
 	private WebElement streetEdit;
 
-	@FindBy(css = "input[name='postal_code']")
+	@FindBy(xpath = postalCodeXpath)
 	private WebElement postalCodeEdit;
 
 	@FindBy(id = "send-btn-el")
 	private WebElement joinButton;
+	
+	@FindBy(xpath = "//input[@id='" + fullNameId + "']/../div[@class='validation-msg']")
+	private WebElement fullNameValidationMessage;
+
+	@FindBy(xpath = businessNameXpath + "/../div[@class='validation-msg']")
+	private WebElement businessNameValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + emailId + "']/../div[@class='validation-msg']")
+	private WebElement emailValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + usernameId + "']/../div[@class='validation-msg']")
+	private WebElement usernameValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + passwordId + "']/../div[@class='validation-msg']")
+	private WebElement passwordValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + confirmPasswordId + "']/../div[@class='validation-msg']")
+	private WebElement confirmPasswordValidationMessage;
+	
+	@FindBy(xpath = "//input[@id='" + phoneId + "']/../div[@class='validation-msg']")
+	private WebElement phoneValidationMessage;
+
+	@FindBy(xpath = mobileXpath + "/../div[@class='validation-msg']")
+	private WebElement mobileValidationMessage;
+
+	@FindBy(xpath = "//select[@id='" + countryOfResidenceId + "']/../div[@class='validation-msg']")
+	private WebElement countryOfResidenceValidationMessage;
+
+	@FindBy(xpath = cityXpath + "/../div[@class='validation-msg']")
+	private WebElement cityValidationMessage;
+
+	@FindBy(xpath = fullAddressXpath + "/../div[@class='validation-msg']")
+	private WebElement fullAddressValidationMessage;
+
+	@FindBy(xpath = streetXpath + "/../div[@class='validation-msg']")
+	private WebElement streetValidationMessage;
+
+	@FindBy(xpath = postalCodeXpath + "/../div[@class='validation-msg']")
+	private WebElement postalCodeValidationMessage;
+
+	
 
 	private static final String RESELLER_SIGN_UP_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/register";
@@ -90,7 +146,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getFullName() {
-		return fullNameEdit.getText();
+		return fullNameEdit.getAttribute("value");
 	}
 
 	public void setFullName(String fullName) {
@@ -99,7 +155,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getBusinessName() {
-		return businessNameEdit.getText();
+		return businessNameEdit.getAttribute("value");
 	}
 
 	public void setBusinessName(String businessName) {
@@ -108,7 +164,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getEmail() {
-		return emailEdit.getText();
+		return emailEdit.getAttribute("value");
 	}
 
 	public void setEmail(String email) {
@@ -117,7 +173,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getUsername() {
-		return usernameEdit.getText();
+		return usernameEdit.getAttribute("value");
 	}
 
 	public void setUsername(String username) {
@@ -126,7 +182,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getPassword() {
-		return passwordEdit.getText();
+		return passwordEdit.getAttribute("value");
 	}
 
 	public void setPassword(String password) {
@@ -135,7 +191,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getConfirmPassword() {
-		return confirmPasswordEdit.getText();
+		return confirmPasswordEdit.getAttribute("value");
 	}
 
 	public void setConfirmPassword(String confirmPassword) {
@@ -144,7 +200,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getPhone() {
-		return phoneEdit.getText();
+		return phoneEdit.getAttribute("value");
 	}
 
 	public void setPhone(String phone) {
@@ -153,7 +209,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getMobile() {
-		return mobileEdit.getText();
+		return mobileEdit.getAttribute("value");
 	}
 
 	public void setMobile(String mobile) {
@@ -169,12 +225,16 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 
 	public void selectCountryOfResidence(String countryOfResidence) {
 
-		Select select = new Select(countryOfResidenceSelect);
-		select.selectByVisibleText(countryOfResidence);
-}
+		selectValueFromSelectByVisibleText(countryOfResidenceSelect, countryOfResidence);
+	}
+
+	public void selectCountryOfResidenceToNone() {
+
+		selectValueFromSelectByValue(countryOfResidenceSelect, "");
+	}
 
 	public String getCity() {
-		return cityEdit.getText();
+		return cityEdit.getAttribute("value");
 	}
 
 	public void setCity(String city) {
@@ -183,7 +243,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getFullAddress() {
-		return fullAddressEdit.getText();
+		return fullAddressEdit.getAttribute("value");
 	}
 
 	public void setFullAddress(String fullAddress) {
@@ -192,7 +252,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getStreet() {
-		return streetEdit.getText();
+		return streetEdit.getAttribute("value");
 	}
 
 	public void setStreet(String street) {
@@ -201,7 +261,7 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	}
 
 	public String getPostalCode() {
-		return postalCodeEdit.getText();
+		return postalCodeEdit.getAttribute("value");
 	}
 
 	public void setPostalCode(String postalCode) {
@@ -212,5 +272,194 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	public void clickJoinButton(){
 		
 		clickInputButton(joinButton);
+	}
+
+	private boolean isFullNameValidationMessageEnabled(){
+		
+		return isElementEnabled(fullNameValidationMessage);
+	}
+
+	private boolean isBusinessNameValidationMessageEnabled(){
+		
+		return isElementEnabled(businessNameValidationMessage);
+	}
+
+	private boolean isEmailValidationMessageEnabled(){
+		
+		return isElementEnabled(emailValidationMessage);
+	}
+
+	private boolean isUsernameValidationMessageEnabled(){
+		
+		return isElementEnabled(usernameValidationMessage);
+	}
+
+	private boolean isPasswordValidationMessageEnabled(){
+		
+		return isElementEnabled(passwordValidationMessage);
+	}
+
+	private boolean isConfirmPasswordValidationMessageEnabled(){
+		
+		return isElementEnabled(confirmPasswordValidationMessage);
+	}
+
+	private boolean isPhoneValidationMessageEnabled(){
+		
+		return isElementEnabled(phoneValidationMessage);
+	}
+	
+	private boolean isMobileValidationMessageEnabled(){
+		
+		return isElementEnabled(mobileValidationMessage);
+	}
+	
+	private boolean isCountryOfResidenceValidationMessageEnabled(){
+		
+		return isElementEnabled(countryOfResidenceValidationMessage);
+	}
+
+	private boolean isCityValidationMessageEnabled(){
+		
+		return isElementEnabled(cityValidationMessage);
+	}
+
+	private boolean isFullAddressValidationMessageEnabled(){
+		
+		return isElementEnabled(fullAddressValidationMessage);
+	}
+	
+	private boolean isStreetValidationMessageEnabled(){
+		
+		return isElementEnabled(streetValidationMessage);
+	}
+	
+	private boolean isPostalCodeValidationMessageEnabled(){
+		
+		return isElementEnabled(postalCodeValidationMessage);
+	}
+	
+	public String getFullNameValidationMessage(){
+		
+		if (isFullNameValidationMessageEnabled()){
+			return fullNameValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getBusinessNameValidationMessage(){
+		
+		if (isBusinessNameValidationMessageEnabled()){
+			return businessNameValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getEmailValidationMessage(){
+		
+		if (isEmailValidationMessageEnabled()){
+			return emailValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getUsernameValidationMessage(){
+		
+		if (isUsernameValidationMessageEnabled()){
+			return usernameValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getPasswordValidationMessage(){
+		
+		if (isPasswordValidationMessageEnabled()){
+			return passwordValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getConfirmPasswordValidationMessage(){
+		
+		if (isConfirmPasswordValidationMessageEnabled()){
+			return confirmPasswordValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getPhoneValidationMessage(){
+		
+		if (isPhoneValidationMessageEnabled()){
+			return phoneValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getMobileValidationMessage(){
+		
+		if (isMobileValidationMessageEnabled()){
+			return mobileValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getCountryOfResidenceValidationMessage(){
+		
+		if (isCountryOfResidenceValidationMessageEnabled()){
+			return countryOfResidenceValidationMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getCityValidationMessage(){
+		
+		if (isCityValidationMessageEnabled()){
+			return cityValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getFullAddressValidationMessage(){
+		
+		if (isFullAddressValidationMessageEnabled()){
+			return fullAddressValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getStreetValidationMessage(){
+		
+		if (isStreetValidationMessageEnabled()){
+			return streetValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public String getPostalCodeValidationMessage(){
+		
+		if (isPostalCodeValidationMessageEnabled()){
+			return postalCodeValidationMessage.getText();
+		}
+		return "";
+	}
+
+	public void clearAllFields(){
+		
+		clearEdit(fullNameEdit);
+		clearEdit(businessNameEdit);
+		clearEdit(emailEdit);
+		clearEdit(usernameEdit);
+		clearEdit(passwordEdit);
+		clearEdit(confirmPasswordEdit);
+		clearEdit(phoneEdit);
+		clearEdit(mobileEdit);
+		/*
+		 * Selecting first value from country of residence
+		 */
+		selectCountryOfResidenceToNone();
+		clearEdit(cityEdit);
+		clearEdit(fullAddressEdit);
+		clearEdit(streetEdit);
+		clearEdit(postalCodeEdit);
 	}
 }

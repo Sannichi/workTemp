@@ -2,13 +2,19 @@ package com.nymgo.tests.starter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+//import java.net.MalformedURLException;
+//import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+//import org.openqa.selenium.remote.DesiredCapabilities;
+//import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 
 import com.nymgo.data.enums.ADMIN_PARAMS;
@@ -25,6 +31,7 @@ import com.nymgo.tests.enums.WAIT_TIME;
 import com.nymgo.tests.generators.CurrencyConversionRateGenerator;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.generators.ServerGenerator;
+//import com.thoughtworks.selenium.webdriven.WebDriverCommandProcessor;
 
 import org.apache.log4j.Logger;
 
@@ -59,6 +66,7 @@ public class Starter {
     
     private static Starter instance;
 	public WebDriver driver = null;
+//    private ThreadLocal<RemoteWebDriver> threadDriver = null;
 	
     public static Starter getInstance() {
         if (instance == null) {
@@ -211,6 +219,7 @@ public class Starter {
     }
 */
 	private WebDriver getBrowser() {
+//	private RemoteWebDriver getBrowser() {    
 		BROWSERS BROWSER = BROWSERS.valueOf(PROPS.getProperty(PROPERTIES.BROWSER.name()));
         switch (BROWSER)
         {
@@ -226,15 +235,61 @@ public class Starter {
                 return new FirefoxDriver();
         }
 	}
-
+/*
+	private RemoteWebDriver getRemoteBrowser() {
+		BROWSERS BROWSER = BROWSERS.valueOf(PROPS.getProperty(PROPERTIES.BROWSER.name()));
+		DesiredCapabilities dc = new DesiredCapabilities();
+	    FirefoxProfile fp = new FirefoxProfile();
+	    URL newURL = null;
+		try {
+			newURL = new URL("http://localhost:4444/wd/hub");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+        switch (BROWSER)
+        {
+            case FIREFOX:
+    	        dc.setCapability(FirefoxDriver.PROFILE, fp);
+    	        dc.setBrowserName(DesiredCapabilities.firefox().getBrowserName());
+    	        return new RemoteWebDriver(newURL, dc);		
+            case CHROME:
+                System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+                DesiredCapabilities capabilities = DesiredCapabilities.chrome();                
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("user-data-dir=C:/Users/iuliia.khikmatova/AppData/Local/Google/Chrome/User Data");
+                options.addArguments("--start-maximized");
+                capabilities.setCapability(ChromeOptions.CAPABILITY, options);                
+                dc.setBrowserName(DesiredCapabilities.chrome().getBrowserName());
+                return new RemoteWebDriver(newURL, capabilities);
+            case IE:
+                System.setProperty("webdriver.ie.driver", "C:\\IEDriver\\IEDriverServer.exe");
+                return new InternetExplorerDriver();
+            default:
+    	        dc.setCapability(FirefoxDriver.PROFILE, fp);
+    	        dc.setBrowserName(DesiredCapabilities.firefox().getBrowserName());
+    	        return new RemoteWebDriver(newURL, dc);		
+        }
+	}
+*/
 	private void initBrowser(){
-		
+
         driver = getBrowser();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);   
         String homeURL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL); 
         LOGGER.info("Navigating to home page");
 		driver.get(homeURL);
+
+/*		
+		threadDriver = new ThreadLocal<RemoteWebDriver>();
+		threadDriver.set(getBrowser());
+		driver = threadDriver.get();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);   
+        String homeURL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL); 
+        LOGGER.info("Navigating to home page");
+		driver.get(homeURL);
+*/
 	}
 
     public void quiteDriver() {

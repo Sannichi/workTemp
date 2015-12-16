@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="Sign Up Tests" preserve-order="true" parallel="tests">
+<suite name="Sign Up Tests" thread-count="1" preserve-order="true">
     
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
@@ -14,8 +14,18 @@
             </class>
         </classes>
     </test>
--->
-    <test name="Test - SignUp User FullName Field" preserve-order="true">
+
+    <test name="Test - SignUp User Mandatory Fields">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpNormalUserMandatoryFieldsTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp User FullName Field">
         <classes>
             <class name="com.nymgo.SignUpCase">
                 <methods>
@@ -25,7 +35,7 @@
         </classes>
     </test>
     
-    <test name="Test - SignUp User Username Field" preserve-order="true">
+    <test name="Test - SignUp User Username Field">
         <classes>
             <class name="com.nymgo.SignUpCase">
                 <methods>
@@ -35,7 +45,7 @@
         </classes>
     </test>
 
-    <test name="Test - SignUp User Password Field" preserve-order="true">
+    <test name="Test - SignUp User Password Field">
         <classes>
             <class name="com.nymgo.SignUpCase">
                 <methods>
@@ -45,7 +55,7 @@
         </classes>
     </test>
 
-    <test name="Test - SignUp User Confirm Password Field" preserve-order="true">
+    <test name="Test - SignUp User Confirm Password Field">
         <classes>
             <class name="com.nymgo.SignUpCase">
                 <methods>
@@ -55,7 +65,7 @@
         </classes>
     </test>
 
-    <test name="Test - SignUp User Email Field" preserve-order="true">
+    <test name="Test - SignUp User Email Field">
         <classes>
             <class name="com.nymgo.SignUpCase">
                 <methods>
@@ -65,7 +75,7 @@
         </classes>
     </test>
 
-    <test name="Test - SignUp User Mobile Field" preserve-order="true">
+    <test name="Test - SignUp User Mobile Field">
         <classes>
             <class name="com.nymgo.SignUpCase">
                 <methods>
@@ -74,4 +84,126 @@
             </class>
         </classes>
     </test>
+
+    <test name="Test - SignUp Reseller Mandatory Fields">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerMandatoryFieldsTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller FullName Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerFullNameFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller Business Name Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerBusinessNameFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller Email Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerEmailFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller Username Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerUsernameFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller Phone Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerPhoneFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller Mobile Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerMobileFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+-->
+
+    <test name="Test - SignUp Reseller CountryOfResidence Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerCountryOfResidenceFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller City Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerCityFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller FullAddress Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerFullAddressFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller Street Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerStreetFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - SignUp Reseller PostalCode Field">
+        <classes>
+            <class name="com.nymgo.SignUpCase">
+                <methods>
+                    <include name="signUpResellerPostalCodeFieldTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
 </suite>

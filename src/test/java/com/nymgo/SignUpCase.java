@@ -12,6 +12,7 @@ import com.nymgo.tests.pages.nymgo.base.NymgoPage;
 import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
 import com.nymgo.tests.pages.nymgo.menu.signIn.ResellerSignInPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
+import com.nymgo.tests.pages.nymgo.signUp.ResellerSignUpPage;
 import com.nymgo.tests.pages.tempMail.TempMailPage;
 
 import org.testng.Assert;
@@ -37,7 +38,7 @@ public class SignUpCase extends AbstractCase{
     }
 	
     @Test    
-	public void signUpNormalUserMandatoryFieldsTest(FullUserEntity fullUserEntity){    
+	public void signUpNormalUserMandatoryFieldsTest(){    
 
     	NymgoPage nymgoPage = new NymgoPage(starter);
     	HomePage homePage = nymgoPage.setDefaultState();
@@ -97,6 +98,126 @@ public class SignUpCase extends AbstractCase{
     	HomePage homePage = nymgoPage.setDefaultState();
 		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
 		normalUserSignUpPage.verifyMobileUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test    
+	public void signUpResellerMandatoryFieldsTest(){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyEmptyFields();
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.FULLNAME_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerFullNameFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyFullNameUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.BUSINESS_NAME_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerBusinessNameFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyBusinessNameUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.EMAIL_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerEmailFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyEmailUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.USERNAME_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerUsernameFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyUsernameUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.PHONE_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerPhoneFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyPhoneUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.MOBILE_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerMobileFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyMobileUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.CITY_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerCityFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyCityUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.COUNTRY_OF_RESIDENCE_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerCountryOfResidenceFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyCountryOfResidenceUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.FULL_ADDRESS_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerFullAddressFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyFullAddressUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.STREET_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerStreetFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyStreetUnsuccess(testCaseName, testCaseString);
+    }
+	
+    @Test(dataProvider = PROVIDER_CONST.POSTAL_CODE_SIGN_UP_VERIFIES, dataProviderClass = GeneralDataProvider.class)    
+	public void signUpResellerPostalCodeFieldTest(String testCaseName, String testCaseString){    
+
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
+    	ResellersPage resellersPage = homePage.clickResellersLink();
+    	ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+    	resellerSignUpPage.verifyPostalCodeUnsuccess(testCaseName, testCaseString);
     }
 	
     @Test(dataProvider = PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    

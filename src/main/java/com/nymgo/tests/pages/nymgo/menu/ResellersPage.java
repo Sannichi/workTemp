@@ -4,6 +4,7 @@ import com.nymgo.tests.fragments.nymgo.menu.ResellersPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.base.AbstractNymgoPage;
 import com.nymgo.tests.pages.nymgo.menu.signIn.ResellerSignInPage;
+import com.nymgo.tests.pages.nymgo.signUp.ResellerSignUpPage;
 import com.nymgo.tests.starter.Starter;
 
 public class ResellersPage extends AbstractNymgoPage{
@@ -27,7 +28,15 @@ public class ResellersPage extends AbstractNymgoPage{
 		return resellerSignInPage;
     }
 
-
+	public ResellerSignUpPage clickJoinResellerButton(){
+		
+		resellersPageFragment.clickJoinResellerButton();
+    	ResellerSignUpPage resellerSignUpPage = new ResellerSignUpPage(starter);
+		PageNavigation<ResellerSignUpPage> navigation = new PageNavigation<ResellerSignUpPage>(resellerSignUpPage); 
+		navigation.NavigatedTo();
+		return resellerSignUpPage;
+	}
+	
 	@Override
 	public boolean isCorrectPage() {
 		// TODO Auto-generated method stub
