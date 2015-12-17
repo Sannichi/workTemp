@@ -7,7 +7,7 @@ import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Dec 3, 2015
  */
-public class TempMailPage extends AbstractPage {
+public abstract class TempMailPage extends AbstractPage {
 
 	private TempMailPageFragment tempMailPageFragment; 
 	

@@ -16,11 +16,11 @@ public class PageNavigation<T extends AbstractPage>
 		page = arg;
 	}
 	
-	public String getPageName(){
+	private String getPageName(){
 		return page.getPageName();
 	}
 	
-	public boolean isCorrectPage(){
+	private boolean isCorrectPage(){
 		return page.isCorrectPage();
 	}
 	

@@ -20,15 +20,6 @@ public class TempMailPageFragment extends BaseFragment implements HasURL{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
-	@FindBy(xpath = "//input[@id='mail']")
-	private WebElement emailEdit;
-	
-	@FindBy(xpath = "//a[@id='click-to-refresh']")
-	private WebElement refreshButton;
-	
-	@FindBy(xpath = "//a[@id='click-to-delete']")
-	private WebElement deleteButton;
 	
 	private final static String TEMP_MAIL_PAGE_URL = "http://temp-mail.org/en/";
 	
@@ -37,7 +28,7 @@ public class TempMailPageFragment extends BaseFragment implements HasURL{
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
 		try{
-			wait.until(ExpectedConditions.urlMatches(TEMP_MAIL_PAGE_URL));
+			wait.until(ExpectedConditions.urlContains(TEMP_MAIL_PAGE_URL));
 			return true;
 		}
     	catch(TimeoutException e){
@@ -51,6 +42,15 @@ public class TempMailPageFragment extends BaseFragment implements HasURL{
 		return TEMP_MAIL_PAGE_URL;
 	}
 
+	@FindBy(xpath = "//input[@id='mail']")
+	private WebElement emailEdit;
+	
+	@FindBy(xpath = "//a[@id='click-to-refresh']")
+	private WebElement refreshButton;
+	
+	@FindBy(xpath = "//a[@id='click-to-delete']")
+	private WebElement deleteButton;
+	
 	public String getEmailAddress(){
 		
 		return emailEdit.getAttribute("value");
@@ -65,4 +65,5 @@ public class TempMailPageFragment extends BaseFragment implements HasURL{
 		
 		clickButton(deleteButton);
 	}
+
 }

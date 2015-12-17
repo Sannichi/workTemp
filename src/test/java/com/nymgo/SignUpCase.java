@@ -2,6 +2,7 @@ package com.nymgo;
 
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
@@ -13,7 +14,7 @@ import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
 import com.nymgo.tests.pages.nymgo.menu.signIn.ResellerSignInPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
 import com.nymgo.tests.pages.nymgo.signUp.ResellerSignUpPage;
-import com.nymgo.tests.pages.tempMail.TempMailPage;
+import com.nymgo.tests.pages.tempMail.TempMailEmailListPage;
 
 import org.testng.Assert;
 
@@ -25,15 +26,19 @@ public class SignUpCase extends AbstractCase{
     	NymgoPage nymgoPage = new NymgoPage(starter);
     	HomePage homePage = nymgoPage.setDefaultState();
 		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
-		TempMailPage tempMailPage = normalUserSignUpPage.navigateToTempMailInNewTab();
-		String signUpEmail = tempMailPage.getEmailAddress();
+		TempMailEmailListPage tempMailEmailListPage = normalUserSignUpPage.navigateToTempMailInNewTab();
+		String signUpEmail = tempMailEmailListPage.getEmailAddress();
 		String signUpUsername = signUpEmail.split("@")[0] + "Name";
         
+		fullUserEntity = DataAdapter.getSignUpNormalUser();
 		fullUserEntity.setEmail(signUpEmail);
 		fullUserEntity.setUsername(signUpUsername);
-		tempMailPage.navigateToTabByURL(normalUserSignUpPage.getPageURL());
+		tempMailEmailListPage.navigateToTabByURL(normalUserSignUpPage.getPageURL());
 		//TODO RegistrationPage + success message
 		normalUserSignUpPage.setSignUpDataAndClickJoinSuccess(fullUserEntity);
+		normalUserSignUpPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+		Assert.assertTrue(tempMailEmailListPage.isRegistrationSuccessEmailExists(), "Registration Success Email was not received");
+		tempMailEmailListPage.openRegistrationSuccessEmail();
 		
     }
 	
