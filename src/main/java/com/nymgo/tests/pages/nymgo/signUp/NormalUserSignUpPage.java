@@ -1,5 +1,7 @@
 package com.nymgo.tests.pages.nymgo.signUp;
 
+import javax.swing.JOptionPane;
+
 import org.testng.Assert;
 
 import com.nymgo.data.adapters.DataAdapter;
@@ -78,8 +80,29 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 		normalUserSignUpPageFragment.clickJoinButton();
 	}
 	
-	//TODO instead of void
-	public void setSignUpDataAndClickJoinSuccess(FullUserEntity fullUserEntity){
+	public String getSuccessMessage(){
+		
+		return normalUserSignUpPageFragment.getSuccessMessage();
+	}
+	
+	public String getUpperMessage(){
+		
+		return normalUserSignUpPageFragment.getUpperMessage();
+	}
+	
+	public boolean getRecaptchaState(){
+		
+		return normalUserSignUpPageFragment.getRecaptchaState();
+	}
+	
+	public void waitRecaptchaFieldHasText(){
+
+		if (!normalUserSignUpPageFragment.waitRecaptchaFieldHasText()){
+			LOGGER.fatal("Recaptcha was not entered within 90 seconds!");
+		}
+	}
+	
+	public NormalUserSignUpPage setSignUpDataAndClickJoin(FullUserEntity fullUserEntity){
 		
 		setFullName(fullUserEntity.getFullName());
 		setUsername(fullUserEntity.getUsername());
@@ -88,6 +111,34 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 		setEmail(fullUserEntity.getEmail());
 		setMobile(fullUserEntity.getMobile());
 		clickJoinButton();
+		return this;
+	}
+	
+	public NormalUserSignUpPage setSignUpDataAndClickJoinSuccess(FullUserEntity fullUserEntity){
+		
+		NormalUserSignUpPage normalUserSignUpPage = setSignUpDataAndClickJoin(fullUserEntity);
+		if(!isSuccessRegistrationMessageExists()){
+			if(getRecaptchaState()){
+				String message = "Recaptcha is on the Screen. Please, enter the Captcha.";
+				LOGGER.warn(message);
+				JOptionPane.showMessageDialog(null, message);
+				waitRecaptchaFieldHasText();
+				delay(5);
+				return setSignUpDataAndClickJoin(fullUserEntity);
+			}
+		}
+		return normalUserSignUpPage;
+	}
+	
+	public boolean isSuccessRegistrationMessageExists(){
+
+		return normalUserSignUpPageFragment.getSuccessMessageState();
+	}
+	
+	public NormalUserSignUpPage verifySuccessRegistrationMessage(){
+
+		Assert.assertTrue(getSuccessMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_MESSAGE)), "Success Message is incorrect: '" + getSuccessMessage() + "'");		
+		return this;
 	}
 	
 	public void clearAllFields(){

@@ -121,7 +121,8 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 	@FindBy(xpath = postalCodeXpath + "/../div[@class='validation-msg']")
 	private WebElement postalCodeValidationMessage;
 
-	
+	@FindBy(css = "div[class='success-message']")
+	private WebElement successMessage;
 
 	private static final String RESELLER_SIGN_UP_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/register";
@@ -135,7 +136,14 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 			return true;
 		}
 		catch(TimeoutException e){
-			return false;
+			try{
+				//TODO NOT OR
+				wait.until(ExpectedConditions.urlToBe(RESELLER_SIGN_UP_PAGE_URL + "/"));
+				return true;
+			}
+			catch(TimeoutException e2){
+				return false;
+			}
 		}
 	}
 
@@ -339,6 +347,11 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 		return isElementEnabled(postalCodeValidationMessage);
 	}
 	
+	private boolean isSuccessMessageEnabled(){
+		
+		return isElementEnabled(successMessage);
+	}
+
 	public String getFullNameValidationMessage(){
 		
 		if (isFullNameValidationMessageEnabled()){
@@ -441,6 +454,18 @@ public class ResellerSignUpPageFragment extends BaseNymgoFragment{
 			return postalCodeValidationMessage.getText();
 		}
 		return "";
+	}
+
+	public String getSuccessMessage(){
+		if (isSuccessMessageEnabled()){
+			return successMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public boolean getSuccessMessageState(){
+		
+		return isSuccessMessageEnabled();
 	}
 
 	public void clearAllFields(){

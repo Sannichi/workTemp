@@ -69,7 +69,19 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 	
 	@FindBy(xpath = "//input[@id='" + mobileId + "']/../div[@class='validation-msg']")
 	private WebElement mobileValidationMessage;
+	
+	@FindBy(css = "div[class='success-message']")
+	private WebElement successMessage;
 
+	@FindBy(css = "div[class$='-message']")
+	private WebElement upperMessage;
+
+	@FindBy(id = "recaptcha_challenge_image")
+	private WebElement recaptchaImage;
+
+	@FindBy(id = "recaptcha_response_field")
+	private WebElement recaptchaField;
+	
 	private static final String NORMAL_ACCOUNT_SIGN_UP_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 					LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/register";
 	
@@ -186,7 +198,22 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		
 		return isElementEnabled(mobileValidationMessage);
 	}
+
+	private boolean isSuccessMessageEnabled(){
+		
+		return isElementEnabled(successMessage);
+	}
+
+	private boolean isUpperMessageEnabled(){
+		
+		return isElementEnabled(upperMessage);
+	}
 	
+	private boolean isRecaptchaImageEnabled(){
+		
+		return isElementEnabled(recaptchaImage);
+	}
+
 	public String getFullNameValidationMessage(){
 		
 		if (isFullNameValidationMessageEnabled()){
@@ -235,6 +262,43 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		return "MessageDisabled";
 	}
 
+	public String getSuccessMessage(){
+		if (isSuccessMessageEnabled()){
+			return successMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getUpperMessage(){
+		if (isUpperMessageEnabled()){
+			return upperMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public boolean getSuccessMessageState(){
+		
+		return isSuccessMessageEnabled();
+	}
+
+	public boolean getRecaptchaState(){
+		
+		return isRecaptchaImageEnabled();
+	}
+
+	public boolean waitRecaptchaFieldHasText(){
+	
+		WebDriverWait wait = new WebDriverWait(driver, 90);
+		try{
+			wait.until(ExpectedConditions.textToBePresentInElement(recaptchaField, recaptchaField.getText()));
+			return true;
+		}
+		catch(TimeoutException e){
+
+			return false;
+		}
+	}
+	
 	public void clearAllFields(){
 		
 		clearEdit(fullNameEdit);

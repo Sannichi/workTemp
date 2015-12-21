@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import com.nymgo.tests.fragments.BaseFragment;
+import com.nymgo.tests.fragments.admin.LoginAdminPageFragment;
+import com.nymgo.tests.fragments.tempMail.TempMailPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.admin.LoginAdminPage;
 import com.nymgo.tests.pages.nymgo.HomePage;
@@ -79,11 +81,21 @@ public abstract class AbstractPage {
 	public TempMailEmailListPage navigateToTempMailInNewTab(){
 		
 		LOGGER.info("Navigating to TempMail page...");
-		baseFragment.openURLInNewTab(TEMP_MAIL_URL);
+		baseFragment.openURLInNewTab(TempMailPageFragment.TEMP_MAIL_PAGE_URL);		
 		TempMailEmailListPage tempMailEmailListPage = new TempMailEmailListPage(starter);
 		PageNavigation<TempMailEmailListPage> navigation = new PageNavigation<TempMailEmailListPage>(tempMailEmailListPage); 
 		navigation.NavigatedTo();
   		return tempMailEmailListPage;    		
+	}
+
+	public LoginAdminPage navigateToAdminInNewTab(){
+		
+		LOGGER.info("Navigating to Admin page...");
+		baseFragment.openURLInNewTab(LoginAdminPageFragment.LOGIN_PAGE_URL_ENG);
+		LoginAdminPage loginAdminPage = new LoginAdminPage(starter);
+		PageNavigation<LoginAdminPage> navigation = new PageNavigation<LoginAdminPage>(loginAdminPage); 
+		navigation.NavigatedTo();
+  		return loginAdminPage;    		
 	}
 
 	public void navigateToTabByURL(String URL){

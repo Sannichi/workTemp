@@ -32,109 +32,109 @@ public class DataAdapter extends BaseAdapter {
     	return userEntityArray;
 	}
 
-    public static AdminEntity getAdmin() throws Exception{
+    public static AdminEntity getAdmin(){
     	
     	AdminEntity adminEntity  = ExcelUtils.getAdminEntity(adminTablePath, "Admin");
     	return adminEntity;
 	}
 
-    public static ThreeDSUserEntity getThreeDSUser() throws Exception{
+    public static ThreeDSUserEntity getThreeDSUser(){
     	
     	ThreeDSUserEntity threeDSUserEntity = ExcelUtils.getThreeDSUserEntity(creditCardsTablePath, "3DSUser");
     	return threeDSUserEntity;
 	}
 
-    public static FullUserEntity getEuroNormalWhitelist() throws Exception{
+    public static FullUserEntity getEuroNormalWhitelist(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"EuroNormalWhitelist");    	
     	return fullUserEntity;
 	}
 
-    public static FullUserEntity getEuroReseller() throws Exception{
+    public static FullUserEntity getEuroReseller(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"EuroReseller");    	
     	return fullUserEntity;
 	}
 
-    public static FullUserEntity getEuroMasterReseller() throws Exception{
+    public static FullUserEntity getEuroMasterReseller(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"EuroMasterReseller");    	
     	return fullUserEntity;
 	}
 
-    public static FullUserEntity getInterNormalWhitelist() throws Exception{
+    public static FullUserEntity getInterNormalWhitelist(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterNormalWhitelist");    	
     	return fullUserEntity;
 	}
 
-    public static FullUserEntity getInterReseller() throws Exception{
+    public static FullUserEntity getInterReseller(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterReseller");    	
     	return fullUserEntity;
 	}
 
-    public static FullUserEntity getInterMasterReseller() throws Exception{
+    public static FullUserEntity getInterMasterReseller(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterMasterReseller");    	
     	return fullUserEntity;
 	}
 
-    public static FullCardEntity getAmericanExpressCard() throws Exception{
+    public static FullCardEntity getAmericanExpressCard(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"AmericanExpress");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getVisaCard() throws Exception{
+    public static FullCardEntity getVisaCard(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"Visa");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getMasterCardCard() throws Exception{
+    public static FullCardEntity getMasterCardCard(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"MasterCard");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getVisaAdyenCard() throws Exception{
+    public static FullCardEntity getVisaAdyenCard(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"VisaAdyen");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getWPAmericanExpressCard3DS() throws Exception{
+    public static FullCardEntity getWPAmericanExpressCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPAMEX3DS");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getWPVisaCard3DS() throws Exception{
+    public static FullCardEntity getWPVisaCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPVISA3DS");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getWPMasterCardCard3DS() throws Exception{
+    public static FullCardEntity getWPMasterCardCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPMC3DS");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getAdyenAmericanExpressCard3DS() throws Exception{
+    public static FullCardEntity getAdyenAmericanExpressCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENAMEX3DS");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getAdyenVisaCard3DS() throws Exception{
+    public static FullCardEntity getAdyenVisaCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENVISA3DS");    	
     	return fullCardEntity;
 	}
 
-    public static FullCardEntity getAdyenMasterCardCard3DS() throws Exception{
+    public static FullCardEntity getAdyenMasterCardCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENMC3DS");    	
     	return fullCardEntity;

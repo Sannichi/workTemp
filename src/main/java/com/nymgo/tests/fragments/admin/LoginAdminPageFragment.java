@@ -18,7 +18,7 @@ public class LoginAdminPageFragment extends BaseAdminFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String LOGIN_PAGE_URL_ENG = ServerGenerator.getServerKey(URL_CONST.ADMIN_URL); 
+	public static final String LOGIN_PAGE_URL_ENG = ServerGenerator.getServerKey(URL_CONST.ADMIN_URL); 
 
 	@FindBy(name = "username")
 	private WebElement username;

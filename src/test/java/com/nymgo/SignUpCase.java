@@ -3,17 +3,20 @@ package com.nymgo;
 import org.testng.annotations.Test;
 
 import com.nymgo.data.adapters.DataAdapter;
+import com.nymgo.data.entity.AdminEntity;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
 import com.nymgo.tests.AbstractCase;
+import com.nymgo.tests.pages.admin.BusinessMembersAdminPage;
+import com.nymgo.tests.pages.admin.LoginAdminPage;
+import com.nymgo.tests.pages.admin.MembersAdminPage;
 import com.nymgo.tests.pages.nymgo.HomePage;
-import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.NymgoPage;
 import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
-import com.nymgo.tests.pages.nymgo.menu.signIn.ResellerSignInPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
 import com.nymgo.tests.pages.nymgo.signUp.ResellerSignUpPage;
+import com.nymgo.tests.pages.tempMail.TempMailEmailContentPage;
 import com.nymgo.tests.pages.tempMail.TempMailEmailListPage;
 
 import org.testng.Assert;
@@ -26,19 +29,51 @@ public class SignUpCase extends AbstractCase{
     	NymgoPage nymgoPage = new NymgoPage(starter);
     	HomePage homePage = nymgoPage.setDefaultState();
 		NormalUserSignUpPage normalUserSignUpPage = homePage.clickJoinNowButton();
+		String signUpEmail = new String();
+		String signUpUsername = new String();
+		boolean foundFreeEmail = false;
+		AdminEntity adminEntity = DataAdapter.getAdmin();  
+		MembersAdminPage membersAdminPage;
+
 		TempMailEmailListPage tempMailEmailListPage = normalUserSignUpPage.navigateToTempMailInNewTab();
-		String signUpEmail = tempMailEmailListPage.getEmailAddress();
-		String signUpUsername = signUpEmail.split("@")[0] + "Name";
-        
+		LoginAdminPage loginAdminPage = tempMailEmailListPage.navigateToAdminInNewTab();
+		membersAdminPage = loginAdminPage.signInUserSuccess(adminEntity.getUsername(), adminEntity.getPassword());
+		membersAdminPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+		while (!foundFreeEmail){
+			signUpEmail = tempMailEmailListPage.getEmailAddress();
+			signUpUsername = signUpEmail.split("@")[0] + "Name";
+	        
+			tempMailEmailListPage.navigateToTabByURL(membersAdminPage.getPageURL());
+			membersAdminPage
+				.navigateMembersTab()
+				.searchEmailExactMatch(signUpEmail);
+			if (membersAdminPage.isSearchResultEmpty()){
+				LOGGER.info("Free email is founded");
+				foundFreeEmail = true;
+				membersAdminPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+			}
+			else{
+				membersAdminPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+				tempMailEmailListPage.clickDelete();
+			}
+		}
+		
 		fullUserEntity = DataAdapter.getSignUpNormalUser();
 		fullUserEntity.setEmail(signUpEmail);
 		fullUserEntity.setUsername(signUpUsername);
 		tempMailEmailListPage.navigateToTabByURL(normalUserSignUpPage.getPageURL());
-		//TODO RegistrationPage + success message
-		normalUserSignUpPage.setSignUpDataAndClickJoinSuccess(fullUserEntity);
-		normalUserSignUpPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+		
+		normalUserSignUpPage
+			.setSignUpDataAndClickJoinSuccess(fullUserEntity)
+			.verifySuccessRegistrationMessage()
+			.navigateToTabByURL(tempMailEmailListPage.getPageURL())
+			;
 		Assert.assertTrue(tempMailEmailListPage.isRegistrationSuccessEmailExists(), "Registration Success Email was not received");
-		tempMailEmailListPage.openRegistrationSuccessEmail();
+		LOGGER.info("Registration Success message is delivered to email '" + fullUserEntity.getEmail() + ", Title is correct");
+		TempMailEmailContentPage tempMailEmailContentPage = tempMailEmailListPage.openRegistrationSuccessEmail();
+		LOGGER.info("Registration message is opened");
+		tempMailEmailContentPage.verifyRegistrationSuccessEmailContent();
+		LOGGER.info("Registration message content is correct");
 		
     }
 	
@@ -228,16 +263,56 @@ public class SignUpCase extends AbstractCase{
     @Test(dataProvider = PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
 	public void signUpEuroResellerTest(FullUserEntity fullUserEntity){
 		
-    	String login = fullUserEntity.getUsername();
-    	String password = fullUserEntity.getPassword();
-    	
-		NymgoPage nymgoPage = new NymgoPage(starter);
-		HomePage homePage = nymgoPage.setDefaultState();
-
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+    	HomePage homePage = nymgoPage.setDefaultState();
 		ResellersPage resellersPage = homePage.clickResellersLink();
-		ResellerSignInPage resellerSignInPage = resellersPage.clickResellerSignInButton();
-		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
-		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
+		ResellerSignUpPage resellerSignUpPage = resellersPage.clickJoinResellerButton();
+		String signUpEmail = new String();
+		String signUpUsername = new String();
+		boolean foundFreeEmail = false;
+		AdminEntity adminEntity = DataAdapter.getAdmin();  
+
+		TempMailEmailListPage tempMailEmailListPage = resellerSignUpPage.navigateToTempMailInNewTab();
+		LoginAdminPage loginAdminPage = tempMailEmailListPage.navigateToAdminInNewTab();
+		MembersAdminPage membersAdminPage = loginAdminPage.signInUserSuccess(adminEntity.getUsername(), adminEntity.getPassword());
+		BusinessMembersAdminPage businessMembersAdminPage = membersAdminPage.navigateBusinessMembersTab();
+		businessMembersAdminPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+		while (!foundFreeEmail){
+			signUpEmail = tempMailEmailListPage.getEmailAddress();
+			signUpUsername = signUpEmail.split("@")[0] + "Name";
+	        
+			tempMailEmailListPage.navigateToTabByURL(businessMembersAdminPage.getPageURL());
+			businessMembersAdminPage
+				.navigateBusinessMembersTab()
+				.searchEmailExactMatch(signUpEmail);
+			if (businessMembersAdminPage.isSearchResultEmpty()){
+				LOGGER.info("Free email is founded");
+				foundFreeEmail = true;
+				businessMembersAdminPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+			}
+			else{
+				businessMembersAdminPage.navigateToTabByURL(tempMailEmailListPage.getPageURL());
+				tempMailEmailListPage.clickDelete();
+			}
+		}
+		
+		fullUserEntity = DataAdapter.getSignUpNormalUser();
+		fullUserEntity.setEmail(signUpEmail);
+		fullUserEntity.setUsername(signUpUsername);
+		businessMembersAdminPage.navigateToTabByURL(resellerSignUpPage.getPageURL());
+		
+		resellerSignUpPage
+			.setSignUpDataAndClickJoinSuccess(fullUserEntity)
+			.verifySuccessRegistrationMessage()
+			.navigateToTabByURL(tempMailEmailListPage.getPageURL())
+			;
+		Assert.assertTrue(tempMailEmailListPage.isRegistrationSuccessEmailExists(), "Registration Success Email was not received");
+		LOGGER.info("Registration Success message is delivered to email '" + fullUserEntity.getEmail() + ", Title is correct");
+		TempMailEmailContentPage tempMailEmailContentPage = tempMailEmailListPage.openRegistrationSuccessEmail();
+		LOGGER.info("Registration message is opened");
+		tempMailEmailContentPage.verifyRegistrationSuccessEmailContent();
+		LOGGER.info("Registration message content is correct");
+		
 	}
 
 }

@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -84,8 +85,12 @@ public class BaseFragment {
 	}
 	
 	public boolean isElementEnabled(WebElement element){
-		
-		return element.isEnabled();
+		try{
+			return element.isEnabled();
+		}
+		catch(NoSuchElementException e){
+			return false;
+		}
 	}
 	
 	public void clearEdit(WebElement editField){

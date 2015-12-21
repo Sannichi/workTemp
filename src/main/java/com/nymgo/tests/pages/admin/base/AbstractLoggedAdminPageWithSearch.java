@@ -67,6 +67,25 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		return this;
 	}
 
+	public AbstractLoggedAdminPageWithSearch searchEmailExactMatch(String criteria){
+
+		typeCriteria(criteria);
+		selectField("Email");
+		selectType("Exact Match");
+		clickGoButton();
+		for (int i = 0; i < 5; i++){
+			LOGGER.info("Searching...");
+			waitSearchCriteria();
+			if (getRowsCount() <= 1){
+				break;
+			}
+			if (i == 4){
+				LOGGER.fatal("Search by Exact Match got more than 1 result :" + getRowsCount());
+			}
+		}
+		return this;
+	}
+
 	public AbstractLoggedAdminPageWithSearch searchUsernameExactMatch(String criteria){
 
 		typeCriteria(criteria);

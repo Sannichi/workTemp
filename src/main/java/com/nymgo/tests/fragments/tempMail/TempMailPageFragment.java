@@ -21,7 +21,7 @@ public class TempMailPageFragment extends BaseFragment implements HasURL{
 		// TODO Auto-generated constructor stub
 	}
 	
-	private final static String TEMP_MAIL_PAGE_URL = "http://temp-mail.org/en/";
+	public final static String TEMP_MAIL_PAGE_URL = "http://temp-mail.org/en/";
 	
 	@Override
 	public boolean isCorrectURL() {

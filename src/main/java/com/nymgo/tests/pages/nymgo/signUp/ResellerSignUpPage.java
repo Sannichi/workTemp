@@ -7,6 +7,7 @@ import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.signUp.ResellerSignUpPageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
+import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.base.AbstractNymgoPage;
 import com.nymgo.tests.starter.Starter;
 
@@ -118,13 +119,17 @@ public class ResellerSignUpPage extends AbstractNymgoPage {
 		resellerSignUpPageFragment.clickJoinButton();
 	}
 
+	public String getSuccessMessage(){
+		
+		return resellerSignUpPageFragment.getSuccessMessage();
+	}
+	
 	public void clearAllFields(){
 		
 		resellerSignUpPageFragment.clearAllFields();
 	}
 	
-	//TODO instead of void
-	public void setSignUpDataAndClickJoinSuccess(FullUserEntity fullUserEntity){
+	public ResellerSignUpPage setSignUpDataAndClickJoinSuccess(FullUserEntity fullUserEntity){
 		
 		setFullName(fullUserEntity.getFullName());
 		setBusinessName(fullUserEntity.getBusinessName());
@@ -140,6 +145,10 @@ public class ResellerSignUpPage extends AbstractNymgoPage {
 		setStreet(fullUserEntity.getStreet());
 		setPostalCode(fullUserEntity.getPostalCode());
 		clickJoinButton();
+		ResellerSignUpPage resellerSignUpPage = new ResellerSignUpPage(starter);
+		PageNavigation<ResellerSignUpPage> navigation = new PageNavigation<ResellerSignUpPage>(resellerSignUpPage);
+		navigation.NavigatedTo();
+		return resellerSignUpPage;
 	}
 
 	public void verifyEmptyFields(){
@@ -764,4 +773,16 @@ public class ResellerSignUpPage extends AbstractNymgoPage {
 			LOGGER.info("PostalCode validation message is correct for test '" + testName + "'");
 		}
 	}
+
+	public boolean isSuccessRegistrationMessageExists(){
+
+		return resellerSignUpPageFragment.getSuccessMessageState();
+	}
+	
+	public ResellerSignUpPage verifySuccessRegistrationMessage(){
+
+		Assert.assertTrue(getSuccessMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_MESSAGE)), "Success Message is incorrect: '" + getSuccessMessage() + "'");		
+		return this;
+	}
+	
 }

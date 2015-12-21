@@ -38,26 +38,28 @@ public class TempMailEmailListPage extends TempMailPage {
 
 	public boolean isRegistrationSuccessEmailExists(){
 
-		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_EMAIL_SUBJECT);
+		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
 		for (int i = 0; i < 30; i++){
 			if(!isEmailBySubjectExists(emailSubject)){
+				LOGGER.info("Waiting for Registration Success email...");
 				delay(2);
 			}
 			else{
 				return true;
 			}
 		}
-		LOGGER.fatal("Registration Sussess Email was not received within 60 seconds");
+		LOGGER.fatal("Registration Sussess Email with title '" + emailSubject + "' was not received within 60 seconds");
 		return false;
 	}
 
 	public TempMailEmailContentPage openRegistrationSuccessEmail(){
 
-		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_EMAIL_SUBJECT);
+		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
 		clickEmailBySubject(emailSubject);
 		TempMailEmailContentPage tempMailEmailContentPage = new TempMailEmailContentPage(starter);
 		PageNavigation<TempMailEmailContentPage> navigation = new PageNavigation<TempMailEmailContentPage>(tempMailEmailContentPage);
 		navigation.NavigatedTo();
 		return tempMailEmailContentPage;
 	}
+
 }
