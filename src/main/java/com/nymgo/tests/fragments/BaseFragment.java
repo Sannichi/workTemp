@@ -73,6 +73,26 @@ public class BaseFragment {
 	}
 	
 	
+	public boolean navigateToTabByURLContains(String URLContains){
+
+		Set<String> handles = driver.getWindowHandles();
+	    List<String> handlesList = new ArrayList<String>(handles);
+	    String tab = handlesList.get(handlesList.size() - 1);
+
+		for(int i = 0; i < 10; i++){
+			driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
+			//switch driver to the current tab
+		    driver.switchTo().window(tab); 
+			if (getCurrentURL().contains(URLContains)){
+				LOGGER.info("Switched to tab with URL contains: " + URLContains);
+				return true;
+			}
+		}
+		LOGGER.fatal("There is no tab with URL contains: " + URLContains + " within 10 first tabs");
+		return false;
+	}
+	
+	
 	public void navigateHomePage(){
 
 		driver.get(ServerGenerator.getServerKey(URL_CONST.HOME_URL) +

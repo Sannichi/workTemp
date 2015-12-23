@@ -4,7 +4,7 @@
     
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-<!--
+
     <test name="Test - SignUp User" preserve-order="true">
         <classes>
             <class name="com.nymgo.SignUpCase">
@@ -14,7 +14,7 @@
             </class>
         </classes>
     </test>
--->
+<!--
     <test name="Test - SignUp Reseller" preserve-order="true">
         <classes>
             <class name="com.nymgo.SignUpCase">
@@ -24,7 +24,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - SignUp User Mandatory Fields">
         <classes>
             <class name="com.nymgo.SignUpCase">
@@ -44,7 +44,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - SignUp User Username Field">
         <classes>
             <class name="com.nymgo.SignUpCase">

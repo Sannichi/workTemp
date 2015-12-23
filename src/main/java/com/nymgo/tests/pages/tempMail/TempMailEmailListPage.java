@@ -52,14 +52,40 @@ public class TempMailEmailListPage extends TempMailPage {
 		return false;
 	}
 
-	public TempMailEmailContentPage openRegistrationSuccessEmail(){
+	public TempMailRegistrationSuccessPage openRegistrationSuccessEmail(){
 
 		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
 		clickEmailBySubject(emailSubject);
-		TempMailEmailContentPage tempMailEmailContentPage = new TempMailEmailContentPage(starter);
-		PageNavigation<TempMailEmailContentPage> navigation = new PageNavigation<TempMailEmailContentPage>(tempMailEmailContentPage);
+		TempMailRegistrationSuccessPage tempMailRegistrationSuccessPage = new TempMailRegistrationSuccessPage(starter);
+		PageNavigation<TempMailRegistrationSuccessPage> navigation = new PageNavigation<TempMailRegistrationSuccessPage>(tempMailRegistrationSuccessPage);
 		navigation.NavigatedTo();
-		return tempMailEmailContentPage;
+		return tempMailRegistrationSuccessPage;
+	}
+
+	public boolean isActivationSuccessEmailExists(){
+
+		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
+		for (int i = 0; i < 30; i++){
+			if(!isEmailBySubjectExists(emailSubject)){
+				LOGGER.info("Waiting for Activation Success email...");
+				delay(2);
+			}
+			else{
+				return true;
+			}
+		}
+		LOGGER.fatal("Activation Sussess Email with title '" + emailSubject + "' was not received within 60 seconds");
+		return false;
+	}
+
+	public TempMailActivationSuccessPage openActivationSuccessEmail(){
+
+		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
+		clickEmailBySubject(emailSubject);
+		TempMailActivationSuccessPage tempMailActivationSuccessPage = new TempMailActivationSuccessPage(starter);
+		PageNavigation<TempMailActivationSuccessPage> navigation = new PageNavigation<TempMailActivationSuccessPage>(tempMailActivationSuccessPage);
+		navigation.NavigatedTo();
+		return tempMailActivationSuccessPage;
 	}
 
 }

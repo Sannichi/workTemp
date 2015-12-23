@@ -16,6 +16,13 @@ import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.BaseFragment;
 import com.nymgo.tests.fragments.HasURL;
+import com.nymgo.tests.fragments.nymgo.account.BaseAccountPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.AppsPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.PricesPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.ResellersPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.SupportPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.signIn.NormalUserSignInPageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
@@ -32,16 +39,13 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	private static String secureHomeURL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL);
 	private static final String nymgoHomepageXpath = "//a[@href='" + homeURL + "']";	
-	private static final String nymgoAppsXpath = "//a[@href='" + homeURL + "/download/']";	
-	private static final String nymgoPricesXpath = "//a[@href='" + homeURL + "/prices/']";	
-	private static final String nymgoSupportXpath = "//a[@href='" + homeURL + "/support/']";	
-//	private static final String nymgoResellersXpath = "//a[@href='" + secureHomeURL + "/reseller/home']";	
-	private static final String nymgoResellersXpath = "//a[@href='" + homeURL + "/reseller/home']";	
-	private static final String nymgoBuyCreditXpath = "//a[@href='" + secureHomeURL + "/buy-credits']";	
-//	protected static final String nymgoNormalUserSignInXpath = "//a[@href='" + secureHomeURL + "/login']";
-	protected static final String nymgoNormalUserSignInXpath = "//a[@href='" + homeURL + "/login']";
-//	protected static final String nymgoMyAccountXpath = ".//a[@href='" + secureHomeURL + "/user/dashboard']";	
-	protected static final String nymgoMyAccountXpath = ".//a[@href='" + homeURL + "/user/dashboard']";	
+	private static final String nymgoAppsXpath = "//a[@href='" + AppsPageFragment.APPS_PAGE_URL + "']";	
+	private static final String nymgoPricesXpath = "//a[@href='" + PricesPageFragment.PRICES_PAGE_URL + "']";	
+	private static final String nymgoSupportXpath = "//a[@href='" + SupportPageFragment.SUPPORT_PAGE_URL + "']";	
+	private static final String nymgoResellersXpath = "//a[@href='" + ResellersPageFragment.RESELLERS_PAGE_URL + "']";	
+	private static final String nymgoBuyCreditXpath = "//a[@href='" + BuyCreditPageFragment.BUY_CREDIT_PAGE_URL + "']";	
+	private static final String nymgoNormalUserSignInXpath = "//a[@href='" + NormalUserSignInPageFragment.NORMAL_ACCOUNT_PAGE_URL + "']";	
+	protected static final String nymgoMyAccountXpath = ".//a[@href='" + BaseAccountPageFragment.ACCOUNT_PAGE_URL_EN + "']";	
 	protected static final String nymgoLogOutXpath = ".//a[@href='" + secureHomeURL + "/logout']";	
 
 	private WebElement nymgoHomepageLink;

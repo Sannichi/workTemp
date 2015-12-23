@@ -20,7 +20,6 @@ public abstract class AbstractPage {
 
     public static Starter starter;
 	private BaseFragment baseFragment;
-	private String TEMP_MAIL_URL = "http://temp-mail.org/en/";
 	
 	public AbstractPage(Starter starter) {	
 
@@ -103,10 +102,15 @@ public abstract class AbstractPage {
 		baseFragment.navigateToTabByURL(URL);
 	}
 
+	public void navigateToTabByURLContains(String URLContains){
+		
+		baseFragment.navigateToTabByURLContains(URLContains);
+	}
+
 	public TempMailEmailListPage navigateToTempMailTab(){
 		
 		LOGGER.info("Navigating to TempMail page...");
-		baseFragment.navigateToTabByURL(TEMP_MAIL_URL);
+		baseFragment.navigateToTabByURL(TempMailPageFragment.TEMP_MAIL_PAGE_URL);
 		TempMailEmailListPage tempMailEmailListPage = new TempMailEmailListPage(starter);
 		PageNavigation<TempMailEmailListPage> navigation = new PageNavigation<TempMailEmailListPage>(tempMailEmailListPage); 
 		navigation.NavigatedTo();

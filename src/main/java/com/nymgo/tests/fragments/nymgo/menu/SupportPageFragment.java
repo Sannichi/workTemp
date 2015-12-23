@@ -18,7 +18,7 @@ public class SupportPageFragment extends BaseNymgoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String SUPPORT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+	public static final String SUPPORT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/support/";
 	
 	public boolean isCorrectURL() {

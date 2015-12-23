@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by Iuliia Khikmatova on Dec 17, 2015
  */
-public class TempMailEmailContentPageFragment extends TempMailPageFragment{
+public class BaseTempMailEmailContentPageFragment extends TempMailPageFragment{
 
-	public TempMailEmailContentPageFragment(WebDriver driver) {
+	public BaseTempMailEmailContentPageFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}

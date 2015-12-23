@@ -16,15 +16,16 @@ import com.nymgo.tests.pages.nymgo.base.NymgoPage;
 import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
 import com.nymgo.tests.pages.nymgo.signUp.ResellerSignUpPage;
-import com.nymgo.tests.pages.tempMail.TempMailEmailContentPage;
+import com.nymgo.tests.pages.tempMail.TempMailActivationSuccessPage;
 import com.nymgo.tests.pages.tempMail.TempMailEmailListPage;
+import com.nymgo.tests.pages.tempMail.TempMailRegistrationSuccessPage;
 
 import org.testng.Assert;
 
 public class SignUpCase extends AbstractCase{
 	
-    @Test(dataProvider = PROVIDER_CONST.SIGN_UP_NORMAL_USER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signUpNormalUserSuccessTest(FullUserEntity fullUserEntity){    
+	@Test    
+	public void signUpNormalUserSuccessTest(){    
 
     	NymgoPage nymgoPage = new NymgoPage(starter);
     	HomePage homePage = nymgoPage.setDefaultState();
@@ -57,8 +58,8 @@ public class SignUpCase extends AbstractCase{
 				tempMailEmailListPage.clickDelete();
 			}
 		}
-		
-		fullUserEntity = DataAdapter.getSignUpNormalUser();
+
+		FullUserEntity fullUserEntity = DataAdapter.getSignUpNormalUser();
 		fullUserEntity.setEmail(signUpEmail);
 		fullUserEntity.setUsername(signUpUsername);
 		tempMailEmailListPage.navigateToTabByURL(normalUserSignUpPage.getPageURL());
@@ -70,11 +71,21 @@ public class SignUpCase extends AbstractCase{
 			;
 		Assert.assertTrue(tempMailEmailListPage.isRegistrationSuccessEmailExists(), "Registration Success Email was not received");
 		LOGGER.info("Registration Success message is delivered to email '" + fullUserEntity.getEmail() + ", Title is correct");
-		TempMailEmailContentPage tempMailEmailContentPage = tempMailEmailListPage.openRegistrationSuccessEmail();
+		TempMailRegistrationSuccessPage tempMailRegistrationSuccessPage  = tempMailEmailListPage.openRegistrationSuccessEmail();
 		LOGGER.info("Registration message is opened");
-		tempMailEmailContentPage.verifyRegistrationSuccessEmailContent();
-		LOGGER.info("Registration message content is correct");
-		
+		tempMailRegistrationSuccessPage
+			.verifyRegistrationSuccessEmailTitle()
+			.verifyRegistrationSuccessEmailContent()
+			.clickVerifyAccountButton()
+			;
+		nymgoPage.navigateToTabByURLContains(tempMailRegistrationSuccessPage.getPageURL());
+		tempMailEmailListPage = tempMailRegistrationSuccessPage.clickRefresh();
+		Assert.assertTrue(tempMailEmailListPage.isActivationSuccessEmailExists(), "Activation Success Email was not received");
+		TempMailActivationSuccessPage tempMailActivationSuccessPage = tempMailEmailListPage.openActivationSuccessEmail();
+		tempMailActivationSuccessPage
+			.verifyActivationSuccessEmailTitle()
+			.verifyActivationSuccessEmailContent()
+			;
     }
 	
     @Test    
@@ -260,8 +271,8 @@ public class SignUpCase extends AbstractCase{
     	resellerSignUpPage.verifyPostalCodeUnsuccess(testCaseName, testCaseString);
     }
 	
-    @Test(dataProvider = PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signUpEuroResellerTest(FullUserEntity fullUserEntity){
+	@Test    
+	public void signUpEuroResellerTest(){
 		
     	NymgoPage nymgoPage = new NymgoPage(starter);
     	HomePage homePage = nymgoPage.setDefaultState();
@@ -296,7 +307,7 @@ public class SignUpCase extends AbstractCase{
 			}
 		}
 		
-		fullUserEntity = DataAdapter.getSignUpNormalUser();
+		FullUserEntity fullUserEntity = DataAdapter.getSignUpReseller();
 		fullUserEntity.setEmail(signUpEmail);
 		fullUserEntity.setUsername(signUpUsername);
 		businessMembersAdminPage.navigateToTabByURL(resellerSignUpPage.getPageURL());
@@ -308,10 +319,21 @@ public class SignUpCase extends AbstractCase{
 			;
 		Assert.assertTrue(tempMailEmailListPage.isRegistrationSuccessEmailExists(), "Registration Success Email was not received");
 		LOGGER.info("Registration Success message is delivered to email '" + fullUserEntity.getEmail() + ", Title is correct");
-		TempMailEmailContentPage tempMailEmailContentPage = tempMailEmailListPage.openRegistrationSuccessEmail();
+		TempMailRegistrationSuccessPage tempMailRegistrationSuccessPage  = tempMailEmailListPage.openRegistrationSuccessEmail();
 		LOGGER.info("Registration message is opened");
-		tempMailEmailContentPage.verifyRegistrationSuccessEmailContent();
-		LOGGER.info("Registration message content is correct");
+		tempMailRegistrationSuccessPage
+			.verifyRegistrationSuccessEmailTitle()
+			.verifyRegistrationSuccessEmailContent()
+			.clickVerifyAccountButton()
+			;
+		nymgoPage.navigateToTabByURLContains(tempMailRegistrationSuccessPage.getPageURL());
+		tempMailEmailListPage = tempMailRegistrationSuccessPage.clickRefresh();
+		Assert.assertTrue(tempMailEmailListPage.isActivationSuccessEmailExists(), "Activation Success Email was not received");
+		TempMailActivationSuccessPage tempMailActivationSuccessPage = tempMailEmailListPage.openActivationSuccessEmail();
+		tempMailActivationSuccessPage
+			.verifyActivationSuccessEmailTitle()
+			.verifyActivationSuccessEmailContent()
+			;
 		
 	}
 

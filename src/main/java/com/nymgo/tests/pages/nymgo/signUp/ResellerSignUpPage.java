@@ -266,7 +266,7 @@ public class ResellerSignUpPage extends AbstractNymgoPage {
 			setStreet(fullUserEntity.getStreet());
 			setPostalCode(fullUserEntity.getPostalCode());
 			clickJoinButton();
-			Assert.assertTrue(resellerSignUpPageFragment.getBusinessNameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.FULL_NAME_REQUIRED)), 
+			Assert.assertTrue(resellerSignUpPageFragment.getBusinessNameValidationMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.BUSINESS_NAME_REQUIRED)), 
 					"BusinessName required message is incorrect: '" + resellerSignUpPageFragment.getBusinessNameValidationMessage() + "' for test '" + testName + "'");
 			LOGGER.info("BusinessName required message is correct for test '" + testName + "'");
 		}

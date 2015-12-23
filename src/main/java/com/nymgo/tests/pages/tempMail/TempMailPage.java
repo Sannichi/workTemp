@@ -1,6 +1,7 @@
 package com.nymgo.tests.pages.tempMail;
 
 import com.nymgo.tests.fragments.tempMail.TempMailPageFragment;
+import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.AbstractPage;
 import com.nymgo.tests.starter.Starter;
 
@@ -42,9 +43,13 @@ public abstract class TempMailPage extends AbstractPage {
 		return tempMailPageFragment.getEmailAddress();
 	}
 
-	public void clickRefresh(){
+	public TempMailEmailListPage clickRefresh(){
 		
 		tempMailPageFragment.clickRefresh();
+		TempMailEmailListPage tempMailEmailListPage = new TempMailEmailListPage(starter);
+		PageNavigation<TempMailEmailListPage> navigation = new PageNavigation<TempMailEmailListPage>(tempMailEmailListPage);
+		navigation.NavigatedTo();
+		return tempMailEmailListPage;
 	}
 
 	public void clickDelete(){

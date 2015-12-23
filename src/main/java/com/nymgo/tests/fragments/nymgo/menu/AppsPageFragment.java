@@ -18,7 +18,7 @@ public class AppsPageFragment extends BaseNymgoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String APPS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+	public static final String APPS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/download/";
 
 	public boolean isCorrectURL() {
