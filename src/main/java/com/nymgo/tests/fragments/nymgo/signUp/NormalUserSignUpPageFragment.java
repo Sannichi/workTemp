@@ -70,12 +70,6 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 	@FindBy(xpath = "//input[@id='" + mobileId + "']/../div[@class='validation-msg']")
 	private WebElement mobileValidationMessage;
 	
-	@FindBy(css = "div[class='success-message']")
-	private WebElement successMessage;
-
-	@FindBy(css = "div[class$='-message']")
-	private WebElement upperMessage;
-
 	@FindBy(id = "recaptcha_challenge_image")
 	private WebElement recaptchaImage;
 
@@ -198,16 +192,6 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 		
 		return isElementEnabled(mobileValidationMessage);
 	}
-
-	private boolean isSuccessMessageEnabled(){
-		
-		return isElementEnabled(successMessage);
-	}
-
-	private boolean isUpperMessageEnabled(){
-		
-		return isElementEnabled(upperMessage);
-	}
 	
 	private boolean isRecaptchaImageEnabled(){
 		
@@ -260,25 +244,6 @@ public class NormalUserSignUpPageFragment extends BaseNymgoFragment{
 			return mobileValidationMessage.getText();
 		}
 		return "MessageDisabled";
-	}
-
-	public String getSuccessMessage(){
-		if (isSuccessMessageEnabled()){
-			return successMessage.getText();
-		}
-		return "MessageDisabled";
-	}
-
-	public String getUpperMessage(){
-		if (isUpperMessageEnabled()){
-			return upperMessage.getText();
-		}
-		return "MessageDisabled";
-	}
-
-	public boolean getSuccessMessageState(){
-		
-		return isSuccessMessageEnabled();
 	}
 
 	public boolean getRecaptchaState(){

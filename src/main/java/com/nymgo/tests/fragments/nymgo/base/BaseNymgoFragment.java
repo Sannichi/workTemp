@@ -59,7 +59,12 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	@FindBy(css = "div.logo")
 	private WebElement nymgoLogo;
 
-	
+	@FindBy(css = "div[class='success-message']")
+	private WebElement successMessage;
+
+	@FindBy(css = "div[class$='-message']")
+	private WebElement upperMessage;
+
 	@FindBy(xpath = ".//*[@class = 'selected-language']")
 	private WebElement selectedLanguageButton;
 
@@ -84,6 +89,36 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 		@FindBy(xpath = ".//*[@class = 'signin']")
 	})
 	protected WebElement accountButton;
+
+
+	private boolean isSuccessMessageEnabled(){
+		
+		return isElementEnabled(successMessage);
+	}
+
+	private boolean isUpperMessageEnabled(){
+		
+		return isElementEnabled(upperMessage);
+	}
+	
+	public String getSuccessMessage(){
+		if (isSuccessMessageEnabled()){
+			return successMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getUpperMessage(){
+		if (isUpperMessageEnabled()){
+			return upperMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public boolean getSuccessMessageState(){
+		
+		return isSuccessMessageEnabled();
+	}
 
 	private void initializeHomePageLink() throws NoSuchElementException{
 		

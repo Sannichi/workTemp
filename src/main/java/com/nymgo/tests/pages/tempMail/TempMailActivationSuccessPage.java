@@ -1,5 +1,9 @@
 package com.nymgo.tests.pages.tempMail;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 import org.testng.Assert;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -31,7 +35,18 @@ public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentP
 	public TempMailActivationSuccessPage verifyActivationSuccessEmailContent(){
 
 		LOGGER.info("Activation message content is correct");
-		LOGGER.info(getEmailContentText());
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("D:\\work\\nymgo\\automation\\nymgoAutomation\\Activation.txt", "UTF-8");
+			writer.println(getEmailContentText());
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this;
 	}
 }

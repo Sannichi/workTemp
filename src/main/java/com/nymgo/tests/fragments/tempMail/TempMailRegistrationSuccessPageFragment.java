@@ -16,7 +16,7 @@ public class TempMailRegistrationSuccessPageFragment extends BaseTempMailEmailCo
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(css = "a[href^=http://dev.nymgo.com/activate]")
+	@FindBy(css = "a[href*='nymgo.com/activate']")
 	private List<WebElement> verifyAccountLinks;
 	
 	public void clickVerifyAccountButton(){

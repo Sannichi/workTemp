@@ -1,6 +1,10 @@
 package com.nymgo.tests.pages.nymgo.menu.signIn;
 
+import org.testng.Assert;
+
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.menu.signIn.NormalUserSignInPageFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.base.AbstractNymgoPage;
@@ -69,4 +73,15 @@ public class NormalUserSignInPage extends AbstractNymgoPage{
 		napNavigation.NavigatedTo();
 		return normalAccountPage;
     }
+    
+	public boolean isSuccessActivationMessageExists(){
+
+		return normalUserSignInPageFragment.getSuccessMessageState();
+	}
+	
+	public NormalUserSignInPage verifySuccessActivationMessage(){
+
+		Assert.assertTrue(getSuccessMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_MESSAGE)), "Success Message is incorrect: '" + getSuccessMessage() + "'");		
+		return this;
+	}
 }

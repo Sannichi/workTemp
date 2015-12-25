@@ -36,9 +36,17 @@ public class TempMailEmailListPage extends TempMailPage {
 		tempMailEmailListPageFragment.clickEmailBySubject(emailSubject);
 	}
 
+	private String getTempEmailCutSubject(String emailSubject){
+		
+		if(emailSubject.length()<=25){
+			return emailSubject;
+		}
+		return emailSubject.substring(0, 25);
+	}
+	
 	public boolean isRegistrationSuccessEmailExists(){
 
-		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
+		String emailSubject = getTempEmailCutSubject(LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT));
 		for (int i = 0; i < 30; i++){
 			if(!isEmailBySubjectExists(emailSubject)){
 				LOGGER.info("Waiting for Registration Success email...");
@@ -54,7 +62,7 @@ public class TempMailEmailListPage extends TempMailPage {
 
 	public TempMailRegistrationSuccessPage openRegistrationSuccessEmail(){
 
-		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
+		String emailSubject = getTempEmailCutSubject(LocaleGenerator.getLocaleKey(LOCALE_CONST.REGISTRATION_SUCCESS_EMAIL_SUBJECT));
 		clickEmailBySubject(emailSubject);
 		TempMailRegistrationSuccessPage tempMailRegistrationSuccessPage = new TempMailRegistrationSuccessPage(starter);
 		PageNavigation<TempMailRegistrationSuccessPage> navigation = new PageNavigation<TempMailRegistrationSuccessPage>(tempMailRegistrationSuccessPage);
@@ -64,7 +72,7 @@ public class TempMailEmailListPage extends TempMailPage {
 
 	public boolean isActivationSuccessEmailExists(){
 
-		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
+		String emailSubject = getTempEmailCutSubject(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT));
 		for (int i = 0; i < 30; i++){
 			if(!isEmailBySubjectExists(emailSubject)){
 				LOGGER.info("Waiting for Activation Success email...");
@@ -80,7 +88,7 @@ public class TempMailEmailListPage extends TempMailPage {
 
 	public TempMailActivationSuccessPage openActivationSuccessEmail(){
 
-		String emailSubject = LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT).substring(0, 25);
+		String emailSubject = getTempEmailCutSubject(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT));
 		clickEmailBySubject(emailSubject);
 		TempMailActivationSuccessPage tempMailActivationSuccessPage = new TempMailActivationSuccessPage(starter);
 		PageNavigation<TempMailActivationSuccessPage> navigation = new PageNavigation<TempMailActivationSuccessPage>(tempMailActivationSuccessPage);

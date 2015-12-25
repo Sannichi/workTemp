@@ -14,6 +14,7 @@ import com.nymgo.tests.pages.admin.MembersAdminPage;
 import com.nymgo.tests.pages.nymgo.HomePage;
 import com.nymgo.tests.pages.nymgo.base.NymgoPage;
 import com.nymgo.tests.pages.nymgo.menu.ResellersPage;
+import com.nymgo.tests.pages.nymgo.menu.signIn.NormalUserSignInPage;
 import com.nymgo.tests.pages.nymgo.signUp.NormalUserSignUpPage;
 import com.nymgo.tests.pages.nymgo.signUp.ResellerSignUpPage;
 import com.nymgo.tests.pages.tempMail.TempMailActivationSuccessPage;
@@ -76,7 +77,12 @@ public class SignUpCase extends AbstractCase{
 		tempMailRegistrationSuccessPage
 			.verifyRegistrationSuccessEmailTitle()
 			.verifyRegistrationSuccessEmailContent()
-			.clickVerifyAccountButton()
+			;
+		String oldWindowHandle = normalUserSignUpPage.getCurrentWindowHandle();
+		NormalUserSignInPage normalUserSignInPage = tempMailRegistrationSuccessPage.openVerifyAccountButtonInNewBrowser();
+		normalUserSignInPage
+			.verifySuccessActivationMessage()
+			.closeAndSwitchBrowser(oldWindowHandle);
 			;
 		nymgoPage.navigateToTabByURLContains(tempMailRegistrationSuccessPage.getPageURL());
 		tempMailEmailListPage = tempMailRegistrationSuccessPage.clickRefresh();
@@ -324,7 +330,12 @@ public class SignUpCase extends AbstractCase{
 		tempMailRegistrationSuccessPage
 			.verifyRegistrationSuccessEmailTitle()
 			.verifyRegistrationSuccessEmailContent()
-			.clickVerifyAccountButton()
+			;
+		String oldWindowHandle = resellerSignUpPage.getCurrentWindowHandle();
+		NormalUserSignInPage normalUserSignInPage = tempMailRegistrationSuccessPage.openVerifyAccountButtonInNewBrowser();
+		normalUserSignInPage
+			.verifySuccessActivationMessage()
+			.closeAndSwitchBrowser(oldWindowHandle);
 			;
 		nymgoPage.navigateToTabByURLContains(tempMailRegistrationSuccessPage.getPageURL());
 		tempMailEmailListPage = tempMailRegistrationSuccessPage.clickRefresh();

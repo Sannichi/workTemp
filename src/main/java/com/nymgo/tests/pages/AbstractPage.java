@@ -1,5 +1,6 @@
 package com.nymgo.tests.pages;
 
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -45,6 +46,17 @@ public abstract class AbstractPage {
 	public String getCurrentURL(){
 
 		return baseFragment.getCurrentURL();
+	}
+
+	public String getCurrentWindowHandle(){
+		
+		return baseFragment.getCurrentWindowHandle();
+
+	}
+	
+	public void switchToWindowHandle(String windowHandle){
+		
+		baseFragment.switchToWindowHandle(windowHandle);
 	}
 
 	public void navigateToURL(String URL){
@@ -105,6 +117,16 @@ public abstract class AbstractPage {
 	public void navigateToTabByURLContains(String URLContains){
 		
 		baseFragment.navigateToTabByURLContains(URLContains);
+	}
+
+	public boolean closeTabByURLContains(String URLContains){
+
+		return baseFragment.closeTabByURLContains(URLContains);
+	}
+	
+	public void closeAndSwitchBrowser(String windowHandle){
+		
+		baseFragment.closeAndSwitchBrowser(windowHandle);
 	}
 
 	public TempMailEmailListPage navigateToTempMailTab(){

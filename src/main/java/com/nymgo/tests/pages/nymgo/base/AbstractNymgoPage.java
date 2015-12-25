@@ -18,7 +18,15 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	private NymgoPageFragment nymgoPageFragment;
 	private LoggedNymgoPageFragment loggedNymgoPageFragment;
 	
+	public String getSuccessMessage(){
+		
+		return nymgoPageFragment.getSuccessMessage();
+	}
 	
+	public String getUpperMessage(){
+		
+		return nymgoPageFragment.getUpperMessage();
+	}
 	
 	public AbstractNymgoPage(Starter starter) {
 

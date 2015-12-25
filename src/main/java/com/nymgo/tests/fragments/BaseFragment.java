@@ -40,6 +40,23 @@ public class BaseFragment {
 		driver.get(URL);
 	}
 
+	/*
+	 * Returns windowHandle
+	 * before new window
+	 * is opened
+	 */
+	public String getCurrentWindowHandle(){
+		
+		String windowHandle = driver.getWindowHandle();
+		return windowHandle;
+
+	}
+	
+	public void switchToWindowHandle(String windowHandle){
+		
+		driver.switchTo().window(windowHandle);
+	}
+	
 	public void openURLInNewTab(String URL){
 	
 		String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,"t");
@@ -80,18 +97,45 @@ public class BaseFragment {
 	    String tab = handlesList.get(handlesList.size() - 1);
 
 		for(int i = 0; i < 10; i++){
-			driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
-			//switch driver to the current tab
-		    driver.switchTo().window(tab); 
 			if (getCurrentURL().contains(URLContains)){
 				LOGGER.info("Switched to tab with URL contains: " + URLContains);
 				return true;
 			}
+			driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
+			//switch driver to the current tab
+		    driver.switchTo().window(tab); 
 		}
 		LOGGER.fatal("There is no tab with URL contains: " + URLContains + " within 10 first tabs");
 		return false;
 	}
 	
+	public boolean closeTabByURLContains(String URLContains){
+
+		Set<String> handles = driver.getWindowHandles();
+	    List<String> handlesList = new ArrayList<String>(handles);
+	    String tab = handlesList.get(handlesList.size() - 1);
+
+		for(int i = 0; i < 10; i++){
+			if (getCurrentURL().contains(URLContains)){
+				driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"w");
+				LOGGER.info("Closed tab with URL contains: " + URLContains);
+				return true;
+			}
+			driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"\t");
+			//switch driver to the new browser
+		    switchToWindowHandle(tab);
+		}
+		LOGGER.fatal("There is no tab with URL contains: " + URLContains + " within 10 first tabs");
+		return false;
+	}
+	
+	public void closeAndSwitchBrowser(String windowHandle){
+
+			driver.close();
+			//switch driver to the new browser
+		    switchToWindowHandle(windowHandle);
+			LOGGER.info("Browser was closed and switched to another Browser window");
+	}
 	
 	public void navigateHomePage(){
 

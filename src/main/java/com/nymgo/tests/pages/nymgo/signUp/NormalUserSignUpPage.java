@@ -80,16 +80,6 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 		normalUserSignUpPageFragment.clickJoinButton();
 	}
 	
-	public String getSuccessMessage(){
-		
-		return normalUserSignUpPageFragment.getSuccessMessage();
-	}
-	
-	public String getUpperMessage(){
-		
-		return normalUserSignUpPageFragment.getUpperMessage();
-	}
-	
 	public boolean getRecaptchaState(){
 		
 		return normalUserSignUpPageFragment.getRecaptchaState();
@@ -110,6 +100,13 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 		setConfirmPassword(fullUserEntity.getPassword());
 		setEmail(fullUserEntity.getEmail());
 		setMobile(fullUserEntity.getMobile());
+		if(getRecaptchaState()){
+			String message = "Recaptcha is on the Screen. Please, enter the Captcha.";
+			LOGGER.warn(message);
+			JOptionPane.showMessageDialog(null, message);
+			waitRecaptchaFieldHasText();
+			delay(5);
+		}
 		clickJoinButton();
 		return this;
 	}
