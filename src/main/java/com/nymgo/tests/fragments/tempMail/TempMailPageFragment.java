@@ -1,5 +1,6 @@
 package com.nymgo.tests.fragments.tempMail;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,8 +53,13 @@ public class TempMailPageFragment extends BaseFragment implements HasURL{
 	private WebElement deleteButton;
 	
 	public String getEmailAddress(){
-		
-		return emailEdit.getAttribute("value");
+		try{
+			return emailEdit.getAttribute("value");
+		}
+		catch (NoSuchElementException e){
+			driver.navigate().refresh();
+			return emailEdit.getAttribute("value");
+		}
 	}
 	
 	public void clickRefresh(){

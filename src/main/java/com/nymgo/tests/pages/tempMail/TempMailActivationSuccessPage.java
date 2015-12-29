@@ -1,8 +1,10 @@
 package com.nymgo.tests.pages.tempMail;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.MessageFormat;
 
 import org.testng.Assert;
 
@@ -28,14 +30,43 @@ public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentP
 
 		Assert.assertEquals(getEmailSubjectText(), LocaleGenerator.getLocaleKey(LOCALE_CONST.ACTIVATION_SUCCESS_EMAIL_SUBJECT));
 		LOGGER.info("Activation message title is correct");
-		LOGGER.info(getEmailSubjectText());
 		return this;
 	}
 
-	public TempMailActivationSuccessPage verifyActivationSuccessEmailContent(){
+	public TempMailActivationSuccessPage verifyActivationSuccessEmailContent(String fullName, String username){
 
+		Object[] registrationArgs = {fullName, username.toLowerCase()};
+		BufferedReader bufferedReader = null;
+		String activationExample = new String();
+		
+		try {
+			bufferedReader = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream("D:\\work\\nymgo\\automation\\nymgoAutomation\\Activation.txt"), "UTF-8"));
+			int num=0;
+			while((num=bufferedReader.read()) != -1)
+			{	
+				activationExample += (char)num; 
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (bufferedReader != null){
+					bufferedReader.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		if (activationExample.codePointAt(0)==0xFEFF){
+			activationExample = activationExample.substring(1);
+		}
+		MessageFormat messageFormat = new MessageFormat(activationExample);
+		Assert.assertTrue(getEmailContentText().equals(messageFormat.format(registrationArgs)), "Message '" + getEmailContentText() + "' not equals '" + messageFormat.format(registrationArgs) + "'");
+		
 		LOGGER.info("Activation message content is correct");
-		PrintWriter writer;
+/*		PrintWriter writer;
 		try {
 			writer = new PrintWriter("D:\\work\\nymgo\\automation\\nymgoAutomation\\Activation.txt", "UTF-8");
 			writer.println(getEmailContentText());
@@ -47,6 +78,6 @@ public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentP
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this;
+*/		return this;
 	}
 }

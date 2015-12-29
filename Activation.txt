@@ -5,7 +5,7 @@
          
          
        
-        Hi testFullName !
+        Hi {0} !
 
        
         Welcome to Nymgo
@@ -18,7 +18,7 @@ Now take a moment. Grab a cup of coffee. And enjoy a crystal clear call to someo
        
        
      
-                                                          Your username is: yubojojname
+                                                          Your username is: {1}
      
        
                                                                                   Looking for Quality?

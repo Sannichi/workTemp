@@ -1,18 +1,18 @@
-                                            Call home more often
+﻿                                            Call home more often
  
                                                                                                     Activation | Please confirm your email
          
          
          
                                                                         One more step…
-                    testFullName Please click on the button below to verify your account
+                    {0} Please click on the button below to verify your account
                                                   Verify Your Account          
                                    
                                                           Button not working? Try pasting this link into your browser
 
 
 
-            http://dev.nymgo.com/activate?l=en&u=yubojojname&code=74b8fe7c922b412cfbcbf6ec7d285a492915a333&type=user            
+            {1}            
 
 
 

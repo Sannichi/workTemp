@@ -1,8 +1,11 @@
 package com.nymgo.tests.pages.tempMail;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.MessageFormat;
 
 import org.testng.Assert;
 
@@ -34,10 +37,39 @@ public class TempMailRegistrationSuccessPage extends AbstractTempMailEmailConten
 		return this;
 	}
 
-	public TempMailRegistrationSuccessPage verifyRegistrationSuccessEmailContent(){
+	public TempMailRegistrationSuccessPage verifyRegistrationSuccessEmailContent(String fullName){
 
+		Object[] registrationArgs = {fullName, getVerifyAccountLinkLink()};
+		BufferedReader bufferedReader = null;
+		String registrationExample = new String();
+		
+		try {
+			bufferedReader = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream("D:\\work\\nymgo\\automation\\nymgoAutomation\\Registration.txt"), "UTF-8"));
+			int num=0;
+			while((num=bufferedReader.read()) != -1)
+			{	
+				registrationExample += (char)num; 
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (bufferedReader != null){
+					bufferedReader.close();
+				}
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		if (registrationExample.codePointAt(0)==0xFEFF){
+			registrationExample = registrationExample.substring(1);
+		}
+		MessageFormat messageFormat = new MessageFormat(registrationExample);
+		Assert.assertTrue(getEmailContentText().equals(messageFormat.format(registrationArgs)), "Message '" + getEmailContentText() + "' not equals '" + messageFormat.format(registrationArgs) + "'");
 		LOGGER.info("Registration message content is correct");
-		PrintWriter writer;
+/*		PrintWriter writer;
 		try {
 			writer = new PrintWriter("D:\\work\\nymgo\\automation\\nymgoAutomation\\Registration.txt", "UTF-8");
 			writer.println(getEmailContentText());
@@ -49,6 +81,7 @@ public class TempMailRegistrationSuccessPage extends AbstractTempMailEmailConten
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+*/
 		return this;
 	}
 
@@ -59,12 +92,22 @@ public class TempMailRegistrationSuccessPage extends AbstractTempMailEmailConten
 		tempMailRegistrationSuccessPageFragment.clickVerifyAccountButton();
 	}
 
+	private String getVerifyAccountButtonLink(){
+		
+		return tempMailRegistrationSuccessPageFragment.getVerifyAccountButtonLink();
+	}
+
 	//TODO instead of void
 	private void clickVerifyAccountLink(){
 		
 		tempMailRegistrationSuccessPageFragment.clickVerifyAccountLink();
 	}
 
+	private String getVerifyAccountLinkLink(){
+		
+		return tempMailRegistrationSuccessPageFragment.getVerifyAccountLinkLink();
+	}
+	
 	public NormalUserSignInPage openVerifyAccountButtonInNewBrowser(){
 		
 		clickVerifyAccountButton();

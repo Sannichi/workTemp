@@ -74,11 +74,11 @@ public class SignUpCase extends AbstractCase{
 		LOGGER.info("Registration Success message is delivered to email '" + fullUserEntity.getEmail() + ", Title is correct");
 		TempMailRegistrationSuccessPage tempMailRegistrationSuccessPage  = tempMailEmailListPage.openRegistrationSuccessEmail();
 		LOGGER.info("Registration message is opened");
+		String oldWindowHandle = normalUserSignUpPage.getCurrentWindowHandle();
 		tempMailRegistrationSuccessPage
 			.verifyRegistrationSuccessEmailTitle()
-			.verifyRegistrationSuccessEmailContent()
+			.verifyRegistrationSuccessEmailContent(fullUserEntity.getFullName())
 			;
-		String oldWindowHandle = normalUserSignUpPage.getCurrentWindowHandle();
 		NormalUserSignInPage normalUserSignInPage = tempMailRegistrationSuccessPage.openVerifyAccountButtonInNewBrowser();
 		normalUserSignInPage
 			.verifySuccessActivationMessage()
@@ -90,7 +90,7 @@ public class SignUpCase extends AbstractCase{
 		TempMailActivationSuccessPage tempMailActivationSuccessPage = tempMailEmailListPage.openActivationSuccessEmail();
 		tempMailActivationSuccessPage
 			.verifyActivationSuccessEmailTitle()
-			.verifyActivationSuccessEmailContent()
+			.verifyActivationSuccessEmailContent(fullUserEntity.getFullName(), fullUserEntity.getUsername())
 			;
     }
 	
@@ -329,7 +329,7 @@ public class SignUpCase extends AbstractCase{
 		LOGGER.info("Registration message is opened");
 		tempMailRegistrationSuccessPage
 			.verifyRegistrationSuccessEmailTitle()
-			.verifyRegistrationSuccessEmailContent()
+			.verifyRegistrationSuccessEmailContent(fullUserEntity.getFullName())
 			;
 		String oldWindowHandle = resellerSignUpPage.getCurrentWindowHandle();
 		NormalUserSignInPage normalUserSignInPage = tempMailRegistrationSuccessPage.openVerifyAccountButtonInNewBrowser();
@@ -343,7 +343,7 @@ public class SignUpCase extends AbstractCase{
 		TempMailActivationSuccessPage tempMailActivationSuccessPage = tempMailEmailListPage.openActivationSuccessEmail();
 		tempMailActivationSuccessPage
 			.verifyActivationSuccessEmailTitle()
-			.verifyActivationSuccessEmailContent()
+			.verifyActivationSuccessEmailContent(fullUserEntity.getFullName(), fullUserEntity.getUsername())
 			;
 		
 	}

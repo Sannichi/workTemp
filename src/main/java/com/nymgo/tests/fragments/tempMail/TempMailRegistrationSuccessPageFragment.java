@@ -19,13 +19,27 @@ public class TempMailRegistrationSuccessPageFragment extends BaseTempMailEmailCo
 	@FindBy(css = "a[href*='nymgo.com/activate']")
 	private List<WebElement> verifyAccountLinks;
 	
+	private WebElement verifyAccountButton = verifyAccountLinks.get(0); 
+	private WebElement verifyAccountLink = verifyAccountLinks.get(1); 
+	
 	public void clickVerifyAccountButton(){
 		
-		clickButton(verifyAccountLinks.get(0));
+		clickButton(verifyAccountButton);
+	}
+
+	public String getVerifyAccountButtonLink(){
+		
+		return verifyAccountButton.getAttribute("href");
 	}
 
 	public void clickVerifyAccountLink(){
 		
 		clickButton(verifyAccountLinks.get(1));
 	}
+
+	public String getVerifyAccountLinkLink(){
+		
+		return verifyAccountLink.getAttribute("href");
+	}
+
 }
