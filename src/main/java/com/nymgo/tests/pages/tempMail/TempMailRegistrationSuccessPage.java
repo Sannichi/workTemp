@@ -2,7 +2,6 @@ package com.nymgo.tests.pages.tempMail;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.MessageFormat;
@@ -46,7 +45,7 @@ public class TempMailRegistrationSuccessPage extends AbstractTempMailEmailConten
 		try {
 			bufferedReader = new BufferedReader(
 					new InputStreamReader(
-							new FileInputStream("D:\\work\\nymgo\\automation\\nymgoAutomation\\Registration.txt"), "UTF-8"));
+							new FileInputStream(Starter.REGISTRATION_FILE_PATH), "UTF-8"));
 			int num=0;
 			while((num=bufferedReader.read()) != -1)
 			{	
@@ -92,12 +91,14 @@ public class TempMailRegistrationSuccessPage extends AbstractTempMailEmailConten
 		tempMailRegistrationSuccessPageFragment.clickVerifyAccountButton();
 	}
 
+	@SuppressWarnings("unused")
 	private String getVerifyAccountButtonLink(){
 		
 		return tempMailRegistrationSuccessPageFragment.getVerifyAccountButtonLink();
 	}
 
 	//TODO instead of void
+	@SuppressWarnings("unused")
 	private void clickVerifyAccountLink(){
 		
 		tempMailRegistrationSuccessPageFragment.clickVerifyAccountLink();

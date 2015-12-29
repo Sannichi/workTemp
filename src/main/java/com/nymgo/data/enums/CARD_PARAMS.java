@@ -5,7 +5,8 @@ package com.nymgo.data.enums;
  */
 public enum CARD_PARAMS {
 
-    CREDIT_CARDS_FILE_PATH,
+//    CREDIT_CARDS_FILE_PATH,
+    CREDIT_CARDS_FILE_NAME,
     CARD_NUMBER( "CardNumber"),
     EXPIRATION_MONTH( "ExpirationMonth"),
     EXPIRATION_YEAR( "ExpirationYear"),

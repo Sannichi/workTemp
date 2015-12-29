@@ -18,6 +18,7 @@ import com.nymgo.tests.starter.Starter;
  */
 public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentPage {
 
+	@SuppressWarnings("unused")
 	private TempMailActivationSuccessPageFragment tempMailActivationSuccessPageFragment;
 	
 	public TempMailActivationSuccessPage(Starter starter) {
@@ -42,7 +43,7 @@ public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentP
 		try {
 			bufferedReader = new BufferedReader(
 					new InputStreamReader(
-							new FileInputStream("D:\\work\\nymgo\\automation\\nymgoAutomation\\Activation.txt"), "UTF-8"));
+							new FileInputStream(Starter.ACTIVATION_FILE_PATH), "UTF-8"));
 			int num=0;
 			while((num=bufferedReader.read()) != -1)
 			{	

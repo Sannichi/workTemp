@@ -20,6 +20,7 @@ import org.testng.ITestContext;
 import com.nymgo.data.enums.ADMIN_PARAMS;
 import com.nymgo.data.enums.CARD_PARAMS;
 import com.nymgo.data.enums.USER_PARAMS;
+import com.nymgo.data.enums.VERIFIES_PARAMS;
 import com.nymgo.tests.enums.BROWSERS;
 import com.nymgo.tests.enums.FILES_NAMES;
 import com.nymgo.tests.enums.LOCALES;
@@ -46,11 +47,21 @@ public class Starter {
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE_NAME = "params.file.name";
     public static String PARAMS_FILE = "params.properties";
-    public static String ADMIN_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\AdminUsers.xlsx"; //default value
-    public static String USERS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\NymgoUsers.xlsx"; //default value
-    public static String TRANSACTIONS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\Transactions.xlsx"; //default value
-    public static String CREDIT_CARDS_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\CreditCards.xlsx"; //default value
-    public static String VERIFIES_FILE_PATH = "D:\\work\\nymgo\\automation\\nymgoAutomation\\Verifies.xlsx"; //default value
+    public static String WORKING_DIRECTORY = "D:\\work\\nymgo\\automation\\nymgoAutomation"; //default value
+    private static String ADMIN_FILE_NAME = "AdminUsers.xlsx"; //default value
+    private static String USERS_FILE_NAME = "NymgoUsers.xlsx"; //default value
+    private static String TRANSACTIONS_FILE_NAME = "Transactions.xlsx"; //default value
+    private static String CREDIT_CARDS_FILE_NAME = "CreditCards.xlsx"; //default value
+    private static String ACTIVATION_FILE_NAME = "Activation.txt"; //default value
+    private static String REGISTRATION_FILE_NAME = "Registration.txt"; //default value
+    private static String VERIFIES_FILE_NAME = "Verifies.xlsx"; //default value
+    public static String ADMIN_FILE_PATH = WORKING_DIRECTORY + "\\" + ADMIN_FILE_NAME; //default value
+    public static String USERS_FILE_PATH = WORKING_DIRECTORY + "\\" + USERS_FILE_NAME; //default value
+    public static String TRANSACTIONS_FILE_PATH = WORKING_DIRECTORY + "\\" + TRANSACTIONS_FILE_NAME; //default value
+    public static String CREDIT_CARDS_FILE_PATH = WORKING_DIRECTORY + "\\" + CREDIT_CARDS_FILE_NAME; //default value
+    public static String VERIFIES_FILE_PATH = WORKING_DIRECTORY + "\\" + VERIFIES_FILE_NAME; //default value
+    public static String REGISTRATION_FILE_PATH = WORKING_DIRECTORY + "\\" + REGISTRATION_FILE_NAME; //default value
+    public static String ACTIVATION_FILE_PATH = WORKING_DIRECTORY + "\\" + ACTIVATION_FILE_NAME; //default value
     public static int IMPLICITLY_WAIT_TIME = 30;
     public static int CORRECT_PAGE_WAIT_TIME = 5;
     public static int ELEMENT_WAIT_TIME = 5;
@@ -88,6 +99,7 @@ public class Starter {
         LOGGER.info("Initializing config.properties");
         PROPS = new Properties();
         try {
+        	WORKING_DIRECTORY = System.getProperty("user.dir");
         	LOGGER.info("Working Directory = " + System.getProperty("user.dir"));
             try{
                 String configFile = context.getCurrentXmlTest().getParameter(CONFIG_FILE_NAME);
@@ -142,16 +154,28 @@ public class Starter {
             LOGGER.fatal("There was a problem to load the config file from " + PARAMS_FILE);
             e.printStackTrace();
         }
-        ADMIN_FILE_PATH = PARAMS.getProperty(ADMIN_PARAMS.ADMIN_FILE_PATH.name());
-        USERS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.USERS_FILE_PATH.name());
-        TRANSACTIONS_FILE_PATH = PARAMS.getProperty(USER_PARAMS.TRANSACTIONS_FILE_PATH.name());
-        CREDIT_CARDS_FILE_PATH = PARAMS.getProperty(CARD_PARAMS.CREDIT_CARDS_FILE_PATH.name());
+		ADMIN_FILE_NAME = PARAMS.getProperty(ADMIN_PARAMS.ADMIN_FILE_NAME.name());
+		USERS_FILE_NAME = PARAMS.getProperty(USER_PARAMS.USERS_FILE_NAME.name());
+		TRANSACTIONS_FILE_NAME = PARAMS.getProperty(USER_PARAMS.TRANSACTIONS_FILE_NAME.name());
+		CREDIT_CARDS_FILE_NAME = PARAMS.getProperty(CARD_PARAMS.CREDIT_CARDS_FILE_NAME.name());
+		VERIFIES_FILE_NAME = PARAMS.getProperty(VERIFIES_PARAMS.VERIFIES_FILE_NAME.name());
+		ACTIVATION_FILE_NAME = PARAMS.getProperty(VERIFIES_PARAMS.ACTIVATION_FILE_NAME.name());
+		REGISTRATION_FILE_NAME = PARAMS.getProperty(VERIFIES_PARAMS.REGISTRATION_FILE_NAME.name());
+		
         IMPLICITLY_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.IMPLICITLY_WAIT_TIME.name()));
         CORRECT_PAGE_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.CORRECT_PAGE_WAIT_TIME.name()));
         ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ELEMENT_WAIT_TIME.name()));        
         INITIALIZED_ELEMENT_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.INITIALIZED_ELEMENT_WAIT_TIME.name()));
         IFRAME_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.IFRAME_WAIT_TIME.name()));
         ADMIN_TAB_WAIT_TIME = Integer.parseInt(PARAMS.getProperty(WAIT_TIME.ADMIN_TAB_WAIT_TIME.name()));
+
+        ADMIN_FILE_PATH = WORKING_DIRECTORY + "\\" + ADMIN_FILE_NAME;
+        USERS_FILE_PATH = WORKING_DIRECTORY + "\\" + USERS_FILE_NAME;
+        TRANSACTIONS_FILE_PATH = WORKING_DIRECTORY + "\\" + TRANSACTIONS_FILE_NAME;
+        CREDIT_CARDS_FILE_PATH = WORKING_DIRECTORY + "\\" + CREDIT_CARDS_FILE_NAME;
+        VERIFIES_FILE_PATH = WORKING_DIRECTORY + "\\" + VERIFIES_FILE_NAME;
+        ACTIVATION_FILE_PATH = WORKING_DIRECTORY + "\\" + ACTIVATION_FILE_NAME;
+        REGISTRATION_FILE_PATH = WORKING_DIRECTORY + "\\" + REGISTRATION_FILE_NAME;
 
         LOGGER.info("Finished to initialize parameters");
     }

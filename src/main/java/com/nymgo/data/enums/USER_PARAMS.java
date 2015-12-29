@@ -2,8 +2,10 @@ package com.nymgo.data.enums;
 
 public enum USER_PARAMS {
 
-    USERS_FILE_PATH,
-    TRANSACTIONS_FILE_PATH,
+//    USERS_FILE_PATH,
+    USERS_FILE_NAME,
+//    TRANSACTIONS_FILE_PATH,
+    TRANSACTIONS_FILE_NAME,
     USERNAME( "Username"),
     PASSWORD( "Password"),
     FULL_NAME( "FullName"),
