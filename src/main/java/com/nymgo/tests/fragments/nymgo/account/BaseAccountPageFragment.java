@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.nymgo.base.BaseLoggedInFragment;
+import com.nymgo.tests.fragments.nymgo.transferCredits.BaseTransferCreditPageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
@@ -31,9 +32,11 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	
 	private static final String accountMyBalanceBlockClassName = "block my-balance";
 	private static final String accountBuyCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/buy-credits']";
+	private static final String transferCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/user/credits/transfer-credits']";
 //	private static final String viewFullAccountXpath = "//a[@href='" + language + "/user/account/view/profile']";
-	
+
 	private WebElement accountBuyCreditButton;
+	private WebElement accountTransferCreditButton;
 	
 	@FindBy(xpath = "//div[@class='block my-balance']//div[@class='balance']")
 	private WebElement accountBalance;
@@ -60,10 +63,21 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		accountBuyCreditButton = driver.findElement(By.xpath(accountBuyCreditXpath));
 	}
 
+	private void initializeTransferCreditCreditButton() throws NoSuchElementException{
+		
+		accountTransferCreditButton = driver.findElement(By.xpath(transferCreditXpath));
+	}
+
 	public void clickAccountBuyCreditButton(){
 		
 		initializeBuyCreditButton();
 		clickSubmitButton(accountBuyCreditButton);
+	}
+	
+	public void clickAccountTransferCreditButton(){
+		
+		initializeTransferCreditCreditButton();
+		clickSubmitButton(accountTransferCreditButton);
 	}
 	
 	public String getAccountBalance(){
