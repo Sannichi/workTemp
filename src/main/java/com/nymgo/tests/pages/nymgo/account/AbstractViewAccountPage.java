@@ -22,9 +22,11 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 		baseViewAccountFragment = new BaseViewAccountFragment(driver);
 	}
 
-	public void expandContentByText(String contentName){
+	public AbstractViewAccountPage expandContentByText(String contentName){
 
 		baseViewAccountFragment.expandContentByText(contentName);
+		LOGGER.info("Expandable content " + contentName + " is expanded");
+		return this;
 	}
 	
 	public void selectCountryOfResidence(String countryOfResidence){
@@ -153,113 +155,167 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 		baseViewAccountFragment.selectLanguage(language);		
 	}
 	
-	public void clickSaveButton(){
+	public AbstractViewAccountPage clickSaveButton(){
 		
-		baseViewAccountFragment.clickSaveButton();		
+		baseViewAccountFragment.clickSaveButton();
+		return this;
 	}
 
-	public void editProfileAndSave(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+	private boolean editProfileAndSave(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
 		
-		expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.EDIT_PROFILE));
 		boolean edited = false;
 		if (fullName != null){
 			if (!getFullName().equals(fullName)){
 				setFullName(fullName);
-				Assert.assertTrue(getFullName().equals(fullName), "FullName was not updated. Current value is '" + getFullName() + "', should be '" + fullName + "'");
 				edited = true;
-				LOGGER.info("FullName is updated with " + fullName);
 			}
 		}
 		if (mobile != null){
 			if (!getMobile().equals(mobile)){
 				setMobile(mobile);
-				Assert.assertTrue(getMobile().equals(mobile), "Mobile was not updated. Current value is '" + getMobile() + "', should be '" + mobile + "'");
 				edited = true;
-				LOGGER.info("Mobile is updated with " + mobile);
 			}
 		}
 		if (phone != null){
 			if (!getPhone().equals(phone)){
 				setPhone(phone);
-				Assert.assertTrue(getPhone().equals(phone), "Phone was not updated. Current value is '" + getPhone() + "', should be '" + phone + "'");
 				edited = true;
-				LOGGER.info("Phone is updated with " + phone);
 			}
 		}
 		if (countryOfResidence != null){
 			if (!getSelectedCountryOfResidence().equals(countryOfResidence)){
 				selectCountryOfResidence(countryOfResidence);
-				Assert.assertTrue(getSelectedCountryOfResidence().equals(countryOfResidence), "Country of Residence was not updated. Current value is '" 
-				+ getSelectedCountryOfResidence() + "', should be '" + countryOfResidence + "'");
 				edited = true;
-				LOGGER.info("Country of Residence is updated with " + countryOfResidence);
 			}
 		}
 		if (city != null){
 			if (!getCity().equals(city)){
 				setCity(city);
-				Assert.assertTrue(getCity().equals(city), "City was not updated. Current value is '" + getCity() + "', should be '" + city + "'");
 				edited = true;
-				LOGGER.info("City is updated with " + city);
 			}
 		}
 		if (address != null){
 			if (!getAddress().equals(address)){
 				setAddress(address);
-				Assert.assertTrue(getAddress().equals(address), "Address was not updated. Current value is '" + getAddress() + "', should be '" + address + "'");
 				edited = true;
-				LOGGER.info("Address is updated with " + address);
 			}
 		}
 		if (street != null){
 			if (!getStreet().equals(street)){
 				setStreet(street);
-				Assert.assertTrue(getStreet().equals(street), "Street was not updated. Current value is '" + getStreet() + "', should be '" + street + "'");
 				edited = true;
-				LOGGER.info("Street is updated with " + street);
 			}
 		}
 		if (postalCode != null){
 			if (!getPostalCode().equals(postalCode)){
 				setPostalCode(postalCode);
-				Assert.assertTrue(getPostalCode().equals(postalCode), "Postal Code was not updated. Current value is '" + getPostalCode() + "', should be '" + postalCode + "'");
 				edited = true;
-				LOGGER.info("Postal Code is updated with " + postalCode);
 			}
 		}
 		if (displayCurrency != null){
 			if (!getSelectedDisplayCurrency().equals(displayCurrency)){
 				selectDisplayCurrency(displayCurrency);
-				Assert.assertTrue(getSelectedDisplayCurrency().equals(displayCurrency), "Display Currency was not updated. Current value is '"
-				+ getSelectedDisplayCurrency() + "', should be '" + displayCurrency + "'");
 				edited = true;
-				LOGGER.info("Display Currency is updated with " + displayCurrency);
 			}
 		}
 		if (paymentCurrency != null){
-			String paymenCurrencyName = CurrencyNameGenerator.getCurrencyKeyBySign(paymentCurrency); 
-			if (!getSelectedPaymentCurrency().equals(paymenCurrencyName)){
-				selectPaymentCurrency(paymenCurrencyName);
-				Assert.assertTrue(getSelectedPaymentCurrency().equals(paymenCurrencyName), "Payment Currency was not updated. Current value is '"
-				+ getSelectedPaymentCurrency() + "', should be '" + paymenCurrencyName + "'");
+			String paymentCurrencyName = CurrencyNameGenerator.getCurrencyKeyBySign(paymentCurrency); 
+			if (!getSelectedPaymentCurrency().equals(paymentCurrencyName)){
+				selectPaymentCurrency(paymentCurrencyName);
 				edited = true;
-				LOGGER.info("Payment Currency is updated with " + paymenCurrencyName);
 			}
 		}
 		if (language != null){
 			if (!getSelectedLanguage().equals(language)){
 				selectLanguage(language);
-				Assert.assertTrue(getSelectedLanguage().equals(language), "Language was not updated. Current value is '"
-				+ getSelectedLanguage() + "', should be '" + language + "'");
 				edited = true;
-				LOGGER.info("Language is updated with " + language);
 			}
 		}
 		if (edited){
 			clickSaveButton();
+			return edited;
 		}else{
 			LOGGER.info("Nothing to change in profile");
+			return edited;
+		}
+	}
+
+	private void verifyEditedProfile(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
+		
+		if (fullName != null){
+			Assert.assertTrue(getFullName().equals(fullName), "FullName was not updated. Current value is '" + getFullName() + "', should be '" + fullName + "'");
+			LOGGER.info("FullName is updated with " + fullName);
+		}
+		if (mobile != null){
+			Assert.assertTrue(getMobile().equals(mobile), "Mobile was not updated. Current value is '" + getMobile() + "', should be '" + mobile + "'");
+			LOGGER.info("Mobile is updated with " + mobile);
+		}
+		if (phone != null){
+			Assert.assertTrue(getPhone().equals(phone), "Phone was not updated. Current value is '" + getPhone() + "', should be '" + phone + "'");
+			LOGGER.info("Phone is updated with " + phone);
+		}
+		if (countryOfResidence != null){
+			Assert.assertTrue(getSelectedCountryOfResidence().equals(countryOfResidence), "Country of Residence was not updated. Current value is '" 
+			+ getSelectedCountryOfResidence() + "', should be '" + countryOfResidence + "'");
+			LOGGER.info("Country of Residence is updated with " + countryOfResidence);
+		}
+		if (city != null){
+			Assert.assertTrue(getCity().equals(city), "City was not updated. Current value is '" + getCity() + "', should be '" + city + "'");
+			LOGGER.info("City is updated with " + city);
+		}
+		if (address != null){
+			Assert.assertTrue(getAddress().equals(address), "Address was not updated. Current value is '" + getAddress() + "', should be '" + address + "'");
+			LOGGER.info("Address is updated with " + address);
+		}
+		if (street != null){
+			Assert.assertTrue(getStreet().equals(street), "Street was not updated. Current value is '" + getStreet() + "', should be '" + street + "'");
+			LOGGER.info("Street is updated with " + street);
+		}
+		if (postalCode != null){
+			Assert.assertTrue(getPostalCode().equals(postalCode), "Postal Code was not updated. Current value is '" + getPostalCode() + "', should be '" + postalCode + "'");
+			LOGGER.info("Postal Code is updated with " + postalCode);
+		}
+		if (displayCurrency != null){
+			Assert.assertTrue(getSelectedDisplayCurrency().equals(displayCurrency), "Display Currency was not updated. Current value is '"
+			+ getSelectedDisplayCurrency() + "', should be '" + displayCurrency + "'");
+			LOGGER.info("Display Currency is updated with " + displayCurrency);
+		}
+		if (paymentCurrency != null){
+			String paymentCurrencyName = CurrencyNameGenerator.getCurrencyKeyBySign(paymentCurrency); 
+			Assert.assertTrue(getSelectedPaymentCurrency().equals(paymentCurrencyName), "Payment Currency was not updated. Current value is '"
+			+ getSelectedPaymentCurrency() + "', should be '" + paymentCurrencyName + "'");
+			LOGGER.info("Payment Currency is updated with " + paymentCurrencyName);
+		}
+		if (language != null){
+			Assert.assertTrue(getSelectedLanguage().equals(language), "Language was not updated. Current value is '"
+			+ getSelectedLanguage() + "', should be '" + language + "'");
+			LOGGER.info("Language is updated with " + language);
+		}
+	}
+
+	public void editNormalUserProfileAndSave(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
+		
+		expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.EDIT_PROFILE));
+		if (editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language)){
+			expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.EDIT_PROFILE));
+			verifyEditedProfile(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		}else{
+			LOGGER.info("Nothing to verify in profile");
+		}
+	}
+
+	public void editResellerProfileAndSave(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
+		
+		expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_DETAILS));
+		if (editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language)){
+			expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_DETAILS));
+			verifyEditedProfile(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		}else{
+			LOGGER.info("Nothing to verify in profile");
 		}
 	}
 }

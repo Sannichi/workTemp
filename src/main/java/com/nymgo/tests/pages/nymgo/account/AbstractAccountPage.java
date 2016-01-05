@@ -4,8 +4,6 @@ import com.nymgo.tests.fragments.nymgo.account.BaseAccountPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
-import com.nymgo.tests.pages.nymgo.transferCredits.AbstractTransferCreditPage;
-import com.nymgo.tests.pages.nymgo.transferCredits.NormalAccountTransferCreditPage;
 import com.nymgo.tests.starter.Starter;
 
 public abstract class AbstractAccountPage extends AbstractLoggedInPage{

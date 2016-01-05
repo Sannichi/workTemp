@@ -21,7 +21,8 @@ public class ViewResellerAccountPageFragment extends BaseViewAccountFragment{
 	}
 
 //	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +    
+//	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +    
+	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +    
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/account/account-details/account-profile";
 
 	@Override

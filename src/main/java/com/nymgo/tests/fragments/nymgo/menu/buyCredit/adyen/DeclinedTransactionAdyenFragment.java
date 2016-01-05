@@ -5,8 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
+import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.HasURL;
 import com.nymgo.tests.fragments.nymgo.transactions.DeclinedTransactionFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
+import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -19,7 +23,9 @@ public class DeclinedTransactionAdyenFragment extends DeclinedTransactionFragmen
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_URL = "https://secure-dev.nymgo.com/en/generate";	
+//	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_URL = "https://secure-dev.nymgo.com/en/generate";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	public boolean isCorrectURL(){
 

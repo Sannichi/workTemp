@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
+import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.nymgo.transactions.PendingTransactionFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
+import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -17,7 +21,8 @@ public class PendingTransactionAdyenFragment extends PendingTransactionFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_PENDING_URL = "https://secure-dev.nymgo.com/en/generate";
+	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_PENDING_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";
 	
 	public boolean isCorrectURL(){
 

@@ -60,6 +60,7 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 	protected String getSelectedCountryOfResidence(){
 		
 		Select select = new Select(countryOfResidenceSelect);
+		scrollToElement(countryOfResidenceSelect);
 		return select.getFirstSelectedOption().getText();
 	}
 	
@@ -71,6 +72,7 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 	protected String getSelectedDisplayCurrency(){
 		
 		Select select = new Select(displayCurrencySelect);
+		scrollToElement(displayCurrencySelect);
 		return select.getFirstSelectedOption().getText();
 	}
 	
@@ -82,6 +84,7 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 	protected String getSelectedPaymentCurrency(){
 		
 		Select select = new Select(payCurrencySelect);
+		scrollToElement(payCurrencySelect);
 		return select.getFirstSelectedOption().getText();
 	}
 	
@@ -93,6 +96,7 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 	protected String getSelectedLanguage(){
 		
 		Select select = new Select(languageSelect);
+		scrollToElement(languageSelect);
 		return select.getFirstSelectedOption().getText();
 	}
 	

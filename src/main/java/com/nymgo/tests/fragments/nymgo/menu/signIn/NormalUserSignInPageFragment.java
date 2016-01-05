@@ -30,7 +30,8 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
 	private WebElement signInButton;
 	
 //	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+//	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
 	
 	public boolean isCorrectURL() {

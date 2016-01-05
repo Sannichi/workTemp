@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,10 +28,11 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	}
 
 //	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
+//	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
+	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +	
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
 			
-    @FindBy(css="div[class^='adyenOption ']")
+    @FindBy(css="div[class^='adyenOption']")
     private List<WebElement> adyenOptions;
 
     @FindBy(css="div[class='adyenOption checked']")
@@ -67,13 +69,22 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	}
 
 	private String getAmountCurrencyIcon(WebElement option){
-		
-		return option.findElement(By.xpath(".//label/strong[1]")).getText();
+		try{
+			return option.findElement(By.xpath(".//label/strong[1]")).getText();
+		}
+		catch(NoSuchElementException e){
+			return "";
+		}
 	}
 
 	private int getAmountCurrencyValue(WebElement option){
-		
-		return Integer.valueOf(option.findElement(By.xpath(".//label/strong[2]")).getText());
+		try{
+			return Integer.valueOf(option.findElement(By.xpath(".//label/strong[2]")).getText());
+		}
+		catch(NoSuchElementException e){
+			
+			return 0;
+		}
 	}
 
 	private String getAmountCurrencyName(WebElement option){
@@ -91,8 +102,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		return adyenOptionsDisabled;
 	}
 
-	private WebElement returnCheckedOption(){
-		
+	private WebElement returnCheckedOption() throws NoSuchElementException{
 		return adyenOptionChecked;
 	}
 	
@@ -102,7 +112,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		clickButton(continueButton);
 	}
 
-	public String getCheckedOptionDescription(){
+	public String getCheckedOptionDescription() throws NoSuchElementException{
 		
 		return getFullAdyenOptionDescription(returnCheckedOption());
 	}
@@ -130,8 +140,15 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 			if (!isValueDisabled(value)){
 				WebElement element = returnOptionByValue(value);
 				if(element != null){
-					element.click();
+					LOGGER.info("Option is found");
+					WebElement radioElement = element.findElement(By.cssSelector("input[type='radio']"));
+					scrollToElement(radioElement);
+//					clickRadioButton(radioElement);
+					clickElementByCoordinates(radioElement);
 				}
+			}
+			else{
+				LOGGER.debug("Value " + value+ " is disabled");
 			}
 		}
 		else{
@@ -139,7 +156,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		}
 	}
 	
-	private String getFullAdyenOptionDescription(WebElement option){
+	private String getFullAdyenOptionDescription(WebElement option) throws NoSuchElementException{
 		
 		return getAmountCurrencyIcon(option) + " "
 				+  String.valueOf(getAmountCurrencyValue(option)) + " "

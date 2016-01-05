@@ -3,6 +3,7 @@ package com.nymgo.tests.pages.nymgo.menu.buyCredit;
 //import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
@@ -57,20 +58,24 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditPageFragment.getAllCurencyValuesOptions();	
 	}
 */
-	private String getCheckedOptionDescription(){
+	private String getCheckedOptionDescription() throws NoSuchElementException{
 		
 		return buyCreditPageFragment.getCheckedOptionDescription();
 	}
 
 	private int getCheckedOptionValue(){
-		
-		return Integer.parseInt(getCheckedOptionDescription().split(" ")[1]);
+		try{
+			return Integer.parseInt(getCheckedOptionDescription().split(" ")[1]);
+		}
+		catch(NoSuchElementException e){
+			return 0;
+		}
 	}
 	
 	private void checkOptionByValue(int value){
 		
 		buyCreditPageFragment.checkOptionByValue(value);
-		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option!");
+		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option " + value + "!");
 	}
 /*
 	private boolean isValueDisabled(int value){

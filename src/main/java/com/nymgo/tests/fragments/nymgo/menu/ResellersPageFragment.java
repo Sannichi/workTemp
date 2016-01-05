@@ -23,7 +23,8 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 	}
 
 //	private static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-	public static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+//	public static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+	public static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
 	
 	private static final String ResellerSingInButtonXpath = "//a[@href='" + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/']";

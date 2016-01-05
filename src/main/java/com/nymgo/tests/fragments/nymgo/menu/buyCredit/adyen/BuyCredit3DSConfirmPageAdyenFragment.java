@@ -7,7 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
+import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
+import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -20,7 +24,10 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = "https://test.adyen.com/hpp/3d/validate.shtml";
+//	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = "https://test.adyen.com/hpp/3d/validate.shtml";
+//	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) + 
+	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 	
 	@FindBy(css = "input[id='username']")
 	private WebElement usernameField;
