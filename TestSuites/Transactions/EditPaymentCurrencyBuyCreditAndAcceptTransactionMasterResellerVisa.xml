@@ -33,7 +33,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - BuyCredut Reseller USD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="Visa" />    
@@ -82,7 +82,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredut Reseller AUD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="AUD" />        
         <parameter name="cardType" value="Visa" />    
@@ -638,6 +638,8 @@
             </class>
         </classes>
     </test>
+
+<!-- No 3DS for tests
 
     <test name="Test - BuyCredut Reseller USD Worldpay" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
@@ -1227,6 +1229,10 @@
         </classes>
     </test>
 
+No 3DS for tests -->
+
+<!-- No cards for Adyen
+
     <test name="Test - Change Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -1243,6 +1249,10 @@
             </class>
         </classes>
     </test>
+
+No cards for Adyen -->
+
+<!-- No 3DS for tests
 
     <test name="Test - BuyCredut Reseller USD Adyen" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
@@ -1831,5 +1841,7 @@
             </class>
         </classes>
     </test>
+
+No 3DS for tests -->
 
 </suite>

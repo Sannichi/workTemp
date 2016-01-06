@@ -22,7 +22,9 @@ public class TransferCreditsCase extends AbstractCase {
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+		@SuppressWarnings("unused")
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		@SuppressWarnings("unused")
 		NormalAccountTransferCreditPage normalAccountTransferCreditPage = normalAccountPage.clickNormalAccountTransferCreditButton();
 //		normalAccountTransferCreditPage.
 	}

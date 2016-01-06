@@ -47,12 +47,12 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
 	}
 */
-	private static final String BUY_CREDIT_PROCEED_PAGE_ADYEN_NAME_ENG = "BuyCreditProceedAdyenPage"; 
+	private static final String BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG = "BuyCreditProceedWorldpayPage"; 
 	
 	@Override
 	public String getPageName() {
 		// TODO Auto-generated method stub
-		return BUY_CREDIT_PROCEED_PAGE_ADYEN_NAME_ENG;
+		return BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG;
 	}
 
 	@Override
@@ -176,7 +176,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		return this;
 	}
 
-	public BuyCredit3DSConfirmPageWorldpay setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCredit3DSConfirmPageWorldpay set3DSCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		setCardholdersName(cardholdersName);
@@ -190,7 +190,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		return buyCredit3DSConfirmPageWorldpay;
 	}
 
-	public BuyCredit3DSConfirmPageWorldpay verifyDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public BuyCredit3DSConfirmPageWorldpay verify3DSDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
 				"', should be '" + cardNumberValue + "'");
@@ -209,6 +209,41 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		PageNavigation<BuyCredit3DSConfirmPageWorldpay> navigation = new PageNavigation<BuyCredit3DSConfirmPageWorldpay>(buyCredit3DSConfirmPageWorldpay);
 		navigation.NavigatedTo();
 		return buyCredit3DSConfirmPageWorldpay;
+	}
+
+	public PendingTransactionWorldpayPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		navigation.NavigatedTo();
+		return pendingTransactionWorldpayPage;
+	}
+
+	public PendingTransactionWorldpayPage verifyDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
+				"', should be '" + cardNumberValue + "'");
+		LOGGER.info("Card Number is correct");
+		Assert.assertTrue(getCardholdersName().equals(cardholdersName), "Cardholder's Name is not correct! Current value is '" + getCardholdersName() + 
+				"', should be '" + cardholdersName + "'");
+		LOGGER.info("Cardholder's Name is correct");
+		Assert.assertTrue(getSelectedExpireDateMonthValue().equals(expireDateMonth), "Expire Date Month is not correct! Current value is '" + getSelectedExpireDateMonthValue() + 
+				"', should be '" + expireDateMonth + "'");
+		LOGGER.info("Expire Date Month is correct");
+		Assert.assertTrue(getSelectedExpireDateYear().equals(expireDateYear), "Expire Date Year is not correct! Current value is '" + getSelectedExpireDateYear() + 
+				"', should be '" + expireDateYear + "'");
+		LOGGER.info("Expire Date Year is correct");
+		clickPayButton();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		navigation.NavigatedTo();
+		return pendingTransactionWorldpayPage;
 	}
 
 }

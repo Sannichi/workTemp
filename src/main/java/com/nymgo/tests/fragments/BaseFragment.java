@@ -13,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Point;
 
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -169,7 +168,7 @@ public class BaseFragment {
     
     public void clickElementByCoordinates(WebElement element)
     {
-    	Point p = element.getLocation();
+//    	Point p = element.getLocation();
     	LOGGER.info("Clicking the element...");
 //    	String js = "(document.elementFromPoint(" + p.x + " - window.pageXOffset, " + p.y + " - window.pageYOffset)).click()";
     	String js = "arguments[0].click()";

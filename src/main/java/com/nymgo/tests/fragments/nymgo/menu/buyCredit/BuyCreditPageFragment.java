@@ -14,10 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
-import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
-import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
 
 public class BuyCreditPageFragment extends BaseLoggedInFragment{
@@ -29,7 +27,8 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 
 //	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
 //	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
-	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +	
+//	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +	
+	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
 			
     @FindBy(css="div[class^='adyenOption']")

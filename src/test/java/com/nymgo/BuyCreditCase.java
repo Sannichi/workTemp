@@ -32,8 +32,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -70,8 +70,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -108,8 +108,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -131,8 +131,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -170,8 +170,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -209,8 +209,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -231,8 +231,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -270,8 +270,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
@@ -308,8 +308,8 @@ public class BuyCreditCase extends AbstractCase{
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -326,8 +326,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmount(currencyAmount);		
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
@@ -358,8 +358,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -377,8 +377,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -397,8 +397,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
@@ -430,8 +430,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -451,8 +451,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -470,8 +470,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
@@ -503,8 +503,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -522,8 +522,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmount(currencyAmount);
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);

@@ -7,12 +7,10 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.fragments.nymgo.account.baseProfile.BaseProfileInfoFragment;
-import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015

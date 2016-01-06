@@ -98,6 +98,12 @@ public class DataAdapter extends BaseAdapter {
     	return fullCardEntity;
 	}
 
+    public static FullCardEntity getMasterCardAdyenCard(){
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"MasterCardAdyen");    	
+    	return fullCardEntity;
+	}
+
     public static FullCardEntity getVisaAdyenCard(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"VisaAdyen");    	

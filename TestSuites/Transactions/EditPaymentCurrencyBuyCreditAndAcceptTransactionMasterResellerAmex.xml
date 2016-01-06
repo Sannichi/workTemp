@@ -589,6 +589,8 @@
             </class>
         </classes>
     </test>
+    
+<!-- 3DS tests
 
     <test name="Test - BuyCredut Reseller USD Worldpay" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
@@ -1177,7 +1179,598 @@
             </class>
         </classes>
     </test>
+    
+3DS tests-->
 
+    <test name="Test - BuyCredut Reseller USD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller AUD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="AUD" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller CAD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="CAD" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller EUR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="EUR" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller INR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="INR" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller NZD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="NZD" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller QAR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="QAR" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller SAR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller AED Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="AED" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller GBP Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="GBP" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller KWD Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredut Reseller MYR Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="MYR" />        
+        <parameter name="cardType" value="American Express" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payAmericanExpressWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+<!-- No usual cards for Adyen
     <test name="Test - Change Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -1194,6 +1787,9 @@
             </class>
         </classes>
     </test>
+No usual cards for Adyen -->
+
+<!-- 3DS tests
 
     <test name="Test - BuyCredut Reseller USD Adyen" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
@@ -1782,5 +2378,7 @@
             </class>
         </classes>
     </test>
+
+3DS tests -->
 
 </suite>

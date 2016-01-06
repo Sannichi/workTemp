@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.transactions.PendingTransactionFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -18,7 +20,9 @@ public class PendingTransactionWorldpayFragment extends PendingTransactionFragme
 	}
 
 //	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = "https://secure-dev.nymgo.com/wpreturn?orderKey=";	
-	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = "https://secure-dev.nymgo.com/en/generate";
+//	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = "https://secure-dev.nymgo.com/en/generate";
+	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = Starter.SECURE_PART + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";
 	
 	public boolean isCorrectURL(){
 

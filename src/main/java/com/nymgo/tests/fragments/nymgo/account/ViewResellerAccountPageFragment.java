@@ -5,9 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
-import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.generators.LocaleGenerator;
-import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -22,7 +20,8 @@ public class ViewResellerAccountPageFragment extends BaseViewAccountFragment{
 
 //	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
 //	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +    
-	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +    
+//	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +    
+	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = Starter.SECURE_PART +    
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/account/account-details/account-profile";
 
 	@Override

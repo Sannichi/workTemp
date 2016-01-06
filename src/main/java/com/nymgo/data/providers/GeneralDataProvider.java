@@ -482,6 +482,15 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.MASTER_CARD_ADYEN_CARD_PROVIDER)
+    public static Object[][] masterCardAdyenCardDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullCardEntity fullCardEntity = DataAdapter.getMasterCardAdyenCard();
+        dataAdapterArray[0][0] = fullCardEntity;
+        return dataAdapterArray;
+    }
+    
     @DataProvider(name=PROVIDER_CONST.VISA_ADYEN_CARD_PROVIDER)
     public static Object[][] visaAdyenCardDataProvider() throws Exception {
 
