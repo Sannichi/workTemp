@@ -43,7 +43,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
     @FindBy(id="transaction-proceed")
     private WebElement continueButton;
     
-    @FindBys({@FindBy(css = "div[class='vatHolder']"),
+    @FindBys({@FindBy(xpath = "//div[@id='resultHolder']/div[@class='vatHolder'][1]"),
     	@FindBy(xpath = ".//label")})
     private WebElement vatLabel;
 
@@ -202,7 +202,15 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	
 	public String getVATPercent(){
 		
-		return vatLabel.getText().split(" ")[1];
+		LOGGER.debug(vatLabel.getText());
+		String[] splitted = vatLabel.getText().split(" ");
+		if(splitted.length > 1){
+			return splitted[1];
+		}
+		else{
+			return "";
+		}
+				
 	}
 
 	public String getVATValue(){

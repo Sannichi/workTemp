@@ -22,7 +22,8 @@ public enum USER_PARAMS {
     PAYMENT_CURRENCY( "PaymentCurrency"),
     LANGUAGE( "Language"),
     GEOIP_COUNTRY( "GeoIpCountry"),
-    VAT( "VAT");
+    VAT( "VAT"),
+	BONUS( "Bonus");
     
     private USER_PARAMS(){
     	

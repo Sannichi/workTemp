@@ -166,15 +166,19 @@ public class BuyCreditCase extends AbstractCase{
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+/*
+ * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+*/
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
+
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
 //		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));

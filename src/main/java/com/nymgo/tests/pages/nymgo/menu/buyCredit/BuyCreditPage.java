@@ -155,6 +155,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 */
 	public void selectAmountAndVerifyVAT(String amount){
 		
+		LOGGER.debug("Amount is: '" + amount + "'");
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
 		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Float.valueOf(getVATPercent()) / 100) + "'");

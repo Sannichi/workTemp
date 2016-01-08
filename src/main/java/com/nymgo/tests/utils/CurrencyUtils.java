@@ -53,4 +53,10 @@ public class CurrencyUtils {
 		}
 		return beforeDot;
 	}
+
+	public static String getResellerBonus(String paymentCurrency){
+		
+		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstNormalValue());
+	}
+	
 }

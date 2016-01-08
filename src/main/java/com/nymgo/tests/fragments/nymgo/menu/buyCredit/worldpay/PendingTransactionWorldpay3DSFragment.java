@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.transactions.PendingTransactionFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -17,8 +19,9 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String PENDING_TRANSACTION_WP_3DS_URL = "https://secure-dev.nymgo.com/en/wp3ds-return/";	
-	
+//	private static final String PENDING_TRANSACTION_WP_3DS_URL = "https://secure-dev.nymgo.com/en/wp3ds-return/";	
+	private static final String PENDING_TRANSACTION_WP_3DS_URL = Starter.SECURE_PART + 
+	LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	
 	public boolean isCorrectURL(){
