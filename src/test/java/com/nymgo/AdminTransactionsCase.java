@@ -38,7 +38,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -59,7 +59,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
-		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -103,7 +103,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -125,7 +125,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -148,7 +148,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -170,7 +170,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -191,7 +191,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
-		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -213,7 +213,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -235,7 +235,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -257,7 +257,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -280,7 +280,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 }

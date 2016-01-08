@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
-import com.nymgo.tests.enums.URL_CONST;
 import com.nymgo.tests.fragments.nymgo.base.BaseLoggedInFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
-import com.nymgo.tests.generators.ServerGenerator;
 import com.nymgo.tests.starter.Starter;
 
 public class BuyCreditPageFragment extends BaseLoggedInFragment{
@@ -27,10 +26,12 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	}
 
 //	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
+//	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
+//	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +	
+	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
 			
-    @FindBy(css="div[class^='adyenOption ']")
+    @FindBy(css="div[class^='adyenOption']")
     private List<WebElement> adyenOptions;
 
     @FindBy(css="div[class='adyenOption checked']")
@@ -42,7 +43,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
     @FindBy(id="transaction-proceed")
     private WebElement continueButton;
     
-    @FindBys({@FindBy(css = "div[class='vatHolder']"),
+    @FindBys({@FindBy(xpath = "//div[@id='resultHolder']/div[@class='vatHolder'][1]"),
     	@FindBy(xpath = ".//label")})
     private WebElement vatLabel;
 
@@ -67,13 +68,22 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	}
 
 	private String getAmountCurrencyIcon(WebElement option){
-		
-		return option.findElement(By.xpath(".//label/strong[1]")).getText();
+		try{
+			return option.findElement(By.xpath(".//label/strong[1]")).getText();
+		}
+		catch(NoSuchElementException e){
+			return "";
+		}
 	}
 
 	private int getAmountCurrencyValue(WebElement option){
-		
-		return Integer.valueOf(option.findElement(By.xpath(".//label/strong[2]")).getText());
+		try{
+			return Integer.valueOf(option.findElement(By.xpath(".//label/strong[2]")).getText());
+		}
+		catch(NoSuchElementException e){
+			
+			return 0;
+		}
 	}
 
 	private String getAmountCurrencyName(WebElement option){
@@ -91,8 +101,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		return adyenOptionsDisabled;
 	}
 
-	private WebElement returnCheckedOption(){
-		
+	private WebElement returnCheckedOption() throws NoSuchElementException{
 		return adyenOptionChecked;
 	}
 	
@@ -102,7 +111,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		clickButton(continueButton);
 	}
 
-	public String getCheckedOptionDescription(){
+	public String getCheckedOptionDescription() throws NoSuchElementException{
 		
 		return getFullAdyenOptionDescription(returnCheckedOption());
 	}
@@ -130,8 +139,15 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 			if (!isValueDisabled(value)){
 				WebElement element = returnOptionByValue(value);
 				if(element != null){
-					element.click();
+					LOGGER.info("Option is found");
+					WebElement radioElement = element.findElement(By.cssSelector("input[type='radio']"));
+					scrollToElement(radioElement);
+//					clickRadioButton(radioElement);
+					clickElementByCoordinates(radioElement);
 				}
+			}
+			else{
+				LOGGER.debug("Value " + value+ " is disabled");
 			}
 		}
 		else{
@@ -139,7 +155,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		}
 	}
 	
-	private String getFullAdyenOptionDescription(WebElement option){
+	private String getFullAdyenOptionDescription(WebElement option) throws NoSuchElementException{
 		
 		return getAmountCurrencyIcon(option) + " "
 				+  String.valueOf(getAmountCurrencyValue(option)) + " "
@@ -186,7 +202,15 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	
 	public String getVATPercent(){
 		
-		return vatLabel.getText().split(" ")[1];
+		LOGGER.debug(vatLabel.getText());
+		String[] splitted = vatLabel.getText().split(" ");
+		if(splitted.length > 1){
+			return splitted[1];
+		}
+		else{
+			return "";
+		}
+				
 	}
 
 	public String getVATValue(){

@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+<!-- AE is not applicable for GC
     <test name="Test - Change Normal User Gateway to Global Collect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -33,7 +33,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - BuyCredut NormalUser USD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="American Express" />    
@@ -229,7 +229,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredut NormalUser NZD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="American Express" />    
@@ -572,6 +572,7 @@
             </class>
         </classes>
     </test>
+AE is not applicable for GC-->
 
     <test name="Test - Change NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     

@@ -2,6 +2,7 @@ package com.nymgo.tests.fragments.nymgo.account;
 
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,8 +47,12 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 	private List<WebElement> allClickableContent;
 	
 	private WebElement getActiveContent(){
-		
-		return activeClickableContent;
+		try{
+			return activeClickableContent;
+		}
+		catch(NoSuchElementException e){
+			return null;
+		}
 	}
 	
 	private List<WebElement> getAllClickableContent(){
@@ -55,9 +60,19 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 		return allClickableContent;
 	}
 	
-	private String getContentText(WebElement element){
+	private WebElement getFirstClickableContent(){
 		
-		return element.getText();
+		return allClickableContent.get(0);
+	}
+	
+	private String getContentText(WebElement element){
+		try{
+			return element.getText();
+		}
+		catch(NoSuchElementException e){
+			LOGGER.warn("NoSuchElementException handled");
+			return "";
+		}
 	}
 	
 	private void expandContent(WebElement element){
@@ -209,5 +224,8 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 	public void clickSaveButton(){
 		
 		super.clickSaveButton();
+		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
+		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(getFirstClickableContent())));
+		
 	}
 }

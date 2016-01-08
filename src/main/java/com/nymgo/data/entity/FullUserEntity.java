@@ -22,6 +22,7 @@ public class FullUserEntity {
     String language;
     String geoIpCountry;
     String VAT;
+    String bonus;
 
 	public String getUsername() {
         return username;
@@ -159,6 +160,14 @@ public class FullUserEntity {
 		this.VAT = VAT;
 	}
 	
+	public String getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(String bonus) {
+		this.bonus = bonus;
+	}
+
 	public FullUserEntity(){
 		
 		this.username = "";
@@ -178,6 +187,8 @@ public class FullUserEntity {
 		this.language = "";
 		this.geoIpCountry = "";
 		this.VAT = "";
+		this.bonus = "";
+		
 	}
 	
 	public FullUserEntity(Object[] obj){
@@ -195,5 +206,8 @@ public class FullUserEntity {
 		setDisplayCurrency(String.valueOf(obj[11]));
 		setPaymentCurrency(String.valueOf(obj[12]));
 		setLanguage(String.valueOf(obj[13]));
+		setGeoIpCountry(String.valueOf(obj[14]));
+		setVat(String.valueOf(obj[15]));
+		setBonus(String.valueOf(obj[16]));
 	}
 }

@@ -138,12 +138,10 @@ public class PayCreditCardCase extends AbstractCase{
 	@Test(dataProvider = PROVIDER_CONST.MASTER_CARD_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void payMasterCardWorldpayPendingTest(FullCardEntity fullCardEntity){
 
-		BuyCreditConfirmPageWorldpay buyCreditConfirmPageWorldpay = new BuyCreditConfirmPageWorldpay(starter);
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);		
 		
-		BuyCreditConfirmPageWorldpayNext buyCreditConfirmPageWorldpayNext = buyCreditConfirmPageWorldpay.setCreditCardDataAndClickContinue(fullCardEntity.getCardNumber(), 
-				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv(), fullCardEntity.getCardholdersName());
-
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
 		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
 		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
@@ -213,6 +211,25 @@ public class PayCreditCardCase extends AbstractCase{
 		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
 	}
 
+	@Test(dataProvider = PROVIDER_CONST.MASTER_CARD_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void payMasterCardAdyenPendingTest(FullCardEntity fullCardEntity){
+
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
+		
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+
+		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
+		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
+		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
+				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+//		ExcelUtils.addTransactionData(transactionID, paymentStatus);		
+		ExcelUtils.addTransactionData(transactionID);		
+		@SuppressWarnings("unused")
+		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
+	}
+
 	@Test(dataProvider = PROVIDER_CONST.WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void payAmericanExpressWorldpay3DSPendingTest(FullCardEntity fullCardEntity){
 
@@ -224,7 +241,7 @@ public class PayCreditCardCase extends AbstractCase{
 
 //		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
 
-		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.set3DSCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 		
 		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
@@ -251,7 +268,7 @@ public class PayCreditCardCase extends AbstractCase{
 
 //		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
 
-		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.set3DSCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 		
 		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
@@ -278,7 +295,7 @@ public class PayCreditCardCase extends AbstractCase{
 
 //		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCreditConfirmPageWorldpayNext.continuePayment();
 
-		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay = buyCredit3DSProceedPageWorldpay.set3DSCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 		
 		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
@@ -296,7 +313,7 @@ public class PayCreditCardCase extends AbstractCase{
 
 
 	@Test(dataProvider = PROVIDER_CONST.ADYEN_AMERICAN_EXPRESS_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressAdyenDSPendingTest(FullCardEntity fullCardEntity, ThreeDSUserEntity threeDSUserEntity){
+	public void payAmericanExpressAdyen3DSPendingTest(FullCardEntity fullCardEntity, ThreeDSUserEntity threeDSUserEntity){
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		

@@ -44,6 +44,9 @@ public class Starter {
     public static Properties PARAMS;
 	
     public final  static String CONFIG_FILE_NAME = "config.file.name";
+    public static String SECURE_PART;
+//    public static String SECURE_PART = "config.properties";
+//    public static String SECURE_PART = "config.properties";
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE_NAME = "params.file.name";
     public static String PARAMS_FILE = "params.properties";
@@ -228,6 +231,9 @@ public class Starter {
                 CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_DEV.toString());
                 break;
         }
+//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL);
+        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);
+//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https");
     }
 /*
     public void initConversionRates(ITestContext context){

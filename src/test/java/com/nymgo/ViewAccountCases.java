@@ -24,7 +24,7 @@ public class ViewAccountCases extends AbstractCase{
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
-		viewNormalAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
 //    @Test(groups={"editEuroReseller"}, dependsOnGroups={"euroResellerSignIn"}, dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -36,7 +36,7 @@ public class ViewAccountCases extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
 		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
-		viewResellerAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)	
@@ -47,7 +47,7 @@ public class ViewAccountCases extends AbstractCase{
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
-		viewNormalAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
 //    @Test(groups={"editEuroReseller"}, dependsOnGroups={"euroResellerSignIn"}, dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -59,7 +59,7 @@ public class ViewAccountCases extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
 		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
-		viewResellerAccountPage.editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
 }

@@ -4,7 +4,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,14 +23,15 @@ public class ResellerAccountPageFragment extends BaseAccountPageFragment{
 		}
 	}
 
-//    @FindBy(xpath = "//div[@id='account-details']/a[@class='button-edit']")
-    @FindBys({@FindBy(css = "div[id='account-details']"),
-    	@FindBy(css = "a[class='button-edit']")    
-    })
+    @FindBy(xpath = "//div[@id='account-details']//a[@class='button-edit']")
+//    @FindBys({@FindBy(css = "div[id='account-details']"),
+//    	@FindBy(css = "a[class='button-edit']")    
+//    })
 	private WebElement accountDetailsButton;
 
 	public void clickViewAccountDetailsButton(){
 		
+		scrollToElement(accountDetailsButton);
 		clickSubmitButton(accountDetailsButton);
 	}
 }

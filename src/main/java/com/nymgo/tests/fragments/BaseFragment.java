@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -155,6 +156,30 @@ public class BaseFragment {
 		catch(NoSuchElementException e){
 			return false;
 		}
+	}
+
+    public void scrollToElement(WebElement element)
+    {
+       int elementPosition = element.getLocation().getY();
+       LOGGER.info("Scrolling to the element...");
+       String js = String.format("window.scroll(0, %s)", elementPosition);
+       ((JavascriptExecutor)driver).executeScript(js);
+    }    
+    
+    public void clickElementByCoordinates(WebElement element)
+    {
+//    	Point p = element.getLocation();
+    	LOGGER.info("Clicking the element...");
+//    	String js = "(document.elementFromPoint(" + p.x + " - window.pageXOffset, " + p.y + " - window.pageYOffset)).click()";
+    	String js = "arguments[0].click()";
+    	((JavascriptExecutor)driver).executeScript(js, element);
+    }    
+    
+	protected void clickRadioButton(WebElement radioButton){
+		
+		String text = radioButton.getAttribute("value");
+		radioButton.click();
+		LOGGER.info("RadioButton '" + text + "' was clicked");
 	}
 	
 	public void clearEdit(WebElement editField){

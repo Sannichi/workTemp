@@ -3,6 +3,7 @@ package com.nymgo.tests.pages.nymgo.menu.buyCredit;
 //import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
@@ -57,20 +58,24 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditPageFragment.getAllCurencyValuesOptions();	
 	}
 */
-	private String getCheckedOptionDescription(){
+	private String getCheckedOptionDescription() throws NoSuchElementException{
 		
 		return buyCreditPageFragment.getCheckedOptionDescription();
 	}
 
 	private int getCheckedOptionValue(){
-		
-		return Integer.parseInt(getCheckedOptionDescription().split(" ")[1]);
+		try{
+			return Integer.parseInt(getCheckedOptionDescription().split(" ")[1]);
+		}
+		catch(NoSuchElementException e){
+			return 0;
+		}
 	}
 	
 	private void checkOptionByValue(int value){
 		
 		buyCreditPageFragment.checkOptionByValue(value);
-		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option!");
+		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option " + value + "!");
 	}
 /*
 	private boolean isValueDisabled(int value){
@@ -150,6 +155,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 */
 	public void selectAmountAndVerifyVAT(String amount){
 		
+		LOGGER.debug("Amount is: '" + amount + "'");
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
 		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Float.valueOf(getVATPercent()) / 100) + "'");

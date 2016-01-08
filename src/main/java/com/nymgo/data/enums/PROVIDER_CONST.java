@@ -48,6 +48,7 @@ public class PROVIDER_CONST {
     public final static String AMERICAN_EXPRESS_CARD_PROVIDER = "americanExpressCardProvider";
     public final static String VISA_CARD_PROVIDER = "visaCardProvider";
     public final static String MASTER_CARD_CARD_PROVIDER = "masterCardCardProvider";
+    public final static String MASTER_CARD_ADYEN_CARD_PROVIDER = "masterCardAdyenCardProvider";
     public final static String VISA_ADYEN_CARD_PROVIDER = "visaAdyenCardProvider";
 
     public final static String WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER = "worldpayAmericanExpressCard3DSProvider";

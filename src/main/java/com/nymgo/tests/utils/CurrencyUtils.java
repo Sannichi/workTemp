@@ -18,6 +18,16 @@ public class CurrencyUtils {
 		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstReselerValue());
 	}
 	
+	public static String getSecondNormalUserBuyCurrencyValue(String paymentCurrency){
+		
+		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getSecondNormalValue());
+	}
+	
+	public static String getSecondResellerBuyCurrencyValue(String paymentCurrency){
+		
+		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getSecondReselerValue());
+	}
+	
 	public static String getConversionRateByCurrencyName(String paymentCurrency){
 		
 		CURRENCY_SIGNS currencySign = CURRENCY_SIGNS.valueOf(paymentCurrency);
@@ -43,4 +53,10 @@ public class CurrencyUtils {
 		}
 		return beforeDot;
 	}
+
+	public static String getResellerBonus(String paymentCurrency){
+		
+		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstNormalValue());
+	}
+	
 }

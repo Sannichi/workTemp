@@ -26,6 +26,7 @@ public class BaseWidgetFragment extends BaseFragment{
 
     protected void setWidgetName() throws NotFoundException{
     	
+    	setWidgetContainer();
     	widgetName = widgetContainer.findElement(By.xpath(".//div[@class='drag-handle']")).getText().split("\n")[0];
     };
 
@@ -38,7 +39,7 @@ public class BaseWidgetFragment extends BaseFragment{
     public boolean isWidgetExist(){
 
         try{
-            setWidgetContainer();
+//            setWidgetContainer();
             setWidgetName();
         }
         catch (NotFoundException e){

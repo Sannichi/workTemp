@@ -124,6 +124,7 @@ public class ExcelUtils {
 	private static String getParameterFromExcelSheet(String parameterName){
 	
 		String result = "";
+		boolean found = false;
 		try{
 			int paramCol = 0;
 			int startRow = 0;
@@ -132,11 +133,16 @@ public class ExcelUtils {
 			{
 				if(getCellData(j, paramCol).equals(parameterName)){
 					result = getCellData(j, paramCol + 1);
+					found = true;
+					break;
 				}				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if (!found){
+			LOGGER.warn("There is no parameter with name '" + parameterName + "' in the sheet");
 		}
 		return result;
 	}
@@ -221,6 +227,7 @@ public class ExcelUtils {
 			fullUserEntity.setLanguage(getParameterFromExcelSheet(USER_PARAMS.LANGUAGE.toString()));
 			fullUserEntity.setGeoIpCountry(getParameterFromExcelSheet(USER_PARAMS.GEOIP_COUNTRY.toString()));
 			fullUserEntity.setVat(getParameterFromExcelSheet(USER_PARAMS.VAT.toString()));
+			fullUserEntity.setBonus(getParameterFromExcelSheet(USER_PARAMS.BONUS.toString()));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -422,6 +429,7 @@ public class ExcelUtils {
 			return cellData;
 		}
 		catch (Exception e){
+			LOGGER.fatal("Something is wrong with the cell data");
 			return "";
 		}
 	}
