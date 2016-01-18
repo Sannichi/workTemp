@@ -23,6 +23,7 @@ public enum USER_PARAMS {
     LANGUAGE( "Language"),
     GEOIP_COUNTRY( "GeoIpCountry"),
     VAT( "VAT"),
+	BONUS_TYPE( "BonusType"),
 	BONUS( "Bonus");
     
     private USER_PARAMS(){

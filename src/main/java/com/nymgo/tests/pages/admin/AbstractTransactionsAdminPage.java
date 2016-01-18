@@ -149,8 +149,11 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 
 		String currencyAmount = CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount));
+		String conversionAmount = String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
+		String[] splitted = conversionAmount.split("\\.");
+		conversionAmount = splitted[1].equals("0") ? splitted[0] : conversionAmount; 
 		String fullAmount = currencyAmount + currency + "/" +
-			String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2))+"$";
+			 conversionAmount +"$";
 		
 		String fullProduct = currency + " " + amount;
 		if(currency.equals(CURRENCY_SIGNS.USD.toString())){

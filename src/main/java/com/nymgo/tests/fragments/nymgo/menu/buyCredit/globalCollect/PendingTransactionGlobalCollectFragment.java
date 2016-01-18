@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.transactions.PendingIframeTransactionFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
 public class PendingTransactionGlobalCollectFragment extends PendingIframeTransactionFragment{
@@ -14,7 +16,9 @@ public class PendingTransactionGlobalCollectFragment extends PendingIframeTransa
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_PENDING_URL = "https://secure-dev.nymgo.com/gcreturn?REF=";	
+//	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_PENDING_URL = "https://secure-dev.nymgo.com/gcreturn?REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_PENDING_URL = Starter.SECURE_PART + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	public boolean isCorrectURL(){
 

@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Normal User Gateway to Global Collect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -1226,7 +1226,8 @@
             </class>
         </classes>
     </test>
--->
+
+<!--
     <test name="Test - Change NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -1831,5 +1832,5 @@
             </class>
         </classes>
     </test>
-
+-->
 </suite>

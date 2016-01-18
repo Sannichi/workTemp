@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
 public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFragment{
@@ -25,7 +27,9 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
     	}
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	
+//	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = Starter.SECURE_PART + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	@FindBy(name = "CREDITCARDNUMBER")
 	private WebElement cardNumber;

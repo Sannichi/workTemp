@@ -23,6 +23,7 @@ public class FullUserEntity {
     String geoIpCountry;
     String VAT;
     String bonus;
+    String bonusType;
 
 	public String getUsername() {
         return username;
@@ -166,6 +167,14 @@ public class FullUserEntity {
 
 	public void setBonus(String bonus) {
 		this.bonus = bonus;
+	}
+
+	public String getBonusType() {
+		return bonusType;
+	}
+
+	public void setBonusType(String bonusType) {
+		this.bonusType = bonusType;
 	}
 
 	public FullUserEntity(){

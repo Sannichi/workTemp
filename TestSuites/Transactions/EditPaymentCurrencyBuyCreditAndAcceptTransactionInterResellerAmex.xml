@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Reseller Transactions AmericanExpress" preserve-order="true">
+<suite thread-count="1" verbose="1" name="Inter Reseller Transactions AmericanExpress" preserve-order="true">
 	<listeners>
 		<listener class-name="com.nymgo.tests.listeners.LoggerTestListener" />
 	</listeners>      
@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Reseller Gateway to Global Collect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -28,7 +28,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editResellerGatewayAdminTest" />
+                    <include name="editInterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -47,17 +47,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -72,12 +72,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -96,17 +96,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -121,12 +121,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -145,17 +145,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -170,12 +170,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -194,17 +194,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -219,12 +219,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -243,17 +243,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -268,12 +268,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -292,17 +292,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -317,12 +317,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -341,17 +341,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -366,12 +366,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -390,17 +390,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -415,12 +415,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -439,17 +439,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -464,12 +464,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -488,17 +488,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -513,12 +513,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -537,17 +537,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedInterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -562,17 +562,17 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Reseller Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -584,7 +584,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editResellerGatewayAdminTest" />
+                    <include name="editInterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -603,17 +603,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -628,12 +628,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -652,17 +652,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -677,12 +677,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -701,17 +701,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -726,12 +726,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -750,17 +750,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -775,12 +775,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -799,17 +799,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -824,12 +824,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -848,17 +848,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -873,12 +873,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -897,17 +897,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -922,12 +922,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -946,17 +946,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -971,12 +971,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -995,17 +995,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1020,12 +1020,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1044,17 +1044,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1069,12 +1069,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1093,17 +1093,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1118,12 +1118,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1142,17 +1142,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerWorldpayTest" />
+                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1167,17 +1167,17 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -1189,7 +1189,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editResellerGatewayAdminTest" />
+                    <include name="editInterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -1208,17 +1208,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1233,12 +1233,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1257,17 +1257,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1282,12 +1282,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1306,17 +1306,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1331,12 +1331,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1355,17 +1355,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1380,12 +1380,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1404,17 +1404,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1429,12 +1429,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1453,17 +1453,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1478,12 +1478,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1502,17 +1502,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1527,12 +1527,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1551,17 +1551,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1576,12 +1576,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1600,17 +1600,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1625,12 +1625,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1649,17 +1649,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1674,12 +1674,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1698,17 +1698,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1723,12 +1723,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1747,17 +1747,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInInterResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editInterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1772,15 +1772,15 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
                 </methods>
             </class>
         </classes>
     </test>
-
+-->
 </suite>

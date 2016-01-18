@@ -57,6 +57,7 @@ public enum LOCALE_CONST {
     ICELAND,
     ITALY_AND_VATICAN_CITY,
     LATVIA,
+    LEBANON,
     LITHUANIA,
     LUXEMBOURG,
     MALTA,

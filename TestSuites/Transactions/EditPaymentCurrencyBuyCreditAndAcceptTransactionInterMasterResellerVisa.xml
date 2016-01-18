@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Master Reseller Transactions Visa" preserve-order="true">
+<suite thread-count="1" verbose="1" name="Inter Master Reseller Transactions Visa" preserve-order="true">
 	<listeners>
 		<listener class-name="com.nymgo.tests.listeners.LoggerTestListener" />
 	</listeners>      
@@ -1227,6 +1227,8 @@
         </classes>
     </test>
 
+<!-- No 3DS for tests
+
     <test name="Test - Change Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -1831,5 +1833,5 @@
             </class>
         </classes>
     </test>
-
+No 3DS for tests-->
 </suite>

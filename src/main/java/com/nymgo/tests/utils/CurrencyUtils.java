@@ -54,9 +54,25 @@ public class CurrencyUtils {
 		return beforeDot;
 	}
 
-	public static String getResellerBonus(String paymentCurrency){
+	public static int getResellerBonus(String paymentCurrency, String currencyAmount){
 		
-		return String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstNormalValue());
+		Float conversionRate = Float.valueOf(getConversionRateByCurrencyName(paymentCurrency));
+		Float USDAmount = Float.valueOf(currencyAmount)/conversionRate;
+		if (USDAmount < 125){
+			return 0;
+		}
+		else if (USDAmount < 250){
+			return 5;
+		}
+		else if (USDAmount < 1000){
+			return 7;
+		}
+		else if (USDAmount < 1500){
+			return 10;
+		}
+		else{
+			return 15;
+		}
 	}
 	
 }

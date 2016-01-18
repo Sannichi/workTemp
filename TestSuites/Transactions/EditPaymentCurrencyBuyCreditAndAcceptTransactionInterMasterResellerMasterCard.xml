@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="Master Reseller Transactions MasterCard" preserve-order="true">
+<suite thread-count="1" verbose="1" name="Inter Master Reseller Transactions MasterCard" preserve-order="true">
 	<listeners>
 		<listener class-name="com.nymgo.tests.listeners.LoggerTestListener" />
 	</listeners>      
@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Reseller Gateway to Global Collect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -621,7 +621,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Reseller Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         

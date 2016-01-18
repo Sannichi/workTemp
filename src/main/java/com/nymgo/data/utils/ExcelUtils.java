@@ -227,6 +227,7 @@ public class ExcelUtils {
 			fullUserEntity.setLanguage(getParameterFromExcelSheet(USER_PARAMS.LANGUAGE.toString()));
 			fullUserEntity.setGeoIpCountry(getParameterFromExcelSheet(USER_PARAMS.GEOIP_COUNTRY.toString()));
 			fullUserEntity.setVat(getParameterFromExcelSheet(USER_PARAMS.VAT.toString()));
+			fullUserEntity.setBonusType(getParameterFromExcelSheet(USER_PARAMS.BONUS_TYPE.toString()));
 			fullUserEntity.setBonus(getParameterFromExcelSheet(USER_PARAMS.BONUS.toString()));
 		}
 		catch (FileNotFoundException e)
