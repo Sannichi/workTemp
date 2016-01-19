@@ -1,5 +1,6 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit.worldpay;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,7 +28,13 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlContains(PENDING_TRANSACTION_WP_3DS_URL));
+		try{
+	    	wait.until(ExpectedConditions.urlContains(PENDING_TRANSACTION_WP_3DS_URL));
+			return true;
+		}
+		catch(TimeoutException e){
+			return false;
+		}
 	}
 
 	public String getCorrectURL() {

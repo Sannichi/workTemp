@@ -1,5 +1,6 @@
 package com.nymgo.tests.fragments.admin;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +33,13 @@ public class LoginAdminPageFragment extends BaseAdminFragment{
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlMatches(LOGIN_PAGE_URL_ENG));
+		try{
+			wait.until(ExpectedConditions.urlMatches(LOGIN_PAGE_URL_ENG));
+			return true;
+		}
+		catch(TimeoutException e){
+			return false;
+		}
 	}
 
 	public String getCorrectURL() {

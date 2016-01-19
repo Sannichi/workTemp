@@ -182,7 +182,7 @@ public class BaseFragment {
 		LOGGER.info("RadioButton '" + text + "' was clicked");
 	}
 	
-	public void clearEdit(WebElement editField){
+	protected void clearEdit(WebElement editField){
 		
 		editField.clear();
 		LOGGER.info("EditField is cleared");

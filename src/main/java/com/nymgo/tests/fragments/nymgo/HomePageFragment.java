@@ -1,5 +1,6 @@
 package com.nymgo.tests.fragments.nymgo;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +23,13 @@ public HomePageFragment(WebDriver driver) {
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlToBe(getHomeURL()));
+		try{
+			wait.until(ExpectedConditions.urlToBe(getHomeURL()));
+			return true;
+		}
+		catch(TimeoutException e){
+			return false;
+		}
 	}
 
 	public String getCorrectURL() {

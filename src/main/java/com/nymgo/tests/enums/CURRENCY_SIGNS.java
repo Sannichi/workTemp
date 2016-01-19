@@ -16,7 +16,10 @@ public enum CURRENCY_SIGNS {
 	AED( "AED"),
 	GBP( "GBP"),
 	KWD( "KWD"),
-	MYR( "MYR");
+	MYR( "MYR"),
+	SGD( "SGD"),
+	AOA( "AOA"),
+	BND( "BND");
 	
     private final String text;
 

@@ -1,5 +1,6 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,7 +21,13 @@ public class BuyCreditConfirmPageCancelledFragment extends BaseIframePageFragmen
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_CANCELLED_URL));
+		try{
+			wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_CANCELLED_URL));
+			return true;
+		}
+		catch(TimeoutException e){
+			return false;
+		}
 	}
 
 	public String getCorrectURL() {

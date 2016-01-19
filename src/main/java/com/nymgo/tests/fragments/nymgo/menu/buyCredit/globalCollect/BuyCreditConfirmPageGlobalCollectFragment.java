@@ -52,7 +52,13 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	return wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
+		try{
+			wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
+			return true;
+		}
+		catch(TimeoutException e){
+			return false;
+		}
 	}
 
 	public String getCorrectURL() {

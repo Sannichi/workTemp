@@ -43,6 +43,12 @@ public class CurrencyNameGenerator {
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.KUWAIT_DINARS);
 			case MYR:
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.MALAYSIAN_RINGGIT);
+			case BND:
+				return LocaleGenerator.getLocaleKey(LOCALE_CONST.BRUNEI_DOLLAR);
+			case AOA:
+				return LocaleGenerator.getLocaleKey(LOCALE_CONST.ANGOLAN_KWANZA);
+			case SGD:
+				return LocaleGenerator.getLocaleKey(LOCALE_CONST.SINGAPORE_DOLLARS);
 			default:
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.AMERICAN_DOLLARS);
 		}
