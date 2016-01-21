@@ -202,7 +202,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	
 	public String getVATPercent(){
 		
-		LOGGER.debug(vatLabel.getText());
+//		LOGGER.debug(vatLabel.getText());
 		String[] splitted = vatLabel.getText().split(" ");
 		if(splitted.length > 1){
 			return splitted[1];

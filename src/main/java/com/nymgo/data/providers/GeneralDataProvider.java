@@ -184,6 +184,8 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] euroResellerDataProviderWithParams(ITestContext context) throws Exception {
 
         String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String dealCurrency = context.getCurrentXmlTest().getParameter("dealCurrency");
+        String dealName = context.getCurrentXmlTest().getParameter("dealName");
         String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
@@ -191,16 +193,18 @@ public class GeneralDataProvider extends BaseDataProvider{
         String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
         String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
-        Object[][] dataAdapterArray = new Object[1][8]; 
+        Object[][] dataAdapterArray = new Object[1][10]; 
         FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
-        dataAdapterArray[0][2] = countryOfCredit;    	
-        dataAdapterArray[0][3] = cardType;    	
-        dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    
-        dataAdapterArray[0][6] = bonusType;
-        dataAdapterArray[0][7] = bonusTypeValue;
+        dataAdapterArray[0][2] = dealCurrency;   	
+        dataAdapterArray[0][3] = dealName;   	
+        dataAdapterArray[0][4] = countryOfCredit;    	
+        dataAdapterArray[0][5] = cardType;    	
+        dataAdapterArray[0][6] = gatewayName;    	
+        dataAdapterArray[0][7] = currencyAmount;    
+        dataAdapterArray[0][8] = bonusType;
+        dataAdapterArray[0][9] = bonusTypeValue;
         return dataAdapterArray;
     }
 
@@ -217,6 +221,8 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] euroMasterResellerDataProviderWithParams(ITestContext context) throws Exception {
 
         String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String dealCurrency = context.getCurrentXmlTest().getParameter("dealCurrency");
+        String dealName = context.getCurrentXmlTest().getParameter("dealName");
         String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
@@ -224,16 +230,18 @@ public class GeneralDataProvider extends BaseDataProvider{
         String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
         String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
-        Object[][] dataAdapterArray = new Object[1][8]; 
+        Object[][] dataAdapterArray = new Object[1][10]; 
         FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
-        dataAdapterArray[0][2] = countryOfCredit;    	
-        dataAdapterArray[0][3] = cardType;    	
-        dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    
-        dataAdapterArray[0][6] = bonusType;
-        dataAdapterArray[0][7] = bonusTypeValue;
+        dataAdapterArray[0][2] = dealCurrency;   	
+        dataAdapterArray[0][3] = dealName;   	
+        dataAdapterArray[0][4] = countryOfCredit;    	
+        dataAdapterArray[0][5] = cardType;    	
+        dataAdapterArray[0][6] = gatewayName;    	
+        dataAdapterArray[0][7] = currencyAmount;    
+        dataAdapterArray[0][8] = bonusType;
+        dataAdapterArray[0][9] = bonusTypeValue;
         return dataAdapterArray;
     }
 
@@ -279,6 +287,8 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] interResellerDataProviderWithParams(ITestContext context) throws Exception {
 
         String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String dealCurrency = context.getCurrentXmlTest().getParameter("dealCurrency");
+        String dealName = context.getCurrentXmlTest().getParameter("dealName");
         String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
@@ -286,16 +296,18 @@ public class GeneralDataProvider extends BaseDataProvider{
         String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
         String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
-        Object[][] dataAdapterArray = new Object[1][8]; 
+        Object[][] dataAdapterArray = new Object[1][10]; 
         FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
-        dataAdapterArray[0][2] = countryOfCredit;    	
-        dataAdapterArray[0][3] = cardType;    	
-        dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    
-        dataAdapterArray[0][6] = bonusType;
-        dataAdapterArray[0][7] = bonusTypeValue;
+        dataAdapterArray[0][2] = dealCurrency;   	
+        dataAdapterArray[0][3] = dealName;   	
+        dataAdapterArray[0][4] = countryOfCredit;    	
+        dataAdapterArray[0][5] = cardType;    	
+        dataAdapterArray[0][6] = gatewayName;    	
+        dataAdapterArray[0][7] = currencyAmount;    
+        dataAdapterArray[0][8] = bonusType;
+        dataAdapterArray[0][9] = bonusTypeValue;
         return dataAdapterArray;
     }
 
@@ -312,6 +324,8 @@ public class GeneralDataProvider extends BaseDataProvider{
     public static Object[][] interMasterResellerDataProviderWithParams(ITestContext context) throws Exception {
 
         String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String dealCurrency = context.getCurrentXmlTest().getParameter("dealCurrency");
+        String dealName = context.getCurrentXmlTest().getParameter("dealName");
         String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
         String cardType = context.getCurrentXmlTest().getParameter("cardType");
         String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
@@ -319,16 +333,18 @@ public class GeneralDataProvider extends BaseDataProvider{
         String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
         String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
 
-        Object[][] dataAdapterArray = new Object[1][8]; 
+        Object[][] dataAdapterArray = new Object[1][10]; 
         FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller(); 
         dataAdapterArray[0][0] = fullUserEntity;
         dataAdapterArray[0][1] = paymentCurrency;   	
-        dataAdapterArray[0][2] = countryOfCredit;    	
-        dataAdapterArray[0][3] = cardType;    	
-        dataAdapterArray[0][4] = gatewayName;    	
-        dataAdapterArray[0][5] = currencyAmount;    
-        dataAdapterArray[0][6] = bonusType;
-        dataAdapterArray[0][7] = bonusTypeValue;
+        dataAdapterArray[0][2] = dealCurrency;   	
+        dataAdapterArray[0][3] = dealName;   	
+        dataAdapterArray[0][4] = countryOfCredit;    	
+        dataAdapterArray[0][5] = cardType;    	
+        dataAdapterArray[0][6] = gatewayName;    	
+        dataAdapterArray[0][7] = currencyAmount;    
+        dataAdapterArray[0][8] = bonusType;
+        dataAdapterArray[0][9] = bonusTypeValue;
         return dataAdapterArray;
     }
 

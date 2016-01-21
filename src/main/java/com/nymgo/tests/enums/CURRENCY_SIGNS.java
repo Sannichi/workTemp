@@ -19,7 +19,19 @@ public enum CURRENCY_SIGNS {
 	MYR( "MYR"),
 	SGD( "SGD"),
 	AOA( "AOA"),
-	BND( "BND");
+	BND( "BND"),
+	BDT( "BDT"),
+	IDR( "IDR"),
+	PKR( "PKR"),
+	YER( "YER"),
+	SYP( "SYP"),
+	EGP( "EGP"),
+	NGN( "NGN"),
+	KES( "KES"),
+	NPR( "NPR"),
+	LKR( "LKR"),
+	PHP( "PHP");
+	
 	
     private final String text;
 

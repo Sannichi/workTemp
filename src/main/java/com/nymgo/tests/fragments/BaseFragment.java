@@ -158,6 +158,18 @@ public class BaseFragment {
 		}
 	}
 
+	protected void pressEnter(){
+		
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.ENTER);
+		LOGGER.info("Enter was pressed");
+	}
+	
+	protected void pressEnterOnElement(WebElement element){
+		
+		element.sendKeys(Keys.ENTER);
+		LOGGER.info("Enter was pressed");
+	}
+	
     public void scrollToElement(WebElement element)
     {
        int elementPosition = element.getLocation().getY();

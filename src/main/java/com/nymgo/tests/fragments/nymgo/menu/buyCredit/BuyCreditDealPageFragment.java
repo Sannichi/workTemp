@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by Iuliia Khikmatova on Jan 19, 2016
@@ -31,19 +32,37 @@ public class BuyCreditDealPageFragment extends BuyCreditPageFragment {
     @FindBy(css="span[id='package-price-total']")
     private WebElement dealTotalAmountValue;
 
-	public void selectDealByName(String dealName){
+    @FindBy(css="span[id='package-minutes']")
+    private WebElement dealPackageMinutesValue;
+
+    @FindBy(css="span[id='package-imtu-amount']")
+    private WebElement dealImtuAmountValue;
+
+    public void selectDealByName(String dealName){
 		
 		selectValueFromSelectByVisibleText(dealsSelect, dealName);
+	}
+	
+    public String getSelectedDealName(){
+		
+		Select select = new Select(dealsSelect);
+		return select.getFirstSelectedOption().getCssValue("value");
 	}
 	
 	public void setDealsQuantity(String dealsQuantity){
 		
 		setTextToEditField(dealsQuantityField, dealsQuantity);
+		pressEnterOnElement(dealsQuantityField);
+	}
+
+	public String getDealsQuantity(String dealsQuantity){
+		
+		return dealsQuantityField.getText();
 	}
 
 	public String getDealVATPercent(){
 		
-		LOGGER.debug(dealVatValue.getText());
+//		LOGGER.debug(dealVatValue.getText());
 		String[] splitted = dealVatValue.getText().split(" ");
 		if(splitted.length > 1){
 			return splitted[1];
@@ -62,5 +81,15 @@ public class BuyCreditDealPageFragment extends BuyCreditPageFragment {
 	public String getDealTotalAmountValue(){
 		
 		return dealTotalAmountValue.getText();
+	}
+
+	public String getDealPackageMinutesValue(){
+		
+		return dealPackageMinutesValue.getText();
+	}
+
+	public String getDealImtuAmountValue(){
+		
+		return dealImtuAmountValue.getText();
 	}
 }

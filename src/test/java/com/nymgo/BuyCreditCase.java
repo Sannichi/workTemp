@@ -11,6 +11,7 @@ import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditDealPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSProceedPageAdyen;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollect;
@@ -126,17 +127,29 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+//		String VATPercent = buyCreditPage.getVATPercent();
+/*
+ * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+*/
+		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
+//		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+//		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
+		Float VATValue = Float.valueOf(buyCreditDealPage.getVATValue());		
+//		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);		
 
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
@@ -165,7 +178,8 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 /*
  * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
@@ -176,10 +190,14 @@ public class BuyCreditCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+		
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
 
-		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
 //		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
 /*		buyCredit3DSProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), 
@@ -208,16 +226,24 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+/*
+ * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+*/
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+		
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
 	}
@@ -230,17 +256,25 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+/*
+ * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+*/
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+
+		Float VATValue = Float.valueOf(buyCreditDealPage.getVATValue());
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
@@ -269,17 +303,25 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+/*
+ * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+*/
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+
 //		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
-		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 /*
 //		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), currencyAmount, VATPercent, String.valueOf(Float.valueOf(currencyAmount) + VATValue));
 		buyCreditProceedPageWorldpay.verifyDefaultData(fullUserEntity.getCountryOfResidence(), 
@@ -307,16 +349,24 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+/*
+ * Not with the Deals
 		String VATPercent = buyCreditPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+*/
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
 	}
@@ -399,13 +449,14 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmount(currencyAmount);
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
+		buyCreditDealPage.selectAmount(currencyAmount);
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
 		buyCreditProceedPage.verifyDefaultInternationalData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
@@ -432,13 +483,14 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmount(currencyAmount);
-		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
+		buyCreditDealPage.selectAmount(currencyAmount);
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
@@ -453,13 +505,14 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmount(currencyAmount);
-		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
+		buyCreditDealPage.selectAmount(currencyAmount);
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
 	}
@@ -472,13 +525,14 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmount(currencyAmount);
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
+		buyCreditDealPage.selectAmount(currencyAmount);
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
 		buyCreditProceedPage.verifyDefaultInternationalData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
@@ -505,13 +559,14 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmount(currencyAmount);
-		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
+		buyCreditDealPage.selectAmount(currencyAmount);
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
 	}
@@ -524,13 +579,14 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+//		BuyCreditPage buyCreditPage = resellerAccountPage.clickAccountBuyCreditButton();
+		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
-		buyCreditPage.selectAmount(currencyAmount);
-		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
+		buyCreditDealPage.selectAmount(currencyAmount);
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
 	}

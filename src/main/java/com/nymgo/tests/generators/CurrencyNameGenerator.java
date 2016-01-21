@@ -15,7 +15,7 @@ public class CurrencyNameGenerator {
 	}
    
 
-	public static String getCurrencyKey(CURRENCY_SIGNS currencySignKey){
+	private static String getCurrencyKey(CURRENCY_SIGNS currencySignKey){
 
 		switch (currencySignKey)
 		{
