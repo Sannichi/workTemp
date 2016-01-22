@@ -14,6 +14,8 @@ import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
+import com.nymgo.tests.utils.DealDescription;
+import com.nymgo.tests.utils.DealDescriptionMap;
 
 public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 
@@ -166,6 +168,69 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		}
 		
 		String method = cardType;
+		if(service.equals(GATEWAY_CONST.WORLDPAY.toString())){
+			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.AMERICAN_EXPRESS))){
+				method = METHODS_CONST.AMEX_SSL.toString();
+			}
+			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.MASTER_CARD))){
+				method = METHODS_CONST.MASTERCARD_SSL.toString();
+			}
+			else if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA)) || cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.VISA_WP))){
+				method = METHODS_CONST.VISA_SSL.toString();
+			}
+		}else if(service.equals(GATEWAY_CONST.ADYEN.toString())){
+			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.MASTER_CARD))){
+				method = METHODS_CONST.MASTERCARD.toString();
+			}
+		}
+				
+		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
+				"', should be '" + username.toLowerCase() + "'");
+		LOGGER.info("Username is correct");
+		Assert.assertTrue(isTransactionAmountCorrect(transactionDetails, fullAmount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
+				"', should be '" + fullAmount + "'");
+		LOGGER.info("Amount is correct");
+		Assert.assertTrue(isTransactionCurrencyCorrect(transactionDetails, currency), "Currency is not correct! Current value is '" + getTransactionCurrency(transactionDetails) + 
+				"', should be '" + currency + "'");
+		LOGGER.info("Currency is correct");
+		Assert.assertTrue(isTransactionProductCorrect(transactionDetails, fullProduct), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
+				"', should be '" + fullProduct + "'");
+		LOGGER.info("Product is correct");
+		Assert.assertTrue(isTransactionServiceCorrect(transactionDetails, service), "Service is not correct! Current value is '" + getTransactionService(transactionDetails) + 
+				"', should be '" + service + "'");
+		LOGGER.info("Service is correct");
+		Assert.assertTrue(isTransactionMethodCorrect(transactionDetails, method), "Method is not correct! Current value is '" + getTransactionMethod(transactionDetails) + 
+				"', should be '" + method + "'");
+		LOGGER.info("Methos is correct");
+		Assert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
+				"', should be '" + country + "'");
+		LOGGER.info("Country is correct");
+	}
+
+	public void verifyDealData(String transactionID, String username, String amount, String VAT, String currency, String dealCurrency, String dealName, String service, String cardType, String country){
+
+		/*
+		 * if amount == null - minimum value for current currency is got
+		 * 
+		 */
+		if(dealName == null){
+			dealName = DealDescriptionMap.getFirstDealLocaleNameByCurrencySign(currency);
+		}
+		
+		String conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
+		LOGGER.info("Conversion rate is '" + conversionRate + "'");
+		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
+
+		String currencyAmount = CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount));
+		String conversionAmount = String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
+		String[] splitted = conversionAmount.split("\\.");
+		conversionAmount = splitted[1].equals("0") ? splitted[0] : conversionAmount; 
+		String fullAmount = currencyAmount + currency + "/" +
+			 conversionAmount +"$";
+		
+		String fullProduct = dealName;
+		String method = cardType;
+
 		if(service.equals(GATEWAY_CONST.WORLDPAY.toString())){
 			if(cardType.equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.AMERICAN_EXPRESS))){
 				method = METHODS_CONST.AMEX_SSL.toString();

@@ -39,8 +39,8 @@ public class VerifyBuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedEuroResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void verifyBuyCreditAcceptedLoggedEuroResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
@@ -79,8 +79,8 @@ public class VerifyBuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedEuroMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void verifyBuyCreditAcceptedLoggedEuroMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
@@ -126,8 +126,8 @@ public class VerifyBuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedInterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void verifyBuyCreditAcceptedLoggedInterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
@@ -152,8 +152,8 @@ public class VerifyBuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedInterMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void verifyBuyCreditAcceptedLoggedInterMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();

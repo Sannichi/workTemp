@@ -20,6 +20,14 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 	public BaseViewAccountFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
+		
+    	WebDriverWait wait = new WebDriverWait(driver, Starter.IMPLICITLY_WAIT_TIME);
+    	try{
+    		wait.until(ExpectedConditions.visibilityOf(activeClickableContent));
+    	}
+    	catch(TimeoutException e){
+    		LOGGER.warn("Active clickable content was lot loaded");
+    	}
 	}
 
 	public boolean isCorrectURL() {
@@ -40,7 +48,8 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 	}
 
 //	@FindBy(css = "div[class='clickable active']")
-	@FindBy(css = "div[class$='active']")	
+//	@FindBy(css = "div[class$='active']") // ends with	
+	@FindBy(css = "div[class*='active']") //contains
 	private WebElement activeClickableContent;
 	
 	@FindBy(css = "div[class^='clickable']")

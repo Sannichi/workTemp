@@ -48,6 +48,7 @@ public class DealDescriptionMap {
 //		dealMap.put(DEAL_NAMES.SRI_LANKA_DEAL_100, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.LKR, 100));
 //		dealMap.put(DEAL_NAMES.PHILIPPINES_DEAL_100, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.PHP, 100));
 
+		dealMap.put(LOCALE_CONST.INDIA_DEAL, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.INR, 600));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_600, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.INR, 600));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_UNLIMITED, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.INR, -1));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_400, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.INR, 400));
@@ -96,6 +97,16 @@ public class DealDescriptionMap {
 		for(int i = 0; i < dealMap.size(); i++){
 			if(dealMap.get(i).getCurrencySign().equals(currencySignKey))
 				return dealMap.get(i);
+		}
+		return null;
+	}
+
+	public static String getFirstDealLocaleNameByCurrencySign(String currencySign){
+		
+		CURRENCY_SIGNS currencySignKey = CURRENCY_SIGNS.valueOf(currencySign);
+		for(LOCALE_CONST dealName : dealMap.keySet()){
+			if(dealMap.get(dealName).getCurrencySign().equals(currencySignKey))
+				return LocaleGenerator.getLocaleKey(dealName);
 		}
 		return null;
 	}

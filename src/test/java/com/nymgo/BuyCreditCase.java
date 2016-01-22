@@ -120,8 +120,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -171,8 +171,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -219,8 +219,8 @@ public class BuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -249,8 +249,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -296,8 +296,8 @@ public class BuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -342,8 +342,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -442,8 +442,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedInterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -476,8 +476,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedInterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -498,8 +498,8 @@ public class BuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedInterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -518,8 +518,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedInterMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -552,8 +552,8 @@ public class BuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedInterMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -572,8 +572,8 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void buyCreditLoggedInterMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 

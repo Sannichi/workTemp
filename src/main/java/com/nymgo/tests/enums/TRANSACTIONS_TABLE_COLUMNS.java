@@ -8,6 +8,7 @@ public enum TRANSACTIONS_TABLE_COLUMNS {
     AMOUNT( "Amount"),
     CURRENCY( "currency"),
     PRODUCT( "Product"),
+    PROD_COUNT( "Prod Count"),
     SERVICE( "Service"),
     METHOD( "Method"),
     COUNTRY( "Country");

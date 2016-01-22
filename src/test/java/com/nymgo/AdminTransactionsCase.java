@@ -63,8 +63,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void declineEuroResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void declineEuroResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -85,8 +85,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptEuroResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void acceptEuroResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -107,8 +107,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void declineEuroMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void declineEuroMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -129,8 +129,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptEuroMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void acceptEuroMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -195,8 +195,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void declineInterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void declineInterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -217,8 +217,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptInterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void acceptInterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -239,8 +239,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void declineInterMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void declineInterMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -261,8 +261,8 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptInterMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void acceptInterMasterResellerTransactionAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
