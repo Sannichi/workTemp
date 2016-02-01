@@ -229,7 +229,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredut NormalUser NZD Global Collect" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="American Express" />    

@@ -16,8 +16,8 @@ import com.nymgo.tests.pages.admin.widgets.BusinessMemberListWidget;
 public class AdminResellersCase extends AbstractCase{
 
 	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editEuroResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void editEuroResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -35,8 +35,8 @@ public class AdminResellersCase extends AbstractCase{
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editEuroMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void editEuroMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -54,8 +54,8 @@ public class AdminResellersCase extends AbstractCase{
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editInterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void editInterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
@@ -73,8 +73,8 @@ public class AdminResellersCase extends AbstractCase{
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editInterMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	public void editInterMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		AdminPage adminPage = new AdminPage(starter);
 
