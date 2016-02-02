@@ -110,6 +110,12 @@ public class DataAdapter extends BaseAdapter {
     	return fullCardEntity;
 	}
 
+    public static FullCardEntity getAmexAdyenCard(){
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"AmexAdyen");    	
+    	return fullCardEntity;
+	}
+
     public static FullCardEntity getWPAmericanExpressCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"WPAMEX3DS");    	

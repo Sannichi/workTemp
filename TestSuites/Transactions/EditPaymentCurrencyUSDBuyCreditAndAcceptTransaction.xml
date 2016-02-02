@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Inter Reseller Gateway to Global Collect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -100,7 +100,7 @@ ERROR-->
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - BuyCredyt Inter Reseller USD Worldpay MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="MasterCard" />    
@@ -198,7 +198,6 @@ ERROR-->
             </class>
         </classes>
     </test>
--->
 
     <test name="Test - BuyCredit Inter Reseller USD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        

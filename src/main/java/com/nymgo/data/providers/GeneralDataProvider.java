@@ -524,6 +524,15 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
     
+    @DataProvider(name=PROVIDER_CONST.AMERICAN_EXPRESS_ADYEN_CARD_PROVIDER)
+    public static Object[][] AmericanExpressAdyenCardDataProvider() throws Exception {
+
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        FullCardEntity fullCardEntity = DataAdapter.getAmexAdyenCard();
+        dataAdapterArray[0][0] = fullCardEntity;
+        return dataAdapterArray;
+    }
+    
     @DataProvider(name=PROVIDER_CONST.WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER)
     public static Object[][] wpAmericanExpressCard3DSDataProvider() throws Exception {
 
