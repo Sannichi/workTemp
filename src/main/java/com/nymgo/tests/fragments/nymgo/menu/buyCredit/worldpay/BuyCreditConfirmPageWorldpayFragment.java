@@ -25,16 +25,20 @@ public class BuyCreditConfirmPageWorldpayFragment extends BaseIframePageFragment
 
 	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_URL = "https://secure-test.worldpay.com/wcc/card?Lang=";	
 
-	@FindBy(id = "cardNoInput")
+//	@FindBy(id = "cardNoInput")
+	@FindBy(id = "card-number")	
 	private WebElement cardNumber;
 	
-	@FindBy(name = "cardExp.month")
+//	@FindBy(name = "cardExp.month")
+	@FindBy(name = "exp-month")	
 	private WebElement expireDateMonth;
 
-	@FindBy(name = "cardExp.year")
+//	@FindBy(name = "cardExp.year")
+	@FindBy(name = "exp-year")
 	private WebElement expireDateYear;
 
-	@FindBy(id = "cardCVV")
+//	@FindBy(id = "cardCVV")
+	@FindBy(id = "cvc")	
 	private WebElement cvv;
 
 	@FindBy(id = "name")

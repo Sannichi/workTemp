@@ -232,8 +232,8 @@ public class Starter {
                 break;
         }
 //        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL);
-        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);
-//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https");
+//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);
+        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https");
     }
 /*
     public void initConversionRates(ITestContext context){
