@@ -72,6 +72,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -94,6 +95,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -150,6 +152,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -171,6 +174,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -194,6 +198,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
@@ -231,6 +236,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -256,6 +262,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
@@ -279,6 +286,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
@@ -316,6 +324,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
@@ -339,6 +348,7 @@ public class BuyDealCase extends AbstractCase{
 		String VATPercent = buyCreditDealPage.getDealVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
+		@SuppressWarnings("unused")
 		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);

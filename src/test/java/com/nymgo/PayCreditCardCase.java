@@ -20,8 +20,6 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirm
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSConfirmPageWorldpay;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSProceedPageWorldpay;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpay;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCreditConfirmPageWorldpayNext;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpay3DSPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpayPage;
 

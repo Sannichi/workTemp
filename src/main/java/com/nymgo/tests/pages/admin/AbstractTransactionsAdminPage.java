@@ -14,7 +14,6 @@ import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
-import com.nymgo.tests.utils.DealDescription;
 import com.nymgo.tests.utils.DealDescriptionMap;
 
 public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
