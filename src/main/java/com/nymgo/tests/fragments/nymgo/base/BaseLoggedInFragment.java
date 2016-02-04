@@ -52,8 +52,26 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 		initializeWebElements();
 		Actions actions = new Actions(driver);
 		actions.moveToElement(accountButton).perform();
-		WebDriverWait wait = new WebDriverWait(driver, Starter.INITIALIZED_ELEMENT_WAIT_TIME);
-		WebElement webElement = wait.until(ExpectedConditions.visibilityOf(myAccountDropdown)); 
-		clickButton(webElement);
+		WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);
+		WebElement webElement = null;
+		try {
+			webElement = wait.until(ExpectedConditions.visibilityOf(myAccountDropdown)); 
+		}
+		catch (TimeoutException e){
+			actions.moveToElement(nymgoLogo).perform();
+			actions.moveToElement(accountButton).perform();
+			try {
+				webElement = wait.until(ExpectedConditions.visibilityOf(myAccountDropdown)); 
+			}
+			catch (TimeoutException e2){
+				LOGGER.fatal("Something was wrong with account dropdown items");
+			}
+		}
+		if (webElement != null){
+			clickButton(webElement);
+		}
+		else{
+			LOGGER.fatal("myAccountDropdown = null");
+		}
 	}
 }

@@ -7,6 +7,7 @@ public enum METHODS_CONST {
 
 	AMERICAN_EXPRESS( "American Express"),
 	AMEX_SSL( "AMEX-SSL"),
+	AMEX( "amex"),
 	VISA( "visa"),
 	VISA_SSL( "VISA-SSL"),
 	MASTERCARD( "mc"),

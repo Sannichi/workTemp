@@ -312,8 +312,8 @@ public class BuyCreditCase extends AbstractCase{
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 */
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
@@ -358,8 +358,8 @@ public class BuyCreditCase extends AbstractCase{
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 */
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();

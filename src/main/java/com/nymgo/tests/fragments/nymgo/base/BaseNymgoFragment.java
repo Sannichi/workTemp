@@ -57,7 +57,7 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	private WebElement normalUserSignInButton;
 	
 	@FindBy(css = "div.logo")
-	private WebElement nymgoLogo;
+	public WebElement nymgoLogo;
 
 	@FindBy(css = "div[class='success-message']")
 	private WebElement successMessage;

@@ -507,7 +507,7 @@ public class ExcelUtils {
 			setExcelFile(transactionFilePath, transactionSheetName);
 			int startCol = 0;
 			int startRow = getFirstEmptyRow();
-			LOGGER.info("Start row = " + startRow);
+			LOGGER.debug("Start row = " + startRow);
 			try {
 				setCellData(startRow, startCol, username);				
 				setCellData(startRow, startCol + 1, currency);				

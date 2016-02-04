@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Inter NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -34,6 +34,58 @@
         </classes>
     </test>
 
+    <test name="Test - Change Euro NormalUser Gateway to Worldpay" preserve-order="true">
+        <parameter name="gatewayName" value="Worldpay" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminNormalMembersCase">
+                <methods>
+                    <include name="editEuroNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+	<test name="Test - Change Inter Reseller Gateway to Worldpay" preserve-order="true">
+        <parameter name="gatewayName" value="Worldpay" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editInterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Test - Change Euro MasterReseller Gateway to Worldpay" preserve-order="true">
+        <parameter name="gatewayName" value="Worldpay" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editEuroMasterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+-->    
+<!--
     <test name="Test - BuyCredit Inter NormalUser USD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="Visa" />    
@@ -73,23 +125,6 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptInterNormalUserTransactionAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-    <test name="Test - Change Euro NormalUser Gateway to Worldpay" preserve-order="true">
-        <parameter name="gatewayName" value="Worldpay" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminNormalMembersCase">
-                <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -182,23 +217,6 @@
             </class>
         </classes>
     </test>
-    
-	<test name="Test - Change Inter Reseller Gateway to Worldpay" preserve-order="true">
-        <parameter name="gatewayName" value="Worldpay" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminResellersCase">
-                <methods>
-                    <include name="editInterResellerGatewayAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
 
     <test name="Test - BuyCredit Inter Reseller NZD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
@@ -239,23 +257,6 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptInterResellerTransactionAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-    <test name="Test - Change Euro MasterReseller Gateway to Worldpay" preserve-order="true">
-        <parameter name="gatewayName" value="Worldpay" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminResellersCase">
-                <methods>
-                    <include name="editEuroMasterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -635,6 +636,57 @@
         </classes>
     </test>
 
+    <test name="Test - Change Euro NormalUser Gateway to Adyen" preserve-order="true">
+        <parameter name="gatewayName" value="Adyen" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminNormalMembersCase">
+                <methods>
+                    <include name="editEuroNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+	<test name="Test - Change Inter Reseller Gateway to Adyen" preserve-order="true">
+        <parameter name="gatewayName" value="Adyen" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editInterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Change Euro MasterReseller Gateway to Adyen" preserve-order="true">
+        <parameter name="gatewayName" value="Adyen" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editEuroMasterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
     <test name="Test - BuyCredit Inter NormalUser CAD Adyen Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="CAD" />        
         <parameter name="cardType" value="Visa" />    
@@ -666,36 +718,9 @@
                     <include name="payVisaAdyenPendingTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminTransactionsCase">
-                <methods>
-                    <include name="acceptInterNormalUserTransactionAdminTest" />
-                </methods>
-            </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-    <test name="Test - Change Euro NormalUser Gateway to Adyen" preserve-order="true">
-        <parameter name="gatewayName" value="Adyen" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminNormalMembersCase">
-                <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -789,23 +814,6 @@
         </classes>
     </test>
     
-	<test name="Test - Change Inter Reseller Gateway to Adyen" preserve-order="true">
-        <parameter name="gatewayName" value="Adyen" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminResellersCase">
-                <methods>
-                    <include name="editInterResellerGatewayAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
     <test name="Test - BuyCredit Inter Reseller NZD Adyen Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -845,23 +853,6 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptInterResellerTransactionAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
-    <test name="Test - Change Euro MasterReseller Gateway to Adyen" preserve-order="true">
-        <parameter name="gatewayName" value="Adyen" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminResellersCase">
-                <methods>
-                    <include name="editEuroMasterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -910,7 +901,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro MasterReseller GBP Adyen Amex" preserve-order="true">
         <parameter name="paymentCurrency" value="GBP" />        
         <parameter name="cardType" value="American Express" />    

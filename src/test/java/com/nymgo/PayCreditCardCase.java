@@ -15,6 +15,7 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSConfirmPageA
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSProceedPageAdyen;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.DeclinedTransactionAdyenPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyen3DSPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyenPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollect;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSConfirmPageWorldpay;
@@ -153,7 +154,7 @@ public class PayCreditCardCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPayToDeclined(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
 		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
@@ -171,7 +172,7 @@ public class PayCreditCardCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPayToDeclined(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
 		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
@@ -179,7 +180,6 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
 				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData(transactionID, paymentStatus);		
 		ExcelUtils.addTransactionData(transactionID);		
 		@SuppressWarnings("unused")
 		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
@@ -189,8 +189,8 @@ public class PayCreditCardCase extends AbstractCase{
 	public void payMasterCardAdyenDeclinedTest(FullCardEntity fullCardEntity){
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
-		
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+	
+		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPayToDeclined(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
 		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
@@ -198,10 +198,10 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
 				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData(transactionID, paymentStatus);		
 		ExcelUtils.addTransactionData(transactionID);		
 		@SuppressWarnings("unused")
 		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
+
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.MASTER_CARD_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -209,18 +209,30 @@ public class PayCreditCardCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
-		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
-		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
-		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
-				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData(transactionID, paymentStatus);		
 		ExcelUtils.addTransactionData(transactionID);		
 		@SuppressWarnings("unused")
-		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
+		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
+//		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
+		
+//		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+//				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+//
+//		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
+//		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
+//		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
+//				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+//		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+//		ExcelUtils.addTransactionData(transactionID);		
+//		@SuppressWarnings("unused")
+//		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.VISA_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -228,17 +240,30 @@ public class PayCreditCardCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+//		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+//				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+
+//		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
+//		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
+//		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
+//				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+//		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+//		ExcelUtils.addTransactionData(transactionID);		
+//		@SuppressWarnings("unused")
+//		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
+
+		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
-		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
-		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
-		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
-				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData(transactionID);		
 		@SuppressWarnings("unused")
-		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
+		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
+//		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -246,17 +271,30 @@ public class PayCreditCardCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
-		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
-		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
-		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
-		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
-				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
+		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();
+		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
+				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData(transactionID);		
 		@SuppressWarnings("unused")
-		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
+		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
+//		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
+		
+//		DeclinedTransactionAdyenPage declinedTransactionAdyenPage = buyCredit3DSProceedPageAdyen.setCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+//				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+//
+//		String transactionID = declinedTransactionAdyenPage.getTransactionNumber();
+//		String paymentStatus = declinedTransactionAdyenPage.getPaymentStatus();
+//		Assert.assertFalse(declinedTransactionAdyenPage.isTransactionDeclined(), 
+//				"Transaction is not declined, current status is: " + declinedTransactionAdyenPage.getPaymentStatus());
+//		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+//		ExcelUtils.addTransactionData(transactionID);		
+//		@SuppressWarnings("unused")
+//		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

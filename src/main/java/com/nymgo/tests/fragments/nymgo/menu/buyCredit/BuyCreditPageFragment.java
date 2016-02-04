@@ -40,7 +40,8 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
     @FindBy(css="div[class='adyenOption disabled']")
     private List<WebElement> adyenOptionsDisabled;
 
-    @FindBy(id="transaction-proceed")
+//    @FindBy(id="transaction-proceed")
+    @FindBy(css="button[id='transaction-proceed']")
     private WebElement continueButton;
     
     @FindBys({@FindBy(xpath = "//div[@id='resultHolder']/div[@class='vatHolder'][1]"),
@@ -108,6 +109,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	public void clickContinueButton(){
 		
 //		continueButton.click();
+		scrollToElement(continueButton);
 		clickButton(continueButton);
 	}
 

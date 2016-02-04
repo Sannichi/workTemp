@@ -49,6 +49,6 @@ public abstract class AbstractTransactionPage extends AbstractPage{
 
 	public boolean isTransactionDeclined(){
 		
-		return baseTransactionFragment.isTransactionPending();
+		return baseTransactionFragment.isTransactionDeclined();
 	}
 }

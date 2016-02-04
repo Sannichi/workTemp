@@ -141,7 +141,8 @@ public class AdminTransactionsCase extends AbstractCase{
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());

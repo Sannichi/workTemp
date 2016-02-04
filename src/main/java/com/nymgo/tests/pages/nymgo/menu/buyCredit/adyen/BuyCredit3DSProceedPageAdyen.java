@@ -153,7 +153,22 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 	}
 
 
-	public DeclinedTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+//	public DeclinedTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+	public PendingTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){	
+		
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
+		PageNavigation<PendingTransactionAdyenPage> navigation = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);
+		navigation.NavigatedTo();
+		return pendingTransactionAdyenPage;
+	}
+
+	public DeclinedTransactionAdyenPage setCreditCardDataAndClickPayToDeclined(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){	
 		
 		setCardNumber(cardNumberValue);
 		setCardholdersName(cardholdersName);
