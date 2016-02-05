@@ -522,11 +522,6 @@
                     <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.VerifyBuyCreditCase">
-                <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
-                </methods>
-            </class>
         </classes>
     </test>
 
