@@ -99,7 +99,6 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		return buyCredit3DSProceedPageAdyenFragment.getCVV();
 	}
 	
-	//TODO instead of void
 	public BuyCredit3DSProceedPageAdyen setCreditCardData(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);

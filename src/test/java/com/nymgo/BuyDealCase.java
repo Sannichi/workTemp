@@ -192,14 +192,7 @@ public class BuyDealCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
-//		buyCreditDealPage.selectAmount(currencyAmount);
-
 		buyCreditDealPage.selectDealAndQuantityAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName, dealQuantity);
-		String VATPercent = buyCreditDealPage.getDealVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
-		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
 
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
@@ -230,15 +223,7 @@ public class BuyDealCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
-//		buyCreditDealPage.selectAmount(currencyAmount);
-
 		buyCreditDealPage.selectDealAndQuantityAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName, dealQuantity);
-		String VATPercent = buyCreditDealPage.getDealVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
-		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
-		
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
@@ -256,15 +241,7 @@ public class BuyDealCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
-//		buyCreditDealPage.selectAmount(currencyAmount);
-		
 		buyCreditDealPage.selectDealAndQuantityAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName, dealQuantity);
-		String VATPercent = buyCreditDealPage.getDealVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
-		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
-		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
@@ -280,15 +257,8 @@ public class BuyDealCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
-//		buyCreditDealPage.selectAmount(currencyAmount);
-
 		buyCreditDealPage.selectDealAndQuantityAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName, dealQuantity);
-		String VATPercent = buyCreditDealPage.getDealVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
-		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
-		
+
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.selectAmountAndClickContinueToGlobalCollect(currencyAmount);
 
 		buyCreditProceedPage.verifyDefaultInternationalData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
@@ -318,15 +288,7 @@ public class BuyDealCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
-//		buyCreditDealPage.selectAmount(currencyAmount);
-
 		buyCreditDealPage.selectDealAndQuantityAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName, dealQuantity);
-		String VATPercent = buyCreditDealPage.getDealVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
-		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
-		
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);
@@ -342,15 +304,7 @@ public class BuyDealCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
-//		buyCreditDealPage.selectAmount(currencyAmount);
-		
 		buyCreditDealPage.selectDealAndQuantityAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName, dealQuantity);
-		String VATPercent = buyCreditDealPage.getDealVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "Deal VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
-		Float VATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());
-		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType);

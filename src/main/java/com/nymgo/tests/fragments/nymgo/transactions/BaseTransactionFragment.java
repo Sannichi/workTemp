@@ -28,7 +28,12 @@ public class BaseTransactionFragment extends BaseFragment{
 
 	public String getPaymentStatus(){
 		
-		return paddsList.get(0).getText();		
+		if(paddsList.size() > 0){
+			return paddsList.get(0).getText();
+		}
+		else{
+			return "There is no line with Payment Status";
+		}
 	}
 
 	public String getTransactionAmountValue(){

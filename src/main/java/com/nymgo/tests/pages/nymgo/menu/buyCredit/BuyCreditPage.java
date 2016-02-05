@@ -102,6 +102,13 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return clickContinueToGlobalCollect();
 	} 
 	
+//	public BuyCredit3DSProceedPageGlobalCollect selectAmountAndClickContinueToGlobalCollect(String amount){
+//		
+//		int intAmount = Integer.valueOf(amount);
+//		checkOptionByValue(intAmount);
+//		return clickContinueToGlobalCollect();
+//	} 
+	
 	public BuyCredit3DSProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
 		
 		int intAmount = Integer.valueOf(amount);
@@ -124,6 +131,15 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		navigation.NavigatedTo();
 		return buyCreditProceedPageGlobalCollect;
 	} 
+	
+//	public BuyCredit3DSProceedPageGlobalCollect clickContinueToGlobalCollect(){
+//		
+//		clickContinueButton();
+//		BuyCredit3DSProceedPageGlobalCollect buyCredit3DSProceedPageGlobalCollect = new BuyCredit3DSProceedPageGlobalCollect(starter);
+//		PageNavigation<BuyCredit3DSProceedPageGlobalCollect> navigation = new PageNavigation<BuyCredit3DSProceedPageGlobalCollect>(buyCredit3DSProceedPageGlobalCollect);
+//		navigation.NavigatedTo();
+//		return buyCredit3DSProceedPageGlobalCollect;
+//	} 
 	
 	public BuyCredit3DSProceedPageWorldpay clickContinueToWorldpay(){
 		

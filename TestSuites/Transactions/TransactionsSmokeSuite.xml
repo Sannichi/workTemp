@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Inter NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -84,8 +84,7 @@
             </class>
         </classes>
     </test>
--->    
-<!--
+
     <test name="Test - BuyCredit Inter NormalUser USD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="Visa" />    
@@ -901,8 +900,8 @@
             </class>
         </classes>
     </test>
--->
-    <test name="Test - BuyCredit Euro MasterReseller GBP Adyen Amex" preserve-order="true">
+	
+	<test name="Test - BuyCredit Euro MasterReseller GBP Adyen Amex" preserve-order="true">
         <parameter name="paymentCurrency" value="GBP" />        
         <parameter name="cardType" value="American Express" />    
         <parameter name="gatewayName" value="Adyen" />     
@@ -977,14 +976,9 @@
                     <include name="payVisaAdyen3DSPendingTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.AdminSignInCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminTransactionsCase">
-                <methods>
-                    <include name="acceptInterNormalUserTransactionAdminTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -1078,7 +1072,7 @@
         </classes>
     </test>
     
-    <test name="Test - BuyCredit Inter Reseller NZD Adyen 3DS Visa" preserve-order="true">
+    <test name="Test - BuyCredit Inter Reseller NZD Adyen 3D Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Adyen" />     
@@ -1150,7 +1144,7 @@
             </class>
             <class name="com.nymgo.PayCreditCardCase">
                 <methods>
-                    <include name="payMasterCarAdyen3DSPendingTest" />
+                    <include name="payMasterCardAdyen3DSPendingTest" />
                 </methods>
             </class>
             <class name="com.nymgo.AdminSignInCase">
@@ -1211,7 +1205,7 @@
     </test>
 
     <test name="Test - Change Inter NormalUser Gateway to GlobalCollect" preserve-order="true">
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
         
         <classes>
 			<class name="com.nymgo.AdminSignInCase">
@@ -1227,10 +1221,61 @@
         </classes>
     </test>
 
+    <test name="Test - Change Euro NormalUser Gateway to GlobalCollect" preserve-order="true">
+        <parameter name="gatewayName" value="Global Collect" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminNormalMembersCase">
+                <methods>
+                    <include name="editEuroNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+	<test name="Test - Change Inter Reseller Gateway to GlobalCollect" preserve-order="true">
+        <parameter name="gatewayName" value="Global Collect" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editInterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Change Euro MasterReseller Gateway to GlobalCollect" preserve-order="true">
+        <parameter name="gatewayName" value="Global Collect" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editEuroMasterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
     <test name="Test - BuyCredit Inter NormalUser CAD GlobalCollect Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="CAD" />        
         <parameter name="cardType" value="Visa" />    
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -1271,27 +1316,10 @@
         </classes>
     </test>
 
-    <test name="Test - Change Euro NormalUser Gateway to GlobalCollect" preserve-order="true">
-        <parameter name="gatewayName" value="GlobalCollect" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminNormalMembersCase">
-                <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
     <test name="Test - BuyCredit Euro NormalUser AED GlobalCollect MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="AED" />        
         <parameter name="cardType" value="MasterCard" />    
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -1335,7 +1363,7 @@
     <test name="Test - BuyCredit Euro NormalUser KWD GlobalCollect Amex" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="American Express" />    
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -1376,27 +1404,10 @@
         </classes>
     </test>
     
-	<test name="Test - Change Inter Reseller Gateway to GlobalCollect" preserve-order="true">
-        <parameter name="gatewayName" value="GlobalCollect" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminResellersCase">
-                <methods>
-                    <include name="editInterResellerGatewayAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
     <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -1437,27 +1448,10 @@
         </classes>
     </test>
 
-    <test name="Test - Change Euro MasterReseller Gateway to GlobalCollect" preserve-order="true">
-        <parameter name="gatewayName" value="GlobalCollect" />     
-        
-        <classes>
-			<class name="com.nymgo.AdminSignInCase">
-                <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminResellersCase">
-                <methods>
-                    <include name="editEuroMasterResellerGatewayAdminTest" />
-                </methods>
-            </class>
-        </classes>
-    </test>
-
     <test name="Test - BuyCredit Euro MasterReseller AUD GlobalCollect MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="AUD" />        
         <parameter name="cardType" value="MasterCard" />    
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -1501,7 +1495,7 @@
     <test name="Test - BuyCredit Euro MasterReseller GBP GlobalCollect Amex" preserve-order="true">
         <parameter name="paymentCurrency" value="GBP" />        
         <parameter name="cardType" value="American Express" />    
-        <parameter name="gatewayName" value="GlobalCollect" />     
+        <parameter name="gatewayName" value="Global Collect" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
