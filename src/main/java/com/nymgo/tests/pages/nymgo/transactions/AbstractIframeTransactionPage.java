@@ -51,4 +51,10 @@ public abstract class AbstractIframeTransactionPage extends AbstractPage{
 		
 		return baseIframeTransactionFragment.baseTransactionFragment.isTransactionPending();
 	}
+
+	public boolean isTransactionSuccessful(){
+		
+		return baseIframeTransactionFragment.baseTransactionFragment.isTransactionSuccessful();
+	}
+
 }

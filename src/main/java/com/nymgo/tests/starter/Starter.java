@@ -231,8 +231,8 @@ public class Starter {
                 CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_DEV.toString());
                 break;
         }
-//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL);
-        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);
+        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL);
+//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);
 //        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https");
     }
 /*

@@ -29,14 +29,14 @@ public class BuyCreditCase extends AbstractCase{
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
-		String VATPercent = buyCreditPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 //			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditPage.getVATPercent();
+		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.clickContinueToGlobalCollect();		
 
@@ -58,7 +58,7 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedNormalUserWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+	public void buyCreditLoggedEuroNormalUserWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -79,7 +79,7 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedNormalUserAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+	public void buyCreditLoggedEuroNormalUserAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -101,7 +101,7 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void buyCreditLoggedEuroResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -140,7 +140,7 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void buyCreditLoggedEuroResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -165,7 +165,7 @@ public class BuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void buyCreditLoggedEuroResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -189,7 +189,7 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void buyCreditLoggedEuroMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -227,7 +227,7 @@ public class BuyCreditCase extends AbstractCase{
     }
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void buyCreditLoggedEuroMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -236,8 +236,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
@@ -250,7 +250,7 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void buyCreditLoggedEuroMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -259,8 +259,8 @@ public class BuyCreditCase extends AbstractCase{
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
 		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
-//			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();

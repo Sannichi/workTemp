@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.BROWSERS;
 import com.nymgo.tests.enums.LOCALE_CONST;
+import com.nymgo.tests.enums.PROPERTIES;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
@@ -27,7 +29,7 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
     	}
 	}
 
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_CHROME_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	
 	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = Starter.SECURE_PART + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
@@ -49,11 +51,28 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
 	@FindBy(id = "btnCancel")
 	private WebElement cancelButton;
 	
+	private String defineCorrectURL(){
+		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));
+        switch (BROWSER)
+        {
+            case FIREFOX:
+                return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
+            case CHROME:
+                return BUY_CREDIT_CONFIRM_PAGE_GC_CHROME_URL;
+            case IE:
+                return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
+            default:
+                return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
+        }
+	}
+	
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
+    	String correctURL = defineCorrectURL();
 		try{
-			wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
+//			wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
+			wait.until(ExpectedConditions.urlContains(correctURL));			
 			return true;
 		}
 		catch(TimeoutException e){
@@ -63,7 +82,9 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
+    	String correctURL = defineCorrectURL();
+//		return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
+		return correctURL;    	
 	}
 
 	public void setCardNumberValue(String cardNumberValue){

@@ -83,6 +83,19 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 		return pendingTransactionGlobalCollectPage;
 	}
 
+	public SuccessfulTransactionGlobalCollectPage setCreditCardDataAndClickContinueSuccessful(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		setCardNumber(cardNumberValue);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickContinueButton();
+		SuccessfulTransactionGlobalCollectPage successfulTransactionGlobalCollectPage = new SuccessfulTransactionGlobalCollectPage(starter);
+		PageNavigation<SuccessfulTransactionGlobalCollectPage> navigation = new PageNavigation<SuccessfulTransactionGlobalCollectPage>(successfulTransactionGlobalCollectPage);
+		navigation.NavigatedTo();
+		return successfulTransactionGlobalCollectPage;
+	}
+
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);

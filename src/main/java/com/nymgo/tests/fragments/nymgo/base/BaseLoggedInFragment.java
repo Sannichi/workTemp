@@ -51,6 +51,7 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 
 		initializeWebElements();
 		Actions actions = new Actions(driver);
+		scrollToElement(accountButton);
 		actions.moveToElement(accountButton).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);
 		WebElement webElement = null;
@@ -59,6 +60,7 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 		}
 		catch (TimeoutException e){
 			actions.moveToElement(nymgoLogo).perform();
+			LOGGER.info("Hover Account dropdown again...");
 			actions.moveToElement(accountButton).perform();
 			try {
 				webElement = wait.until(ExpectedConditions.visibilityOf(myAccountDropdown)); 

@@ -126,6 +126,11 @@
                     <include name="acceptInterNormalUserTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -152,7 +157,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -168,6 +173,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+			<class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -196,7 +206,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -212,6 +222,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -258,6 +273,11 @@
                     <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -284,7 +304,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -300,6 +320,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -328,7 +353,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -344,6 +369,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -390,6 +420,11 @@
                     <include name="acceptInterNormalUserTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -416,7 +451,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -432,6 +467,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -460,7 +500,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -476,6 +516,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -522,6 +567,11 @@
                     <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -548,7 +598,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -564,6 +614,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -592,7 +647,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerWorldpayTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -608,6 +663,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -743,7 +803,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserAdyenTest" />
+                    <include name="buyCreditLoggedEuroNormalUserAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -759,6 +819,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -787,7 +852,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserAdyenTest" />
+                    <include name="buyCreditLoggedEuroNormalUserAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -803,6 +868,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -849,6 +919,11 @@
                     <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -875,7 +950,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -891,6 +966,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -919,7 +999,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -935,6 +1015,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1002,7 +1087,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserAdyenTest" />
+                    <include name="buyCreditLoggedEuroNormalUserAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1018,6 +1103,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -1046,7 +1136,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserAdyenTest" />
+                    <include name="buyCreditLoggedEuroNormalUserAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1062,6 +1152,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -1108,6 +1203,11 @@
                     <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -1134,7 +1234,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1150,6 +1250,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1178,7 +1283,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerAdyenTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerAdyenTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1194,6 +1299,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1295,17 +1405,12 @@
             </class>
             <class name="com.nymgo.PayCreditCardCase">
                 <methods>
-                    <include name="payVisaGlobalCollectPendingTest" />
+                    <include name="payVisaGlobalCollectSuccessfulTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.AdminSignInCase">
+            <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="signInAdminTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.AdminTransactionsCase">
-                <methods>
-                    <include name="acceptInterNormalUserTransactionAdminTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -1334,7 +1439,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserGlobalCollectTest" />
+                    <include name="buyCreditLoggedEuroNormalUserGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1350,6 +1455,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -1378,7 +1488,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedNormalUserGlobalCollectTest" />
+                    <include name="buyCreditLoggedEuroNormalUserGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1394,6 +1504,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -1440,6 +1555,11 @@
                     <include name="acceptInterResellerTransactionAdminTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -1466,7 +1586,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1482,6 +1602,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>
@@ -1510,7 +1635,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedMasterResellerGlobalCollectTest" />
+                    <include name="buyCreditLoggedEuroMasterResellerGlobalCollectTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -1526,6 +1651,11 @@
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
                     <include name="acceptEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroMasterResellerTest" />
                 </methods>
             </class>
         </classes>

@@ -35,7 +35,15 @@ public class AbstractCase {
     public void testName(ITestContext context){
 
         initStarter(context);    	
-    	LOGGER.info("Test '" + context.getName() + "' started");    	
+    	LOGGER.info("Test '" + context.getName() + "' started");   
+    	starter.driver.manage().deleteAllCookies();
+    	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //wait 5 seconds to clear cookies.    	
+    	LOGGER.info("All cookies are cleared");   
     }
     
     @BeforeMethod

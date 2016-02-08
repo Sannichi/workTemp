@@ -182,6 +182,13 @@ public abstract class BaseProfileInfoFragment extends BaseLoggedInFragment{
 
 	protected void clickSaveButton(){
 		
+		scrollToElement(saveButton);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		clickSubmitButton(saveButton);
 	}
 }

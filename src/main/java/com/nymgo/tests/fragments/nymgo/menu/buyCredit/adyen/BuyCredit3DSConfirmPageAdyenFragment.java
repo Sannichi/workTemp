@@ -7,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nymgo.tests.enums.BROWSERS;
 import com.nymgo.tests.enums.LOCALE_CONST;
+import com.nymgo.tests.enums.PROPERTIES;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.base.BaseIframePageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
@@ -27,6 +29,8 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 //	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") + 
 	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = Starter.SECURE_PART + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
+
+	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_CHROME_URL = "https://test.adyen.com/hpp/3d/validate.shtml";	
 	
 	@FindBy(css = "input[id='username']")
 	private WebElement usernameField;
@@ -37,11 +41,28 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 	@FindBy(css = "input[class='button']")
 	private WebElement submitButton;
 	
+	private String defineCorrectURL(){
+		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));
+        switch (BROWSER)
+        {
+            case FIREFOX:
+                return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL;
+            case CHROME:
+                return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_CHROME_URL;
+            case IE:
+                return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL;
+            default:
+                return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL;
+        }
+	}
+	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
 		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
+		String correctURL = defineCorrectURL();
 		try{
-			wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL));
+//			wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL));
+			wait.until(ExpectedConditions.urlToBe(correctURL));			
 			return true;
 		}
 		catch(TimeoutException e){
@@ -51,7 +72,9 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL;
+		String correctURL = defineCorrectURL();
+//		return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL;
+		return correctURL;		
 	}
 
 	public void setUsername(String username){

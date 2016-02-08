@@ -25,6 +25,7 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 	public AbstractViewAccountPage expandContentByText(String contentName){
 
 		baseViewAccountFragment.expandContentByText(contentName);
+		delay(1000);
 		LOGGER.info("Expandable content " + contentName + " is expanded");
 		return this;
 	}
@@ -300,6 +301,10 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 		
 		expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.EDIT_PROFILE));
 		if (editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language)){
+			Assert.assertTrue(getSuccessMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_UPDATED_SUCCESS_MESSAGE)), 
+					"Success message is incorrect: '" + getSuccessMessage() + "' should be '" + 
+							LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_UPDATED_SUCCESS_MESSAGE) + "'");
+			LOGGER.info("Successful message is correct");
 			expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.EDIT_PROFILE));
 			verifyEditedProfile(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 		}else{
@@ -312,6 +317,10 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 		
 		expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_DETAILS));
 		if (editProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language)){
+			Assert.assertTrue(getSuccessMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_UPDATED_SUCCESS_MESSAGE)), 
+					"Success message is incorrect: '" + getSuccessMessage() + "' should be '" + 
+							LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_UPDATED_SUCCESS_MESSAGE) + "'");
+			LOGGER.info("Successful message is correct");
 			expandContentByText(LocaleGenerator.getLocaleKey(LOCALE_CONST.ACCOUNT_DETAILS));
 			verifyEditedProfile(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 		}else{

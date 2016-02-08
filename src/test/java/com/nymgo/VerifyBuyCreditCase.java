@@ -162,7 +162,8 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 
 		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);

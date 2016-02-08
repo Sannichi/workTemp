@@ -18,6 +18,7 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyen3
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyenPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollect;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.SuccessfulTransactionGlobalCollectPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSConfirmPageWorldpay;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSProceedPageWorldpay;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpay3DSPage;
@@ -62,6 +63,25 @@ public class PayCreditCardCase extends AbstractCase{
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData(transactionID);		
 		NormalAccountPage normalAccountPage = pendingTransactionGlobalCollectPage.clickBackToNormalUserDashboardButton();
+		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
+		
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void payVisaGlobalCollectSuccessfulTest(FullCardEntity fullCardEntity){
+
+		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
+
+		SuccessfulTransactionGlobalCollectPage successfulTransactionGlobalCollectPage = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinueSuccessful(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+
+		Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionSuccessful(), 
+				"Transaction is not successful, current status is: " + successfulTransactionGlobalCollectPage.getPaymentStatus());
+		String transactionID = successfulTransactionGlobalCollectPage.getTransactionNumber();
+		String paymentStatus = successfulTransactionGlobalCollectPage.getPaymentStatus();
+		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+		ExcelUtils.addTransactionData(transactionID);		
+		NormalAccountPage normalAccountPage = successfulTransactionGlobalCollectPage.clickBackToNormalUserDashboardButton();
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 		
 	}

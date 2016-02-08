@@ -127,6 +127,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		clickContinueButton();
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPageGlobalCollect = new BuyCreditProceedPageGlobalCollect(starter);
+		buyCreditProceedPageGlobalCollect.getUpperMessage();
 		PageNavigation<BuyCreditProceedPageGlobalCollect> navigation = new PageNavigation<BuyCreditProceedPageGlobalCollect>(buyCreditProceedPageGlobalCollect);
 		navigation.NavigatedTo();
 		return buyCreditProceedPageGlobalCollect;
