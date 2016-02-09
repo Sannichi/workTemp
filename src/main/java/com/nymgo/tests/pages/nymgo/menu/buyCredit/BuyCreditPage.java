@@ -6,7 +6,9 @@ import java.util.List;
 import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSProceedPageAdyen;
@@ -127,8 +129,8 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		clickContinueButton();
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPageGlobalCollect = new BuyCreditProceedPageGlobalCollect(starter);
-		buyCreditProceedPageGlobalCollect.getUpperMessage();
 		PageNavigation<BuyCreditProceedPageGlobalCollect> navigation = new PageNavigation<BuyCreditProceedPageGlobalCollect>(buyCreditProceedPageGlobalCollect);
+		Assert.assertNotEquals(buyCreditProceedPageGlobalCollect.getErrorMessage(), LocaleGenerator.getLocaleKey(LOCALE_CONST.ANOTHER_TRANSACTION_IN_PROGRESS_MESSAGE), "Another transaction is in progress");
 		navigation.NavigatedTo();
 		return buyCreditProceedPageGlobalCollect;
 	} 
@@ -147,6 +149,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		clickContinueButton();
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
 		PageNavigation<BuyCredit3DSProceedPageWorldpay> navigation = new PageNavigation<BuyCredit3DSProceedPageWorldpay>(buyCredit3DSProceedPageWorldpay);
+		Assert.assertNotEquals(buyCredit3DSProceedPageWorldpay.getErrorMessage(), LocaleGenerator.getLocaleKey(LOCALE_CONST.ANOTHER_TRANSACTION_IN_PROGRESS_MESSAGE), "Another transaction is in progress");
 		navigation.NavigatedTo();
 		return buyCredit3DSProceedPageWorldpay;
 	} 
@@ -156,6 +159,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		clickContinueButton();
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		PageNavigation<BuyCredit3DSProceedPageAdyen> navigation = new PageNavigation<BuyCredit3DSProceedPageAdyen>(buyCredit3DSProceedPageAdyen);
+		Assert.assertNotEquals(buyCredit3DSProceedPageAdyen.getErrorMessage(), LocaleGenerator.getLocaleKey(LOCALE_CONST.ANOTHER_TRANSACTION_IN_PROGRESS_MESSAGE), "Another transaction is in progress");
 		navigation.NavigatedTo();
 		return buyCredit3DSProceedPageAdyen;
 	} 

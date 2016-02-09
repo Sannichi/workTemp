@@ -36,7 +36,6 @@ public class BusinessMembersAdminPageFragment extends BaseLoggedAdminPageWithSea
     	}
     }
     	
-
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
 		return BUSINESS_MEMBERS_PAGE_URL_ENG;

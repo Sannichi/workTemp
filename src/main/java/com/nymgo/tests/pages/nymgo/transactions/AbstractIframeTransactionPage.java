@@ -57,4 +57,8 @@ public abstract class AbstractIframeTransactionPage extends AbstractPage{
 		return baseIframeTransactionFragment.baseTransactionFragment.isTransactionSuccessful();
 	}
 
+	public boolean isTransactionChallenged(){
+		
+		return baseIframeTransactionFragment.baseTransactionFragment.isTransactionChallenged();
+	}
 }

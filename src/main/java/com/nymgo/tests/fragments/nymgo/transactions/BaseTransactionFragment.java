@@ -70,4 +70,9 @@ public class BaseTransactionFragment extends BaseFragment{
 		
 		return getPaymentStatus().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PAYMENT_SUCCESSFUL));
 	}
+
+	public boolean isTransactionChallenged(){
+		
+		return getPaymentStatus().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.PAYMENT_CHALLENGED));
+	}
 }

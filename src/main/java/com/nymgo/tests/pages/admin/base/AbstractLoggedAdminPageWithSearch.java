@@ -1,6 +1,9 @@
 package com.nymgo.tests.pages.admin.base;
 
+import org.openqa.selenium.UnhandledAlertException;
+
 import com.nymgo.tests.fragments.admin.base.AdminPageWithSearchFragment;
+import com.nymgo.tests.pages.admin.alerts.UnhandledAlert;
 import com.nymgo.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAdminPage{
@@ -53,10 +56,18 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		typeCriteria(criteria);
 		selectField("ID");
 		selectType("Exact Match");
+		UnhandledAlert unhandledAlert = new UnhandledAlert(starter);
 		clickGoButton();
 		for (int i = 0; i < 5; i++){
 			LOGGER.info("Searching...");
-			waitSearchCriteria();
+			try{
+				waitSearchCriteria();
+			}
+			catch (UnhandledAlertException e){
+				String alertText = unhandledAlert.getAlertText();
+				unhandledAlert.acceptAlert();
+				LOGGER.fatal("Unhandled alert with text: '" + alertText + "' was closed");
+			}
 			if (getRowsCount() <= 1){
 				break;
 			}

@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -74,8 +75,7 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
         }
     }
 
-	
-	public void waitSearchCriteria(){
+	public void waitSearchCriteria() throws UnhandledAlertException{
 
 		delay(1000);
 		WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);
@@ -86,6 +86,9 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
         catch (TimeoutException e){
         	LOGGER.debug("First row was not become invisible");
         }
+//        catch (UnhandledAlertException e){
+//        	LOGGER.fatal("Unhandled alert with text");
+//        }
         try{
     		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("c_50"))));
     		LOGGER.debug("50th row is displayed");

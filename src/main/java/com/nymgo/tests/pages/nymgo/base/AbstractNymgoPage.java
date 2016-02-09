@@ -23,6 +23,11 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 		return nymgoPageFragment.getSuccessMessage();
 	}
 	
+	public String getErrorMessage(){
+		
+		return nymgoPageFragment.getErrorMessage();
+	}
+	
 	public String getUpperMessage(){
 		
 		return nymgoPageFragment.getUpperMessage();

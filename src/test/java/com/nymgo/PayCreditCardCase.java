@@ -75,8 +75,28 @@ public class PayCreditCardCase extends AbstractCase{
 		SuccessfulTransactionGlobalCollectPage successfulTransactionGlobalCollectPage = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinueSuccessful(fullCardEntity.getCardNumber(), 
 				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
 
-		Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionSuccessful(), 
+		Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionSuccessful() || successfulTransactionGlobalCollectPage.isTransactionChallenged(), 
 				"Transaction is not successful, current status is: " + successfulTransactionGlobalCollectPage.getPaymentStatus());
+		String transactionID = successfulTransactionGlobalCollectPage.getTransactionNumber();
+		String paymentStatus = successfulTransactionGlobalCollectPage.getPaymentStatus();
+		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+		ExcelUtils.addTransactionData(transactionID);		
+		@SuppressWarnings("unused")
+		NormalAccountPage normalAccountPage = successfulTransactionGlobalCollectPage.clickBackToNormalUserDashboardButton();
+//		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
+		
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void payVisaGlobalCollectChallengedTest(FullCardEntity fullCardEntity){
+
+		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
+
+		SuccessfulTransactionGlobalCollectPage successfulTransactionGlobalCollectPage = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinueSuccessful(fullCardEntity.getCardNumber(), 
+				fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+
+		Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionChallenged(), 
+				"Transaction is not challenged, current status is: " + successfulTransactionGlobalCollectPage.getPaymentStatus());
 		String transactionID = successfulTransactionGlobalCollectPage.getTransactionNumber();
 		String paymentStatus = successfulTransactionGlobalCollectPage.getPaymentStatus();
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
@@ -280,7 +300,7 @@ public class PayCreditCardCase extends AbstractCase{
 				fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());		
 		
 		PendingTransactionWorldpay3DSPage pendingTransactionWorldpay3DSPage = buyCredit3DSConfirmPageWorldpay.continuePayment();		
-
+	
 		Assert.assertTrue(pendingTransactionWorldpay3DSPage.isTransactionPending(), 
 				"Transaction is not pending, current status is: " + pendingTransactionWorldpay3DSPage.getPaymentStatus());
 		String transactionID = pendingTransactionWorldpay3DSPage.getTransactionNumber();
@@ -288,6 +308,18 @@ public class PayCreditCardCase extends AbstractCase{
 		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
 		ExcelUtils.addTransactionData(transactionID);		
 		NormalAccountPage normalAccountPage = pendingTransactionWorldpay3DSPage.clickBackToNormalUserDashboardButton();
+		
+//		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.set3DSAmexCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
+//		fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
+//
+//		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
+//				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
+//		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
+//		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
+//		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
+//		ExcelUtils.addTransactionData(transactionID);		
+//		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
+		
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 

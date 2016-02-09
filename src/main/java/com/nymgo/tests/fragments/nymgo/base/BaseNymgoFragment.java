@@ -62,6 +62,9 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	@FindBy(css = "div[class='success-message']")
 	private WebElement successMessage;
 
+	@FindBy(css = "div[class='error-message']")
+	private WebElement errorMessage;
+
 	@FindBy(css = "div[class$='-message']")
 	private WebElement upperMessage;
 
@@ -96,6 +99,11 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 		return isElementEnabled(successMessage);
 	}
 
+	private boolean isErrorMessageEnabled(){
+		
+		return isElementEnabled(errorMessage);
+	}
+
 	private boolean isUpperMessageEnabled(){
 		
 		return isElementEnabled(upperMessage);
@@ -104,6 +112,13 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	public String getSuccessMessage(){
 		if (isSuccessMessageEnabled()){
 			return successMessage.getText();
+		}
+		return "MessageDisabled";
+	}
+
+	public String getErrorMessage(){
+		if (isErrorMessageEnabled()){
+			return errorMessage.getText();
 		}
 		return "MessageDisabled";
 	}
