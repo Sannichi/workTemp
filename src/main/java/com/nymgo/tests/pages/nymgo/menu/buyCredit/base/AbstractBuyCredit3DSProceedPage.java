@@ -49,6 +49,11 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		baseBuyCredit3DSProceedPageFragment.clickCancelButton();
 	}
 	
+	protected void setSaveCardCheckbox(){
+		
+		baseBuyCredit3DSProceedPageFragment.setSaveCardCheckbox();
+	}
+	
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 /*		setCardNumber(cardNumberValue);

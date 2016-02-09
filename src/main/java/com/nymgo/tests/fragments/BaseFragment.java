@@ -158,6 +158,15 @@ public class BaseFragment {
 		}
 	}
 
+	public boolean isElementSelected(WebElement element){
+		try{
+			return element.isSelected();
+		}
+		catch(NoSuchElementException e){
+			return false;
+		}
+	}
+
 	protected void pressEnter(){
 		
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.ENTER);
@@ -228,6 +237,16 @@ public class BaseFragment {
 		String value = button.getAttribute("value");
 		button.click();
 		LOGGER.info("Button '" + value + "' was clicked");
+	}
+	
+	/**
+	*Checkbox with value
+	*/
+	protected void clickCheckbox(WebElement checkbox){
+		
+		String value = checkbox.getAttribute("value");
+		checkbox.click();
+		LOGGER.info("Checkbox '" + value + "' was clicked");
 	}
 	
 	protected void clickLink(WebElement link){

@@ -127,4 +127,9 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 				"', should be '" + nymgoCreditValue + "'");
 		LOGGER.info("Nymgo Credit Value is correct");
 	}
+
+	protected void setSaveCardCheckbox(){
+		
+		baseBuyCreditProceedPageFragment.setSaveCardCheckbox();
+	}
 }

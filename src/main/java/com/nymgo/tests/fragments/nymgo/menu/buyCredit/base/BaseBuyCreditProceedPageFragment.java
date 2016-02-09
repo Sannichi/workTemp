@@ -50,6 +50,9 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 	@FindBy(id="save-el")
     private WebElement continueButton;
 
+	@FindBy(css = "input[id='savecard']")
+	private WebElement saveCardCheckbox;
+
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
@@ -126,4 +129,10 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 		return nymgoCreditVATAmount.get(2).getText().split("\n")[1].split(" ")[0];
 	}
 
+	public void setSaveCardCheckbox(){
+		
+		if (!isElementSelected(saveCardCheckbox)){
+			clickCheckbox(saveCardCheckbox);
+		}
+	}
 }

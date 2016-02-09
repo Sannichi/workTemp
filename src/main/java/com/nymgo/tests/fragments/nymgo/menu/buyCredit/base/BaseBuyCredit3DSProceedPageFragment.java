@@ -33,6 +33,9 @@ public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
 	@FindBy(css = "a[class='button-normal cancel']")
 	private WebElement cancelButton;
 
+	@FindBy(css = "input[id='savecard']")
+	private WebElement saveCardCheckbox;
+
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
 		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
@@ -58,5 +61,12 @@ public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
 	public void clickCancelButton(){
 		
 		clickInputButton(cancelButton);
+	}
+
+	public void setSaveCardCheckbox(){
+		
+		if (!isElementSelected(saveCardCheckbox)){
+			clickCheckbox(saveCardCheckbox);
+		}
 	}
 }
