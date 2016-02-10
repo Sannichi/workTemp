@@ -877,7 +877,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - BuyCredit Inter Reseller NZD Adyen Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
