@@ -585,6 +585,60 @@ public class ExcelUtils {
 		}
 		return false;
 	} 
+
+	public static boolean addExpectedAndActualAddedAmountData(String expected, String actual){
+
+		try{
+			
+			setExcelFile(transactionFilePath, transactionSheetName);
+			int startCol = 0;
+			int startRow = getFirstEmptyRow();
+			LOGGER.info("Start row = " + startRow);
+			if (startRow != 0){
+				try {
+					if(!getCellData(startRow - 1, startCol + 6).equals("")||!getCellData(startRow - 1, startCol + 6).equals(" ")){
+					setCellData(startRow - 1, startCol + 6, expected);	
+					LOGGER.info("Expected amount " + expected + " was added to Excel");
+					}
+					else{
+						LOGGER.fatal("There is another data in the cell! - '" + getCellData(startRow - 1, startCol + 6) + "'");
+					}
+					if(!getCellData(startRow - 1, startCol + 7).equals("")||!getCellData(startRow - 1, startCol + 7).equals(" ")){
+					setCellData(startRow - 1, startCol + 7, actual);	
+					LOGGER.info("Actual amount " + actual + " was added to Excel");
+					}
+					else{
+						LOGGER.fatal("There is another data in the cell! - '" + getCellData(startRow - 1, startCol + 7) + "'");
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				writeExcelFile(transactionFilePath);
+			}
+			else{
+				LOGGER.fatal("There is no data to add amounts to!");
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+	
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		} catch (Exception e) {
+
+			LOGGER.fatal("Could not read the Excel sheet");
+			e.printStackTrace();
+		}
+		return false;
+	} 
+
 /*
 	public static boolean addTransactionData(String transactionID, String status){
 

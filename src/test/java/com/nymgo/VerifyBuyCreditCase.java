@@ -1,6 +1,5 @@
 package com.nymgo;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.nymgo.data.entity.FullUserEntity;
@@ -32,10 +31,13 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
 		Assert.assertEquals(Float.parseFloat(previousAccountBalanceValue) + Float.parseFloat(currencyAmount), Float.parseFloat(accountBalanceValue));
 */
-		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount));
-		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount));
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
 	}
 
     @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -65,17 +67,23 @@ public class VerifyBuyCreditCase extends AbstractCase{
 			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
 		}
 		
-		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
-
 //		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);
 //
 //		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
 //				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
 //				+ Float.parseFloat(currencyAmount) + Float.parseFloat(currencyAmount)/100*bonusPercent);
 //
-		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+
+//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
+//
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent), 
+				String.valueOf(Float.parseFloat(resellerAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
+		
     }
 
     @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -100,11 +108,15 @@ public class VerifyBuyCreditCase extends AbstractCase{
 			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
 		}
 		
-		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
-
-		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
+//
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent), 
+				String.valueOf(Float.parseFloat(resellerAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -119,10 +131,13 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
-		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount));
-		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount));
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
 	}
 
     @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -144,11 +159,15 @@ public class VerifyBuyCreditCase extends AbstractCase{
 			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
 		}
 		
-		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
-
-		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
+//
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent), 
+				String.valueOf(Float.parseFloat(resellerAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
     }
 
     @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
@@ -171,10 +190,14 @@ public class VerifyBuyCreditCase extends AbstractCase{
 			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
 		}
 		
-		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
-
-		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
+//
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent), 
+				String.valueOf(Float.parseFloat(resellerAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
 	}
 }
