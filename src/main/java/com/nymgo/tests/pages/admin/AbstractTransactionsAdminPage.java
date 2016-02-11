@@ -25,27 +25,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
     	super(starter);
     	transactionsAdminPageFragment = new BaseTransactionsAdminPageFragment(driver);
     }
-/*
-	private static final String TRANSACTIONS_PAGE_NAME_ENG = "AdminTransactionsPage"; 
-	
-	@Override
-	public boolean isCorrectPage() {
-		// TODO Auto-generated method stub
-		return transactionsAdminPageFragment.isCorrectURL();
-	}
 
-	@Override
-	public String getPageName() {
-		// TODO Auto-generated method stub
-		return TRANSACTIONS_PAGE_NAME_ENG;
-	}
-
-	@Override
-	public String getPageURL() {
-		// TODO Auto-generated method stub
-		return transactionsAdminPageFragment.getCorrectURL();
-	}
-*/	
 	private Map<String, String> getTransactionDetailsByID(String transactionID){
 	
 		return transactionsAdminPageFragment.getTransactionDetailsById(transactionID);
@@ -140,11 +120,6 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		 * if amount == null - minimum value for current currency is got
 		 * 
 		 */
-		/*
-		if(amount == null){
-			amount = String.valueOf(CurrencyDescriptionMap.getCurrencyDescriptionBySign(currency).getFirstNormalValue());
-		}
-		*/
 		String conversionRate = CurrencyUtils.getConversionRateByCurrencyName(currency);
 		LOGGER.info("Conversion rate is '" + conversionRate + "'");
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);

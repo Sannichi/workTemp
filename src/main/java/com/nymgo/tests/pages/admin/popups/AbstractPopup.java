@@ -29,11 +29,6 @@ public abstract class AbstractPopup extends AbstractPage{
     		transactionAcceptedPopup.clickOnCloseButton();
             LOGGER.info("Closing the Transaction Accepted Popup");            
         } 
-        /*
-        else if() {
-        	
-        }
-        */
     }
     
     public String getPopupText(){

@@ -338,17 +338,6 @@ public class PayCreditCardAddNewCardCase extends AbstractCase{
 		ExcelUtils.addTransactionData(transactionID);		
 		NormalAccountPage normalAccountPage = pendingTransactionWorldpay3DSPage.clickBackToNormalUserDashboardButton();
 		
-//		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.set3DSAmexCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
-//		fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
-//
-//		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
-//				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
-//		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
-//		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
-//		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData(transactionID);		
-//		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
-		
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 

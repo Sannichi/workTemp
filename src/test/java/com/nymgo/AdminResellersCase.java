@@ -2,6 +2,7 @@ package com.nymgo;
 
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
@@ -15,10 +16,12 @@ import com.nymgo.tests.pages.admin.widgets.BusinessMemberListWidget;
  */
 public class AdminResellersCase extends AbstractCase{
 
-	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editEuroResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editEuroResellerGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();
@@ -34,10 +37,12 @@ public class AdminResellersCase extends AbstractCase{
 		LOGGER.info("End");
 	}
 	
-	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editEuroMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editEuroMasterResellerGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();
@@ -53,10 +58,12 @@ public class AdminResellersCase extends AbstractCase{
 		LOGGER.info("End");
 	}
 	
-	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editInterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editInterResellerGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();
@@ -72,10 +79,12 @@ public class AdminResellersCase extends AbstractCase{
 		LOGGER.info("End");
 	}
 	
-	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void editInterMasterResellerGatewayAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editInterMasterResellerGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();

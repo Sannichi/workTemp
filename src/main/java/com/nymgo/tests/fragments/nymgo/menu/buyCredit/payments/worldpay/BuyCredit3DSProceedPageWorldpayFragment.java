@@ -10,7 +10,6 @@ import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.base.BaseBuyCredi
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-//public class BuyCreditProceedPageWorldpayFragment extends BaseBuyCreditProceedPageFragment{
 public class BuyCredit3DSProceedPageWorldpayFragment extends BaseBuyCredit3DSProceedPageFragment{
 
 	public BuyCredit3DSProceedPageWorldpayFragment(WebDriver driver) {

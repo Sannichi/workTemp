@@ -166,8 +166,6 @@ public class NormalUserSignUpPage extends AbstractNymgoPage{
 		FullUserEntity fullUserEntity = new FullUserEntity();		
 		fullUserEntity = DataAdapter.getSignUpNormalUser();
 
-//		Map<String, String> fullNameVerifies = ExcelUtils.getFullNameVerifyParameters();
-//		for (String key : fullNameVerifies.keySet()){
 		if(testName.equals("Empty")){
 			clearAllFields();
 			setFullName(testString);

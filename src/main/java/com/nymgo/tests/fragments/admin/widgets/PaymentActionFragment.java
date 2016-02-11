@@ -30,19 +30,16 @@ public class PaymentActionFragment extends BaseWidgetFragment{
 
 	private WebElement getUserInformationTable(){
 
-//		navigateToPaymentActionTab();
 		return getWidgetContentArea().findElement(By.xpath(".//table[2]"));
 	}
 
 	private WebElement getTransactionInformationTable(){
 
-//		navigateToPaymentActionTab();
 		return getWidgetContentArea().findElement(By.xpath(".//table[3]"));
 	}
 	
 	private WebElement getUserSummaryTable(){
 
-//		navigateToPaymentActionTab();
 		return getWidgetContentArea().findElement(By.xpath(".//table[4]"));
 	}
 
@@ -60,7 +57,6 @@ public class PaymentActionFragment extends BaseWidgetFragment{
 		
 		Map<String, String> tableInformation= new HashMap<String, String>();		
 		List<WebElement> transactionInformationRows = table.findElements(By.xpath(".//tr"));		
-//		for (WebElement row: transactionInformationRows){
 		for (int i = 1; i < transactionInformationRows.size(); i++){//first row is a table name		
 			tableInformation.put(getTableRowName(transactionInformationRows.get(i)), getTableRowValue(transactionInformationRows.get(i)));
 		}

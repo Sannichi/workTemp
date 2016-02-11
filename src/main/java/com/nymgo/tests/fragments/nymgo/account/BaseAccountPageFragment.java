@@ -21,9 +21,6 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	public static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
-//	public static final String ACCOUNT_PAGE_URL_EN = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +	
 	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	
@@ -32,7 +29,6 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	private static final String accountMyBalanceBlockClassName = "block my-balance";
 	private static final String accountBuyCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/buy-credits']";
 	private static final String transferCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/user/credits/transfer-credits']";
-//	private static final String viewFullAccountXpath = "//a[@href='" + language + "/user/account/view/profile']";
 
 	private WebElement accountBuyCreditButton;
 	private WebElement accountTransferCreditButton;

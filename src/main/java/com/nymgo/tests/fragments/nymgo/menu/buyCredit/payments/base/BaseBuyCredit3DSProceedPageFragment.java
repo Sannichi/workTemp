@@ -16,7 +16,6 @@ import com.nymgo.tests.starter.Starter;
  * Created by Iuliia Khikmatova on Nov 10, 2015
  */
 //Adyen and Worldpay payments
-//public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
 public class BaseBuyCredit3DSProceedPageFragment extends BaseRecurrentCreditCardFragment{
 	
 	public BaseBuyCredit3DSProceedPageFragment(WebDriver driver) {
@@ -24,8 +23,6 @@ public class BaseBuyCredit3DSProceedPageFragment extends BaseRecurrentCreditCard
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_3DS_PAGE_PROOCEED_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	private static final String BUY_CREDIT_3DS_PAGE_PROOCEED_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +
 	private static final String BUY_CREDIT_3DS_PAGE_PROOCEED_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/proceed";	
 	

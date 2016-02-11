@@ -6,8 +6,6 @@ import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.BuyCreditConfirmPageCancelled;
 import com.nymgo.tests.starter.Starter;
 
-//public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmPage{
-//public class BuyCreditConfirmPageGlobalCollect extends AbstractTransactionPage{
 public class BuyCreditConfirmPageGlobalCollect extends AbstractLoggedInPage{
 
 	private BuyCreditConfirmPageGlobalCollectFragment buyCreditConfirmPageGlobalCollectFragment;

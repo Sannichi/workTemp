@@ -20,15 +20,12 @@ public class PendingTransactionWorldpayFragment extends PendingTransactionFragme
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = "https://secure-dev.nymgo.com/wpreturn?orderKey=";	
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = "https://secure-dev.nymgo.com/en/generate";
 	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = Starter.SECURE_PART + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";
 	
 	public boolean isCorrectURL(){
 
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-//    	return wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL));
 		try{
 			wait.until(ExpectedConditions.urlMatches(BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL));    	
 			return true;

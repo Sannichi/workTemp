@@ -24,9 +24,6 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-//	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = "https://test.adyen.com/hpp/3d/validate.shtml";
-//	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) + 
-//	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") + 
 	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = Starter.SECURE_PART + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
@@ -61,7 +58,6 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
 		String correctURL = defineCorrectURL();
 		try{
-//			wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL));
 			wait.until(ExpectedConditions.urlToBe(correctURL));			
 			return true;
 		}
@@ -72,9 +68,7 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		String correctURL = defineCorrectURL();
-//		return BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL;
-		return correctURL;		
+		return defineCorrectURL();	
 	}
 
 	public void setUsername(String username){

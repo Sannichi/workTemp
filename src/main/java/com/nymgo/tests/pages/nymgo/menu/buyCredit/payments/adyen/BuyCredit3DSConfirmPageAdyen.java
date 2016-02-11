@@ -63,26 +63,4 @@ public class BuyCredit3DSConfirmPageAdyen extends AbstractLoggedInPage{
 		navigation.NavigatedTo();
 		return pendingTransactionAdyen3DSPage;
 	}
-/*
-	public PendingTransactionAdyenPage verifyDataAndClickPayToPending(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
-		
-		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
-				"', should be '" + cardNumberValue + "'");
-		LOGGER.info("Card Number is correct");
-		Assert.assertTrue(getCardholdersName().equals(cardholdersName), "Cardholder's Name is not correct! Current value is '" + getCardholdersName() + 
-				"', should be '" + cardholdersName + "'");
-		LOGGER.info("Cardholder's Name is correct");
-		Assert.assertTrue(getSelectedExpireDateMonthValue().equals(expireDateMonth), "Expire Date Month is not correct! Current value is '" + getSelectedExpireDateMonthValue() + 
-				"', should be '" + expireDateMonth + "'");
-		LOGGER.info("Expire Date Month is correct");
-		Assert.assertTrue(getSelectedExpireDateYear().equals(expireDateYear), "Expire Date Year is not correct! Current value is '" + getSelectedExpireDateYear() + 
-				"', should be '" + expireDateYear + "'");
-		LOGGER.info("Expire Date Year is correct");
-		clickPayButton();
-		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
-		PageNavigation<PendingTransactionAdyenPage> navigation = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);
-		navigation.NavigatedTo();
-		return pendingTransactionAdyenPage;
-	}
-*/
 }

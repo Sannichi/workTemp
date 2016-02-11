@@ -39,7 +39,6 @@ public class BaseWidgetFragment extends BaseFragment{
     public boolean isWidgetExist(){
 
         try{
-//            setWidgetContainer();
             setWidgetName();
         }
         catch (NotFoundException e){
@@ -72,7 +71,6 @@ public class BaseWidgetFragment extends BaseFragment{
 
     	String imageXpath = ".//img[@alt='" + tabText + "']";
 		WebElement imageByAlt = widgetContainer.findElement(By.xpath(imageXpath));
-//		imageByAlt.click();
 		clickWidgetTabImage(imageByAlt);
     }
     

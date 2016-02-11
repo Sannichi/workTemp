@@ -47,8 +47,6 @@ public class BaseViewAccountFragment extends BaseProfileInfoFragment{
 		return "/account/view/profile*";
 	}
 
-//	@FindBy(css = "div[class='clickable active']")
-//	@FindBy(css = "div[class$='active']") // ends with	
 	@FindBy(css = "div[class*='active']") //contains
 	private WebElement activeClickableContent;
 	

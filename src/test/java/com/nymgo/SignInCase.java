@@ -2,9 +2,8 @@ package com.nymgo;
 
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
-import com.nymgo.data.enums.PROVIDER_CONST;
-import com.nymgo.data.providers.GeneralDataProvider;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.HomePage;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
@@ -18,10 +17,11 @@ import org.testng.Assert;
 
 public class SignInCase extends AbstractCase{
 	
-//    @Test(groups={"euroNormalSignIn"}, dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signInEuroNormalWhitelistUserTest(FullUserEntity fullUserEntity){    
+    @Test    
+	public void signInEuroNormalWhitelistUserTest(){    
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+    	
     	HomePage homePage = new HomePage(starter);
 		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
 
@@ -31,10 +31,11 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
     }
 	
-//    @Test(groups={"euroResellerSignIn"}, dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signInEuroResellerTest(FullUserEntity fullUserEntity){
+    @Test    
+	public void signInEuroResellerTest(){
 		
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller();
+    	
     	String login = fullUserEntity.getUsername();
     	String password = fullUserEntity.getPassword();
     	
@@ -47,10 +48,11 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
 	}
 
-//    @Test(groups={"euroMasterResellerSignIn"}, dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-    @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signInEuroMasterResellerTest(FullUserEntity fullUserEntity){
+    @Test    
+	public void signInEuroMasterResellerTest(){
 		
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller();
+    	
     	String login = fullUserEntity.getUsername();
     	String password = fullUserEntity.getPassword();
     	
@@ -63,11 +65,12 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
 	}
 
-//  @Test(groups={"interNormalSignIn"}, dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-  @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signInInterNormalWhitelistUserTest(FullUserEntity fullUserEntity){    
+	@Test    
+	public void signInInterNormalWhitelistUserTest(){    
 
-  	HomePage homePage = new HomePage(starter);
+	  	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+	
+  		HomePage homePage = new HomePage(starter);
 		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
 
 		String username = fullUserEntity.getUsername();
@@ -76,12 +79,13 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
   }
 	
-//  @Test(groups={"interResellerSignIn"}, dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-  @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signInInterResellerTest(FullUserEntity fullUserEntity){
+	@Test    
+	public void signInInterResellerTest(){
 		
-  	String login = fullUserEntity.getUsername();
-  	String password = fullUserEntity.getPassword();
+	  	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+	
+	  	String login = fullUserEntity.getUsername();
+	  	String password = fullUserEntity.getPassword();
   	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		HomePage homePage = nymgoPage.setDefaultState();
@@ -92,12 +96,13 @@ public class SignInCase extends AbstractCase{
 		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
 	}
 
-//  @Test(groups={"interMasterResellerSignIn"}, dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-  @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void signInInterMasterResellerTest(FullUserEntity fullUserEntity){
+	@Test    
+	public void signInInterMasterResellerTest(){
 		
-  	String login = fullUserEntity.getUsername();
-  	String password = fullUserEntity.getPassword();
+    	FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller();
+    	
+	  	String login = fullUserEntity.getUsername();
+	  	String password = fullUserEntity.getPassword();
   	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		HomePage homePage = nymgoPage.setDefaultState();

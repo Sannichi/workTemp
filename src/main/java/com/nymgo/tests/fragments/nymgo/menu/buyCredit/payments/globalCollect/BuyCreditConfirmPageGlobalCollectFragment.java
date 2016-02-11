@@ -71,7 +71,6 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	String correctURL = defineCorrectURL();
 		try{
-//			wait.until(ExpectedConditions.urlContains(BUY_CREDIT_CONFIRM_PAGE_GC_URL));
 			wait.until(ExpectedConditions.urlContains(correctURL));			
 			return true;
 		}
@@ -82,9 +81,7 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-    	String correctURL = defineCorrectURL();
-//		return BUY_CREDIT_CONFIRM_PAGE_GC_URL;
-		return correctURL;    	
+		return defineCorrectURL();    	
 	}
 
 	public void setCardNumberValue(String cardNumberValue){

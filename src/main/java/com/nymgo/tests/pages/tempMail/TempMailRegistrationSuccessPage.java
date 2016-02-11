@@ -68,7 +68,8 @@ public class TempMailRegistrationSuccessPage extends AbstractTempMailEmailConten
 		MessageFormat messageFormat = new MessageFormat(registrationExample);
 		Assert.assertTrue(getEmailContentText().equals(messageFormat.format(registrationArgs)), "Message '" + getEmailContentText() + "' not equals '" + messageFormat.format(registrationArgs) + "'");
 		LOGGER.info("Registration message content is correct");
-/*		PrintWriter writer;
+/*		
+		PrintWriter writer;
 		try {
 			writer = new PrintWriter("D:\\work\\nymgo\\automation\\nymgoAutomation\\Registration.txt", "UTF-8");
 			writer.println(getEmailContentText());

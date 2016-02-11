@@ -26,7 +26,6 @@ public class TransferCreditsCase extends AbstractCase {
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
 		@SuppressWarnings("unused")
 		NormalAccountTransferCreditPage normalAccountTransferCreditPage = normalAccountPage.clickNormalAccountTransferCreditButton();
-//		normalAccountTransferCreditPage.
 	}
 	
 }

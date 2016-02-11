@@ -122,7 +122,6 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	{
 
 		if (!getCurrentURL().equals(nymgoPageFragment.getHomeURL())){
-//			LOGGER.info("Current URL = '" + getCurrentURL() + "'");
 			navigateToHomePage();
 		}
 		if (isUserLogged())
@@ -133,13 +132,6 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 			navigation.NavigatedTo();
 			navigateToHomePage();
 		}
-/*		
-		if (!getCurrentURL().equals(baseNymgoFragment.getHomeURL())){
-			LOGGER.info("Current URL = '" + getCurrentURL() + "'");
-//			clickHomepageLink();
-			navigateToHomePage();
-		}
-*/		
 		nymgoPageFragment.setLanguage(starter.LOCALE);
 		HomePage homePage = new HomePage(starter);
 		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage); 

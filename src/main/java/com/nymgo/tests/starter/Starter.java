@@ -45,8 +45,6 @@ public class Starter {
 	
     public final  static String CONFIG_FILE_NAME = "config.file.name";
     public static String SECURE_PART;
-//    public static String SECURE_PART = "config.properties";
-//    public static String SECURE_PART = "config.properties";
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE_NAME = "params.file.name";
     public static String PARAMS_FILE = "params.properties";
@@ -80,7 +78,6 @@ public class Starter {
     
     private static Starter instance;
 	public WebDriver driver = null;
-//    private ThreadLocal<RemoteWebDriver> threadDriver = null;
 	
     public static Starter getInstance() {
         if (instance == null) {
@@ -235,21 +232,8 @@ public class Starter {
 //        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);
 //        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https");
     }
-/*
-    public void initConversionRates(ITestContext context){
-        LOGGER.info("Initializing conversionRates.file.properties");
-        //TODO add testServer dependency
-        try{
-            CurrencyConversionRateGenerator.setProps(context.getCurrentXmlTest().getParameter(CONVERSION_RATES_FILE));
-        }
-        catch (NullPointerException e){
-            LOGGER.warn("could not find the conversion rates file name in the xml suite, going to use the default " + CONVERSION_RATES_FILE);
-        }
-        LOGGER.info("Finished to initialize conversion rates");
-    }
-*/
-	private WebDriver getBrowser() {
-//	private RemoteWebDriver getBrowser() {    
+
+    private WebDriver getBrowser() {
 		BROWSERS BROWSER = BROWSERS.valueOf(PROPS.getProperty(PROPERTIES.BROWSER.name()));
         switch (BROWSER)
         {
@@ -265,43 +249,8 @@ public class Starter {
                 return new FirefoxDriver();
         }
 	}
-/*
-	private RemoteWebDriver getRemoteBrowser() {
-		BROWSERS BROWSER = BROWSERS.valueOf(PROPS.getProperty(PROPERTIES.BROWSER.name()));
-		DesiredCapabilities dc = new DesiredCapabilities();
-	    FirefoxProfile fp = new FirefoxProfile();
-	    URL newURL = null;
-		try {
-			newURL = new URL("http://localhost:4444/wd/hub");
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-        switch (BROWSER)
-        {
-            case FIREFOX:
-    	        dc.setCapability(FirefoxDriver.PROFILE, fp);
-    	        dc.setBrowserName(DesiredCapabilities.firefox().getBrowserName());
-    	        return new RemoteWebDriver(newURL, dc);		
-            case CHROME:
-                System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
-                DesiredCapabilities capabilities = DesiredCapabilities.chrome();                
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("user-data-dir=C:/Users/iuliia.khikmatova/AppData/Local/Google/Chrome/User Data");
-                options.addArguments("--start-maximized");
-                capabilities.setCapability(ChromeOptions.CAPABILITY, options);                
-                dc.setBrowserName(DesiredCapabilities.chrome().getBrowserName());
-                return new RemoteWebDriver(newURL, capabilities);
-            case IE:
-                System.setProperty("webdriver.ie.driver", "C:\\IEDriver\\IEDriverServer.exe");
-                return new InternetExplorerDriver();
-            default:
-    	        dc.setCapability(FirefoxDriver.PROFILE, fp);
-    	        dc.setBrowserName(DesiredCapabilities.firefox().getBrowserName());
-    	        return new RemoteWebDriver(newURL, dc);		
-        }
-	}
-*/
-	private void initBrowser(){
+
+    private void initBrowser(){
 
         driver = getBrowser();
         driver.manage().window().maximize();
@@ -309,17 +258,6 @@ public class Starter {
         String homeURL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL); 
         LOGGER.info("Navigating to home page");
 		driver.get(homeURL);
-
-/*		
-		threadDriver = new ThreadLocal<RemoteWebDriver>();
-		threadDriver.set(getBrowser());
-		driver = threadDriver.get();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);   
-        String homeURL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL); 
-        LOGGER.info("Navigating to home page");
-		driver.get(homeURL);
-*/
 	}
 
     public void quiteDriver() {

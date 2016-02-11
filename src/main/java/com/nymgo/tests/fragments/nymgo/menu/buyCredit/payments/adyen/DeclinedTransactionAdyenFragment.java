@@ -21,8 +21,6 @@ public class DeclinedTransactionAdyenFragment extends DeclinedTransactionFragmen
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_URL = "https://secure-dev.nymgo.com/en/generate";	
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) + 
 	private static final String BUY_CREDIT_CONFIRM_PAGE_CANCELLED_ADYEN_URL = Starter.SECURE_PART +	
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 

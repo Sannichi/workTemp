@@ -24,9 +24,6 @@ public class ResellerAccountPageFragment extends BaseAccountPageFragment{
 	}
 
     @FindBy(xpath = "//div[@id='account-details']//a[@class='button-edit']")
-//    @FindBys({@FindBy(css = "div[id='account-details']"),
-//    	@FindBy(css = "a[class='button-edit']")    
-//    })
 	private WebElement accountDetailsButton;
 
 	public void clickViewAccountDetailsButton(){

@@ -15,7 +15,6 @@ import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
  */
 public class ViewAccountCases extends AbstractCase{
 
-//    @Test(groups={"editEuroNormalUser"}, dependsOnGroups={"euroNormalSignIn"}, dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
     @Test(dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)	
 	public void editEuroNormalUserAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
@@ -27,7 +26,6 @@ public class ViewAccountCases extends AbstractCase{
 		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
-//    @Test(groups={"editEuroReseller"}, dependsOnGroups={"euroResellerSignIn"}, dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
     @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
 	public void editEuroResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){

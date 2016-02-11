@@ -1,5 +1,7 @@
 package com.nymgo.tests.pages.admin.base;
 
+import java.util.List;
+
 import org.openqa.selenium.UnhandledAlertException;
 
 import com.nymgo.tests.fragments.admin.base.AdminPageWithSearchFragment;
@@ -125,24 +127,26 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
 		
 		return adminPageWithSearchFragment.getRowsCount();
 	}
-/*	
+	@SuppressWarnings("unused")
 	private List<String> getColumnNames(){
 
 		return adminPageWithSearchFragment.getColumnNames();
 	}
 	
 	//return column index if exists, -1 if not
+	@SuppressWarnings("unused")
 	private int isColumnPresent(String columnName){
 
 		return adminPageWithSearchFragment.isColumnPresent(columnName);
 	}
 
 	//return row index if exists, -1 if not
+	@SuppressWarnings("unused")
 	private int isValueDisplays(String columnName, String fieldValue){
 		
 		return adminPageWithSearchFragment.isValueDisplays(columnName, fieldValue);
 	}
-*/	
+
 	public String getColumnRowValueByColumnRowValue( String columnNameBy, String fieldValueBy, String columnNameGet){
 		
 		return adminPageWithSearchFragment.getColumnRowValueByColumnRowValue(columnNameBy, fieldValueBy, columnNameGet);

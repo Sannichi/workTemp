@@ -21,9 +21,6 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	public static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
-//	public static final String RESELLERS_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +
 	public static final String RESELLERS_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
 	

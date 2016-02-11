@@ -23,9 +23,6 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
-//	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +
 	private static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/proceed";	
 			
@@ -35,16 +32,6 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 	@FindBy(id = "country_of_credit")
 	private WebElement countryOfCreditSelect;
 	
-/*	
-	@FindBy(css = "div.float30[1]")
-	private WebElement nymgoCredit;
-
-	@FindBy(css = "div.float30[2]")
-	private WebElement VAT;
-
-	@FindBy(css = "div.float30[3]")
-	private WebElement totalAmountCharged;
-*/
 	@FindBy(css = "div.float30")
 	private List<WebElement> nymgoCreditVATAmount;
 

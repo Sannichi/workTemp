@@ -6,12 +6,9 @@ import com.nymgo.tests.starter.Starter;
 
 public class TransactionAcceptedPopup extends AbstractPopup{
 	
-//	TransactionAcceptedPopupFragment transactionAcceptedPopupFragment;
-
 	public TransactionAcceptedPopup(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
-//		transactionAcceptedPopupFragment = new TransactionAcceptedPopupFragment(driver);
 		
 	}
 	

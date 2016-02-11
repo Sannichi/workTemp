@@ -49,19 +49,16 @@ public class LoginAdminPageFragment extends BaseAdminFragment{
     
     public void typeUsername(String login){
     	
-//    	this.username.sendKeys(login);
     	setTextToEditField(this.username, login);
     }
     
     public void typePassword(String password){
     	
-//    	this.password.sendKeys(password);
     	setTextToEditField(this.password, password);
     }
 
     public void clickLogin(){
 
-//    	loginButton.click();
     	clickSubmitButton(loginButton);
     }
 }

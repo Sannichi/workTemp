@@ -2,6 +2,7 @@ package com.nymgo;
 
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
@@ -15,10 +16,13 @@ import com.nymgo.tests.utils.CurrencyUtils;
 
 public class VerifyBuyCreditCase extends AbstractCase{
 	
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedEuroNormalUserTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedEuroNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-		NymgoPage nymgoPage = new NymgoPage(starter);
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+    	
+    	NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -27,10 +31,6 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
-/*		String previousAccountBalanceValue = ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()));
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
-		Assert.assertEquals(Float.parseFloat(previousAccountBalanceValue) + Float.parseFloat(currencyAmount), Float.parseFloat(accountBalanceValue));
-*/
 //		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
 //				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
 //				+ Float.parseFloat(currencyAmount));
@@ -40,10 +40,12 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedEuroResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedEuroResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
@@ -53,27 +55,11 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 		}
-/*		String previousAccountBalanceValue = ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()));
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		Assert.assertEquals(Float.parseFloat(previousAccountBalanceValue) + Float.parseFloat(currencyAmount), Float.parseFloat(accountBalanceValue));
-*/
-//		String bonusStr = fullUserEntity.getBonus();
-//		Float bonus = (float) (Integer.parseInt(bonusStr));
-//		Float bonusValue = (Float.parseFloat(currencyAmount)/100)*Float.parseFloat(fullUserEntity.getBonus());
-//		LOGGER.info("BonusValue is '" + bonusValue + "'");
-		
 		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);
 		if (fullUserEntity.getBonusType().equals("Manual") && bonusPercent!=0){
 			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
 		}
 		
-//		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);
-//
-//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount) + Float.parseFloat(currencyAmount)/100*bonusPercent);
-//
-
 //		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
 //				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
 //				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
@@ -86,10 +72,12 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		
     }
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedEuroMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedEuroMasterResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
@@ -99,10 +87,6 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 		}
-/*		String previousAccountBalanceValue = ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()));
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		Assert.assertEquals(Float.parseFloat(previousAccountBalanceValue) + Float.parseFloat(currencyAmount), Float.parseFloat(accountBalanceValue));
-*/
 		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);
 		if (fullUserEntity.getBonusType().equals("Manual") && bonusPercent!=0){
 			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
@@ -119,9 +103,12 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedInterNormalUserTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedInterNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
@@ -140,10 +127,12 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedInterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedInterResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
@@ -170,10 +159,12 @@ public class VerifyBuyCreditCase extends AbstractCase{
 		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
     }
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void verifyBuyCreditAcceptedLoggedInterMasterResellerTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedInterMasterResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller(); 
+    	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 

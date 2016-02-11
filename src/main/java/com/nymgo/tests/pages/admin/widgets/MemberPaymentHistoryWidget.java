@@ -65,17 +65,7 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 		
 		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getAllTransactionInformation();
 	}
-/*
-	public Map<String, String> getAllUserInformation(){
-		
-		return getAllTableInformation(getUserInformationTable());
-	}
 
-	public Map<String, String> getAllUserSummary(){
-		
-		return getAllTableInformation(getUserSummaryTable());
-	}
-*/
 	protected void clickAcceptTransaction(){
 		
 		memberPaymentHistoryWidgetFragment.paymentActionFragment.clickAcceptTransaction();

@@ -3,6 +3,7 @@ package com.nymgo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
@@ -21,10 +22,13 @@ import com.nymgo.tests.utils.CurrencyUtils;
 
 public class BuyCreditCase extends AbstractCase{
 	
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroNormalUserGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroNormalUserGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+    	
+    	LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
@@ -57,9 +61,12 @@ public class BuyCreditCase extends AbstractCase{
 
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroNormalUserWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroNormalUserWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
@@ -78,9 +85,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroNormalUserAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroNormalUserAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
@@ -100,10 +110,12 @@ public class BuyCreditCase extends AbstractCase{
 		
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroResellerGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -139,10 +151,12 @@ public class BuyCreditCase extends AbstractCase{
 
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroResellerWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -164,10 +178,12 @@ public class BuyCreditCase extends AbstractCase{
 	
     }
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroResellerAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -188,10 +204,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroMasterResellerGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -226,10 +244,12 @@ public class BuyCreditCase extends AbstractCase{
 
     }
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroMasterResellerWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -249,10 +269,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedEuroMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedEuroMasterResellerAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -272,9 +294,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterNormalUserGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterNormalUserGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
@@ -303,9 +328,12 @@ public class BuyCreditCase extends AbstractCase{
 
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterNormalUserWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterNormalUserWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
@@ -321,9 +349,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterNormalUserAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterNormalUserAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
@@ -339,10 +370,12 @@ public class BuyCreditCase extends AbstractCase{
 		
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterResellerGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -371,10 +404,12 @@ public class BuyCreditCase extends AbstractCase{
 
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterResellerWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -391,10 +426,12 @@ public class BuyCreditCase extends AbstractCase{
 	
     }
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterResellerAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -409,10 +446,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterMasterResellerGlobalCollectTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterMasterResellerGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -441,10 +480,12 @@ public class BuyCreditCase extends AbstractCase{
 
     }
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterMasterResellerWorldpayTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterMasterResellerWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
@@ -459,10 +500,12 @@ public class BuyCreditCase extends AbstractCase{
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void buyCreditLoggedInterMasterResellerAdyenTest(FullUserEntity fullUserEntity, String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedInterMasterResellerAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+    	FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller();
+    	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();

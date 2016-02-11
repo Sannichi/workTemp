@@ -48,7 +48,6 @@ public class BaseTransactionsAdminPageFragment extends BaseLoggedAdminPageWithSe
 		if (rowIndex != -1){
 			WebElement rowToClick = getResultsList().get(rowIndex);
 			WebElement viewWidget = rowToClick.findElement(By.xpath(".//img[@class='widjet']"));			
-//			viewWidget.click();
 			clickWidget(viewWidget);
 		}
 	}
@@ -59,7 +58,6 @@ public class BaseTransactionsAdminPageFragment extends BaseLoggedAdminPageWithSe
 		if (rowIndex != -1){
 			WebElement rowToClick = getResultsList().get(rowIndex);
 			WebElement viewWidget = rowToClick.findElement(By.xpath(".//img[@class='widjet']"));			
-//			viewWidget.click();
 			clickWidget(viewWidget);
 		}
 	}

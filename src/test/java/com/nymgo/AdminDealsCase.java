@@ -3,6 +3,7 @@ package com.nymgo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.providers.GeneralDataProvider;
@@ -21,9 +22,12 @@ import com.nymgo.tests.utils.CurrencyUtils;
  */
 public class AdminDealsCase extends AbstractCase{
 	
-	@Test(dataProvider = PROVIDER_CONST.EURO_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptEuroNormalUserDealAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptEuroNormalUserDealAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		String transactionID = ExcelUtils.getLastTransaction();		
@@ -42,10 +46,12 @@ public class AdminDealsCase extends AbstractCase{
 //		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.EURO_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptEuroResellerDealAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptEuroResellerDealAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		String transactionID = ExcelUtils.getLastTransaction();		
@@ -64,10 +70,12 @@ public class AdminDealsCase extends AbstractCase{
 //		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.EURO_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptEuroMasterResellerDealAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptEuroMasterResellerDealAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller(); 
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		String transactionID = ExcelUtils.getLastTransaction();		
@@ -87,9 +95,12 @@ public class AdminDealsCase extends AbstractCase{
 //		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.INTER_NORMAL_WHITELIST_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptInterNormalUserDealAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, String gatewayName, String currencyAmount){
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptInterNormalUserDealAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+				
 		AdminPage adminPage = new AdminPage(starter);
 
 		String transactionID = ExcelUtils.getLastTransaction();		
@@ -108,10 +119,12 @@ public class AdminDealsCase extends AbstractCase{
 //		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.INTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptInterResellerDealAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptInterResellerDealAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		String transactionID = ExcelUtils.getLastTransaction();		
@@ -130,10 +143,12 @@ public class AdminDealsCase extends AbstractCase{
 //		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.INTER_MASTER_RESELLER_PROVIDER_W_PARAMS, dataProviderClass = GeneralDataProvider.class)
-	public void acceptInterMasterResellerDealAdminTest(FullUserEntity fullUserEntity, String paymentCurrency, String countryOfCredit, String cardType, 
-			String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptInterMasterResellerDealAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
+		FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller();
+		
 		AdminPage adminPage = new AdminPage(starter);
 
 		String transactionID = ExcelUtils.getLastTransaction();		

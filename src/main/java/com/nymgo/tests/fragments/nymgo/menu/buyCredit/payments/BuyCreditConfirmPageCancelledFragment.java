@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BaseIframePageFragment;
 import com.nymgo.tests.starter.Starter;
 
-//public class BuyCreditConfirmPageCancelledFragment extends BaseBuyCreditConfirmPageNextFragment{
 public class BuyCreditConfirmPageCancelledFragment extends BaseIframePageFragment{
 
 	public BuyCreditConfirmPageCancelledFragment(WebDriver driver) {

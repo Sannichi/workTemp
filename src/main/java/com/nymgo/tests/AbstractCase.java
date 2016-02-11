@@ -27,8 +27,6 @@ public class AbstractCase {
         LOGGER = Logger.getLogger(LOGS.LOGGER_NAME.toString());
         LOGGER.info("Initializing configuration");
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.Jdk14Logger");        
-
-//        initStarter(context);
     }    
 
     @BeforeTest
@@ -61,15 +59,12 @@ public class AbstractCase {
     @AfterTest
 	public void finishTests(){
 		
-//		driver.close();
     	starter.quiteDriver();
 	}
 
     @AfterSuite
 	public void finishSuite(){
 		
-//		driver.close();
-//    	starter.quiteDriver();
     	LOGGER.info("Suite is ended");
 	}
 

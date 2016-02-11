@@ -19,27 +19,7 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		// TODO Auto-generated constructor stub
 		baseBuyCredit3DSProceedPageFragment = new BaseBuyCredit3DSProceedPageFragment(driver);
 	}
-/*
-	private static final String BUY_CREDIT_3DS_PROCEED_PAGE_NAME_ENG = "BuyCreditProceedAdyenPage"; 
-	
-	@Override
-	public String getPageName() {
-		// TODO Auto-generated method stub
-		return BUY_CREDIT_3DS_PROCEED_PAGE_NAME_ENG;
-	}
 
-	@Override
-	public boolean isCorrectPage() {
-		// TODO Auto-generated method stub
-		return baseBuyCredit3DSProceedPageFragment.isCorrectURL();
-	}
-
-	@Override
-	public String getPageURL() {
-		// TODO Auto-generated method stub
-		return baseBuyCredit3DSProceedPageFragment.getCorrectURL();
-	}
-*/
 	protected void clickPayButton(){
 		
 		baseBuyCredit3DSProceedPageFragment.clickPayButton();
@@ -69,11 +49,6 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
-/*		setCardNumber(cardNumberValue);
-		selectExpireDateMonth(expireDateMonth);
-		selectExpireDateYear(expireDateYear);
-		setCVV(cvvValue);
-*/
 		clickCancelButton();
 		BuyCreditConfirmPageCancelled buyCreditConfirmPageCancelled = new BuyCreditConfirmPageCancelled(starter);
 		PageNavigation<BuyCreditConfirmPageCancelled> navigation = new PageNavigation<BuyCreditConfirmPageCancelled>(buyCreditConfirmPageCancelled);

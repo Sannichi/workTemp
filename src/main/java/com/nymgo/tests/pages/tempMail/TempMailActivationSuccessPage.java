@@ -67,7 +67,8 @@ public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentP
 		Assert.assertTrue(getEmailContentText().equals(messageFormat.format(registrationArgs)), "Message '" + getEmailContentText() + "' not equals '" + messageFormat.format(registrationArgs) + "'");
 		
 		LOGGER.info("Activation message content is correct");
-/*		PrintWriter writer;
+/*		
+ 		PrintWriter writer;
 		try {
 			writer = new PrintWriter("D:\\work\\nymgo\\automation\\nymgoAutomation\\Activation.txt", "UTF-8");
 			writer.println(getEmailContentText());
@@ -79,6 +80,7 @@ public class TempMailActivationSuccessPage extends AbstractTempMailEmailContentP
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/		return this;
+*/		
+		return this;
 	}
 }

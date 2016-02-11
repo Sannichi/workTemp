@@ -260,12 +260,7 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		navigation.NavigatedTo();
 		return buyCreditConfirmPageGlobalCollect;
 	} 
-/*
-	public void verifyDefaultData(String fullName, String email, String mobile, String phone,
-			String countryOfResidence, String postalCode, String street, String address,
-			String country,
-			String nymgoCreditValue, String VAT, String totalAmountCharged){
-*/		
+
 	public void verifyDefaultData(String fullName, String email, String mobile, String phone,
 			String countryOfResidence, String postalCode, String street, String address,
 			String nymgoCreditValue, String VAT, String totalAmountCharged){

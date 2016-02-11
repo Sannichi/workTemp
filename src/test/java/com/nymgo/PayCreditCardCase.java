@@ -3,10 +3,9 @@ package com.nymgo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullCardEntity;
 import com.nymgo.data.entity.ThreeDSUserEntity;
-import com.nymgo.data.enums.PROVIDER_CONST;
-import com.nymgo.data.providers.GeneralDataProvider;
 import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
@@ -30,9 +29,11 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.PendingTrans
 public class PayCreditCardCase extends AbstractCase{
 
 
-    @Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressGlobalCollectPendingTest(FullCardEntity fullCardEntity){
+    @Test
+	public void payAmericanExpressGlobalCollectPendingTest(){
 
+    	FullCardEntity fullCardEntity = DataAdapter.getAmericanExpressCard();
+    	
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
 
 		PendingTransactionGlobalCollectPage pendingTransactionGlobalCollectPage = buyCreditConfirmPageGlobalCollect.setCreditCardDataAndClickContinue(fullCardEntity.getCardNumber(), 
@@ -48,8 +49,10 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaGlobalCollectPendingTest(FullCardEntity fullCardEntity){
+    @Test
+	public void payVisaGlobalCollectPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
 
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
 
@@ -67,8 +70,10 @@ public class PayCreditCardCase extends AbstractCase{
 		
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaGlobalCollectSuccessfulTest(FullCardEntity fullCardEntity){
+    @Test
+	public void payVisaGlobalCollectSuccessfulTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
 
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
 
@@ -87,8 +92,10 @@ public class PayCreditCardCase extends AbstractCase{
 		
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaGlobalCollectChallengedTest(FullCardEntity fullCardEntity){
+    @Test
+	public void payVisaGlobalCollectChallengedTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
 
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
 
@@ -106,8 +113,10 @@ public class PayCreditCardCase extends AbstractCase{
 		
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.MASTER_CARD_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payMasterCardGlobalCollectPendingTest(FullCardEntity fullCardEntity){
+    @Test
+	public void payMasterCardGlobalCollectPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getMasterCardCard();
 
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPageGlobalCollect = new BuyCreditConfirmPageGlobalCollect(starter);
 
@@ -125,8 +134,10 @@ public class PayCreditCardCase extends AbstractCase{
 		
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressWorldpayPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payAmericanExpressWorldpayPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getAmericanExpressCard();
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);		
 		
@@ -143,8 +154,10 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaWorldpayPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payVisaWorldpayPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);		
 		
@@ -161,8 +174,10 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.MASTER_CARD_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payMasterCardWorldpayPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payMasterCardWorldpayPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getMasterCardCard();
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);		
 		
@@ -179,8 +194,10 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressAdyenDeclinedTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payAmericanExpressAdyenDeclinedTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getAmericanExpressCard();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -197,8 +214,10 @@ public class PayCreditCardCase extends AbstractCase{
 		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.VISA_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaAdyenDeclinedTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payVisaAdyenDeclinedTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getVisaCard();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -215,8 +234,10 @@ public class PayCreditCardCase extends AbstractCase{
 		BuyCreditPage buyCreditPage = declinedTransactionAdyenPage.clickTryAgainBuyCreditButton();
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.MASTER_CARD_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payMasterCardAdyenDeclinedTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payMasterCardAdyenDeclinedTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getMasterCardCard();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 	
@@ -234,8 +255,10 @@ public class PayCreditCardCase extends AbstractCase{
 
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.MASTER_CARD_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payMasterCardAdyenPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payMasterCardAdyenPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getMasterCardAdyenCard();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -253,8 +276,10 @@ public class PayCreditCardCase extends AbstractCase{
 		
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.VISA_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaAdyenPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payVisaAdyenPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getVisaAdyenCard();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -272,8 +297,10 @@ public class PayCreditCardCase extends AbstractCase{
 //		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.AMERICAN_EXPRESS_ADYEN_CARD_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressAdyenPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payAmericanExpressAdyenPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getAmexAdyenCard();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -291,8 +318,10 @@ public class PayCreditCardCase extends AbstractCase{
 		
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.WP_AMERICAN_EXPRESS_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressWorldpay3DSPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payAmericanExpressWorldpay3DSPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getWPAmericanExpressCard3DS();
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
 		
@@ -309,22 +338,13 @@ public class PayCreditCardCase extends AbstractCase{
 		ExcelUtils.addTransactionData(transactionID);		
 		NormalAccountPage normalAccountPage = pendingTransactionWorldpay3DSPage.clickBackToNormalUserDashboardButton();
 		
-//		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.set3DSAmexCreditCardDataAndClickPay(fullCardEntity.getCardNumber(), 
-//		fullCardEntity.getCardholdersName(), fullCardEntity.getExpirationMonth(), fullCardEntity.getExpirationYear(), fullCardEntity.getCvv());
-//
-//		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
-//				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
-//		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
-//		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
-//		LOGGER.info("transaction ID = " + transactionID + ", payment status = " + paymentStatus);
-//		ExcelUtils.addTransactionData(transactionID);		
-//		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
-		
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.WP_VISA_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaWorldpay3DSPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payVisaWorldpay3DSPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getWPVisaCard3DS();
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
 		
@@ -343,8 +363,10 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.WP_MASTER_CARD_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payMasterCardWorldpay3DSPendingTest(FullCardEntity fullCardEntity){
+	@Test
+	public void payMasterCardWorldpay3DSPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getWPMasterCardCard3DS();
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
 		
@@ -364,8 +386,11 @@ public class PayCreditCardCase extends AbstractCase{
 	}
 
 
-	@Test(dataProvider = PROVIDER_CONST.ADYEN_AMERICAN_EXPRESS_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payAmericanExpressAdyen3DSPendingTest(FullCardEntity fullCardEntity, ThreeDSUserEntity threeDSUserEntity){
+	@Test
+	public void payAmericanExpressAdyen3DSPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getAdyenAmericanExpressCard3DS();
+    	ThreeDSUserEntity threeDSUserEntity = DataAdapter.getThreeDSUser();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -385,8 +410,11 @@ public class PayCreditCardCase extends AbstractCase{
 		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.ADYEN_VISA_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payVisaAdyen3DSPendingTest(FullCardEntity fullCardEntity, ThreeDSUserEntity threeDSUserEntity){
+	@Test
+	public void payVisaAdyen3DSPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getAdyenVisaCard3DS();
+    	ThreeDSUserEntity threeDSUserEntity = DataAdapter.getThreeDSUser();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		
@@ -407,8 +435,11 @@ public class PayCreditCardCase extends AbstractCase{
 //		Assert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
 	}
 
-	@Test(dataProvider = PROVIDER_CONST.ADYEN_MASTER_CARD_CARD_3DS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void payMasterCardAdyen3DSPendingTest(FullCardEntity fullCardEntity, ThreeDSUserEntity threeDSUserEntity){
+	@Test
+	public void payMasterCardAdyen3DSPendingTest(){
+
+    	FullCardEntity fullCardEntity = DataAdapter.getAdyenMasterCardCard3DS();
+    	ThreeDSUserEntity threeDSUserEntity = DataAdapter.getThreeDSUser();
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
 		

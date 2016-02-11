@@ -1,5 +1,6 @@
 package com.nymgo.tests.pages.nymgo.menu.buyCredit.payments;
 
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.List;
 
@@ -49,17 +50,19 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		return buyCreditPageFragment.getAllAdyenOptionsDescription();
 	}
-/*
+
+	@SuppressWarnings("unused")
 	private ArrayList<Integer> getDisabledAdyenOptionsValues(){
 		
 		return buyCreditPageFragment.getDisabledAdyenOptionsValues();	
 	}
 
+	@SuppressWarnings("unused")
 	private List<String> getAllCurencyValuesOptions(){
 		
 		return buyCreditPageFragment.getAllCurencyValuesOptions();	
 	}
-*/
+
 	private String getCheckedOptionDescription() throws NoSuchElementException{
 		
 		return buyCreditPageFragment.getCheckedOptionDescription();
@@ -79,12 +82,13 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		buyCreditPageFragment.checkOptionByValue(value);
 		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option " + value + "!");
 	}
-/*
+
+	@SuppressWarnings("unused")
 	private boolean isValueDisabled(int value){
 
 		return buyCreditPageFragment.isValueDisabled(value);
 	}
-*/	
+
 	private void clickContinueButton(){
 		
 		buyCreditPageFragment.clickContinueButton();
@@ -103,13 +107,6 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		checkOptionByValue(intAmount);
 		return clickContinueToGlobalCollect();
 	} 
-	
-//	public BuyCredit3DSProceedPageGlobalCollect selectAmountAndClickContinueToGlobalCollect(String amount){
-//		
-//		int intAmount = Integer.valueOf(amount);
-//		checkOptionByValue(intAmount);
-//		return clickContinueToGlobalCollect();
-//	} 
 	
 	public BuyCredit3DSProceedPageWorldpay selectAmountAndClickContinueToWorldpay(String amount){
 		
@@ -135,15 +132,6 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditProceedPageGlobalCollect;
 	} 
 	
-//	public BuyCredit3DSProceedPageGlobalCollect clickContinueToGlobalCollect(){
-//		
-//		clickContinueButton();
-//		BuyCredit3DSProceedPageGlobalCollect buyCredit3DSProceedPageGlobalCollect = new BuyCredit3DSProceedPageGlobalCollect(starter);
-//		PageNavigation<BuyCredit3DSProceedPageGlobalCollect> navigation = new PageNavigation<BuyCredit3DSProceedPageGlobalCollect>(buyCredit3DSProceedPageGlobalCollect);
-//		navigation.NavigatedTo();
-//		return buyCredit3DSProceedPageGlobalCollect;
-//	} 
-	
 	public BuyCredit3DSProceedPageWorldpay clickContinueToWorldpay(){
 		
 		clickContinueButton();
@@ -163,17 +151,7 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		navigation.NavigatedTo();
 		return buyCredit3DSProceedPageAdyen;
 	} 
-/*
-	public void selectMinAmountByCurrency(String paymentCurrency){
-		
-		checkOptionByValue(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getFirstValue());
-	}
-	
-	public void selectMaxAmountByCurrency(String paymentCurrency){
-		
-		checkOptionByValue(CurrencyDescriptionMap.getCurrencyDescriptionByKey(CURRENCY_SIGNS.valueOf(paymentCurrency)).getThirdValue());
-	}
-*/
+
 	public void selectAmountAndVerifyVAT(String amount){
 		
 		LOGGER.debug("Amount is: '" + amount + "'");
@@ -186,7 +164,6 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		
 		int intAmount = Integer.valueOf(amount);
 		checkOptionByValue(intAmount);
-//		Assert.assertTrue(verifyVATValue(intAmount), "VAT is not correct. Current value is '" + getVATValue() + "', should be '" + (intAmount * Float.valueOf(getVATPercent()) / 100) + "'");
 	} 
 	
 	public String getVATPercent(){

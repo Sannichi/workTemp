@@ -46,7 +46,6 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	String correctURL = defineCorrectURL();
 		try{
-//	    	wait.until(ExpectedConditions.urlContains(PENDING_TRANSACTION_WP_3DS_URL));
 	    	wait.until(ExpectedConditions.urlContains(correctURL));			
 			return true;
 		}
@@ -57,9 +56,7 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-    	String correctURL = defineCorrectURL();
-//		return PENDING_TRANSACTION_WP_3DS_URL;
-		return correctURL;    	
+		return defineCorrectURL();    	
 	}
 
 }

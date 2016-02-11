@@ -28,16 +28,12 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
 	@FindBy(id = "user-login-el")
 	private WebElement signInButton;
 	
-//	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
-//	public static final String NORMAL_ACCOUNT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +
 	public static final String NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
 	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-//    	return wait.until(ExpectedConditions.urlToBe(NORMAL_ACCOUNT_PAGE_URL));
 		try{
 			wait.until(ExpectedConditions.urlContains(NORMAL_ACCOUNT_PAGE_URL));    	
 			return true;

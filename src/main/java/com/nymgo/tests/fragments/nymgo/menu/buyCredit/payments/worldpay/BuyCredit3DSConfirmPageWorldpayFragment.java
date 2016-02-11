@@ -25,9 +25,7 @@ public class BuyCredit3DSConfirmPageWorldpayFragment extends BaseIframePageFragm
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL = "https://secure-dev.nymgo.com/en/wp3ds-return/d0Vxd25rOW53Q0JNV0ZPUk1FNlQwQT09";	
 	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_CHROME_URL = "https://secure-test.streamline-esolutions.com/jsp/test/shopper/ThreeDResponseSimulator.jsp";
-//	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") + 
 	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL = Starter.SECURE_PART + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 	
@@ -54,7 +52,6 @@ public class BuyCredit3DSConfirmPageWorldpayFragment extends BaseIframePageFragm
     	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
     	String correctURL = defineCorrectURL();
     	try{
-//    		wait.until(ExpectedConditions.urlContains(BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL));
     		wait.until(ExpectedConditions.urlContains(correctURL));    		
     		return true;
     	}
@@ -65,9 +62,7 @@ public class BuyCredit3DSConfirmPageWorldpayFragment extends BaseIframePageFragm
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-    	String correctURL = defineCorrectURL();
-//		return BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL;
-		return correctURL;    	
+		return defineCorrectURL();    	
 	}
 
 	public void clickContinueButton(){

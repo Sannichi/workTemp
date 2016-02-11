@@ -100,7 +100,6 @@ public class ExcelUtils {
 			for (int j = startRow; j < totalRows; j++, cj++)
 			{
 				tabArray[ci][cj]=getCellData(j, startCol);				
-//				System.out.println(tabArray[ci][cj]);
 			}
 		}
 		catch (FileNotFoundException e)
@@ -278,49 +277,7 @@ public class ExcelUtils {
 		}
 		return fullCardEntity;
 	}
-/*
-	public static Map<String, String> getVerifyParameters(String filePath, String sheetName)	
-	{   
 
-		Map<String, String> verifyParameters = new HashMap<String, String>();
-		try{
-
-			setExcelFile(filePath, sheetName);
-			int startCol = 0;
-			int startRow = 0;
-			int lastRow = getLastRowNumber();
-			for (int i = startRow; i <= lastRow; i ++){			
-				verifyParameters.put(getCellData(i, startCol), getCellData(i, startCol + 1));
-			}
-		}
-		catch (FileNotFoundException e)
-		{
-
-			LOGGER.fatal("Could not read the Excel sheet");
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-
-			LOGGER.fatal("Could not read the Excel sheet");
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return verifyParameters;
-	}
-
-	public static Map<String, String> getFullNameVerifyParameters(){
-		
-		return getVerifyParameters(verifiesFilePath, verifiesFullnameSheetName);
-	}
-	
-	public static Map<String, String> getUsernameVerifyParameters(){
-		
-		return getVerifyParameters(verifiesFilePath, verifiesUsernameSheetName);
-	}
-*/	
 	public static Object[][] getVerifiesArray(String filePath, String sheetName)
 	{
 		String[][] verifiesArray = null;
@@ -550,7 +507,6 @@ public class ExcelUtils {
 			if (startRow != 0){
 				try {
 					if(!getCellData(startRow - 1, startCol + 5).equals("")||!getCellData(startRow - 1, startCol + 5).equals(" ")){
-		//				setCellData(startRow, startCol + 1, transactionID);				
 					setCellData(startRow - 1, startCol + 5, transactionID);	
 					LOGGER.info("transactionID " + transactionID + " was added to Excel");
 					}
@@ -639,76 +595,6 @@ public class ExcelUtils {
 		return false;
 	} 
 
-/*
-	public static boolean addTransactionData(String transactionID, String status){
-
-		try{
-			
-			setExcelFile(transactionFilePath, transactionSheetName);
-			int startCol = 0;
-			int startRow = getFirstEmptyRow();
-			try {
-				setCellData(startRow, startCol + 1, transactionID);				
-				setCellData(startRow, startCol + 2, status);				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			writeExcelFile(transactionFilePath);
-		}
-		catch (FileNotFoundException e)
-		{
-	
-			LOGGER.fatal("Could not read the Excel sheet");
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-	
-			LOGGER.fatal("Could not read the Excel sheet");
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	} 
-*/	
-/*
-	public static boolean addTransactionData(String username, String transactionID){
-
-		try{
-			
-			setExcelFile(transactionFilePath, transactionSheetName);
-			int startCol = 0;
-			int startRow = getFirstEmptyRow();
-			try {
-				setCellData(startRow, startCol, username);
-				setCellData(startRow, startCol + 1, transactionID);				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			writeExcelFile(transactionFilePath);
-		}
-		catch (FileNotFoundException e)
-		{
-	
-			LOGGER.fatal("Could not read the Excel sheet");
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-	
-			LOGGER.fatal("Could not read the Excel sheet");
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	} 
-*/
 	public static void clearSheet(String filePath, String sheetName){
 		
 		try {
@@ -736,8 +622,6 @@ public class ExcelUtils {
 	private static int getLastRowNumber(){	
 
 		int result = excelWSheet.getLastRowNum();
-//		LOGGER.debug("Last Row result = " + result + " " + getCellData(result, 1));
-//		LOGGER.debug("Last Row result = " + result);
 		if (result == 0){
 			LOGGER.debug("PhysicalNumberOfRows result = " + excelWSheet.getPhysicalNumberOfRows());
 			if (excelWSheet.getPhysicalNumberOfRows() == 1){
@@ -758,7 +642,6 @@ public class ExcelUtils {
 			int startCol = 0;
 			int startRow = 0;
 			int lastRow = getLastRowNumber();
-//			for (int i = lastRow - 1; i >= startRow; i --)
 			for (int i = lastRow; i >= startRow; i --)			
 			if (getCellData(i, startCol).equals(username)){
 				return getCellData(i, startCol + 1);
@@ -817,7 +700,6 @@ public class ExcelUtils {
 			int startCol = 0;
 			int lastRow = getLastRowNumber();
 			if (lastRow != -1){
-//				return getCellData(lastRow, startCol + 1);
 				return getCellData(lastRow, startCol + 5);
 			}
 			else{

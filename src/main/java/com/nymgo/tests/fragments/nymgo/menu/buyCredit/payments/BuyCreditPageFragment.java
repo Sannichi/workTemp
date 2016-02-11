@@ -25,9 +25,6 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL) +
-//	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL) +	
-//	public static final String BUY_CREDIT_PAGE_URL = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https") +	
 	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
 			
@@ -108,7 +105,6 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	
 	public void clickContinueButton(){
 		
-//		continueButton.click();
 		scrollToElement(continueButton);
 		clickButton(continueButton);
 	}
@@ -204,7 +200,6 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 	
 	public String getVATPercent(){
 		
-//		LOGGER.debug(vatLabel.getText());
 		String[] splitted = vatLabel.getText().split(" ");
 		if(splitted.length > 1){
 			return splitted[1];

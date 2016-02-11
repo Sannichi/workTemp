@@ -21,32 +21,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		// TODO Auto-generated constructor stub
 		buyCredit3DSProceedPageWorldpayFragment = new BuyCredit3DSProceedPageWorldpayFragment(driver);
 	}
-/*
-	private static final String BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG = "BuyCreditProceedWorldpayPage"; 
-			
-	@Override
-	public String getPageName() {
-		// TODO Auto-generated method stub
-		return BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG;
-	}
 
-	public BuyCreditConfirmPageWorldpay verifyDataAndClickContinue(String cardType, String countryOfCredit,
-			String nymgoCreditValue, String VAT, String totalAmountCharged){
-		
-		verifyPaymentBlock(cardType, countryOfCredit);
-		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
-		clickContinueButton();
-		BuyCreditConfirmPageWorldpay buyCreditConfirmPageWorldpay = new BuyCreditConfirmPageWorldpay(starter);
-		PageNavigation<BuyCreditConfirmPageWorldpay> navigation = new PageNavigation<BuyCreditConfirmPageWorldpay>(buyCreditConfirmPageWorldpay);
-		navigation.NavigatedTo();
-		return buyCreditConfirmPageWorldpay;
-	} 
-
-	public void verifyDefaultData(String countryOfResidence, String nymgoCreditValue, String VAT, String totalAmountCharged){
-		verifyDefaultPaymentBlock(countryOfResidence);
-		verifySkrillFooterBlock(nymgoCreditValue, VAT, totalAmountCharged);
-	}
-*/
 	private static final String BUY_CREDIT_PROCEED_PAGE_WP_NAME_ENG = "BuyCreditProceedWorldpayPage"; 
 	
 	@Override
@@ -245,6 +220,20 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 
 	public PendingTransactionWorldpayPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		navigation.NavigatedTo();
+		return pendingTransactionWorldpayPage;
+	}
+
+	public PendingTransactionWorldpayPage addNewCardSetCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
 		clickAddNewCard();
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
 		PageNavigation<BuyCredit3DSProceedPageWorldpay> navigation = new PageNavigation<BuyCredit3DSProceedPageWorldpay>(buyCredit3DSProceedPageWorldpay);
@@ -258,20 +247,6 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
 		PageNavigation<PendingTransactionWorldpayPage> navigationPending = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
 		navigationPending.NavigatedTo();
-		return pendingTransactionWorldpayPage;
-	}
-
-	public PendingTransactionWorldpayPage addNewcardSetCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
-		
-		setCardNumber(cardNumberValue);
-		setCardholdersName(cardholdersName);
-		selectExpireDateMonth(expireDateMonth);
-		selectExpireDateYear(expireDateYear);
-		setCVV(cvvValue);
-		clickPayButton();
-		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
-		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
-		navigation.NavigatedTo();
 		return pendingTransactionWorldpayPage;
 	}
 

@@ -12,7 +12,6 @@ import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
-//public class BuyCredit3DSProceedPageAdyen extends AbstractLoggedInPage{
 public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPage{
 	
 	private BuyCredit3DSProceedPageAdyenFragment buyCredit3DSProceedPageAdyenFragment;
@@ -152,7 +151,6 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 	}
 
 
-//	public DeclinedTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 	public PendingTransactionAdyenPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){	
 		
 		setCardNumber(cardNumberValue);
@@ -164,6 +162,24 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
 		PageNavigation<PendingTransactionAdyenPage> navigation = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);
 		navigation.NavigatedTo();
+		return pendingTransactionAdyenPage;
+	}
+
+	public PendingTransactionAdyenPage addNewCardSetCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){	
+		
+		clickAddNewCard();
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
+		PageNavigation<BuyCredit3DSProceedPageAdyen> navigation = new PageNavigation<BuyCredit3DSProceedPageAdyen>(buyCredit3DSProceedPageAdyen);
+		navigation.NavigatedTo();
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
+		PageNavigation<PendingTransactionAdyenPage> navigationPending = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);
+		navigationPending.NavigatedTo();
 		return pendingTransactionAdyenPage;
 	}
 
@@ -216,6 +232,24 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		return buyCredit3DSConfirmPageAdyen;
 	}
 
+	public BuyCredit3DSConfirmPageAdyen addNewCreditCardSetCreditCardDataAndClickPayToConfirm(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		clickAddNewCard();
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
+		PageNavigation<BuyCredit3DSProceedPageAdyen> navigation = new PageNavigation<BuyCredit3DSProceedPageAdyen>(buyCredit3DSProceedPageAdyen);
+		navigation.NavigatedTo();
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = new BuyCredit3DSConfirmPageAdyen(starter);
+		PageNavigation<BuyCredit3DSConfirmPageAdyen> navigationConfirm = new PageNavigation<BuyCredit3DSConfirmPageAdyen>(buyCredit3DSConfirmPageAdyen);
+		navigationConfirm.NavigatedTo();
+		return buyCredit3DSConfirmPageAdyen;
+	}
+
 	public BuyCredit3DSConfirmPageAdyen verifyDataAndClickPayToConfirm(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		Assert.assertTrue(getCardNumber().equals(cardNumberValue), "Card Number is not correct! Current value is '" + getCardNumber() + 
@@ -237,21 +271,4 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		return buyCredit3DSConfirmPageAdyen;
 	}
 
-	public BuyCredit3DSConfirmPageAdyen addNewCreditCardSetCreditCardDataAndClickPayToConfirm(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
-		
-		clickAddNewCard();
-		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
-		PageNavigation<BuyCredit3DSProceedPageAdyen> navigation = new PageNavigation<BuyCredit3DSProceedPageAdyen>(buyCredit3DSProceedPageAdyen);
-		navigation.NavigatedTo();
-		setCardNumber(cardNumberValue);
-		setCardholdersName(cardholdersName);
-		selectExpireDateMonth(expireDateMonth);
-		selectExpireDateYear(expireDateYear);
-		setCVV(cvvValue);
-		clickPayButton();
-		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = new BuyCredit3DSConfirmPageAdyen(starter);
-		PageNavigation<BuyCredit3DSConfirmPageAdyen> navigationConfirm = new PageNavigation<BuyCredit3DSConfirmPageAdyen>(buyCredit3DSConfirmPageAdyen);
-		navigationConfirm.NavigatedTo();
-		return buyCredit3DSConfirmPageAdyen;
-	}
 }

@@ -86,9 +86,6 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
         catch (TimeoutException e){
         	LOGGER.debug("First row was not become invisible");
         }
-//        catch (UnhandledAlertException e){
-//        	LOGGER.fatal("Unhandled alert with text");
-//        }
         try{
     		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("c_50"))));
     		LOGGER.debug("50th row is displayed");
@@ -113,10 +110,8 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
 		
 		List<WebElement> displayElements = getResultsList();
 		if (displayElements.size() <= 2){
-//			LOGGER.info("elements count = " + displayElements.size());
 			List<WebElement> spans = displayElements.get(0).findElements(By.cssSelector("span"));
 			if (spans.size() < 1){
-//				LOGGER.info("Search result is empty! Span count = " + spans.size());				
 				return true;
 			}
 		}
@@ -143,7 +138,6 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
 				return i;
 			}
 		}
-//		System.out.println("Column with name " + columnName + "does not display on the screen.");
 		LOGGER.warn("Column with name " + columnName + "does not display on the screen.");
 		return result;
 	}

@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import com.nymgo.tests.fragments.BaseFragment;
 import com.nymgo.tests.starter.Starter;
 
-//public abstract class BaseIframePageFragment extends BaseTransactionFragment{
 public abstract class BaseIframePageFragment extends BaseFragment{
 
 	public BaseIframePageFragment(WebDriver driver) {

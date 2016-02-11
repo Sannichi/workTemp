@@ -11,7 +11,6 @@ import com.nymgo.tests.starter.Starter;
 
 public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 
-//	private BaseLoggedAdminFragment baseLoggedAdminFragment;
 	private AdminPageFragment adminPageFragment;
 	
 	public AbstractLoggedAdminPage(Starter starter) {
