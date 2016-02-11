@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.Select;
 
+import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.BuyCreditPageFragment;
+
 /**
  * Created by Iuliia Khikmatova on Jan 19, 2016
  */

@@ -4,6 +4,7 @@ import org.testng.Assert;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditDealPageFragment;
 import com.nymgo.tests.generators.DealsNameGenerator;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.BuyCreditPage;
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.DealDescription;
 import com.nymgo.tests.utils.DealDescriptionMap;

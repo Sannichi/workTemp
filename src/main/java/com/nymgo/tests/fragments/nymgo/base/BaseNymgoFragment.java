@@ -21,7 +21,7 @@ import com.nymgo.tests.fragments.nymgo.menu.AppsPageFragment;
 import com.nymgo.tests.fragments.nymgo.menu.PricesPageFragment;
 import com.nymgo.tests.fragments.nymgo.menu.ResellersPageFragment;
 import com.nymgo.tests.fragments.nymgo.menu.SupportPageFragment;
-import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditPageFragment;
+import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.BuyCreditPageFragment;
 import com.nymgo.tests.fragments.nymgo.menu.signIn.NormalUserSignInPageFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.generators.ServerGenerator;

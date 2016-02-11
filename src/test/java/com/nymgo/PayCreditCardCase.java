@@ -10,19 +10,19 @@ import com.nymgo.data.providers.GeneralDataProvider;
 import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSConfirmPageAdyen;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.BuyCredit3DSProceedPageAdyen;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.DeclinedTransactionAdyenPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyen3DSPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.adyen.PendingTransactionAdyenPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollect;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.PendingTransactionGlobalCollectPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect.SuccessfulTransactionGlobalCollectPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSConfirmPageWorldpay;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.BuyCredit3DSProceedPageWorldpay;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpay3DSPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWorldpayPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.BuyCreditPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.BuyCredit3DSConfirmPageAdyen;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.BuyCredit3DSProceedPageAdyen;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.DeclinedTransactionAdyenPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.PendingTransactionAdyen3DSPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.PendingTransactionAdyenPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditConfirmPageGlobalCollect;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.PendingTransactionGlobalCollectPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.SuccessfulTransactionGlobalCollectPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.BuyCredit3DSConfirmPageWorldpay;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.BuyCredit3DSProceedPageWorldpay;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.PendingTransactionWorldpay3DSPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.PendingTransactionWorldpayPage;
 
 /**
  * Created by Iuliia Khikmatova on Nov 11, 2015
