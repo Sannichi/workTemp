@@ -190,6 +190,24 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		return buyCredit3DSConfirmPageWorldpay;
 	}
 
+	public BuyCredit3DSConfirmPageWorldpay addNewCardSet3DSCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		clickAddNewCard();
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
+		PageNavigation<BuyCredit3DSProceedPageWorldpay> navigation = new PageNavigation<BuyCredit3DSProceedPageWorldpay>(buyCredit3DSProceedPageWorldpay);
+		navigation.NavigatedTo();
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay  = new BuyCredit3DSConfirmPageWorldpay(starter);
+		PageNavigation<BuyCredit3DSConfirmPageWorldpay> navigationConfirm = new PageNavigation<BuyCredit3DSConfirmPageWorldpay>(buyCredit3DSConfirmPageWorldpay);
+		navigationConfirm.NavigatedTo();
+		return buyCredit3DSConfirmPageWorldpay;
+	}
+
 	public PendingTransactionWorldpayPage set3DSAmexCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
@@ -226,6 +244,24 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 	}
 
 	public PendingTransactionWorldpayPage setCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		clickAddNewCard();
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = new BuyCredit3DSProceedPageWorldpay(starter);
+		PageNavigation<BuyCredit3DSProceedPageWorldpay> navigation = new PageNavigation<BuyCredit3DSProceedPageWorldpay>(buyCredit3DSProceedPageWorldpay);
+		navigation.NavigatedTo();
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
+		PageNavigation<PendingTransactionWorldpayPage> navigationPending = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
+		navigationPending.NavigatedTo();
+		return pendingTransactionWorldpayPage;
+	}
+
+	public PendingTransactionWorldpayPage addNewcardSetCreditCardDataAndClickPay(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
 		setCardholdersName(cardholdersName);

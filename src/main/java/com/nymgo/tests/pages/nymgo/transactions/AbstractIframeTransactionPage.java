@@ -9,7 +9,7 @@ import com.nymgo.tests.starter.Starter;
  */
 public abstract class AbstractIframeTransactionPage extends AbstractPage{
 	
-	BaseIframeTransactionFragment baseIframeTransactionFragment;
+	private BaseIframeTransactionFragment baseIframeTransactionFragment;
 
 	public AbstractIframeTransactionPage(Starter starter) {
 		super(starter);

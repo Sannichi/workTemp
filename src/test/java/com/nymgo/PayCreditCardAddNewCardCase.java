@@ -26,7 +26,7 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.worldpay.PendingTransactionWor
 /**
  * Created by Iuliia Khikmatova on Feb 11, 2016
  */
-public class PayCreditCardRecurrentCase extends AbstractCase{
+public class PayCreditCardAddNewCardCase extends AbstractCase{
 
 
     @Test

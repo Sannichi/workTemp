@@ -249,6 +249,16 @@ public class BaseFragment {
 		LOGGER.info("Checkbox '" + value + "' was clicked");
 	}
 	
+	/**
+	*Element with text
+	*/
+	protected void clickElement(WebElement element){
+		
+		String text = element.getText();
+		element.click();
+		LOGGER.info("Element with text '" + text + "' was clicked");
+	}
+
 	protected void clickLink(WebElement link){
 		
 		String text = link.getText();

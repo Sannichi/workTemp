@@ -8,14 +8,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
-import com.nymgo.tests.fragments.nymgo.base.BaseLoggedInFragment;
+import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BaseRecurrentCreditCardFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Nov 10, 2015
  */
-public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
+//Adyen and Worldpay payments
+//public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
+public class BaseBuyCredit3DSProceedPageFragment extends BaseRecurrentCreditCardFragment{
 	
 	public BaseBuyCredit3DSProceedPageFragment(WebDriver driver) {
 		super(driver);
@@ -32,9 +34,6 @@ public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
 	
 	@FindBy(css = "a[class='button-normal cancel']")
 	private WebElement cancelButton;
-
-	@FindBy(css = "input[id='savecard']")
-	private WebElement saveCardCheckbox;
 
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
@@ -61,12 +60,5 @@ public class BaseBuyCredit3DSProceedPageFragment extends BaseLoggedInFragment{
 	public void clickCancelButton(){
 		
 		clickInputButton(cancelButton);
-	}
-
-	public void setSaveCardCheckbox(){
-		
-		if (!isElementSelected(saveCardCheckbox)){
-			clickCheckbox(saveCardCheckbox);
-		}
 	}
 }

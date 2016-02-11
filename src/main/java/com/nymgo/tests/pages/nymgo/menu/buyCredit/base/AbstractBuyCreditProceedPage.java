@@ -6,6 +6,7 @@ import com.nymgo.tests.fragments.nymgo.menu.buyCredit.base.BaseBuyCreditProceedP
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.starter.Starter;
 
+//for GlobalCollect payments
 public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 
 	private BaseBuyCreditProceedPageFragment baseBuyCreditProceedPageFragment;
@@ -126,10 +127,5 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 		Assert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
 				"', should be '" + nymgoCreditValue + "'");
 		LOGGER.info("Nymgo Credit Value is correct");
-	}
-
-	protected void setSaveCardCheckbox(){
-		
-		baseBuyCreditProceedPageFragment.setSaveCardCheckbox();
 	}
 }

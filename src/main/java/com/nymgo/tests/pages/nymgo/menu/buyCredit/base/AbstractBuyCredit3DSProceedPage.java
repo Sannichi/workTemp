@@ -9,6 +9,7 @@ import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Oct 20, 2015
  */
+//for Adyen and Worldpay payments
 public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPage{
 	
 	private BaseBuyCredit3DSProceedPageFragment baseBuyCredit3DSProceedPageFragment;
@@ -54,6 +55,18 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		baseBuyCredit3DSProceedPageFragment.setSaveCardCheckbox();
 	}
 	
+	public AbstractBuyCredit3DSProceedPage checkSavedCard(){
+		
+		baseBuyCredit3DSProceedPageFragment.checkSavedCard();
+		return this;
+	}
+
+	public AbstractBuyCredit3DSProceedPage clickAddNewCard(){
+		
+		baseBuyCredit3DSProceedPageFragment.clickAddNewCard();
+		return this;
+	}
+
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 /*		setCardNumber(cardNumberValue);

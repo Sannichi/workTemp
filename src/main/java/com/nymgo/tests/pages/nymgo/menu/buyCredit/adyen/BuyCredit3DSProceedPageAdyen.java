@@ -236,4 +236,22 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		navigation.NavigatedTo();
 		return buyCredit3DSConfirmPageAdyen;
 	}
+
+	public BuyCredit3DSConfirmPageAdyen addNewCreditCardSetCreditCardDataAndClickPayToConfirm(String cardNumberValue, String cardholdersName, String expireDateMonth, String expireDateYear, String cvvValue){
+		
+		clickAddNewCard();
+		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = new BuyCredit3DSProceedPageAdyen(starter);
+		PageNavigation<BuyCredit3DSProceedPageAdyen> navigation = new PageNavigation<BuyCredit3DSProceedPageAdyen>(buyCredit3DSProceedPageAdyen);
+		navigation.NavigatedTo();
+		setCardNumber(cardNumberValue);
+		setCardholdersName(cardholdersName);
+		selectExpireDateMonth(expireDateMonth);
+		selectExpireDateYear(expireDateYear);
+		setCVV(cvvValue);
+		clickPayButton();
+		BuyCredit3DSConfirmPageAdyen buyCredit3DSConfirmPageAdyen = new BuyCredit3DSConfirmPageAdyen(starter);
+		PageNavigation<BuyCredit3DSConfirmPageAdyen> navigationConfirm = new PageNavigation<BuyCredit3DSConfirmPageAdyen>(buyCredit3DSConfirmPageAdyen);
+		navigationConfirm.NavigatedTo();
+		return buyCredit3DSConfirmPageAdyen;
+	}
 }

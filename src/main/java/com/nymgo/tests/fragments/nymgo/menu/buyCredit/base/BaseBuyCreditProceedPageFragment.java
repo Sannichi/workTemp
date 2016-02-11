@@ -15,6 +15,7 @@ import com.nymgo.tests.fragments.nymgo.account.baseProfile.BaseProfileInfoFragme
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
+//GlobalCollect payments
 public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 
 	public BaseBuyCreditProceedPageFragment(WebDriver driver) {
@@ -49,9 +50,6 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 
 	@FindBy(id="save-el")
     private WebElement continueButton;
-
-	@FindBy(css = "input[id='savecard']")
-	private WebElement saveCardCheckbox;
 
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
@@ -114,25 +112,51 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 		return select.getFirstSelectedOption().getText();
 	}
 
+	public boolean verifyAllNymgoValues(){
+		
+		if(nymgoCreditVATAmount.size() == 3){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public String getNymgoCreditValue(){
 		
-		return nymgoCreditVATAmount.get(0).getText().split("\n")[1].split(" ")[0];		
+		if (nymgoCreditVATAmount.get(0).getText().split("\n").length > 1)
+			return nymgoCreditVATAmount.get(0).getText().split("\n")[1].split(" ")[0];
+		else{
+			return "Something is wrong with formatting or css";
+		}
 	}
 
 	public String getVATValue(){
 		
-		return nymgoCreditVATAmount.get(1).getText().split("\n")[1];
+		if(verifyAllNymgoValues()){
+			if (nymgoCreditVATAmount.get(1).getText().split("\n").length > 1)
+				return nymgoCreditVATAmount.get(1).getText().split("\n")[1];
+			else{
+				return "Something is wrong with formatting or css";
+			}
+		}
+		else{
+			return "Some values are missing";
+		}
 	}
 
 	public String getTotalAmountChargedValue(){
 		
-		return nymgoCreditVATAmount.get(2).getText().split("\n")[1].split(" ")[0];
-	}
-
-	public void setSaveCardCheckbox(){
-		
-		if (!isElementSelected(saveCardCheckbox)){
-			clickCheckbox(saveCardCheckbox);
+		if(verifyAllNymgoValues()){
+			if (nymgoCreditVATAmount.get(2).getText().split("\n").length > 1)
+				return nymgoCreditVATAmount.get(2).getText().split("\n")[1].split(" ")[0];
+			else{
+				return "Something is wrong with formatting or css";
+			}
+		}
+		else{
+			return "Some values are missing";
 		}
 	}
+
 }

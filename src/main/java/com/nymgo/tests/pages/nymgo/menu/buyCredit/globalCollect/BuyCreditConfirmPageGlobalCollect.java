@@ -2,11 +2,13 @@ package com.nymgo.tests.pages.nymgo.menu.buyCredit.globalCollect;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.globalCollect.BuyCreditConfirmPageGlobalCollectFragment;
 import com.nymgo.tests.navigation.PageNavigation;
+import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditConfirmPageCancelled;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.base.AbstractBuyCreditConfirmPage;
 import com.nymgo.tests.starter.Starter;
 
-public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmPage{
+//public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmPage{
+//public class BuyCreditConfirmPageGlobalCollect extends AbstractTransactionPage{
+public class BuyCreditConfirmPageGlobalCollect extends AbstractLoggedInPage{
 
 	private BuyCreditConfirmPageGlobalCollectFragment buyCreditConfirmPageGlobalCollectFragment;
 	
@@ -69,7 +71,6 @@ public class BuyCreditConfirmPageGlobalCollect extends AbstractBuyCreditConfirmP
 		buyCreditConfirmPageGlobalCollectFragment.clickCancelButton();
 	}
 	
-	//TODO instead of void
 	public PendingTransactionGlobalCollectPage setCreditCardDataAndClickContinue(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		setCardNumber(cardNumberValue);
