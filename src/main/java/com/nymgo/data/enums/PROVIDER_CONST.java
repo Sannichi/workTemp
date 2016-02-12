@@ -4,8 +4,6 @@ public class PROVIDER_CONST {
 
     public final static String PAYMENT_PARAMS_PROVIDER = "buyCreditParamsProvider";
 
-    public final static String SIGN_UP_NORMAL_USER_PROVIDER = "signUpNormalUserProvider";
-    public final static String SIGN_UP_NORMAL_USER_PROVIDER_W_VERIFIES = "signUpNormalUserProviderWithVerifies";
     public final static String FULLNAME_SIGN_UP_VERIFIES = "fullNameSignUpVerifies";
     public final static String BUSINESS_NAME_SIGN_UP_VERIFIES = "businessNameSignUpVerifies";
     public final static String USERNAME_SIGN_UP_VERIFIES = "usernameSignUpVerifies";
@@ -19,12 +17,9 @@ public class PROVIDER_CONST {
     public final static String FULL_ADDRESS_SIGN_UP_VERIFIES = "fullAddressSignUpVerifies";
     public final static String STREET_SIGN_UP_VERIFIES = "streetSignUpVerifies";
     public final static String POSTAL_CODE_SIGN_UP_VERIFIES = "postalCodeSignUpVerifies";
-    public final static String SIGN_UP_RESELLER_PROVIDER = "signUpResellerProvider";
 
     public final static String SET_NORMAL_USER_PARAMS_PROVIDER = "setNormalUserParamsProvider";    
-
     public final static String SET_RESELLER_PARAMS_PROVIDER = "setResellerParamsProvider";    
-
     public final static String SET_MASTER_RESELLER_PARAMS_PROVIDER = "setMasterResellerParamsProvider";    
 
 }

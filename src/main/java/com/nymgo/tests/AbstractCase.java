@@ -20,7 +20,7 @@ public class AbstractCase {
 	
     public static Starter starter;
 	public static Logger LOGGER;
-			
+	
     @BeforeSuite
     public void setUp(ITestContext context) throws Exception {
         

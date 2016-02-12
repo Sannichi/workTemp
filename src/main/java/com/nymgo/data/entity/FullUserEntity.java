@@ -199,24 +199,4 @@ public class FullUserEntity {
 		this.bonus = "";
 		
 	}
-	
-	public FullUserEntity(Object[] obj){
-		setUsername(String.valueOf(obj[0]));
-		setPassword(String.valueOf(obj[1]));
-		setFullName(String.valueOf(obj[2]));
-		setEmail(String.valueOf(obj[3]));
-		setMobile(String.valueOf(obj[4]));
-		setPhone(String.valueOf(obj[5]));
-		setCountryOfResidence(String.valueOf(obj[6]));
-		setCity(String.valueOf(obj[7]));
-		setFullAddress(String.valueOf(obj[8]));
-		setStreet(String.valueOf(obj[9]));
-		setPostalCode(String.valueOf(obj[10]));
-		setDisplayCurrency(String.valueOf(obj[11]));
-		setPaymentCurrency(String.valueOf(obj[12]));
-		setLanguage(String.valueOf(obj[13]));
-		setGeoIpCountry(String.valueOf(obj[14]));
-		setVat(String.valueOf(obj[15]));
-		setBonus(String.valueOf(obj[16]));
-	}
 }

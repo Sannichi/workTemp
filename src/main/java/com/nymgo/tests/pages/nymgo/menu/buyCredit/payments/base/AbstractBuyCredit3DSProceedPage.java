@@ -47,6 +47,16 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		return this;
 	}
 
+	public void clickSavedCardLavel(){
+		
+		baseBuyCredit3DSProceedPageFragment.clickSavedCardLavel();
+	}
+	
+	public String getSavedCardNumber(){
+		
+		return baseBuyCredit3DSProceedPageFragment.getSavedCardNumber();
+	}
+	
 	public BuyCreditConfirmPageCancelled setCreditCardDataAndClickCancel(String cardNumberValue, String expireDateMonth, String expireDateYear, String cvvValue){
 		
 		clickCancelButton();
@@ -54,5 +64,18 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		PageNavigation<BuyCreditConfirmPageCancelled> navigation = new PageNavigation<BuyCreditConfirmPageCancelled>(buyCreditConfirmPageCancelled);
 		navigation.NavigatedTo();
 		return buyCreditConfirmPageCancelled;
+	}
+
+	public boolean compareFirstAndLastCreditCardSections(String firstCardNumber, String secondCardNumber){
+
+		firstCardNumber = firstCardNumber.replace(" ", "");
+		secondCardNumber = secondCardNumber.replace(" ", "");
+		@SuppressWarnings("unused")
+		String firstCardLastSection = firstCardNumber.substring(firstCardNumber.length() - 5, firstCardNumber.length() - 1);
+		@SuppressWarnings("unused")
+		String secondCardLastSection = secondCardNumber.substring(secondCardNumber.length() - 5, secondCardNumber.length() - 1);
+		return (firstCardNumber.substring(0, 4).equals(secondCardNumber.substring(0, 4)) && 
+				firstCardNumber.substring(firstCardNumber.length() - 5, firstCardNumber.length() - 1).equals(secondCardNumber.substring(secondCardNumber.length() - 5, secondCardNumber.length() - 1)));
+		
 	}
 }

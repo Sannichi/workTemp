@@ -3,31 +3,10 @@ package com.nymgo.data.providers;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 
-import com.nymgo.data.adapters.DataAdapter;
-import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.utils.ExcelUtils;
 
 public class GeneralDataProvider extends BaseDataProvider{
-
-
-    @DataProvider(name=PROVIDER_CONST.SIGN_UP_RESELLER_PROVIDER)
-    public static Object[][] signUpResellerDataProvider() throws Exception {
-
-        Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getSignUpReseller();
-        dataAdapterArray[0][0] = fullUserEntity;
-        return dataAdapterArray;
-    }
-
-    @DataProvider(name=PROVIDER_CONST.SIGN_UP_NORMAL_USER_PROVIDER)
-    public static Object[][] signUpNormalUserDataProvider() throws Exception {
-
-        Object[][] dataAdapterArray = new Object[1][1]; 
-        FullUserEntity fullUserEntity = DataAdapter.getSignUpNormalUser(); 
-        dataAdapterArray[0][0] = fullUserEntity;
-        return dataAdapterArray;
-    }
 
     @DataProvider(name=PROVIDER_CONST.FULLNAME_SIGN_UP_VERIFIES)
     public static Object[][] fullNameSignUpVerifiesDataProvider() throws Exception {

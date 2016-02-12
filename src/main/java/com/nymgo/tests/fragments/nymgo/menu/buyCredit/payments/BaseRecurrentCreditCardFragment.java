@@ -49,6 +49,11 @@ public abstract class BaseRecurrentCreditCardFragment extends BaseLoggedInFragme
 		clickElement(addNewCard);
 	}
 	
+	public void clickSavedCardLavel(){
+		
+		clickElement(savedCardLabel);
+	}
+	
 	public String getSavedCardNumber(){
 		
 		return savedCardLabel.getText();

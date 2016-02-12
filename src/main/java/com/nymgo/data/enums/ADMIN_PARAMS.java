@@ -5,7 +5,6 @@ package com.nymgo.data.enums;
  */
 public enum ADMIN_PARAMS {
 
-//    ADMIN_FILE_PATH,
     ADMIN_FILE_NAME,
     USERNAME( "Username"),
     PASSWORD( "Password");

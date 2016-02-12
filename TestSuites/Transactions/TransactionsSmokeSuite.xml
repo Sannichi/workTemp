@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Inter NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -84,7 +84,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Inter NormalUser USD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="Visa" />    

@@ -59,6 +59,27 @@ public class AdminResellersCase extends AbstractCase{
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editRecurrentEuroMasterResellerGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroMasterReseller(); 
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		BusinessMembersAdminPage businessMembersAdminPage = adminPage.navigateBusinessMembersTab();
+		String username = fullUserEntity.getUsername();
+		businessMembersAdminPage.searchUsernameExactMatch(username);
+		BusinessMemberListWidget businessMemberListWidget = businessMembersAdminPage.openEditBusinessUserWidgetByUsername(username);
+		if (gatewayName != null){
+			businessMemberListWidget.editBusinessUserPaymentMethod(gatewayName);
+		}
+		if (bonusType != null){
+			businessMemberListWidget.editBusinessUserBonusType(bonusType, bonusTypeValue);
+		}
+		LOGGER.info("End");
+	}
+	
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void editInterResellerGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 

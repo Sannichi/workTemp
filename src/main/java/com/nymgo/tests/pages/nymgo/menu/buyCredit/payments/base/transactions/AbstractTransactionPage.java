@@ -1,13 +1,13 @@
 package com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.base.transactions;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.base.transactions.BaseTransactionFragment;
-import com.nymgo.tests.pages.AbstractPage;
+import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Oct 21, 2015
  */
-public abstract class AbstractTransactionPage extends AbstractPage{
+public abstract class AbstractTransactionPage extends AbstractLoggedInPage{
 	
 	private BaseTransactionFragment baseTransactionFragment;
 

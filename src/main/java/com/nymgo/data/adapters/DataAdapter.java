@@ -14,24 +14,6 @@ public class DataAdapter extends BaseAdapter {
 	private static String usersTablePath = Starter.USERS_FILE_PATH;
 	private static String creditCardsTablePath = Starter.CREDIT_CARDS_FILE_PATH;
 	
-    public static Object[][] getInterNormalWhitelistGC() throws Exception{
-
-    	FullUserEntity[] fullUserEntities = {ExcelUtils.getFullUserEntity(usersTablePath,"InterNormalWhitelistGC")};    	
-    	Object[][] userEntityArray = new Object[1][];
-    	userEntityArray[0] = fullUserEntities;
-    	return userEntityArray;
-    }
-
-    public static Object[][] getEuroNormalWhitelistGC() throws Exception{
-	
-//    	ExcelUtils.setExcelFile(usersTablePath,"InterNormalNormallistGC");
-//    	FullUserEntity[] fullUserEntities = {new FullUserEntity(ExcelUtils.getUserArray(usersTablePath,"EuroNormalWhitelistGC"))};
-    	FullUserEntity[] fullUserEntities = {ExcelUtils.getFullUserEntity(usersTablePath,"EuroNormalWhitelistGC")};    	
-    	Object[][] userEntityArray = new Object[1][];
-    	userEntityArray[0] = fullUserEntities;
-    	return userEntityArray;
-	}
-
     public static AdminEntity getAdmin(){
     	
     	AdminEntity adminEntity  = ExcelUtils.getAdminEntity(adminTablePath, "Admin");
@@ -77,6 +59,18 @@ public class DataAdapter extends BaseAdapter {
     public static FullUserEntity getInterMasterReseller(){
     	
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"InterMasterReseller");    	
+    	return fullUserEntity;
+	}
+
+    public static FullUserEntity getRecurrentEuroNormalWhitelist(){
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"RecurrentEuroNormalWhitelist");    	
+    	return fullUserEntity;
+	}
+
+    public static FullUserEntity getRecurrentEuroMasterReseller(){
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"RecurrentEuroMasterReseller");    	
     	return fullUserEntity;
 	}
 
@@ -149,6 +143,12 @@ public class DataAdapter extends BaseAdapter {
     public static FullCardEntity getAdyenMasterCardCard3DS(){
     	
     	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"ADYENMC3DS");    	
+    	return fullCardEntity;
+	}
+
+    public static FullCardEntity getDefaultRecurrentCreditCard(){
+    	
+    	FullCardEntity fullCardEntity = ExcelUtils.getFullCardEntity(creditCardsTablePath,"DefaultRecurrent");    	
     	return fullCardEntity;
 	}
 

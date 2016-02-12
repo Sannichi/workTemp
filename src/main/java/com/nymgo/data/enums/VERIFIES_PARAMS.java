@@ -5,11 +5,8 @@ package com.nymgo.data.enums;
  */
 public enum VERIFIES_PARAMS {
 
-//    VERIFIES_FILE_PATH,
     VERIFIES_FILE_NAME,
-//    ACTIVATION_FILE_PATH,
     ACTIVATION_FILE_NAME,
-//    REGISTRATION_FILE_PATH,
     REGISTRATION_FILE_NAME,
     ;
 	
