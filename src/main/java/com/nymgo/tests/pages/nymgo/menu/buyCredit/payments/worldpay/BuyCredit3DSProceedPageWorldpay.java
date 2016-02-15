@@ -205,7 +205,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 
 	public PendingTransactionWorldpayPage selectSavedCreditCardAndClickPay(){
 		
-		clickSavedCardLavel();
+		clickSavedCardLabel();
 		clickPayButton();
 		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
 		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);
@@ -227,7 +227,8 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		selectExpireDateMonth(expireDateMonth);
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
-		setSaveCardCheckbox();
+//		setSaveCardCheckbox();
+		checkSaveCardLabel();
 		clickPayButton();
 		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
 		PageNavigation<PendingTransactionWorldpayPage> navigationPending = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);

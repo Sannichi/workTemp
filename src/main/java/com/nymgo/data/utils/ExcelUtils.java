@@ -649,9 +649,9 @@ public class ExcelUtils {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			return "";
 		}
-		return null;
+		return "";
 	} 
 
 	public static String getAccountBalanceBeforeTransaction(String transactionID){
@@ -668,9 +668,9 @@ public class ExcelUtils {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			return "";
 		}
-		return null;
+		return "";
 	} 
 
 	public static String getLastTransactionByUsername(String username){
@@ -688,9 +688,9 @@ public class ExcelUtils {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			return "";
 		}
-		return null;
+		return "";
 	} 
 
 	public static String getLastTransaction(){
@@ -704,12 +704,12 @@ public class ExcelUtils {
 			}
 			else{
 				LOGGER.fatal("There is no any transaction");
-				return null;
+				return "";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			return "";
 		}
 	} 
 }

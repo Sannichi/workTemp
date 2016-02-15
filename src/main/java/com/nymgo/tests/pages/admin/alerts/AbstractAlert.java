@@ -1,6 +1,7 @@
 package com.nymgo.tests.pages.admin.alerts;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.security.Credentials;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,6 +28,44 @@ public abstract class AbstractAlert extends AbstractPage{
 //	        LOGGER.info("Alert detected with text '" + alert.getText() + "'");
 	    } catch (Exception e) {
 	        //exception handling
+	    	alert = new Alert() {
+				
+				@Override
+				public void setCredentials(Credentials arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void sendKeys(String arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public String getText() {
+					// TODO Auto-generated method stub
+					return "No Alert!";
+				}
+				
+				@Override
+				public void dismiss() {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void authenticateUsing(Credentials arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void accept() {
+					// TODO Auto-generated method stub
+					
+				}
+			};
 	    }
 	}
 

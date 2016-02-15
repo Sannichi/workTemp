@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Recurrent Euro NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -73,7 +73,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.DefaultCreditCardCase">
@@ -107,7 +107,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardAddNewCardCase">
@@ -122,12 +122,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptRecurrentEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>
@@ -146,7 +146,7 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInRecurrentEuroNormalWhitelistUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
@@ -156,7 +156,7 @@
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardRecurrentCase">
@@ -171,12 +171,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptRecurrentEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>

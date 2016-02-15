@@ -19,6 +19,9 @@ public abstract class BaseRecurrentCreditCardFragment extends BaseLoggedInFragme
 	@FindBy(css = "input[id='savecard']")
 	private WebElement saveCardCheckbox;
 
+	@FindBy(css = "label[for='savecard']")
+	private WebElement saveCardLabel;
+
 	@FindBy(css = "label[for='saved-card']")
 	private WebElement savedCardLabel;
 
@@ -27,9 +30,15 @@ public abstract class BaseRecurrentCreditCardFragment extends BaseLoggedInFragme
 
 	public void setSaveCardCheckbox(){
 		
-		if (!isElementSelected(saveCardCheckbox)){
+		if (!isSaveCardCheckboxChecked()){
+			scrollToElement(saveCardCheckbox);
 			clickCheckbox(saveCardCheckbox);
 		}
+	}
+	
+	private boolean isSaveCardCheckboxChecked(){
+		
+		return saveCardCheckbox.getAttribute("checked") == "checked" ? true : false;
 	}
 	
 	private boolean isSavedCardLabelChecked(){
@@ -37,6 +46,13 @@ public abstract class BaseRecurrentCreditCardFragment extends BaseLoggedInFragme
 		return savedCardLabel.getAttribute("class") == "checked" ? true : false;
 	}
 	
+	public void checkSaveCardLabel(){
+		
+		if (!isSaveCardCheckboxChecked()){
+			clickElement(saveCardLabel);
+		}
+	}
+
 	public void checkSavedCard(){
 		
 		if (!isSavedCardLabelChecked()){
@@ -49,7 +65,7 @@ public abstract class BaseRecurrentCreditCardFragment extends BaseLoggedInFragme
 		clickElement(addNewCard);
 	}
 	
-	public void clickSavedCardLavel(){
+	public void clickSavedCardLabel(){
 		
 		clickElement(savedCardLabel);
 	}

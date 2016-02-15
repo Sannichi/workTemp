@@ -35,6 +35,11 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		baseBuyCredit3DSProceedPageFragment.setSaveCardCheckbox();
 	}
 	
+	protected void checkSaveCardLabel(){
+		
+		baseBuyCredit3DSProceedPageFragment.checkSaveCardLabel();
+	}
+	
 	public AbstractBuyCredit3DSProceedPage checkSavedCard(){
 		
 		baseBuyCredit3DSProceedPageFragment.checkSavedCard();
@@ -47,9 +52,9 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		return this;
 	}
 
-	public void clickSavedCardLavel(){
+	public void clickSavedCardLabel(){
 		
-		baseBuyCredit3DSProceedPageFragment.clickSavedCardLavel();
+		baseBuyCredit3DSProceedPageFragment.clickSavedCardLabel();
 	}
 	
 	public String getSavedCardNumber(){
@@ -71,11 +76,11 @@ public abstract class AbstractBuyCredit3DSProceedPage extends AbstractLoggedInPa
 		firstCardNumber = firstCardNumber.replace(" ", "");
 		secondCardNumber = secondCardNumber.replace(" ", "");
 		@SuppressWarnings("unused")
-		String firstCardLastSection = firstCardNumber.substring(firstCardNumber.length() - 5, firstCardNumber.length() - 1);
+		String firstCardLastSection = firstCardNumber.substring(firstCardNumber.length() - 4, firstCardNumber.length());
 		@SuppressWarnings("unused")
-		String secondCardLastSection = secondCardNumber.substring(secondCardNumber.length() - 5, secondCardNumber.length() - 1);
+		String secondCardLastSection = secondCardNumber.substring(secondCardNumber.length() - 4, secondCardNumber.length());
 		return (firstCardNumber.substring(0, 4).equals(secondCardNumber.substring(0, 4)) && 
-				firstCardNumber.substring(firstCardNumber.length() - 5, firstCardNumber.length() - 1).equals(secondCardNumber.substring(secondCardNumber.length() - 5, secondCardNumber.length() - 1)));
+				firstCardNumber.substring(firstCardNumber.length() - 4, firstCardNumber.length()).equals(secondCardNumber.substring(secondCardNumber.length() - 4, secondCardNumber.length())));
 		
 	}
 }

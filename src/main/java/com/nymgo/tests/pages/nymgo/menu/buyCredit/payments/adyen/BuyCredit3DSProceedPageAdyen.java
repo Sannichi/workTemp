@@ -179,7 +179,8 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 		selectExpireDateMonth(expireDateMonth);
 		selectExpireDateYear(expireDateYear);
 		setCVV(cvvValue);
-		setSaveCardCheckbox();
+//		setSaveCardCheckbox();
+		checkSaveCardLabel();
 		clickPayButton();
 		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
 		PageNavigation<PendingTransactionAdyenPage> navigationPending = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);
@@ -189,7 +190,7 @@ public class BuyCredit3DSProceedPageAdyen extends AbstractBuyCredit3DSProceedPag
 
 	public PendingTransactionAdyenPage selectSavedCreditCardAndClickPay(){	
 		
-		clickSavedCardLavel();
+		clickSavedCardLabel();
 		clickPayButton();
 		PendingTransactionAdyenPage pendingTransactionAdyenPage = new PendingTransactionAdyenPage(starter);
 		PageNavigation<PendingTransactionAdyenPage> navigation = new PageNavigation<PendingTransactionAdyenPage>(pendingTransactionAdyenPage);

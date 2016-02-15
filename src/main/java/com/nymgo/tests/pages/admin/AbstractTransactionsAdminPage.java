@@ -3,7 +3,7 @@ package com.nymgo.tests.pages.admin;
 import java.math.BigDecimal;
 import java.util.Map;
 
-import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.tests.enums.CURRENCY_SIGNS;
 import com.nymgo.tests.enums.GATEWAY_CONST;
@@ -164,25 +164,26 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			}
 		}
 				
-		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
 				"', should be '" + username.toLowerCase() + "'");
 		LOGGER.info("Username is correct");
-		Assert.assertTrue(isTransactionAmountCorrect(transactionDetails, fullAmount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
+		softAssert.assertTrue(isTransactionAmountCorrect(transactionDetails, fullAmount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
 				"', should be '" + fullAmount + "'");
 		LOGGER.info("Amount is correct");
-		Assert.assertTrue(isTransactionCurrencyCorrect(transactionDetails, currency), "Currency is not correct! Current value is '" + getTransactionCurrency(transactionDetails) + 
+		softAssert.assertTrue(isTransactionCurrencyCorrect(transactionDetails, currency), "Currency is not correct! Current value is '" + getTransactionCurrency(transactionDetails) + 
 				"', should be '" + currency + "'");
 		LOGGER.info("Currency is correct");
-		Assert.assertTrue(isTransactionProductCorrect(transactionDetails, fullProduct), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
+		softAssert.assertTrue(isTransactionProductCorrect(transactionDetails, fullProduct), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
 				"', should be '" + fullProduct + "'");
 		LOGGER.info("Product is correct");
-		Assert.assertTrue(isTransactionServiceCorrect(transactionDetails, service), "Service is not correct! Current value is '" + getTransactionService(transactionDetails) + 
+		softAssert.assertTrue(isTransactionServiceCorrect(transactionDetails, service), "Service is not correct! Current value is '" + getTransactionService(transactionDetails) + 
 				"', should be '" + service + "'");
 		LOGGER.info("Service is correct");
-		Assert.assertTrue(isTransactionMethodCorrect(transactionDetails, method), "Method is not correct! Current value is '" + getTransactionMethod(transactionDetails) + 
+		softAssert.assertTrue(isTransactionMethodCorrect(transactionDetails, method), "Method is not correct! Current value is '" + getTransactionMethod(transactionDetails) + 
 				"', should be '" + method + "'");
 		LOGGER.info("Methos is correct");
-		Assert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
+		softAssert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country is correct");
 	}
@@ -227,25 +228,26 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			}
 		}
 				
-		Assert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(isTransactionUsernameCorrect(transactionDetails, username.toLowerCase()), "Username is not correct! Current value is '" + getTransactionUsername(transactionDetails) + 
 				"', should be '" + username.toLowerCase() + "'");
 		LOGGER.info("Username is correct");
-		Assert.assertTrue(isTransactionAmountCorrect(transactionDetails, fullAmount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
+		softAssert.assertTrue(isTransactionAmountCorrect(transactionDetails, fullAmount), "Amount is not correct! Current value is '" + getTransactionAmount(transactionDetails) + 
 				"', should be '" + fullAmount + "'");
 		LOGGER.info("Amount is correct");
-		Assert.assertTrue(isTransactionCurrencyCorrect(transactionDetails, currency), "Currency is not correct! Current value is '" + getTransactionCurrency(transactionDetails) + 
+		softAssert.assertTrue(isTransactionCurrencyCorrect(transactionDetails, currency), "Currency is not correct! Current value is '" + getTransactionCurrency(transactionDetails) + 
 				"', should be '" + currency + "'");
 		LOGGER.info("Currency is correct");
-		Assert.assertTrue(isTransactionProductCorrect(transactionDetails, fullProduct), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
+		softAssert.assertTrue(isTransactionProductCorrect(transactionDetails, fullProduct), "Product is not correct! Current value is '" + getTransactionProduct(transactionDetails) + 
 				"', should be '" + fullProduct + "'");
 		LOGGER.info("Product is correct");
-		Assert.assertTrue(isTransactionServiceCorrect(transactionDetails, service), "Service is not correct! Current value is '" + getTransactionService(transactionDetails) + 
+		softAssert.assertTrue(isTransactionServiceCorrect(transactionDetails, service), "Service is not correct! Current value is '" + getTransactionService(transactionDetails) + 
 				"', should be '" + service + "'");
 		LOGGER.info("Service is correct");
-		Assert.assertTrue(isTransactionMethodCorrect(transactionDetails, method), "Method is not correct! Current value is '" + getTransactionMethod(transactionDetails) + 
+		softAssert.assertTrue(isTransactionMethodCorrect(transactionDetails, method), "Method is not correct! Current value is '" + getTransactionMethod(transactionDetails) + 
 				"', should be '" + method + "'");
 		LOGGER.info("Methos is correct");
-		Assert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
+		softAssert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country is correct");
 	}

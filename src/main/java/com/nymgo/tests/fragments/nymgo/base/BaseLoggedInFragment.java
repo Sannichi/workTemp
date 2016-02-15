@@ -52,6 +52,7 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 		initializeWebElements();
 		Actions actions = new Actions(driver);
 		scrollToElement(accountButton);
+		LOGGER.info("Hover Account dropdown");
 		actions.moveToElement(accountButton).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);
 		WebElement webElement = null;

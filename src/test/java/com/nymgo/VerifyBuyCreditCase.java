@@ -41,6 +41,30 @@ public class VerifyBuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+    	FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroNormalWhitelist(); 
+    	
+    	NymgoPage nymgoPage = new NymgoPage(starter);
+		nymgoPage.navigateToHomePage();
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
+		}
+//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+//				+ Float.parseFloat(currencyAmount));
+//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+				+ Float.parseFloat(currencyAmount)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
+		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void verifyBuyCreditAcceptedLoggedEuroResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
