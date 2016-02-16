@@ -3,7 +3,7 @@ package com.nymgo.tests.pages.nymgo.account;
 import com.nymgo.tests.fragments.nymgo.account.BaseAccountPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditDealPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditResellerDealPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.BuyCreditPage;
 import com.nymgo.tests.starter.Starter;
 
@@ -36,11 +36,11 @@ public abstract class AbstractAccountPage extends AbstractLoggedInPage{
 		return buyCreditPage;
 	}
 
-	public BuyCreditDealPage clickResellerAccountBuyCreditButton(){
+	public BuyCreditResellerDealPage clickResellerAccountBuyCreditButton(){
 
 		baseAccountPageFragment.clickAccountBuyCreditButton();
-		BuyCreditDealPage buyCreditDealPage = new BuyCreditDealPage(starter);
-		PageNavigation<BuyCreditDealPage> navigation = new PageNavigation<BuyCreditDealPage>(buyCreditDealPage);
+		BuyCreditResellerDealPage buyCreditDealPage = new BuyCreditResellerDealPage(starter);
+		PageNavigation<BuyCreditResellerDealPage> navigation = new PageNavigation<BuyCreditResellerDealPage>(buyCreditDealPage);
 		navigation.NavigatedTo();
 		return buyCreditDealPage;
 	}

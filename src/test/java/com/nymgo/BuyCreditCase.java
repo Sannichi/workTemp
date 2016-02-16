@@ -12,7 +12,7 @@ import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
-import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditDealPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditResellerDealPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.BuyCreditPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.BuyCredit3DSProceedPageAdyen;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditConfirmPageGlobalCollect;
@@ -147,7 +147,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -188,7 +188,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -215,7 +215,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -241,7 +241,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -281,7 +281,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -306,7 +306,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -407,7 +407,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -441,7 +441,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -463,7 +463,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -483,7 +483,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -517,7 +517,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
@@ -537,7 +537,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
-		BuyCreditDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);

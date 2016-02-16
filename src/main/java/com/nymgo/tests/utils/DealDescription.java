@@ -10,7 +10,7 @@ public class DealDescription {
 	private Float usdPrice;
 	private int sarPrice;
 	private int aedPrice;
-	private int kwdPrice;
+	private Float kwdPrice;
 	private int qarPrice;
 	private int eurPrice;
 	private int gbpPrice;
@@ -24,9 +24,10 @@ public class DealDescription {
 	private int bndPrice;
 	private CURRENCY_SIGNS currencySign;
 	private int minutes;
+	private int imtuAmount;
 	
 	public DealDescription(Float usdPrice, int audPrice, int cadPrice, int eurPrice, int inrPrice, int nzdPrice, int qarPrice, int sarPrice, 
-			int aedPrice, int gbpPrice, int kwdPrice, int myrPrice, int sgdPrice, int aoaPrice, int bndPrice, CURRENCY_SIGNS currencySign, int minutes) {
+			int aedPrice, int gbpPrice, Float kwdPrice, int myrPrice, int sgdPrice, int aoaPrice, int bndPrice, CURRENCY_SIGNS currencySign, int minutes, int imtuAmount) {
 
 		this.usdPrice = usdPrice;
 		this.sarPrice = sarPrice;
@@ -45,6 +46,7 @@ public class DealDescription {
 		this.bndPrice = bndPrice;
 		this.currencySign = currencySign;
 		this.minutes = minutes;
+		this.imtuAmount = imtuAmount;
 }
 
 	public Float getUsdPrice() {
@@ -71,11 +73,11 @@ public class DealDescription {
 		this.aedPrice = aedPrice;
 	}
 
-	public int getKwdPrice() {
+	public Float getKwdPrice() {
 		return kwdPrice;
 	}
 
-	public void setKwdPrice(int kwdPrice) {
+	public void setKwdPrice(Float kwdPrice) {
 		this.kwdPrice = kwdPrice;
 	}
 
@@ -181,6 +183,14 @@ public class DealDescription {
 
 	public void setMinutes(int minutes) {
 		this.minutes = minutes;
+	}
+
+	public int getImtuAmount() {
+		return imtuAmount;
+	}
+
+	public void setImtuAmount(int imtuAmount) {
+		this.imtuAmount = imtuAmount;
 	}
 
 	public Float getPriceByPaymentCurrency(String paymentCurrency){
