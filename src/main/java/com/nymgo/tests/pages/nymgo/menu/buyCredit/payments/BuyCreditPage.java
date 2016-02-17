@@ -1,7 +1,5 @@
 package com.nymgo.tests.pages.nymgo.menu.buyCredit.payments;
 
-import java.util.ArrayList;
-//import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.NoSuchElementException;
@@ -51,17 +49,15 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		return buyCreditPageFragment.getAllAdyenOptionsDescription();
 	}
 
-	@SuppressWarnings("unused")
-	private ArrayList<Integer> getDisabledAdyenOptionsValues(){
-		
-		return buyCreditPageFragment.getDisabledAdyenOptionsValues();	
-	}
-
-	@SuppressWarnings("unused")
-	private List<String> getAllCurencyValuesOptions(){
-		
-		return buyCreditPageFragment.getAllCurencyValuesOptions();	
-	}
+//	private ArrayList<Integer> getDisabledAdyenOptionsValues(){
+//		
+//		return buyCreditPageFragment.getDisabledAdyenOptionsValues();	
+//	}
+//
+//	private List<String> getAllCurencyValuesOptions(){
+//		
+//		return buyCreditPageFragment.getAllCurencyValuesOptions();	
+//	}
 
 	private String getCheckedOptionDescription() throws NoSuchElementException{
 		
@@ -83,13 +79,12 @@ public class BuyCreditPage extends AbstractLoggedInPage{
 		Assert.assertTrue(getCheckedOptionValue() == value, "Could not select option " + value + "!");
 	}
 
-	@SuppressWarnings("unused")
-	private boolean isValueDisabled(int value){
+//	private boolean isValueDisabled(int value){
+//
+//		return buyCreditPageFragment.isValueDisabled(value);
+//	}
 
-		return buyCreditPageFragment.isValueDisabled(value);
-	}
-
-	private void clickContinueButton(){
+	protected void clickContinueButton(){
 		
 		buyCreditPageFragment.clickContinueButton();
 	}

@@ -26,13 +26,16 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 	@FindBy(id = "deal-countries-list")
 	private WebElement countrySelect;
 
-	@FindBy(css = ("div[id^=country-deal]"))
+//	@FindBy(css = ("div[id^=country-deal]"))
+	@FindBy(css = ("div[class$='optionsList clickable2']"))
 	private List<WebElement> dealsOptions;
 	
-    @FindBy(css="div[class='multi_optionsList clickable2 checked']")
+//    @FindBy(css="div[class='multi_optionsList clickable2 checked']")
+    @FindBy(css="div[class$='optionsList clickable2 checked']")	
     private WebElement dealOptionChecked;
 
-    @FindBy(css="div[class='multi_optionsList clickable2 disabled']")
+//    @FindBy(css="div[class='multi_optionsList clickable2 disabled']")
+    @FindBy(css="div[class$='optionsList clickable2 disabled']")
     private List<WebElement> dealsOptionsDisabled;
     
     @FindBys({@FindBy(xpath = "//div[@id='user-package-vat-holder']/div[@class='vatHolder'][1]"),
@@ -45,11 +48,16 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
     @FindBy(css="span[id='user-package-price-total']")
     private WebElement dealTotalAmountValue;
 
-    @FindBy(css="span[id='deal-minutes']")
+//    @FindBy(css="span[id='deal-minutes']")
+    @FindBy(id = "deal-minutes")    
     private WebElement dealMinutesValue;
 
-    @FindBy(css="span[id='deal-imtu-amount']")
+//    @FindBy(css="span[id='deal-imtu-amount']")
+    @FindBy(id = "deal-imtu-amount")    
     private WebElement dealImtuAmountValue;
+    
+    @FindBy(css="button[id='transaction-proceed']")
+    private WebElement continueDealButton;
 
     public void selectCountryByName(String countryName){
 		
@@ -64,7 +72,7 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 	
 	public String getDealVATPercent(){
 		
-		String[] splitted = dealVatValue.getText().split(" ");
+		String[] splitted = dealVatLabel.getText().split(" ");
 		if(splitted.length > 1){
 			return splitted[1];
 		}
@@ -96,16 +104,22 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 
 	private List<WebElement> getAllDealsOptions(){
 		
-		return dealsOptions;
+		List<WebElement> visibleDealsOptions = new ArrayList<>();
+		for (WebElement option : dealsOptions){
+			if(isElementDisplayed(option)){
+				visibleDealsOptions.add(option);
+			}
+		}
+		return visibleDealsOptions;
 	}
 
-	private int getDealPrice(WebElement option){
+	private Float getDealPrice(WebElement option){
 		
 		try{
-			return Integer.valueOf(option.findElement(By.id("deal-price")).getText());
+			return Float.valueOf(option.findElement(By.id("deal-price")).getText());
 		}
 		catch(NoSuchElementException e){
-			return 0;
+			return null;
 		}
 	}
 
@@ -134,21 +148,21 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return dealOptionChecked;
 	}
 	
-	public String getCheckedOptionDescription() throws NoSuchElementException{
+	public String getCheckedDealOptionDescription() throws NoSuchElementException{
 		
 		return getFullDealOptionDescription(returnCheckedOption());
 	}
 
-	public boolean isOptionByPriceChecked(int value){
+	private boolean isDealOptionByPriceChecked(Float value){
 	
 		return (getDealPrice(returnCheckedOption()) == value);
 	}
 
-	private WebElement returnOptionByPrice(int value){
+	private WebElement returnOptionByPrice(Float value){
 		
 		List<WebElement> options = getAllDealsOptions();
 		for (WebElement option: options){
-			if(getDealPrice(option) == value){
+			if(getDealPrice(option).equals(value)){
 				return option;
 			}
 		}
@@ -156,9 +170,9 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return null;
 	}
 
-	public void checkOptionByPrice(int value){
+	public void checkDealOptionByPrice(Float value){
 		
-		if (!isOptionByPriceChecked(value)){
+		if (!isDealOptionByPriceChecked(value)){
 			if (!isPriceDisabled(value)){
 				WebElement element = returnOptionByPrice(value);
 				if(element != null){
@@ -192,9 +206,9 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return adyenValuesText;
 	}
 
-	public ArrayList<Integer> getDisabledDealsOptionsPrices(){
+	public ArrayList<Float> getDisabledDealsOptionsPrices(){
 		
-		ArrayList<Integer> disabledAdyenValues = new ArrayList<Integer>();
+		ArrayList<Float> disabledAdyenValues = new ArrayList<Float>();
 		for( WebElement option: getDisabledDealsOptions()){
 			disabledAdyenValues.add(getDealPrice(option));
 		} 
@@ -210,9 +224,9 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return adyenValuesText;
 	}
 
-	public boolean isPriceDisabled(int value){
+	public boolean isPriceDisabled(Float value){
 		
-		for (int i: getDisabledDealsOptionsPrices()){
+		for (Float i: getDisabledDealsOptionsPrices()){
 			if(i == value){
 				LOGGER.info("Price is disabled");
 				return true;
@@ -221,4 +235,10 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return false;
 	}
 	
+	public void clickContinueDealButton(){
+		
+		scrollToElement(continueDealButton);
+		clickButton(continueDealButton);
+	}
+
 }

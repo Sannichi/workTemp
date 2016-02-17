@@ -1,6 +1,8 @@
 package com.nymgo.tests.pages;
 
 
+import java.math.BigDecimal;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -139,4 +141,17 @@ public abstract class AbstractPage {
   		return tempMailEmailListPage;    		
 	}
 
+	/**
+     * Round to certain number of decimals
+     * 
+     * @param d
+     * @param decimalPlace
+     * @return
+     */
+    public static float roundFloat(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
+    }
+    
 }

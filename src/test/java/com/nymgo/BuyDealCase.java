@@ -12,6 +12,7 @@ import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
+import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditNormalDealPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.BuyCreditResellerDealPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.BuyCreditPage;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.BuyCredit3DSProceedPageAdyen;
@@ -35,17 +36,13 @@ public class BuyDealCase extends AbstractCase{
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		String VATPercent = buyCreditPage.getVATPercent();
+		BuyCreditNormalDealPage buyCreditNormalDealPage = normalAccountPage.clickAccountBuyDealsButton();
+		buyCreditNormalDealPage.selectCountryAndDealAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName);
+		String VATPercent = buyCreditNormalDealPage.getVATPercent();
 		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
-		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.clickContinueToGlobalCollect();		
+		Float VATValue = Float.valueOf(buyCreditNormalDealPage.getVATValue());
+		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditNormalDealPage.clickContinueToGlobalCollect();		
 
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
@@ -74,18 +71,14 @@ public class BuyDealCase extends AbstractCase{
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
 		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
-		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
-//			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		String VATPercent = buyCreditPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.clickContinueToWorldpay();		
+		BuyCreditNormalDealPage buyCreditNormalDealPage = normalAccountPage.clickAccountBuyDealsButton();
+		buyCreditNormalDealPage.selectCountryAndDealAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName);
+		String dealVATPercent = buyCreditNormalDealPage.getDealVATPercent();
+		Assert.assertTrue(dealVATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" +
+				dealVATPercent + "' should be '" + fullUserEntity.getVat() + "'");
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditNormalDealPage.clickContinueDealToWorldpay();		
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

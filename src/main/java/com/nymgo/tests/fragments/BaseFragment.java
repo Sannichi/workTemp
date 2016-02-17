@@ -167,6 +167,15 @@ public class BaseFragment {
 		}
 	}
 
+	public boolean isElementDisplayed(WebElement element){
+		try{
+			return element.isDisplayed();
+		}
+		catch(NoSuchElementException e){
+			return false;
+		}
+	}
+
 	protected void pressEnter(){
 		
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.ENTER);

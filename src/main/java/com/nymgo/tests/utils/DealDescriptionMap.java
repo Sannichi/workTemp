@@ -48,7 +48,10 @@ public class DealDescriptionMap {
 //		dealMap.put(DEAL_NAMES.SRI_LANKA_DEAL_100, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.LKR, 100));
 //		dealMap.put(DEAL_NAMES.PHILIPPINES_DEAL_100, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, 5, 66, 22, 2321, 22, CURRENCY_SIGNS.PHP, 100));
 
-		dealMap.put(LOCALE_CONST.INDIA_DEAL, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.INR, 600, 200));
+//		DealPricesDescription(Float usdPrice, int audPrice, int cadPrice, int eurPrice, int inrPrice, int nzdPrice, int qarPrice, int sarPrice, 
+//		int aedPrice, int gbpPrice, int kwdPrice, int myrPrice, int sgdPrice, int aoaPrice, int bndPrice, CURRENCY_SIGNS currencySign, int minutes)
+
+		dealMap.put(LOCALE_CONST.INDIA_DEAL, new DealDescription((float) 14.99, 21, 21, 14, 1023, 23, 54, 57, 56, 11, (float) 4.5, 63, 21, 2355, 21, CURRENCY_SIGNS.INR, 1000, 200));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_350, new DealDescription((float) 7.99, 12, 12, 8, 544, 12, 29, 30, 30, 6, (float) 2.4, 33, 12, 1256, 12, CURRENCY_SIGNS.INR, 350, 200));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_550, new DealDescription((float) 9.99, 14, 14, 9, 680, 15, 36, 38, 37, 7, (float) 3.0, 42, 14, 1570, 14, CURRENCY_SIGNS.INR, 550, 200));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_800, new DealDescription((float) 11.99, 17, 17, 11, 816, 18, 44, 45, 45, 9, (float) 3.6, 50, 17, 1884, 17, CURRENCY_SIGNS.INR, 800, 200));
@@ -57,7 +60,7 @@ public class DealDescriptionMap {
 		dealMap.put(LOCALE_CONST.PAKISTAN_DEAL_300, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.PKR, 300, 300));
 		dealMap.put(LOCALE_CONST.YEMEN_DEAL_175, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.YER, 175, 600));
 		dealMap.put(LOCALE_CONST.SYRIA_DEAL_200, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.SYP, 200, 300));		
-		dealMap.put(LOCALE_CONST.EGYPT_DEAL_200, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.EGP, 200, 20));
+		dealMap.put(LOCALE_CONST.EGYPT_DEAL_200, new DealDescription((float) 11, 16, 16, 10, 751, 17, 40, 42, 41, 8, (float) 3.3, 46, 16, 1728, 16, CURRENCY_SIGNS.EGP, 200, 20));
 		dealMap.put(LOCALE_CONST.NIGERIA_DEAL_200, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.NGN, 200, 500));
 		dealMap.put(LOCALE_CONST.KENYA_DEAL_200, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.KES, 200, 300));
 		dealMap.put(LOCALE_CONST.NEPAL_DEAL_200, new DealDescription((float) 14.99, 22, 22, 14, 1014, 24, 55, 57, 56, 11, (float) 5, 66, 22, 2321, 22, CURRENCY_SIGNS.NPR, 200, 200));

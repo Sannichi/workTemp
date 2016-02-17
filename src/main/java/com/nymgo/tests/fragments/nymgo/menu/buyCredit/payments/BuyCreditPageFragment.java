@@ -114,7 +114,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		return getFullAdyenOptionDescription(returnCheckedOption());
 	}
 
-	public boolean isOptionByValueChecked(int value){
+	private boolean isOptionByValueChecked(int value){
 	
 		return (getAmountCurrencyValue(returnCheckedOption()) == value);
 	}
@@ -169,7 +169,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		return adyenValuesText;
 	}
 
-	public ArrayList<Integer> getDisabledAdyenOptionsValues(){
+	private ArrayList<Integer> getDisabledAdyenOptionsValues(){
 		
 		ArrayList<Integer> disabledAdyenValues = new ArrayList<Integer>();
 		for( WebElement option: getDisabledAdyenOptions()){
@@ -178,7 +178,8 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		return disabledAdyenValues;
 	}
 
-	public List<String> getAllCurencyValuesOptions(){
+	@SuppressWarnings("unused")
+	private List<String> getAllCurencyValuesOptions(){
 		
 		List<String> adyenValuesText = new ArrayList<String>();
 		for( WebElement option: getAllAdyenOptions()){
@@ -187,7 +188,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		return adyenValuesText;
 	}
 
-	public boolean isValueDisabled(int value){
+	private boolean isValueDisabled(int value){
 		
 		for (int i: getDisabledAdyenOptionsValues()){
 			if(i == value){

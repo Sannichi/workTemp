@@ -27,10 +27,14 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	private static final String language = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL);
 	
 	private static final String accountMyBalanceBlockClassName = "block my-balance";
+	private static final String accountPackageBlockClassName = "block package";
 	private static final String accountBuyCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/buy-credits']";
+//	private static final String accountBuyDealsXpath = "(//a[@href='" + language + "/buy-credits'])[last()]";
+	private static final String accountBuyDealsXpath = "//div[@class='" + accountPackageBlockClassName + "']//a[@href='" + language + "/buy-credits']";
 	private static final String transferCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/user/credits/transfer-credits']";
 
 	private WebElement accountBuyCreditButton;
+	private WebElement accountBuyDealsButton;
 	private WebElement accountTransferCreditButton;
 	
 	@FindBy(xpath = "//div[@class='block my-balance']//div[@class='balance']")
@@ -58,6 +62,11 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		accountBuyCreditButton = driver.findElement(By.xpath(accountBuyCreditXpath));
 	}
 
+	private void initializeBuyDealsButton() throws NoSuchElementException{
+		
+		accountBuyDealsButton = driver.findElement(By.xpath(accountBuyDealsXpath));
+	}
+
 	private void initializeTransferCreditCreditButton() throws NoSuchElementException{
 		
 		accountTransferCreditButton = driver.findElement(By.xpath(transferCreditXpath));
@@ -67,6 +76,12 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		
 		initializeBuyCreditButton();
 		clickSubmitButton(accountBuyCreditButton);
+	}
+	
+	public void clickAccountBuyDealsButton(){
+		
+		initializeBuyDealsButton();
+		clickSubmitButton(accountBuyDealsButton);
 	}
 	
 	public void clickAccountTransferCreditButton(){
