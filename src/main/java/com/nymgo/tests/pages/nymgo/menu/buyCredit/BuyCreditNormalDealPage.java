@@ -6,6 +6,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.BuyCreditNormalDealPageFragment;
+import com.nymgo.tests.generators.DealsCountryNameGenerator;
 import com.nymgo.tests.generators.DealsNameGenerator;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.navigation.PageNavigation;
@@ -47,8 +48,9 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 	
 	public void selectCountryByDealCurrency(String dealCurrency){
 
-		String dealName = getCountryByDealCurrency(dealCurrency);
-		String countryName = dealName.split(" Deal")[0];
+//		String dealName = getCountryByDealCurrency(dealCurrency);
+//		String countryName = dealName.split(" Deal")[0];
+		String countryName = DealsCountryNameGenerator.getDealKeyBySign(dealCurrency); 
 		selectCountryByName(countryName);
 	}
 	

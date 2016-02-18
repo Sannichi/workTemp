@@ -69,4 +69,44 @@ public abstract class AbstractAccountPage extends AbstractLoggedInPage{
 		
 		return baseAccountPageFragment.getAccountBalanceCurrency();
 	}
+
+	public String getMyDealsCounter(){
+		
+		return baseAccountPageFragment.getMyDealsCounter();
+	}
+
+	public void clickNextDealButton(){
+		
+		baseAccountPageFragment.clickNextDealButton();
+	}
+
+	public void clickPrevDealButton(){
+		
+		baseAccountPageFragment.clickPrevDealButton();
+	}
+
+	public String getDealDaysCounter(int i){
+		
+		return baseAccountPageFragment.getDealDaysCounter(i);
+	}
+
+	public String getDealName(int i){
+		
+		return baseAccountPageFragment.getDealName(i);
+	}
+
+	public String getDealMinutes(int i){
+		
+		return baseAccountPageFragment.getDealMinutes(i);
+	}
+	
+	public String getDealTopUp(int i){
+		
+		return baseAccountPageFragment.getDealTopUp(i);
+	}
+
+	public int navigateToDeal(String dealName){
+		
+		return baseAccountPageFragment.navigateToDeal(dealName);
+	}
 }

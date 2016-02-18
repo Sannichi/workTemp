@@ -37,7 +37,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -61,7 +61,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
@@ -85,7 +85,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
@@ -109,7 +109,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -133,7 +133,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
@@ -157,7 +157,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -183,7 +183,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
@@ -207,7 +207,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -231,7 +231,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 		}
 		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();
@@ -255,7 +255,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -279,7 +279,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;
@@ -303,7 +303,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
@@ -329,7 +329,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry());
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 		transactionAcceptedPopup.closeTransactionAcceptedPopup();;

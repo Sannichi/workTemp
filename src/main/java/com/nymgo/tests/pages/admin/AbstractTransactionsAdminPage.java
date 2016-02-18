@@ -114,7 +114,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
         return bd.floatValue();
     }
     
-	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String currency, String service, String cardType, String country){
+	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String currency, String service, String cardType, String country, String dealName){
 
 		/*
 		 * if amount == null - minimum value for current currency is got
@@ -131,14 +131,20 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		String fullAmount = currencyAmount + currency + "/" +
 			 conversionAmount +"$";
 		
-		String fullProduct = currency + " " + amount;
-		if(currency.equals(CURRENCY_SIGNS.USD.toString())){
-			if (getCurrentURL().equals(new NormalTransactionsAdminPage(starter).getPageURL())){
-				fullProduct = "$" + amount;
+		String fullProduct = "";
+		if (dealName != null) {
+			fullProduct = currency + " " + amount;
+			if(currency.equals(CURRENCY_SIGNS.USD.toString())){
+				if (getCurrentURL().equals(new NormalTransactionsAdminPage(starter).getPageURL())){
+					fullProduct = "$" + amount;
+				}
+				else if(getCurrentURL().equals(new BusinessTransactionsAdminPage(starter).getPageURL())){
+					fullProduct = "$" + " " + amount;
+				}
 			}
-			else if(getCurrentURL().equals(new BusinessTransactionsAdminPage(starter).getPageURL())){
-				fullProduct = "$" + " " + amount;
-			}
+		}
+		else {
+			fullProduct = dealName;
 		}
 		
 		String method = cardType;

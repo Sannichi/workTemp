@@ -56,7 +56,7 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
     @FindBy(id = "deal-imtu-amount")    
     private WebElement dealImtuAmountValue;
     
-    @FindBy(css="button[id='transaction-proceed']")
+    @FindBy(css="button[id='transaction-proceed-user']")
     private WebElement continueDealButton;
 
     public void selectCountryByName(String countryName){

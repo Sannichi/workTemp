@@ -2,6 +2,7 @@ package com.nymgo;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
@@ -35,7 +36,7 @@ public class BuyDealCase extends AbstractCase{
     	LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		String accountDealsValue = normalAccountPage.getMyDealsCounter();
 		BuyCreditNormalDealPage buyCreditNormalDealPage = normalAccountPage.clickAccountBuyDealsButton();
 		buyCreditNormalDealPage.selectCountryAndDealAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName);
 		String VATPercent = buyCreditNormalDealPage.getVATPercent();
@@ -57,7 +58,7 @@ public class BuyDealCase extends AbstractCase{
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 
 	}
 
@@ -65,20 +66,22 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedEuroNormalUserWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+//    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroNormalUser();    	
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		String accountDealsValue = normalAccountPage.getMyDealsCounter();
 		BuyCreditNormalDealPage buyCreditNormalDealPage = normalAccountPage.clickAccountBuyDealsButton();
 		buyCreditNormalDealPage.selectCountryAndDealAndVerifyVATAndTotal(paymentCurrency, dealCurrency, dealName);
 		String dealVATPercent = buyCreditNormalDealPage.getDealVATPercent();
-		Assert.assertTrue(dealVATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" +
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(dealVATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" +
 				dealVATPercent + "' should be '" + fullUserEntity.getVat() + "'");
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditNormalDealPage.clickContinueDealToWorldpay();		
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, dealName, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -90,7 +93,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		String accountDealsValue = normalAccountPage.getMyDealsCounter();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
@@ -102,7 +105,7 @@ public class BuyDealCase extends AbstractCase{
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.clickContinueToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 		
 	}
 
@@ -115,7 +118,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
 		if(currencyAmount == null){
@@ -143,7 +146,7 @@ public class BuyDealCase extends AbstractCase{
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 
 	}
 
@@ -156,7 +159,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -170,7 +173,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	
     }
 
@@ -183,7 +186,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 
 		if(currencyAmount == null){
@@ -197,7 +200,7 @@ public class BuyDealCase extends AbstractCase{
 		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -209,7 +212,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -236,7 +239,7 @@ public class BuyDealCase extends AbstractCase{
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 
     }
 
@@ -249,7 +252,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -262,7 +265,7 @@ public class BuyDealCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -274,7 +277,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -287,7 +290,7 @@ public class BuyDealCase extends AbstractCase{
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -299,7 +302,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		String accountDealsValue = normalAccountPage.getMyDealsCounter();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
@@ -320,7 +323,7 @@ public class BuyDealCase extends AbstractCase{
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
 				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount)));	
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 
 	}
 
@@ -333,7 +336,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		String accountDealsValue = normalAccountPage.getMyDealsCounter();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
@@ -342,7 +345,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -354,7 +357,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValue = normalAccountPage.getAccountBalanceValue();
+		String accountDealsValue = normalAccountPage.getMyDealsCounter();
 		BuyCreditPage buyCreditPage = normalAccountPage.clickAccountBuyCreditButton();
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
@@ -362,7 +365,7 @@ public class BuyDealCase extends AbstractCase{
 		}
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 		
 	}
 
@@ -375,7 +378,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -396,7 +399,7 @@ public class BuyDealCase extends AbstractCase{
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
 				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount)));				
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 
 	}
 
@@ -409,7 +412,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -418,7 +421,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	
     }
 
@@ -431,7 +434,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -439,7 +442,7 @@ public class BuyDealCase extends AbstractCase{
 		}
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -451,7 +454,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -472,7 +475,7 @@ public class BuyDealCase extends AbstractCase{
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
 				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount)));				
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 
     }
 
@@ -485,7 +488,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -493,7 +496,7 @@ public class BuyDealCase extends AbstractCase{
 		}
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.selectAmountAndClickContinueToWorldpay(currencyAmount);
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -505,7 +508,7 @@ public class BuyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		String accountDealsValue = resellerAccountPage.getMyDealsCounter();
 		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
 		if(currencyAmount == null){
 			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
@@ -513,6 +516,6 @@ public class BuyDealCase extends AbstractCase{
 		}
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.selectAmountAndClickContinueToAdyen(currencyAmount);
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 	}
 }

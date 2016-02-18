@@ -69,13 +69,12 @@
                     <include name="signInEuroNormalWhitelistUserTest" />
                 </methods>
             </class>
-<!--
+<!--            
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroNormalUserAccountTest" />
                 </methods>
             </class>
--->            
             <class name="com.nymgo.BuyDealCase">
                 <methods>
                     <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
@@ -96,9 +95,10 @@
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
-			<class name="com.nymgo.VerifyBuyCreditCase">
+-->
+			<class name="com.nymgo.VerifyDealCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
+                    <include name="verifyDealAcceptedLoggedEuroNormalUserTest" />
                 </methods>
             </class>
         </classes>

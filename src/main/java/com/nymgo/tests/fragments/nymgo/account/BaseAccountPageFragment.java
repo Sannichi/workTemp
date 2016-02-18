@@ -1,5 +1,7 @@
 package com.nymgo.tests.fragments.nymgo.account;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -30,7 +32,7 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	private static final String accountPackageBlockClassName = "block package";
 	private static final String accountBuyCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/buy-credits']";
 //	private static final String accountBuyDealsXpath = "(//a[@href='" + language + "/buy-credits'])[last()]";
-	private static final String accountBuyDealsXpath = "//div[@class='" + accountPackageBlockClassName + "']//a[@href='" + language + "/buy-credits']";
+	private static final String accountBuyDealsXpath = "//div[starts-with(@class,'" + accountPackageBlockClassName + "')]//a[@href='" + language + "/buy-credits']";
 	private static final String transferCreditXpath = "//div[@class='" + accountMyBalanceBlockClassName + "']//a[@href='" + language + "/user/credits/transfer-credits']";
 
 	private WebElement accountBuyCreditButton;
@@ -39,6 +41,34 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	
 	@FindBy(xpath = "//div[@class='block my-balance']//div[@class='balance']")
 	private WebElement accountBalance;
+
+	@FindBy(xpath = "//div[starts-with(@class,'block package')]//div[@class='owl-item']")
+	private List<WebElement> dealsList;
+
+	@FindBy(xpath = "//div[@class='owl-item']//div[@class='innerPadding']/div[2]")
+	private List<WebElement> dealsNamesList;
+
+	@FindBy(xpath = "//div[starts-with(@class,'block package')]//span[@class='notification']")	
+	private WebElement myDealsCounter;
+
+	@FindBy(xpath = "//div[@class='owl-next']")	
+	private WebElement dealNext;
+
+	@FindBy(xpath = "//div[@class='owl-next']")	
+	private WebElement dealPrev;
+
+	//	@FindBy(xpath = "//div[starts-with(@class,'block package')]//div[@class='daysCounter']//strong")
+	@FindBy(xpath = "//div[@class='daysCounter']//strong")
+	private List<WebElement> dealDaysCounter;
+
+	@FindBy(xpath = "(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[1]/div[2]")	
+	private WebElement firstDealName;
+
+	@FindBy(xpath = "(//div[@class='packageInfo']//strong)[1]")
+	private WebElement firstDealMinutes;
+
+	@FindBy(xpath = "(//div[@class='packageInfo']//strong)[2]")	
+	private WebElement firstDealTopUp;
 
 	public boolean isCorrectURL(){
 		// TODO Auto-generated method stub
@@ -104,4 +134,85 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		
 		return accountBalance.getText().split(" ")[1];
 	}
+
+	public String getMyDealsCounter(){
+		
+		try {
+			return myDealsCounter.getText();
+		}
+		catch (NoSuchElementException e){
+			return "0";
+		}
+	}
+
+	public void clickNextDealButton(){
+		
+		clickElement(dealNext);
+	}
+
+	public void clickPrevDealButton(){
+		
+		clickElement(dealPrev);
+	}
+
+	public String getFirstDealName(){
+		
+		return firstDealName.getText();
+	}
+
+	public String getFirstDealMinutes(){
+		
+		return firstDealMinutes.getText();
+	}
+	
+	public String getFirstDealTopUp(){
+		
+		return firstDealTopUp.getText();
+	}
+
+	public String getDealName(int i){
+		
+		return dealsNamesList.get(i).getText();
+	}
+
+	public String getDealDaysCounter(int i){
+		
+		return dealDaysCounter.get(i).getText();
+	}
+
+	public String getDealMinutes(int i){
+		
+		return driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='packageInfo']//strong)[" + (i * 2 - 1) + "]")).getText();
+	}
+	
+	public String getDealTopUp(int i){
+		
+		return driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='packageInfo']//strong)[" + (i * 2) + "]")).getText();
+	}
+
+	public int navigateToDeal(String dealName){
+		
+		int i = 0;
+		int dealsCount = dealsList.size(); 
+		for (i = 0; i < dealsCount; i++){
+			if (!driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
+					(Integer.valueOf(i) + 1) + "]/div[2]")).getText().equals(dealName)){
+			LOGGER.debug(driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
+					(Integer.valueOf(i) + 1) + "]/div[2]")).getText());
+				clickNextDealButton();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else{
+				return i;
+			}
+		}
+		LOGGER.fatal("There is no Deal with name '" + dealName + "'");
+		return -1;
+	}
+
 }
