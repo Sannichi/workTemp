@@ -1,6 +1,5 @@
 package com.nymgo.tests.pages.admin;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 import org.testng.asserts.SoftAssert;
@@ -15,6 +14,7 @@ import com.nymgo.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
 import com.nymgo.tests.utils.DealDescriptionMap;
+import com.nymgo.tests.utils.Rounder;
 
 public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
 
@@ -101,19 +101,6 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		return transactionsAdminPageFragment.getTransactionCountry(transactionDetails);
 	}
 	
-	/**
-     * Round to certain number of decimals
-     * 
-     * @param d
-     * @param decimalPlace
-     * @return
-     */
-    public static float round(float d, int decimalPlace) {
-        BigDecimal bd = new BigDecimal(Float.toString(d));
-        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
-        return bd.floatValue();
-    }
-    
 	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String currency, String service, String cardType, String country, String dealName){
 
 		/*
@@ -125,7 +112,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 
 		String currencyAmount = CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount));
-		String conversionAmount = String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
+		String conversionAmount = String.valueOf(Rounder.roundFloat((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
 		String[] splitted = conversionAmount.split("\\.");
 		conversionAmount = splitted[1].equals("0") ? splitted[0] : conversionAmount; 
 		String fullAmount = currencyAmount + currency + "/" +
@@ -209,7 +196,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		Map<String, String> transactionDetails = getTransactionDetailsByID(transactionID);
 
 		String currencyAmount = CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount));
-		String conversionAmount = String.valueOf(round((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
+		String conversionAmount = String.valueOf(Rounder.roundFloat((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
 		String[] splitted = conversionAmount.split("\\.");
 		conversionAmount = splitted[1].equals("0") ? splitted[0] : conversionAmount; 
 		String fullAmount = currencyAmount + currency + "/" +

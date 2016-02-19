@@ -1,6 +1,7 @@
 package com.nymgo.tests.fragments.admin.popups;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,13 @@ public class BasePopupFragment extends BaseFragment{
 
     private void setPopupContainer() throws NotFoundException{
     	
-    	popup = driver.findElement(By.id("facebox"));
+    	try{
+        	popup = driver.findElement(By.id("facebox"));
+    	}
+    	catch(NoSuchElementException e){
+    		LOGGER.fatal("Seems like Popup is absent on the screen");
+    		popup = null;
+    	}
     };
 
     public boolean isPopupExist(){
@@ -29,6 +36,9 @@ public class BasePopupFragment extends BaseFragment{
             return popup.isDisplayed();
         }
         catch (NotFoundException e){
+            return false;
+        }
+        catch (NullPointerException e){
             return false;
         }
     }

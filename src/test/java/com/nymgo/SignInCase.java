@@ -20,8 +20,8 @@ public class SignInCase extends AbstractCase{
     @Test    
 	public void signInEuroNormalWhitelistUserTest(){    
 
-//    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
-    	FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroNormalUser();    	
+    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+//    	FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroNormalUser();    	
     	
     	HomePage homePage = new HomePage(starter);
 		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();

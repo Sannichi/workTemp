@@ -1,6 +1,7 @@
 package com.nymgo.tests.fragments.admin.widgets;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,13 @@ public class BaseWidgetFragment extends BaseFragment{
 
     protected void setWidgetContainer() throws NotFoundException{
     	
-    	widgetContainer = driver.findElement(By.id("widjectWindow"));
+    	try{
+    		widgetContainer = driver.findElement(By.id("widjectWindow"));
+    	}
+    	catch(NoSuchElementException e){
+    		LOGGER.fatal("Seems like widget contaiter is absent on the screen");
+    		widgetContainer = null;
+    	}
     };
 
     protected void setWidgetName() throws NotFoundException{
@@ -40,11 +47,14 @@ public class BaseWidgetFragment extends BaseFragment{
 
         try{
             setWidgetName();
+            return widgetContainer.isDisplayed();
         }
         catch (NotFoundException e){
             return false;
         }
-        return widgetContainer.isDisplayed();
+        catch (NullPointerException e){
+            return false;
+        }
     }
 
     protected WebElement getWidgetContentArea() throws NotFoundException{

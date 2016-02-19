@@ -17,6 +17,7 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.BuyCredit3DS
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.DealDescription;
 import com.nymgo.tests.utils.DealDescriptionMap;
+import com.nymgo.tests.utils.Rounder;
 
 /**
  * Created by Iuliia Khikmatova on Jan 19, 2016
@@ -167,8 +168,8 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 	public boolean verifyDealVATValue(Float price){
 		
 		boolean result = false;
-		Float asIs = roundFloat(Float.valueOf(getDealVATValue()), 2);
-		Float shouldBe = roundFloat(price * Integer.valueOf(getDealVATPercent()) / 100, 2);		
+		Float asIs = Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2);
+		Float shouldBe = Rounder.roundFloat(price * Integer.valueOf(getDealVATPercent()) / 100, 2);		
 		result = shouldBe.equals(asIs);
 		return result;
 	}
@@ -176,8 +177,8 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 	public boolean verifyDealTotalAmountValue(Float price){
 		
 		boolean result = false;
-		Float dealVAT = roundFloat(Float.valueOf(getDealVATValue()), 2);
-		Float asIs = roundFloat(Float.valueOf(getDealTotalAmountValue()), 2);
+		Float dealVAT = Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2);
+		Float asIs = Rounder.roundFloat(Float.valueOf(getDealTotalAmountValue()), 2);
 		Float shouldBe = price + dealVAT;		
 		result = shouldBe.equals(asIs);
 		return result;
@@ -216,9 +217,9 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		selectPrice(price);
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(verifyDealVATValue(price), "Deal VAT is not correct. Current value is '" + getDealVATValue() + 
-				"', should be '" + roundFloat((price * Integer.valueOf(getDealVATPercent()) / 100), 2) + "'");
+				"', should be '" + Rounder.roundFloat((price * Integer.valueOf(getDealVATPercent()) / 100), 2) + "'");
 		softAssert.assertTrue(verifyDealTotalAmountValue(price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
-				"', should be '" + (price + roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
+				"', should be '" + (price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
 				"', should be '" + (dealDescription.getMinutes()) + "'");
 		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 

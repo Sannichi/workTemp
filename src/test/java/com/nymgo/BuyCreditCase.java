@@ -1,7 +1,7 @@
 package com.nymgo;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.data.adapters.DataAdapter;
 import com.nymgo.data.entity.FullUserEntity;
@@ -39,7 +39,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.clickContinueToGlobalCollect();		
@@ -78,7 +79,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.clickContinueToWorldpay();		
@@ -103,7 +105,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.clickContinueToWorldpay();		
@@ -128,7 +131,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.clickContinueToAdyen();		
@@ -156,7 +160,8 @@ public class BuyCreditCase extends AbstractCase{
 
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		Float VATValue = Float.valueOf(buyCreditDealPage.getVATValue());		
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.clickContinueToGlobalCollect();		
@@ -195,7 +200,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
@@ -223,7 +229,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		
@@ -248,7 +255,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 
 		Float VATValue = Float.valueOf(buyCreditDealPage.getVATValue());
@@ -288,7 +296,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
@@ -313,7 +322,8 @@ public class BuyCreditCase extends AbstractCase{
 		}
 		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
 		String VATPercent = buyCreditDealPage.getVATPercent();
-		Assert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		

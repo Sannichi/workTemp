@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -67,7 +67,7 @@
             </class>
         </classes>
     </test>
-    
+-->    
     <test name="Test - Change Euro MasterReseller Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -84,7 +84,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - BuyCredit Inter NormalUser USD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="cardType" value="Visa" />    
@@ -574,7 +574,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro MasterReseller SGD Worldpay 3D MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="SGD" />        
         <parameter name="cardType" value="MasterCard" />    
@@ -623,7 +623,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - BuyCredit Euro MasterReseller QAR Worldpay 3D Amex" preserve-order="true">
         <parameter name="paymentCurrency" value="QAR" />        
         <parameter name="cardType" value="American Express" />    
@@ -1670,5 +1670,5 @@
             </class>
         </classes>
     </test>
-
+-->
 </suite>
