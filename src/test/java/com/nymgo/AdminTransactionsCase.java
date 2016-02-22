@@ -16,6 +16,7 @@ import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionDeclinedPopup;
 import com.nymgo.tests.pages.admin.widgets.BusinessMemberPaymentHistoryWidget;
 import com.nymgo.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
+import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
 
 public class AdminTransactionsCase extends AbstractCase{
@@ -52,20 +53,26 @@ public class AdminTransactionsCase extends AbstractCase{
 		
 		AdminPage adminPage = new AdminPage(starter);
 
-		String transactionID = ExcelUtils.getLastTransaction();		
-		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
-		transactionsAdminPage.searchIDExactMatch(transactionID);
-		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+		if (! Starter.NORMAL_USER_VISA_AUTOACCEPTED){
+			String transactionID = ExcelUtils.getLastTransaction();		
+			Assert.assertNotNull(transactionID, "TransactionID is null!");
+			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+			transactionsAdminPage.searchIDExactMatch(transactionID);
+			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			}
+			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+			TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 		}
-		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-		transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+		else{
+			LOGGER.info("Visa transaction was autoaccepted");
+			Starter.NORMAL_USER_VISA_AUTOACCEPTED = false;
+		}
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -221,21 +228,27 @@ public class AdminTransactionsCase extends AbstractCase{
 		FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
 		
 		AdminPage adminPage = new AdminPage(starter);
-
-		String transactionID = ExcelUtils.getLastTransaction();		
-		Assert.assertNotNull(transactionID, "TransactionID is null!");
-		NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
-		transactionsAdminPage.searchIDExactMatch(transactionID);
-		Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+		
+		if (! Starter.NORMAL_USER_VISA_AUTOACCEPTED){
+			String transactionID = ExcelUtils.getLastTransaction();		
+			Assert.assertNotNull(transactionID, "TransactionID is null!");
+			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+			transactionsAdminPage.searchIDExactMatch(transactionID);
+			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			}
+			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+			TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 		}
-		transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
-		MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-		TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-		transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+		else{
+			LOGGER.info("Visa transaction was autoaccepted");
+			Starter.NORMAL_USER_VISA_AUTOACCEPTED = false;
+		}
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

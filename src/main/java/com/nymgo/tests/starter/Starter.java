@@ -45,6 +45,7 @@ public class Starter {
 	
     public final  static String CONFIG_FILE_NAME = "config.file.name";
     public static String SECURE_PART;
+    public static String SECURE_PART_PATTERN = "^(http?\\:\\/\\/)(?|secure\\-)(" + ServerGenerator.getServerKey(URL_CONST.HOME_URL) + ")";    
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE_NAME = "params.file.name";
     public static String PARAMS_FILE = "params.properties";
@@ -75,6 +76,9 @@ public class Starter {
     public String LOCALE;
     public String SERVER;
     public String LOGGER_LEVEL;
+    
+    public static boolean NORMAL_USER_VISA_AUTOACCEPTED = false;
+    public static boolean USER_LIMIT_REACHED = false;;
     
     private static Starter instance;
 	public WebDriver driver = null;

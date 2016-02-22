@@ -33,7 +33,7 @@ public class PopupNavigation<T extends AbstractPopup>
 		catch (TimeoutException e){
 			LOGGER.fatal("Could not navigate to popup: " + getPageName());
 		}
-		Assert.assertTrue(result, "Could not navigate to popup: " + getPageName() + ", current Popup text is " + page.getPopupText() + "', should be '" + 
+		Assert.assertTrue(result, "Could not navigate to popup: " + getPageName() + ", current Popup text is '" + page.getPopupText() + "', should be '" + 
 				page.getPageURL() + "'");
 		LOGGER.info("Successfully navigated to popup : " + getPageName());		
 	}

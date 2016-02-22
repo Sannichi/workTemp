@@ -30,9 +30,16 @@ public class NormalAccountPageFragment extends BaseAccountPageFragment{
 	@FindBy(xpath = "//a[@class='view-profile']")
 	private WebElement viewFullAccountButton;
 
+	@FindBy(xpath = "//section[@class='normal']/div[@class='safeArea']//p")
+	private WebElement depositLimitMessage;
+
 	public void clickViewFullAccountButton(){
 		
 		clickSubmitButton(viewFullAccountButton);
 	}
 
+	public String getDepositLimitValue(){
+		
+		return depositLimitMessage.getText().replaceAll("\\D+","");
+	}
 }

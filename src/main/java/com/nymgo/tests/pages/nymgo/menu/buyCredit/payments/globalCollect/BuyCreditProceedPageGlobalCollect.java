@@ -1,6 +1,7 @@
 package com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect;
 
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditProceedPageGlobalCollectFragment;
 import com.nymgo.tests.navigation.PageNavigation;
@@ -108,16 +109,17 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 	//Account Info block
 	private void verifyAccountInfoBlock(String fullName, String email, String mobile, String phone){
 		
-		Assert.assertTrue(getFullName().equals(fullName), "Full Name is not correct! Current value is '" + getFullName() + 
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(getFullName().equals(fullName), "Full Name is not correct! Current value is '" + getFullName() + 
 				"', should be '" + fullName + "'");
 		LOGGER.info("Full Name is correct");
-		Assert.assertTrue(getEmail().equals(email), "Email is not correct! Current value is '" + getEmail() + 
+		softAssert.assertTrue(getEmail().equals(email), "Email is not correct! Current value is '" + getEmail() + 
 				"', should be '" + email + "'");
 		LOGGER.info("Email is correct");
-		Assert.assertTrue(getMobile().equals(mobile), "Mobile is not correct! Current value is '" + getMobile() + 
+		softAssert.assertTrue(getMobile().equals(mobile), "Mobile is not correct! Current value is '" + getMobile() + 
 				"', should be '" + mobile + "'");
 		LOGGER.info("Mobile is correct");
-		Assert.assertTrue(getPhone().equals(phone), "Phone is not correct! Current value is '" + getPhone() + 
+		softAssert.assertTrue(getPhone().equals(phone), "Phone is not correct! Current value is '" + getPhone() + 
 				"', should be '" + phone + "'");
 		LOGGER.info("Phone is correct");
 	}

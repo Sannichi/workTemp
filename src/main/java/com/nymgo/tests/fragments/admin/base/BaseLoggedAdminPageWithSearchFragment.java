@@ -155,7 +155,7 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
 					List<WebElement> spans = displayElements.get(i).findElements(By.cssSelector("span"));
 					if (spans.size() >= 1){
 						if (spans.get(columnIndex).getText().equals(fieldValueInTable)){
-							return result = i;
+							return i;
 						}
 					}
 					else{

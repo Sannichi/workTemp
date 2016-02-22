@@ -36,7 +36,7 @@ public class VerifyBuyCreditCase extends AbstractCase{
 //				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
 //				+ Float.parseFloat(currencyAmount));
 //		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Rounder.roundFloat(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))), 2) 
 				+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
 		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
 	}
