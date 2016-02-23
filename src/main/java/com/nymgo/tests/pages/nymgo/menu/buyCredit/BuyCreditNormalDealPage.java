@@ -218,11 +218,40 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(verifyDealVATValue(price), "Deal VAT is not correct. Current value is '" + getDealVATValue() + 
 				"', should be '" + Rounder.roundFloat((price * Integer.valueOf(getDealVATPercent()) / 100), 2) + "'");
+		LOGGER.info("Deal VAT value is correct");
 		softAssert.assertTrue(verifyDealTotalAmountValue(price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
 				"', should be '" + (price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
+		LOGGER.info("Deal Total Amount value is correct");
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
 				"', should be '" + (dealDescription.getMinutes()) + "'");
+		LOGGER.info("Deal Minutes value is correct");
 		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
 				"', should be '" + (dealDescription.getImtuAmount()) + "'");
+		LOGGER.info("Deal Imtu Amount value is correct");
+	} 
+
+	public void selectCountryAndDeal(String paymentCurrency, String dealCurrency, String dealName){
+		
+		LOGGER.debug("Deal currency is: '" + dealCurrency + "', deal name is '" + dealName == null ? getCountryByDealCurrency(dealCurrency) : dealName + "'");
+		DealDescription dealDescription;
+		selectCountryByDealCurrency(dealCurrency);
+		if(dealName == null){
+			dealDescription = DealDescriptionMap.getFirstDealDescriptionByCurrencySign(dealCurrency);
+		}
+		else{
+			dealDescription = DealDescriptionMap.getDealDescriptionByName(dealName);
+		}
+		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
+		selectPrice(price);
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(verifyDealTotalAmountValue(price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
+				"', should be '" + (price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
+		LOGGER.info("Deal Total Amount value is correct");
+		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
+				"', should be '" + (dealDescription.getMinutes()) + "'");
+		LOGGER.info("Deal Minutes value is correct");
+		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
+				"', should be '" + (dealDescription.getImtuAmount()) + "'");
+		LOGGER.info("Deal Imtu Amount value is correct");
 	} 
 }

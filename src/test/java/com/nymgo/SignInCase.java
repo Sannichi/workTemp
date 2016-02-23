@@ -33,6 +33,20 @@ public class SignInCase extends AbstractCase{
     }
 	
     @Test    
+	public void signInDealEuroNormalWhitelistUserTest(){    
+
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroNormalUser();    	
+    	
+    	HomePage homePage = new HomePage(starter);
+		NormalUserSignInPage normalUserSignInPage = homePage.clickMenuNormalUserSignInButton();
+
+		String username = fullUserEntity.getUsername();
+		String password = fullUserEntity.getPassword();
+		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(username, password);
+		Assert.assertTrue(normalAccountPage.isUserLogged(username), "User was not logged");
+    }
+	
+    @Test    
 	public void signInRecurrentEuroNormalWhitelistUserTest(){    
 
     	FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroNormalWhitelist();
@@ -50,6 +64,23 @@ public class SignInCase extends AbstractCase{
 	public void signInEuroResellerTest(){
 		
     	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller();
+    	
+    	String login = fullUserEntity.getUsername();
+    	String password = fullUserEntity.getPassword();
+    	
+		NymgoPage nymgoPage = new NymgoPage(starter);
+		HomePage homePage = nymgoPage.setDefaultState();
+
+		ResellersPage resellersPage = homePage.clickResellersLink();
+		ResellerSignInPage resellerSignInPage = resellersPage.clickResellerSignInButton();
+		ResellerAccountPage resellerAccountPage = resellerSignInPage.signInResellerSuccess(login, password);
+		Assert.assertTrue(resellerAccountPage.isUserLogged(login));
+	}
+
+    @Test    
+	public void signInDealEuroResellerTest(){
+		
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroReseller();
     	
     	String login = fullUserEntity.getUsername();
     	String password = fullUserEntity.getPassword();

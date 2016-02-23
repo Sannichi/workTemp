@@ -33,6 +33,22 @@ public class AdminNormalMembersCase extends AbstractCase{
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editDealEuroNormalUserGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroNormalUser();
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		MembersAdminPage membersAdminPage = adminPage.navigateMembersTab();
+		String username = fullUserEntity.getUsername();
+		membersAdminPage.searchUsernameExactMatch(username);
+		MemberListWidget memberListWidget = membersAdminPage.openEditUserWidgetByUsername(username);
+		memberListWidget.editUserPaymentMethod(gatewayName);
+		LOGGER.info("End");
+	}
+	
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void editRecurrentEuroNormalUserGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 

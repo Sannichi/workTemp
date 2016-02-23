@@ -12,6 +12,7 @@ import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
 import com.nymgo.tests.pages.nymgo.base.NymgoPage;
+import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
 import com.nymgo.tests.utils.Rounder;
 
@@ -21,48 +22,62 @@ public class VerifyBuyCreditCase extends AbstractCase{
 	public void verifyBuyCreditAcceptedLoggedEuroNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
-    	
-    	NymgoPage nymgoPage = new NymgoPage(starter);
-		nymgoPage.navigateToHomePage();
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount));
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Rounder.roundFloat(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))), 2) 
-				+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+    	if (!Starter.USER_LIMIT_REACHED){
+        	
+	    	FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist(); 
+	    	
+	    	NymgoPage nymgoPage = new NymgoPage(starter);
+			nymgoPage.navigateToHomePage();
+	
+			LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+	
+			NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
+			}
+	//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+	//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+	//				+ Float.parseFloat(currencyAmount));
+	//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+			ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Rounder.roundFloat(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))), 2) 
+					+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
+			LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+    	}
+    	else{
+    		LOGGER.fatal("User's limit is reached");
+    		Starter.USER_LIMIT_REACHED = false;
+    	}
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroNormalWhitelist(); 
-    	
-    	NymgoPage nymgoPage = new NymgoPage(starter);
-		nymgoPage.navigateToHomePage();
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount));
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+    	if (!Starter.USER_LIMIT_REACHED){
+        	
+	    	FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroNormalWhitelist(); 
+	    	
+	    	NymgoPage nymgoPage = new NymgoPage(starter);
+			nymgoPage.navigateToHomePage();
+	
+			LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+	
+			NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
+			}
+	//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+	//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+	//				+ Float.parseFloat(currencyAmount));
+	//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+			ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+					+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
+			LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+    	}
+    	else{
+    		LOGGER.fatal("User's limit is reached");
+    		Starter.USER_LIMIT_REACHED = false;
+    	}
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -132,24 +147,31 @@ public class VerifyBuyCreditCase extends AbstractCase{
 	public void verifyBuyCreditAcceptedLoggedInterNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
-    	
-		NymgoPage nymgoPage = new NymgoPage(starter);
-		nymgoPage.navigateToHomePage();
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount));
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+    	if (!Starter.USER_LIMIT_REACHED){
+        	
+	    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
+	    	
+			NymgoPage nymgoPage = new NymgoPage(starter);
+			nymgoPage.navigateToHomePage();
+	
+			LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+	
+			NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
+			}
+	//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
+	//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+	//				+ Float.parseFloat(currencyAmount));
+	//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
+			ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
+					+ Rounder.roundFloat(Float.parseFloat(currencyAmount), 2)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
+			LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+    	}
+    	else{
+    		LOGGER.fatal("User's limit is reached");
+    		Starter.USER_LIMIT_REACHED = false;
+    	}
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

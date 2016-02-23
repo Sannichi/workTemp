@@ -22,6 +22,48 @@ public class ResellerAccountPage extends AbstractAccountPage{
 		return RESELLER_ACCOUNT_PAGE_NAME_EN;
 	}
     
+	public String getDealName(int i){
+		
+		return resellerAccountPageFragment.getDealName(i);
+	}
+
+	public String getDealsCount(int i){
+		
+		return resellerAccountPageFragment.getDealsCount(i);
+	}
+
+	public String getDealsCountByDealName(String dealName){
+		
+		int i = navigateToDeal(dealName);
+		if (i != -1){
+			return getDealsCount(i);
+		}
+		else{
+			return "0";
+		}
+		
+	}
+
+	public String getDealDaysCounter(int i) {
+
+		return resellerAccountPageFragment.getDealDaysCounter(i);
+	}
+
+	public String getDealMinutes(int i){
+		
+		return resellerAccountPageFragment.getDealMinutes(i);
+	}
+	
+	public String getDealTopUp(int i){
+		
+		return resellerAccountPageFragment.getDealTopUp(i);
+	}
+
+	public int navigateToDeal(String dealName){
+		
+		return resellerAccountPageFragment.navigateToDeal(dealName);
+	}
+
 	public ViewResellerAccountPage clickViewAccountDetailsButton(){
 		
 		resellerAccountPageFragment.clickViewAccountDetailsButton();

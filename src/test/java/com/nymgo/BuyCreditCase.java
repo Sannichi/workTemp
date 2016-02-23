@@ -18,6 +18,7 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.BuyCredit3DSPro
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditConfirmPageGlobalCollect;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditProceedPageGlobalCollect;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.BuyCredit3DSProceedPageWorldpay;
+import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
 
 public class BuyCreditCase extends AbstractCase{
@@ -37,29 +38,36 @@ public class BuyCreditCase extends AbstractCase{
 			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 //			currencyAmount = CurrencyUtils.getSecondNormalUserBuyCurrencyValue(paymentCurrency);			
 		}
-		buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
-		String VATPercent = buyCreditPage.getVATPercent();
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
-				+ "' should be '" + fullUserEntity.getVat() + "'");
-		Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
-		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.clickContinueToGlobalCollect();		
-
-		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
-				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
-		if(countryOfCredit == null){
-			countryOfCredit = fullUserEntity.getCountryOfResidence();
-		}
-		buyCreditProceedPage.setPaymentBlockData(cardType, countryOfCredit);
 		
-		@SuppressWarnings("unused")
-		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
-				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
-				cardType, countryOfCredit,
-				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
-		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
-
+		int depositLimit = Integer.valueOf(normalAccountPage.getDepositLimitValue());
+		if (Integer.valueOf(currencyAmount) <= depositLimit){
+			buyCreditPage.selectAmountAndVerifyVAT(currencyAmount);
+			String VATPercent = buyCreditPage.getVATPercent();
+			SoftAssert softAssert = new SoftAssert();
+			softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+					+ "' should be '" + fullUserEntity.getVat() + "'");
+			Float VATValue = Float.valueOf(buyCreditPage.getVATValue());
+			BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditPage.clickContinueToGlobalCollect();		
+	
+			buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
+					fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
+					currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
+			if(countryOfCredit == null){
+				countryOfCredit = fullUserEntity.getCountryOfResidence();
+			}
+			buyCreditProceedPage.setPaymentBlockData(cardType, countryOfCredit);
+			
+			@SuppressWarnings("unused")
+			BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
+					fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
+					cardType, countryOfCredit,
+					currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
+			ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		}
+		else {
+			LOGGER.fatal("User's deposit limit is reached: " + depositLimit + paymentCurrency);
+			Starter.USER_LIMIT_REACHED = true;
+		}
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

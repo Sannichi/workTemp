@@ -64,7 +64,7 @@ public class BuyCreditResellerDealPageFragment extends BuyCreditPageFragment {
 
 	public String getDealVATPercent(){
 		
-		String[] splitted = dealVatValue.getText().split(" ");
+		String[] splitted = dealVatLabel.getText().split(" ");
 		if(splitted.length > 1){
 			return splitted[1];
 		}

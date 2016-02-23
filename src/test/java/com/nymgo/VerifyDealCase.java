@@ -1,5 +1,6 @@
 package com.nymgo;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.nymgo.data.adapters.DataAdapter;
@@ -13,7 +14,6 @@ import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
 import com.nymgo.tests.pages.nymgo.base.NymgoPage;
-import com.nymgo.tests.utils.CurrencyUtils;
 
 public class VerifyDealCase extends AbstractCase{
 	
@@ -30,73 +30,48 @@ public class VerifyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount));
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ 1), normalAccountPage.getMyDealsCounter());
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
+				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + 1), 
+				normalAccountPage.getMyDealsCounter());
 		int i = normalAccountPage.navigateToDeal(DealsCountryNameGenerator.getDealKeyBySign(dealCurrency));
 		LOGGER.info("Deal name is '" + normalAccountPage.getDealName(i) + "' Deal days counter is " + normalAccountPage.getDealDaysCounter(i) + 
 				" Deal count is " + normalAccountPage.getMyDealsCounter() + 
 				" Deal minutes are " + normalAccountPage.getDealMinutes(i) +
 				" Deal Top Up is " + normalAccountPage.getDealTopUp(i));
-	}
-
-    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void verifyDealAcceptedLoggedRecurrentEuroNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
-			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
-
-    	FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroNormalWhitelist(); 
-    	
-    	NymgoPage nymgoPage = new NymgoPage(starter);
-		nymgoPage.navigateToHomePage();
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount));
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+		Assert.assertEquals(Integer.parseInt(normalAccountPage.getMyDealsCounter()),
+				Integer.parseInt(
+						ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + 1,
+				"Expected and actual Deal values differ");
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void verifyDealAcceptedLoggedEuroResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
-    	
+//    	FullUserEntity fullUserEntity = DataAdapter.getEuroReseller(); 
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroReseller(); 
+
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 		
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-		}
-		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);
-		if (fullUserEntity.getBonusType().equals("Manual") && bonusPercent!=0){
-			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
-		}
-		
-//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
-//
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent), 
-				String.valueOf(Float.parseFloat(resellerAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
-		
+
+		int i = resellerAccountPage.navigateToDeal(dealName);
+		Assert.assertNotEquals(i, -1, "There is no dela with deal Name " + dealName);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
+				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity)), 
+				resellerAccountPage.getDealsCount(i));
+		LOGGER.info("Deal name is '" + resellerAccountPage.getDealName(i) + "' Deal days counter is " + resellerAccountPage.getDealDaysCounter(i) +  
+				" Deal count is " + resellerAccountPage.getDealsCount(i) + 
+				" Deal minutes are " + resellerAccountPage.getDealMinutes(i) +
+				" Deal Top Up is " + resellerAccountPage.getDealTopUp(i));
+		Assert.assertEquals(Integer.parseInt(resellerAccountPage.getDealsCount(i)),
+				Integer.parseInt(
+						ExcelUtils.getAccountBalanceBeforeTransaction(
+								ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity), 
+				"Expected and actual Deal values differ");
     }
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -105,22 +80,24 @@ public class VerifyDealCase extends AbstractCase{
 
     	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
     	
-		NymgoPage nymgoPage = new NymgoPage(starter);
+    	NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);			
-		}
-//		Assert.assertEquals( Float.parseFloat(normalAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount));
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount)), String.valueOf(Float.parseFloat(normalAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + normalAccountPage.getAccountBalanceValue());
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
+				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + 1), 
+				normalAccountPage.getMyDealsCounter());
+		int i = normalAccountPage.navigateToDeal(DealsCountryNameGenerator.getDealKeyBySign(dealCurrency));
+		LOGGER.info("Deal name is '" + normalAccountPage.getDealName(i) + "' Deal days counter is " + normalAccountPage.getDealDaysCounter(i) + 
+				" Deal count is " + normalAccountPage.getMyDealsCounter() + 
+				" Deal minutes are " + normalAccountPage.getDealMinutes(i) +
+				" Deal Top Up is " + normalAccountPage.getDealTopUp(i));
+		Assert.assertEquals(Integer.parseInt(normalAccountPage.getMyDealsCounter()),
+				Integer.parseInt(
+						ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + 1,
+				"Expected and actual Deal values differ");
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -135,24 +112,21 @@ public class VerifyDealCase extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 		
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
-		}
 
-		int bonusPercent = CurrencyUtils.getResellerBonus(paymentCurrency, currencyAmount);
-		if (fullUserEntity.getBonusType().equals("Manual") && bonusPercent!=0){
-			bonusPercent = Integer.valueOf(fullUserEntity.getBonus());
-		}
-		
-//		Assert.assertEquals( Float.parseFloat(resellerAccountPage.getAccountBalanceValue()),
-//				Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-//				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent);
-//
-//		LOGGER.info("Account balance is updated with amount " + currencyAmount + " " + paymentCurrency);
-		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Float.parseFloat(ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) 
-				+ Float.parseFloat(currencyAmount) + (Float.parseFloat(currencyAmount)/100)*bonusPercent), 
-				String.valueOf(Float.parseFloat(resellerAccountPage.getAccountBalanceValue())));
-		LOGGER.info("Account balance is  " + resellerAccountPage.getAccountBalanceValue());
+		int i = resellerAccountPage.navigateToDeal(dealName);
+		Assert.assertNotEquals(i, -1, "There is no dela with deal Name " + dealName);
+		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
+				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity)), 
+				resellerAccountPage.getDealsCount(i));
+		LOGGER.info("Deal name is '" + resellerAccountPage.getDealName(i) + "' Deal days counter is " + resellerAccountPage.getDealDaysCounter(i) +  
+				" Deal count is " + resellerAccountPage.getDealsCount(i) + 
+				" Deal minutes are " + resellerAccountPage.getDealMinutes(i) +
+				" Deal Top Up is " + resellerAccountPage.getDealTopUp(i));
+		Assert.assertEquals(Integer.parseInt(resellerAccountPage.getDealsCount(i)),
+				Integer.parseInt(
+						ExcelUtils.getAccountBalanceBeforeTransaction(
+								ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity), 
+				"Expected and actual Deal values differ");
     }
 
 }

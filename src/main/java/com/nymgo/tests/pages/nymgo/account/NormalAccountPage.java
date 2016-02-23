@@ -23,6 +23,41 @@ public class NormalAccountPage extends AbstractAccountPage{
     	return NORMAL_ACCOUNT_PAGE_NAME_EN;
 	}
 
+	public String getDepositLimitValue(){
+		
+		return normalAccountPageFragment.getDepositLimitValue();
+	}
+	
+	public String getDealName(int i){
+		
+		return normalAccountPageFragment.getDealName(i);
+	}
+
+	public String getMyDealsCounter(){
+		
+		return normalAccountPageFragment.getMyDealsCounter();
+	}
+
+	public String getDealDaysCounter(int i){
+		
+		return normalAccountPageFragment.getDealDaysCounter(i);
+	}
+
+	public String getDealMinutes(int i){
+		
+		return normalAccountPageFragment.getDealMinutes(i);
+	}
+	
+	public String getDealTopUp(int i){
+		
+		return normalAccountPageFragment.getDealTopUp(i);
+	}
+
+	public int navigateToDeal(String dealName){
+		
+		return normalAccountPageFragment.navigateToDeal(dealName);
+	}
+
 	public ViewNormalAccountPage clickViewFullNormalAccountButton(){
 		
 		normalAccountPageFragment.clickViewFullAccountButton();

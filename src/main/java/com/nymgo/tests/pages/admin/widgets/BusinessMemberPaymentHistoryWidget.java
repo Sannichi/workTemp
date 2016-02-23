@@ -6,6 +6,7 @@ import org.testng.Assert;
 
 import com.nymgo.tests.fragments.admin.widgets.BusinessMemberPaymentHistoryWidgetFragment;
 import com.nymgo.tests.navigation.PopupNavigation;
+import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionDeclinedPopup;
 import com.nymgo.tests.starter.Starter;
@@ -109,6 +110,18 @@ public class BusinessMemberPaymentHistoryWidget extends AbstractWidget{
 		PopupNavigation<TransactionAcceptedPopup> navigation = new PopupNavigation<TransactionAcceptedPopup>(transactionAcceptedPopup);
 		navigation.NavigatedTo();
 		return transactionAcceptedPopup;
+	}
+	
+	public DealAcceptedPopup verifyDealInformationAndAccept(String transactionID){
+		
+		navigateToBusinessPaymentActionTab();
+		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
+		LOGGER.info("Deal ID is correct");
+		clickAcceptTransaction();
+		DealAcceptedPopup dealAcceptedPopup = new DealAcceptedPopup(starter);
+		PopupNavigation<DealAcceptedPopup> navigation = new PopupNavigation<DealAcceptedPopup>(dealAcceptedPopup);
+		navigation.NavigatedTo();
+		return dealAcceptedPopup;
 	}
 	
 	public TransactionDeclinedPopup verifyTransactionInformationAndCancel(String transactionID){

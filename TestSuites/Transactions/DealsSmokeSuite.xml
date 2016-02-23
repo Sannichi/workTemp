@@ -28,7 +28,7 @@
             </class>
             <class name="com.nymgo.AdminNormalMembersCase">
                 <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
+                    <include name="editDealEuroNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -45,18 +45,18 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editDealEuroResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Euro NormalUser KWD Worldpay MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Worldpay" />     
-        <parameter name="dealCurrency" value="EGP" />        
-        <parameter name="dealName" value="Egypt Deal 200" />     
+        <parameter name="dealCurrency" value="NGN" />        
+        <parameter name="dealName" value="Nigeria Deal 200" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -66,10 +66,9 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInDealEuroNormalWhitelistUserTest" />
                 </methods>
             </class>
-<!--            
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
                     <include name="editEuroNormalUserAccountTest" />
@@ -95,7 +94,6 @@
                     <include name="acceptEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
--->
 			<class name="com.nymgo.VerifyDealCase">
                 <methods>
                     <include name="verifyDealAcceptedLoggedEuroNormalUserTest" />
@@ -103,7 +101,8 @@
             </class>
         </classes>
     </test>
-
+-->    
+<!--
     <test name="Test - BuyCredit Euro NormalUser KWD Worldpay Amex" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="American Express" />    
@@ -201,11 +200,14 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro Reseller NZD Worldpay Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Worldpay" />     
+        <parameter name="dealCurrency" value="NGN" />        
+        <parameter name="dealName" value="Nigeria Deal 200" />     
+        <parameter name="dealQuantity" value="5" />        
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -215,17 +217,17 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInInterResellerTest" />
+                    <include name="signInDealEuroResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editInterResellerAccountTest" />
+                    <include name="editEuroResellerAccountTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.BuyCreditCase">
+            <class name="com.nymgo.BuyDealCase">
                 <methods>
-                    <include name="buyCreditLoggedInterResellerWorldpayTest" />
+                    <include name="buyCreditLoggedEuroResellerWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
@@ -240,17 +242,17 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptInterResellerTransactionAdminTest" />
+                    <include name="acceptEuroResellerTransactionAdminTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.VerifyBuyCreditCase">
+            <class name="com.nymgo.VerifyDealCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedInterResellerTest" />
+                    <include name="verifyDealAcceptedLoggedEuroResellerTest" />
                 </methods>
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Inter NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -636,5 +638,5 @@
             </class>
         </classes>
     </test>
-
+-->
 </suite>
