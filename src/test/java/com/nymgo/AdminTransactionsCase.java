@@ -14,6 +14,7 @@ import com.nymgo.tests.pages.admin.NormalTransactionsAdminPage;
 import com.nymgo.tests.pages.admin.base.AdminPage;
 import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
+import com.nymgo.tests.pages.admin.popups.TransactionCancelledPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionDeclinedPopup;
 import com.nymgo.tests.pages.admin.widgets.BusinessMemberPaymentHistoryWidget;
 import com.nymgo.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
@@ -22,6 +23,36 @@ import com.nymgo.tests.utils.CurrencyUtils;
 
 public class AdminTransactionsCase extends AbstractCase{
 	
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void cancelEuroNormalUserTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+    	if (!Starter.USER_LIMIT_REACHED){
+        	
+			FullUserEntity fullUserEntity = DataAdapter.getEuroNormalWhitelist();
+			
+			AdminPage adminPage = new AdminPage(starter);
+	
+			String transactionID = ExcelUtils.getLastTransaction();		
+			Assert.assertNotNull(transactionID, "TransactionID is null!");
+			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+			transactionsAdminPage.searchIDExactMatch(transactionID);
+			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			}
+			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+			TransactionCancelledPopup transactionCancelledPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+			transactionCancelledPopup.closeTransactionCancelledPopup();
+	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+    	}
+    	else{
+    		LOGGER.fatal("User's limit is reached");
+    	}
+	}
+
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void declineEuroNormalUserTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
@@ -43,7 +74,7 @@ public class AdminTransactionsCase extends AbstractCase{
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-			TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+			TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndDecline(transactionID);
 			transactionDeclinedPopup.closeTransactionDeclinedPopup();
 	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
     	}
@@ -119,6 +150,30 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void cancelEuroResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getEuroReseller();
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
+		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		}
+		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
+		TransactionCancelledPopup transactionCancelledPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		transactionCancelledPopup.closeTransactionCancelledPopup();
+		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void declineEuroResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
@@ -137,7 +192,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
-		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndDecline(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
 		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
@@ -174,7 +229,7 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void declineEuroMasterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void cancelEuroMasterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		FullUserEntity fullUserEntity = DataAdapter.getEuroMasterReseller();
@@ -192,8 +247,8 @@ public class AdminTransactionsCase extends AbstractCase{
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
-		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
-		transactionDeclinedPopup.closeTransactionDeclinedPopup();
+		TransactionCancelledPopup transactionCancelledPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		transactionCancelledPopup.closeTransactionCancelledPopup();
 //		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
@@ -231,7 +286,40 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void declineInterNormalUserTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void acceptRecurrentEuroMasterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroMasterReseller();
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		Assert.assertNotEquals(transactionID, " ", "TransactionID is empty!");
+		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
+		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
+		}
+		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
+		if (dealName == null){
+			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		}
+		else{
+			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
+			dealAcceptedPopup.closeDealAcceptedPopup();
+//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		}
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void cancelInterNormalUserTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
     	if (!Starter.USER_LIMIT_REACHED){
@@ -251,8 +339,8 @@ public class AdminTransactionsCase extends AbstractCase{
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-			TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
-			transactionDeclinedPopup.closeTransactionDeclinedPopup();
+			TransactionCancelledPopup transactionCancelledPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+			transactionCancelledPopup.closeTransactionCancelledPopup();
 	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
     	}
     	else{
@@ -297,7 +385,7 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void declineInterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void cancelInterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
@@ -315,8 +403,8 @@ public class AdminTransactionsCase extends AbstractCase{
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
-		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
-		transactionDeclinedPopup.closeTransactionDeclinedPopup();
+		TransactionCancelledPopup transactionCancelledPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		transactionCancelledPopup.closeTransactionCancelledPopup();
 //		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
@@ -352,7 +440,7 @@ public class AdminTransactionsCase extends AbstractCase{
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
-	public void declineInterMasterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+	public void cancelInterMasterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
 		FullUserEntity fullUserEntity = DataAdapter.getInterMasterReseller();
@@ -370,8 +458,8 @@ public class AdminTransactionsCase extends AbstractCase{
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
-		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
-		transactionDeclinedPopup.closeTransactionDeclinedPopup();
+		TransactionCancelledPopup transactionCancelledPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
+		transactionCancelledPopup.closeTransactionCancelledPopup();
 //		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 

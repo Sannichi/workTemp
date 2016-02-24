@@ -28,6 +28,9 @@ public class PaymentActionFragment extends BaseWidgetFragment{
 	@FindBy(xpath=".//input[@value='Cancel Transaction']")
 	private WebElement cancelTransactionButton;
 
+	@FindBy(xpath=".//input[@value='Decline (Keep Alive)']")
+	private WebElement declineTransactionButton;
+
 	private WebElement getUserInformationTable(){
 
 		return getWidgetContentArea().findElement(By.xpath(".//table[2]"));
@@ -106,6 +109,11 @@ public class PaymentActionFragment extends BaseWidgetFragment{
 	public void clickCancelTransaction(){
 		
 		clickButton(cancelTransactionButton);
+	}
+	
+	public void clickDeclineTransaction(){
+		
+		clickButton(declineTransactionButton);
 	}
 	
 	public String getPaymentActionTransactionID(){

@@ -287,7 +287,8 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedInterNormalUserGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterNormalUser();    	
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -318,7 +319,8 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedInterNormalUserWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterNormalUser();    	
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -336,7 +338,8 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedInterNormalUserAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterNormalUser();    	
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -353,7 +356,8 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedInterResellerGlobalCollectTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterReseller();
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -384,7 +388,8 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedInterResellerWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterReseller();
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
@@ -403,7 +408,8 @@ public class BuyDealCase extends AbstractCase{
 	public void buyCreditLoggedInterResellerAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller();
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterReseller();
     	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 

@@ -175,4 +175,16 @@ public class DataAdapter extends BaseAdapter {
     	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"NymgoEuroReseller");    	
     	return fullUserEntity;
 	}
+
+    public static FullUserEntity getNymgoInterNormalUser(){
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"NymgoInterNormalUser");    	
+    	return fullUserEntity;
+	}
+
+    public static FullUserEntity getNymgoInterReseller(){
+    	
+    	FullUserEntity fullUserEntity = ExcelUtils.getFullUserEntity(usersTablePath,"NymgoInterReseller");    	
+    	return fullUserEntity;
+	}
 }

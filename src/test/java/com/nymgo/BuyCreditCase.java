@@ -314,6 +314,32 @@ public class BuyCreditCase extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+    	FullUserEntity fullUserEntity = DataAdapter.getRecurrentEuroMasterReseller();
+    	
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
+		String accountBalanceValue = resellerAccountPage.getAccountBalanceValue();
+		BuyCreditResellerDealPage buyCreditDealPage = resellerAccountPage.clickResellerAccountBuyCreditButton();		
+		if(currencyAmount == null){
+			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);			
+//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+		}
+		buyCreditDealPage.selectAmountAndVerifyVAT(currencyAmount);
+		String VATPercent = buyCreditDealPage.getVATPercent();
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
+				+ "' should be '" + fullUserEntity.getVat() + "'");
+
+		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
+		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
+		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void buyCreditLoggedEuroMasterResellerAdyenTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 

@@ -8,6 +8,7 @@ import com.nymgo.tests.fragments.admin.widgets.BusinessMemberPaymentHistoryWidge
 import com.nymgo.tests.navigation.PopupNavigation;
 import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
+import com.nymgo.tests.pages.admin.popups.TransactionCancelledPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionDeclinedPopup;
 import com.nymgo.tests.starter.Starter;
 
@@ -81,6 +82,11 @@ public class BusinessMemberPaymentHistoryWidget extends AbstractWidget{
 		businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.clickCancelTransaction();
 	}
 
+	protected void clickDeclineTransaction(){
+		
+		businessMemberPaymentHistoryWidgetFragment.paymentActionFragment.clickDeclineTransaction();
+	}
+
 	public Map<String, String> acceptAndReturnTransactionInformation(){
 		
 		Map<String, String> allTransactionParameters = getAllTransactionInformation();
@@ -124,12 +130,24 @@ public class BusinessMemberPaymentHistoryWidget extends AbstractWidget{
 		return dealAcceptedPopup;
 	}
 	
-	public TransactionDeclinedPopup verifyTransactionInformationAndCancel(String transactionID){
+	public TransactionCancelledPopup verifyTransactionInformationAndCancel(String transactionID){
 		
 		navigateToBusinessPaymentActionTab();
 		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
 		LOGGER.info("Transaction ID is correct");
 		clickCancelTransaction();
+		TransactionCancelledPopup transactionCancelledPopup = new TransactionCancelledPopup(starter);
+		PopupNavigation<TransactionCancelledPopup> navigation = new PopupNavigation<TransactionCancelledPopup>(transactionCancelledPopup);
+		navigation.NavigatedTo();
+		return transactionCancelledPopup;
+	}
+	
+	public TransactionDeclinedPopup verifyTransactionInformationAndDecline(String transactionID){
+		
+		navigateToBusinessPaymentActionTab();
+		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
+		LOGGER.info("Transaction ID is correct");
+		clickDeclineTransaction();
 		TransactionDeclinedPopup transactionDeclinedPopup = new TransactionDeclinedPopup(starter);
 		PopupNavigation<TransactionDeclinedPopup> navigation = new PopupNavigation<TransactionDeclinedPopup>(transactionDeclinedPopup);
 		navigation.NavigatedTo();

@@ -2,9 +2,9 @@ package com.nymgo.tests.pages.admin.popups;
 
 import com.nymgo.tests.starter.Starter;
 
-public class TransactionDeclinedPopup extends AbstractPopup{
+public class TransactionCancelledPopup extends AbstractPopup{
 	
-	public TransactionDeclinedPopup(Starter starter) {
+	public TransactionCancelledPopup(Starter starter) {
 		super(starter);
 		// TODO Auto-generated constructor stub
 		
@@ -33,7 +33,7 @@ public class TransactionDeclinedPopup extends AbstractPopup{
 		return TRANSACTION_DECLINED_POPUP_TEXT_ENG;
 	}
 	
-    public void closeTransactionDeclinedPopup(){
+    public void closeTransactionCancelledPopup(){
 
     	closePopup(getPageName());
     }
