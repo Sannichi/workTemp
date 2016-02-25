@@ -76,6 +76,11 @@ public class AdminTransactionsCase extends AbstractCase{
 			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
 			TransactionDeclinedPopup transactionDeclinedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndDecline(transactionID);
 			transactionDeclinedPopup.closeTransactionDeclinedPopup();
+			transactionsAdminPage = transactionsAdminPage.clickDeclinedTransactionsLink();
+			transactionsAdminPage.searchIDExactMatch(transactionID);
+			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
     	}
     	else{
@@ -195,6 +200,11 @@ public class AdminTransactionsCase extends AbstractCase{
 		TransactionDeclinedPopup transactionDeclinedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndDecline(transactionID);
 		transactionDeclinedPopup.closeTransactionDeclinedPopup();
 		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		businessTransactionsAdminPage = businessTransactionsAdminPage.clickDeclinedTransactionsLink();
+		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

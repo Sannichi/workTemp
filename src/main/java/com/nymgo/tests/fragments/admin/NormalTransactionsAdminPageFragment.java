@@ -2,6 +2,8 @@ package com.nymgo.tests.fragments.admin;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,6 +21,9 @@ public class NormalTransactionsAdminPageFragment extends BaseTransactionsAdminPa
 		// TODO Auto-generated constructor stub
 	}
 
+	@FindBy(xpath = "//a[@href='/modules/declined_transactions/index.php']")
+	private WebElement declinedTransactionsLink;
+		
 	private static final String TRANSACTIONS_PAGE_URL_ENG = ServerGenerator.getServerKey(URL_CONST.ADMIN_URL) + "/modules/transactions/index.php"; 
 			
 	@Override
@@ -38,5 +43,11 @@ public class NormalTransactionsAdminPageFragment extends BaseTransactionsAdminPa
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
 		return TRANSACTIONS_PAGE_URL_ENG;
+	}
+
+    public void clickDeclinedTransactionsLink()
+	{
+		
+    	clickLink(declinedTransactionsLink);
 	}
 }

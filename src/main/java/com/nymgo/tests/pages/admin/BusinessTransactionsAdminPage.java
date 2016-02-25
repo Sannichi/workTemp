@@ -38,6 +38,13 @@ public class BusinessTransactionsAdminPage extends AbstractTransactionsAdminPage
 		return businessTransactionsAdminPageFragment.getCorrectURL();
 	}
 
+    public BusinessTransactionsAdminPage clickDeclinedTransactionsLink()
+	{
+		
+    	businessTransactionsAdminPageFragment.clickDeclinedTransactionsLink();
+    	return this;
+	}
+
 	public BusinessMemberPaymentHistoryWidget openViewBusinessTransactionsWidgetByID(String stringID){
 
 		transactionsAdminPageFragment.clickViewTransactionsByID(stringID);

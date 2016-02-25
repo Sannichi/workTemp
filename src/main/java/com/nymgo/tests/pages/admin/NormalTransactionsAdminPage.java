@@ -38,7 +38,14 @@ public class NormalTransactionsAdminPage extends AbstractTransactionsAdminPage{
 		return normalTransactionsAdminPageFragment.getCorrectURL();
 	}
 
-	public MemberPaymentHistoryWidget openViewTransactionsWidgetByID(String stringID){
+    public NormalTransactionsAdminPage clickDeclinedTransactionsLink()
+	{
+		
+    	normalTransactionsAdminPageFragment.clickDeclinedTransactionsLink();
+    	return this;
+	}
+
+    public MemberPaymentHistoryWidget openViewTransactionsWidgetByID(String stringID){
 
 		transactionsAdminPageFragment.clickViewTransactionsByID(stringID);
 		MemberPaymentHistoryWidget memberPaymentHistoryWidget = new MemberPaymentHistoryWidget(starter);
