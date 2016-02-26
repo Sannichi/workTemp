@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" verbose="1" name="FindByTheme" preserve-order="true">
+<suite verbose="1" name="Test" parallel="tests" thread-count="2>
     
-    <test name="Test - Change Inter MasterReseller Gateway to Adyen" preserve-order="true">
-        <parameter name="gatewayName" value="Adyen" />     
+    <test name="Test - Change Inter NormalUser Gateway to Worldpay" preserve-order="true">
+        <parameter name="gatewayName" value="Worldpay" />     
         
         <classes>
 			<class name="com.nymgo.AdminSignInCase">
@@ -11,18 +11,35 @@
                     <include name="signInAdminTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.AdminResellersCase">
+            <class name="com.nymgo.AdminNormalMembersCase">
                 <methods>
-                    <include name="editInterMasterResellerGatewayAdminTest" />
+                    <include name="editInterNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Test - BuyCredit Inter MasterReseller CAD Adyen MasterCard" preserve-order="true">
-        <parameter name="paymentCurrency" value="CAD" />        
-        <parameter name="cardType" value="MasterCard" />    
-        <parameter name="gatewayName" value="Adyen" />     
+    <test name="Test - Change Euro NormalUser Gateway to Worldpay" preserve-order="true">
+        <parameter name="gatewayName" value="Worldpay" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminNormalMembersCase">
+                <methods>
+                    <include name="editEuroNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Inter NormalUser USD Worldpay Visa" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
+        <parameter name="cardType" value="Visa" />    
+        <parameter name="gatewayName" value="Worldpay" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -32,22 +49,22 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInInterMasterResellerTest" />
+                    <include name="signInInterNormalWhitelistUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editInterResellerAccountTest" />
+                    <include name="editInterNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
-                    <include name="buyCreditLoggedInterMasterResellerAdyenTest" />
+                    <include name="buyCreditLoggedInterNormalUserWorldpayTest" />
                 </methods>
             </class>
             <class name="com.nymgo.PayCreditCardCase">
                 <methods>
-                    <include name="payMasterCardAdyenPendingTest" />
+                    <include name="payVisaWorldpayPendingTest" />
                 </methods>
             </class>
             <class name="com.nymgo.AdminSignInCase">
@@ -57,15 +74,64 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptInterMasterResellerTransactionAdminTest" />
+                    <include name="acceptInterNormalUserTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditAcceptedLoggedInterMasterResellerTest" />
+                    <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
-	
+
+    <test name="Test - BuyCredit Euro NormalUser SAR Worldpay MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroNormalUserAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedEuroNormalUserWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+			<class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedEuroNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
 </suite>

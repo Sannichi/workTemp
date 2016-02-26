@@ -127,6 +127,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		softAssert.assertTrue(getCVV().equals(cvvValue), "CVV is not correct! Current value is '" + getCVV() + 
 				"', should be '" + cvvValue + "'");
 		LOGGER.info("CVV is correct");
+		softAssert.assertAll();
 		return this;
 	}
 
@@ -150,6 +151,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		softAssert.assertTrue(getCVV().equals(""), "CVV is not correct! Current value is '" + getCVV() + 
 				"', should be empty");
 		LOGGER.info("CVV is correct");
+		softAssert.assertAll();
 		return this;
 	}
 
@@ -182,6 +184,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		softAssert.assertTrue(getSelectedExpireDateYear().equals(expireDateYear), "Expire Date Year is not correct! Current value is '" + getSelectedExpireDateYear() + 
 				"', should be '" + expireDateYear + "'");
 		LOGGER.info("Expire Date Year is correct");
+		softAssert.assertAll();
 		clickPayButton();
 		BuyCredit3DSConfirmPageWorldpay buyCredit3DSConfirmPageWorldpay  = new BuyCredit3DSConfirmPageWorldpay(starter);
 		PageNavigation<BuyCredit3DSConfirmPageWorldpay> navigation = new PageNavigation<BuyCredit3DSConfirmPageWorldpay>(buyCredit3DSConfirmPageWorldpay);
@@ -251,6 +254,7 @@ public class BuyCredit3DSProceedPageWorldpay extends AbstractBuyCredit3DSProceed
 		softAssert.assertTrue(getSelectedExpireDateYear().equals(expireDateYear), "Expire Date Year is not correct! Current value is '" + getSelectedExpireDateYear() + 
 				"', should be '" + expireDateYear + "'");
 		LOGGER.info("Expire Date Year is correct");
+		softAssert.assertAll();
 		clickPayButton();
 		PendingTransactionWorldpayPage pendingTransactionWorldpayPage  = new PendingTransactionWorldpayPage(starter);
 		PageNavigation<PendingTransactionWorldpayPage> navigation = new PageNavigation<PendingTransactionWorldpayPage>(pendingTransactionWorldpayPage);

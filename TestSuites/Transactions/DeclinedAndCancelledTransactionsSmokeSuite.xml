@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Euro NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         

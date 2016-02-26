@@ -2,6 +2,7 @@ package com.nymgo.tests.pages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.tests.fragments.BaseFragment;
 import com.nymgo.tests.fragments.admin.LoginAdminPageFragment;
@@ -20,6 +21,8 @@ public abstract class AbstractPage {
 
     public static Starter starter;
 	private BaseFragment baseFragment;
+	
+	protected SoftAssert softAssert = new SoftAssert();
 	
 	public AbstractPage(Starter starter) {	
 

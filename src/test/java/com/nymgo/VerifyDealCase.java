@@ -78,7 +78,8 @@ public class VerifyDealCase extends AbstractCase{
 	public void verifyDealAcceptedLoggedInterNormalUserTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterNormalWhitelist(); 
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterNormalUser();    	
     	
     	NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
@@ -104,7 +105,8 @@ public class VerifyDealCase extends AbstractCase{
 	public void verifyDealAcceptedLoggedInterResellerTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
 			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
 
-    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
+//    	FullUserEntity fullUserEntity = DataAdapter.getInterReseller(); 
+    	FullUserEntity fullUserEntity = DataAdapter.getNymgoInterReseller();    	
     	
 		NymgoPage nymgoPage = new NymgoPage(starter);
 		nymgoPage.navigateToHomePage();
@@ -114,7 +116,7 @@ public class VerifyDealCase extends AbstractCase{
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 
 		int i = resellerAccountPage.navigateToDeal(dealName);
-		Assert.assertNotEquals(i, -1, "There is no dela with deal Name " + dealName);
+		Assert.assertNotEquals(i, -1, "There is no deal with deal Name " + dealName);
 		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
 				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity)), 
 				resellerAccountPage.getDealsCount(i));

@@ -119,7 +119,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			 conversionAmount +"$";
 		
 		String fullProduct = "";
-		if (dealName != null) {
+		if (dealName == null) {
 			fullProduct = currency + " " + amount;
 			if(currency.equals(CURRENCY_SIGNS.USD.toString())){
 				if (getCurrentURL().equals(new NormalTransactionsAdminPage(starter).getPageURL())){
@@ -179,6 +179,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		softAssert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country is correct");
+//		softAssert.assertAll();
 	}
 
 	public void verifyDealData(String transactionID, String username, String amount, String VAT, String currency, String dealCurrency, String dealName, String service, String cardType, String country){
@@ -243,5 +244,6 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		softAssert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country is correct");
+		softAssert.assertAll();
 	}
 }

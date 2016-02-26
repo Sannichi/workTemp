@@ -31,6 +31,7 @@ public class DefaultCreditCardCase extends AbstractCase{
 			SoftAssert softAssert = new SoftAssert();
 			softAssert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
 					"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
+			softAssert.assertAll();
 		}
     }
 
@@ -49,6 +50,7 @@ public class DefaultCreditCardCase extends AbstractCase{
 			SoftAssert softAssert = new SoftAssert();
 			softAssert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
 					"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
+			softAssert.assertAll();
 		}
     }
 }

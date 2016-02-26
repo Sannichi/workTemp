@@ -63,6 +63,7 @@ public class BuyCreditCase extends AbstractCase{
 					cardType, countryOfCredit,
 					currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 			ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+			softAssert.assertAll();
 		}
 		else {
 			LOGGER.fatal("User's deposit limit is reached: " + depositLimit + paymentCurrency);
@@ -90,10 +91,10 @@ public class BuyCreditCase extends AbstractCase{
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.clickContinueToWorldpay();		
-//		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
+		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -118,8 +119,8 @@ public class BuyCreditCase extends AbstractCase{
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditPage.clickContinueToWorldpay();		
-//		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -142,11 +143,10 @@ public class BuyCreditCase extends AbstractCase{
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
-		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditPage.clickContinueToAdyen();		
-//		buyCredit3DSProceedPageAdyen.verifyDefaultData();
+		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
-		
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -188,7 +188,7 @@ public class BuyCreditCase extends AbstractCase{
 				cardType, countryOfCredit,
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
-
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -216,7 +216,7 @@ public class BuyCreditCase extends AbstractCase{
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
-	
+		softAssert.assertAll();
     }
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -244,6 +244,7 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -284,7 +285,7 @@ public class BuyCreditCase extends AbstractCase{
 				cardType, countryOfCredit,
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
-
+		softAssert.assertAll();
     }
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -311,6 +312,7 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -334,9 +336,10 @@ public class BuyCreditCase extends AbstractCase{
 		softAssert.assertTrue(VATPercent.equals(fullUserEntity.getVat()), "VAT percent does not corresponds to user preferences. Current value is '" + VATPercent
 				+ "' should be '" + fullUserEntity.getVat() + "'");
 
+		@SuppressWarnings("unused")
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditDealPage.clickContinueToWorldpay();		
-		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -363,6 +366,7 @@ public class BuyCreditCase extends AbstractCase{
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -396,7 +400,6 @@ public class BuyCreditCase extends AbstractCase{
 				cardType, countryOfCredit,
 				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount)));	
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountBalanceValue, currencyAmount, cardType + "," + gatewayName);
-
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

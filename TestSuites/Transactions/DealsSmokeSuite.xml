@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -39,7 +39,7 @@
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Adyen" />     
         <parameter name="dealCurrency" value="INR" />        
-        <parameter name="dealName" value="India Deal 350" />     
+        <parameter name="dealName" value="INDIA Deal 350" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -339,7 +339,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyDeal Euro NormalUser SAR GlobalCollect Kenya Deal 200 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
@@ -390,7 +390,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Euro Reseller Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -413,7 +413,7 @@
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Worldpay" />     
         <parameter name="dealCurrency" value="INR" />        
-        <parameter name="dealName" value="India Deal 550" />     
+        <parameter name="dealName" value="INDIA Deal 550" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -459,7 +459,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - BuyCredit Euro Reseller NZD Worldpay Philippines Deal 100 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -511,7 +511,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - Change Euro Reseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -534,7 +534,7 @@
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Adyen" />     
         <parameter name="dealCurrency" value="INR" />        
-        <parameter name="dealName" value="India Deal 350" />     
+        <parameter name="dealName" value="INDIA Deal 350" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -580,7 +580,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - BuyCredit Euro Reseller NZD Adyen Nigeria Deal 200 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -632,8 +632,8 @@
             </class>
         </classes>
     </test>
-    
-	<test name="Test - Change Euro Reseller Gateway to GlobalCollect" preserve-order="true">
+
+	<test name="Test - Change Deal Euro Reseller Gateway to GlobalCollect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
         <classes>
@@ -644,7 +644,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editDealEuroResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -713,7 +713,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editInterResellerGatewayAdminTest" />
+                    <include name="editDealInterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -770,5 +770,5 @@
             </class>
         </classes>
     </test>
-    
+-->
 </suite>

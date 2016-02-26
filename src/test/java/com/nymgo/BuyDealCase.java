@@ -20,6 +20,8 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCred
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditProceedPageGlobalCollect;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.BuyCredit3DSProceedPageWorldpay;
 import com.nymgo.tests.utils.CurrencyUtils;
+import com.nymgo.tests.utils.DealDescriptionMap;
+import com.nymgo.tests.utils.Rounder;
 
 /**
  * Created by Iuliia Khikmatova on Jan 20, 2016
@@ -46,9 +48,11 @@ public class BuyDealCase extends AbstractCase{
 		Float dealVATValue = Float.valueOf(buyCreditNormalDealPage.getDealVATValue());
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditNormalDealPage.clickContinueDealToGlobalCollect();		
 
+		Float price = DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency);
+		
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + dealVATValue));				
+				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -58,11 +62,9 @@ public class BuyDealCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + dealVATValue));				
+				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
-
-
-
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -85,6 +87,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCredit3DSProceedPageWorldpay buyCredit3DSProceedPageWorldpay = buyCreditNormalDealPage.clickContinueDealToWorldpay();		
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -107,7 +110,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditNormalDealPage.clickContinueDealToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
-		
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -131,9 +134,12 @@ public class BuyDealCase extends AbstractCase{
 		Float dealVATValue = Float.valueOf(buyCreditDealPage.getDealVATValue());		
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.clickContinueToGlobalCollect();		
 
+		Float price = DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency);
+		
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + dealVATValue));				
+				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
+		
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -143,9 +149,9 @@ public class BuyDealCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + dealVATValue));				
+				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName + "," + dealQuantity, cardType + "," + gatewayName);
-
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -170,7 +176,7 @@ public class BuyDealCase extends AbstractCase{
 
 		buyCredit3DSProceedPageWorldpay.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName + "," + dealQuantity, cardType + "," + gatewayName);
-	
+		softAssert.assertAll();
     }
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -195,6 +201,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCredit3DSProceedPageAdyen buyCredit3DSProceedPageAdyen = buyCreditDealPage.clickContinueToAdyen();		
 		buyCredit3DSProceedPageAdyen.verifyDefaultData();
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName + "," + dealQuantity, cardType + "," + gatewayName);
+		softAssert.assertAll();
 	}
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -230,7 +237,6 @@ public class BuyDealCase extends AbstractCase{
 				cardType, countryOfCredit,
 				currencyAmount, VATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount) + VATValue));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
-
     }
 
     @Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
@@ -368,9 +374,13 @@ public class BuyDealCase extends AbstractCase{
 		buyCreditDealPage.selectDealAndQuantity(paymentCurrency, dealCurrency, dealName, dealQuantity);
 		BuyCreditProceedPageGlobalCollect buyCreditProceedPage = buyCreditDealPage.clickContinueToGlobalCollect();		
 
+		
+		Float price = DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency);
+		
 		buyCreditProceedPage.verifyDefaultInternationalData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount)));				
+				currencyAmount, String.valueOf(Rounder.roundFloat(price, 2)));				
+		
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -380,7 +390,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyInternationalDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Float.valueOf(currencyAmount)));				
+				currencyAmount, String.valueOf(Rounder.roundFloat(price, 2)));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName + "," + dealQuantity, cardType + "," + gatewayName);
 	}
 

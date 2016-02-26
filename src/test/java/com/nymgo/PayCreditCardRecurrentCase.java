@@ -40,6 +40,7 @@ public class PayCreditCardRecurrentCase extends AbstractCase{
 		ExcelUtils.addTransactionData(transactionID);		
 		NormalAccountPage normalAccountPage = pendingTransactionWorldpayPage.clickBackToNormalUserDashboardButton();
 		softAssert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
+		softAssert.assertAll();
 	}
 
 	@Test
@@ -64,6 +65,7 @@ public class PayCreditCardRecurrentCase extends AbstractCase{
 		ExcelUtils.addTransactionData(transactionID);		
 		NormalAccountPage normalAccountPage = pendingTransactionAdyenPage.clickBackToNormalUserDashboardButton();
 		softAssert.assertEquals(normalAccountPage.getAccountBalanceValue(), ExcelUtils.getAccountBalanceBeforeTransaction(transactionID));
+		softAssert.assertAll();
 	}
 
 }

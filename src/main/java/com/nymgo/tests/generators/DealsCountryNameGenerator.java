@@ -47,7 +47,7 @@ public class DealsCountryNameGenerator {
 			case PHP:
 				return LocaleGenerator.getLocaleKey(LOCALE_CONST.PHILIPPINES);
 			default:
-				return LocaleGenerator.getLocaleKey(LOCALE_CONST.INDIA_DEAL);
+				return LocaleGenerator.getLocaleKey(LOCALE_CONST.INDIA);
 		}
 	}
 

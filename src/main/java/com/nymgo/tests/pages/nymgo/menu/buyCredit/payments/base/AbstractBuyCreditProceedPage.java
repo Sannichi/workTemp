@@ -1,6 +1,7 @@
 package com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.base;
 
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.base.BaseBuyCreditProceedPageFragment;
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
@@ -10,6 +11,7 @@ import com.nymgo.tests.starter.Starter;
 public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 
 	private BaseBuyCreditProceedPageFragment baseBuyCreditProceedPageFragment;
+	private SoftAssert softAssert = new SoftAssert();
 	
 	public AbstractBuyCreditProceedPage(Starter starter) {
 		super(starter);
@@ -81,22 +83,24 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 	//Payment block
 	protected void verifyPaymentBlock(String cardType, String country){
 		
-		Assert.assertTrue(getSelectedCardType().equals(cardType), "Card Type is not correct! Current value is '" + getSelectedCardType() + 
+		softAssert.assertTrue(getSelectedCardType().equals(cardType), "Card Type is not correct! Current value is '" + getSelectedCardType() + 
 				"', should be '" + cardType + "'");
 		LOGGER.info("Card Type is correct");
-		Assert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Credit is not correct! Current value is '" + getSelectedCountryOfCredit() + 
+		softAssert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Credit is not correct! Current value is '" + getSelectedCountryOfCredit() + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country of Credit is correct");
+		softAssert.assertAll();
 	}
 
 	protected void verifyDefaultPaymentBlock(String country){
 		
-		Assert.assertTrue(getSelectedCardType().equals(getDefaultCardTypeValue()), "Card Type is not correct! Current value is '" + getSelectedCardType() + 
+		softAssert.assertTrue(getSelectedCardType().equals(getDefaultCardTypeValue()), "Card Type is not correct! Current value is '" + getSelectedCardType() + 
 				"', should be '" + getDefaultCardTypeValue() + "'");
 		LOGGER.info("Card Type is correct");
-		Assert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Residence is not correct! Current value is '" + getSelectedCountryOfCredit() + 
+		softAssert.assertTrue(getSelectedCountryOfCredit().equals(country), "Country of Residence is not correct! Current value is '" + getSelectedCountryOfCredit() + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country of Credit is correct");
+		softAssert.assertAll();
 	}
 
 	public AbstractBuyCreditProceedPage setPaymentBlockData(String paymentCardType, String countryOfCredit){
@@ -111,21 +115,23 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 	//Skrill Footer block
 	public void verifySkrillFooterBlock(String nymgoCreditValue, String VAT, String totalAmountCharged){
 		
-		Assert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
+		softAssert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
 				"', should be '" + nymgoCreditValue + "'");
 		LOGGER.info("Nymgo Credit Value is correct");
-		Assert.assertTrue(getVATValue().equals(VAT), "VAT is not correct! Current value is '" + getVATValue() + 
+		softAssert.assertTrue(getVATValue().equals(VAT), "VAT is not correct! Current value is '" + getVATValue() + 
 				"', should be '" + VAT + "'");
 		LOGGER.info("VAT is correct");
-		Assert.assertTrue(getTotalAmountChargedValue().equals(totalAmountCharged), "Total Amount Charged is not correct! Current value is '" + getTotalAmountChargedValue() + 
+		softAssert.assertTrue(getTotalAmountChargedValue().equals(totalAmountCharged), "Total Amount Charged is not correct! Current value is '" + getTotalAmountChargedValue() + 
 				"', should be '" + totalAmountCharged + "'");
 		LOGGER.info("Total Amount Charged is correct");
+		softAssert.assertAll();
 	}
 
 	public void verifyInternationalSkrillFooterBlock(String nymgoCreditValue, String totalAmountCharged){
 		
-		Assert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
+		softAssert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
 				"', should be '" + nymgoCreditValue + "'");
 		LOGGER.info("Nymgo Credit Value is correct");
+		softAssert.assertAll();
 	}
 }

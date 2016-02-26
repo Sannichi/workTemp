@@ -122,6 +122,7 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 		softAssert.assertTrue(getPhone().equals(phone), "Phone is not correct! Current value is '" + getPhone() + 
 				"', should be '" + phone + "'");
 		LOGGER.info("Phone is correct");
+		softAssert.assertAll();
 	}
 
 	public BuyCreditProceedPageGlobalCollect setAccountInfoBlockData(String fullName, String email, String mobile, String phone){
@@ -171,19 +172,21 @@ public class BuyCreditProceedPageGlobalCollect extends AbstractBuyCreditProceedP
 	
 	//Address block
 	private void verifyAddressBlock(String countryOfResidence, String postalCode, String street, String address){
-		
-		Assert.assertTrue(getSelectedCountryOfResidence().equals(countryOfResidence), "Country of Residence is not correct! Current value is '" + getSelectedCountryOfResidence() + 
+
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(getSelectedCountryOfResidence().equals(countryOfResidence), "Country of Residence is not correct! Current value is '" + getSelectedCountryOfResidence() + 
 				"', should be '" + countryOfResidence + "'");
 		LOGGER.info("Country of Residence is correct");
-		Assert.assertTrue(getPostalCode().equals(postalCode), "Postal code is not correct! Current value is '" + getPostalCode() + 
+		softAssert.assertTrue(getPostalCode().equals(postalCode), "Postal code is not correct! Current value is '" + getPostalCode() + 
 				"', should be '" + postalCode + "'");
 		LOGGER.info("Postal code is correct");
-		Assert.assertTrue(getStreet().equals(street), "Street is not correct! Current value is '" + getStreet() + 
+		softAssert.assertTrue(getStreet().equals(street), "Street is not correct! Current value is '" + getStreet() + 
 				"', should be '" + street + "'");
 		LOGGER.info("Street is correct");
-		Assert.assertTrue(getAddress().equals(address), "Address is not correct! Current value is '" + getAddress() + 
+		softAssert.assertTrue(getAddress().equals(address), "Address is not correct! Current value is '" + getAddress() + 
 				"', should be '" + address + "'");
 		LOGGER.info("Address is correct");
+		softAssert.assertAll();
 	}
 	
 	public BuyCreditProceedPageGlobalCollect setAddressBlockData(String countryOfResidence, String postalCode, String street, String address){

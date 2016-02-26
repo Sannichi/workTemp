@@ -67,25 +67,32 @@ public class ResellerAccountPageFragment extends BaseAccountPageFragment{
 		
 		int i = 0;
 		int dealsCount = getDealsList().size();
-		for (i = 0; i < dealsCount; i++){
-			if (!driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
-					(Integer.valueOf(i) + 1) + "]/div[1]")).getText().split(" x ")[1].equals(dealName)){
-//			LOGGER.debug(driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
-//					(Integer.valueOf(i) + 1) + "]/div[1]")).getText());
-				clickNextDealButton();
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		String[] isAnyDeal = driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[1]/div[1]")).getText().split(" x ");
+		if (isAnyDeal.length > 1){
+			for (i = 0; i < dealsCount - 1; i++){
+				if (!driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
+						(Integer.valueOf(i) + 1) + "]/div[1]")).getText().split(" x ")[1].equals(dealName)){
+	//			LOGGER.debug(driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
+	//					(Integer.valueOf(i) + 1) + "]/div[1]")).getText());
+					clickNextDealButton();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else{
+					return i + 1;
 				}
 			}
-			else{
-				return i + 1;
-			}
+			LOGGER.fatal("There is no Deal with name '" + dealName);
+			return -1;
 		}
-		LOGGER.fatal("There is no Deal with name '" + dealName);
-		return -1;
+		else{
+			LOGGER.info("There is no any Deal yet");
+			return -1;
+		}
 	}
 
 }

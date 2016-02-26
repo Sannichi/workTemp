@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -321,9 +322,14 @@ public class BaseFragment {
 	protected void selectValueFromSelectByVisibleText(WebElement elementWithSelect, String visibleText){
 		
 		Select select = new Select(elementWithSelect);
-		select.selectByVisibleText(visibleText);
-		
-		LOGGER.info("Value " + visibleText + " was selected from Select");
+		try{
+			select.selectByVisibleText(visibleText);
+			LOGGER.info("Value " + visibleText + " was selected from Select");
+		}
+		catch(NoSuchElementException e){
+			LOGGER.fatal("There is no element with text '" + visibleText + "'");
+			Assert.assertTrue(false, "There is no element with text '" + visibleText + "'");
+		}
 	}
 
 	protected void selectValueFromSelectByValue(WebElement elementWithSelect, String value){

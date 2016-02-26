@@ -228,6 +228,7 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
 				"', should be '" + (dealDescription.getImtuAmount()) + "'");
 		LOGGER.info("Deal Imtu Amount value is correct");
+		softAssert.assertAll();
 	} 
 
 	public void selectCountryAndDeal(String paymentCurrency, String dealCurrency, String dealName){
@@ -253,5 +254,6 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
 				"', should be '" + (dealDescription.getImtuAmount()) + "'");
 		LOGGER.info("Deal Imtu Amount value is correct");
+		softAssert.assertAll();
 	} 
 }

@@ -80,4 +80,20 @@ public class AdminNormalMembersCase extends AbstractCase{
 		LOGGER.info("End");
 	}
 	
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void editDealInterNormalUserGatewayAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getNymgoInterNormalUser();
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		MembersAdminPage membersAdminPage = adminPage.navigateMembersTab();
+		String username = fullUserEntity.getUsername();
+		membersAdminPage.searchUsernameExactMatch(username);
+		MemberListWidget memberListWidget = membersAdminPage.openEditUserWidgetByUsername(username);
+		memberListWidget.editUserPaymentMethod(gatewayName);
+		LOGGER.info("End");
+	}
+	
 }
