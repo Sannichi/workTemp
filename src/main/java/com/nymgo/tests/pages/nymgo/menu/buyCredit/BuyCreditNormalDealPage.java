@@ -245,9 +245,6 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
 		selectPrice(price);
 		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(verifyDealTotalAmountValue(price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
-				"', should be '" + (price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
-		LOGGER.info("Deal Total Amount value is correct");
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
 				"', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");

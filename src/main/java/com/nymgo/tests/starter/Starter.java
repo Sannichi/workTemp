@@ -83,11 +83,18 @@ public class Starter {
     private static Starter instance;
 	public WebDriver driver = null;
 	
+//	private static ThreadLocal<Starter> starter = new ThreadLocal<Starter>();	
+//	
+//    public static ThreadLocal<Starter> getThreadAppManager() {
+//        return starter;
+//    }	
+//	
     public static Starter getInstance() {
         if (instance == null) {
             instance = new Starter();
         }
         return instance;
+//    	return starter.get();
     }
 	
     public void start(ITestContext context){

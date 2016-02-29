@@ -115,9 +115,11 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 	//Skrill Footer block
 	public void verifySkrillFooterBlock(String nymgoCreditValue, String VAT, String totalAmountCharged){
 		
-		softAssert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
+		if (nymgoCreditValue != null){
+			softAssert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
 				"', should be '" + nymgoCreditValue + "'");
-		LOGGER.info("Nymgo Credit Value is correct");
+			LOGGER.info("Nymgo Credit Value is correct");
+		}
 		softAssert.assertTrue(getVATValue().equals(VAT), "VAT is not correct! Current value is '" + getVATValue() + 
 				"', should be '" + VAT + "'");
 		LOGGER.info("VAT is correct");
@@ -129,9 +131,11 @@ public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{
 
 	public void verifyInternationalSkrillFooterBlock(String nymgoCreditValue, String totalAmountCharged){
 		
-		softAssert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
-				"', should be '" + nymgoCreditValue + "'");
-		LOGGER.info("Nymgo Credit Value is correct");
-		softAssert.assertAll();
+		if (nymgoCreditValue != null){
+			softAssert.assertTrue(getNymgoCreditValue().equals(nymgoCreditValue), "Nymgo Credit Value is not correct! Current value is '" + getNymgoCreditValue() + 
+					"', should be '" + nymgoCreditValue + "'");
+			LOGGER.info("Nymgo Credit Value is correct");
+			softAssert.assertAll();
+		}
 	}
 }

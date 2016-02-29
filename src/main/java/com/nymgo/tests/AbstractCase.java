@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 public class AbstractCase {
 	
     public static Starter starter;
+//    public Starter starter;	
 	public static Logger LOGGER;
 	
     @BeforeSuite

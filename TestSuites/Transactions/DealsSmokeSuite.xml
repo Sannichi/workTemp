@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Inter NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -339,7 +339,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyDeal Euro NormalUser SAR GlobalCollect Kenya Deal 200 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
@@ -390,7 +390,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - Change Euro Reseller Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -528,7 +528,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - BuyCredit Euro Reseller NZD Adyen India Deal 350 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -770,5 +770,5 @@
             </class>
         </classes>
     </test>
--->
+
 </suite>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="Test" parallel="tests" thread-count="2>
+<suite verbose="1" name="Test" parallel="tests" thread-count="2">
     
     <test name="Test - Change Inter NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     

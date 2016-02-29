@@ -59,7 +59,7 @@ public class VerifyDealCase extends AbstractCase{
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 
 		int i = resellerAccountPage.navigateToDeal(dealName);
-		Assert.assertNotEquals(i, -1, "There is no dela with deal Name " + dealName);
+		Assert.assertNotEquals(i, -1, "There is no deal with deal Name " + dealName);
 		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
 				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity)), 
 				resellerAccountPage.getDealsCount(i));

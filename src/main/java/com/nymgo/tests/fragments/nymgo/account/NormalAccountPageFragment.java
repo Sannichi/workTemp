@@ -90,7 +90,7 @@ public class NormalAccountPageFragment extends BaseAccountPageFragment{
 		
 		int i = 0;
 		int dealsCount = getDealsList().size(); 
-		for (i = 0; i < dealsCount - 1; i++){
+		for (i = 0; i <= dealsCount - 1; i++){
 			if (!driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='innerPadding'])[" + 
 					(Integer.valueOf(i) + 1) + "]/div[2]")).getText().equals(dealName)){
 				clickNextDealButton();
