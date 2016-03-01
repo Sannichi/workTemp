@@ -83,7 +83,8 @@
 			<configuration>
 				<!--<groups>euroNormalSignIn,editEuroNormalUser</groups>-->
           		<suiteXmlFiles>
-					<suiteXmlFile>TestSuites/EditPaymentCurrencyBuyCreditAndAcceptTransactionMasterResellerAmex.xml</suiteXmlFile>
+					<suiteXmlFile>TestSuites/Transactions/TransactionsSmokeSuite.xml</suiteXmlFile>
+					<suiteXmlFile>TestSuites/Transactions/DealsSmokeSuite.xml</suiteXmlFile>
 				</suiteXmlFiles>
 			</configuration>
 		</plugin>
