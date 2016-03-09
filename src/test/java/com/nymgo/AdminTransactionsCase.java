@@ -175,7 +175,7 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
 		TransactionCancelledPopup transactionCancelledPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndCancel(transactionID);
 		transactionCancelledPopup.closeTransactionCancelledPopup();
-		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+//		businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

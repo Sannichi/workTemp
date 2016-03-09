@@ -16,28 +16,4 @@ public class NormalAccountTransferCreditPage extends AbstractTransferCreditPage 
 		normalAccountTransferCreditPageFragment = new NormalAccountTransferCreditPageFragment(driver);
 	}
 
-	private void setUsername(String username){
-		normalAccountTransferCreditPageFragment.setUsername(username);
-	}
-	
-	private void setAmount(String amount){
-		normalAccountTransferCreditPageFragment.setAmount(amount);
-	}
-	
-	private void setPassword(String password){
-		normalAccountTransferCreditPageFragment.setPassword(password);
-	}
-	
-	private void clickTransferButton(){
-		normalAccountTransferCreditPageFragment.clickTransferButton();
-	}
-
-	//TODO instead of void
-	public void setDataAndClickTransferCredit(String username, String password, String amount){
-		setUsername(username);
-		setPassword(password);
-		setAmount(amount);
-		clickTransferButton();
-		
-	}
 }

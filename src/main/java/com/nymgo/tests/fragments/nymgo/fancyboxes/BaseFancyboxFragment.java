@@ -1,4 +1,4 @@
-package com.nymgo.tests.fragments.admin.popups;
+package com.nymgo.tests.fragments.nymgo.fancyboxes;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -8,31 +8,34 @@ import org.openqa.selenium.WebElement;
 
 import com.nymgo.tests.fragments.BaseFragment;
 
-public class BasePopupFragment extends BaseFragment{
+/**
+ * Created by Iuliia Khikmatova on Mar 09, 2016
+ */
+public class BaseFancyboxFragment extends BaseFragment{
 
-	public BasePopupFragment(WebDriver driver) {
+	public BaseFancyboxFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
-		setPopupContainer();
+		setFancyboxContainer();
 	}
 
     private WebElement popup;
 
-    private void setPopupContainer() throws NotFoundException{
+    private void setFancyboxContainer() throws NotFoundException{
     	
     	try{
-        	popup = driver.findElement(By.id("facebox"));
+        	popup = driver.findElement(By.xpath("//div[@class='fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened']"));
     	}
     	catch(NoSuchElementException e){
-    		LOGGER.fatal("Seems like Popup is absent on the screen");
+    		LOGGER.fatal("Seems like Fancybox is absent on the screen");
     		popup = null;
     	}
     };
 
-    public boolean isPopupExist(){
+    public boolean isFancyboxExist(){
 
         try{
-            setPopupContainer();
+            setFancyboxContainer();
             return popup.isDisplayed();
         }
         catch (NotFoundException e){
@@ -43,7 +46,7 @@ public class BasePopupFragment extends BaseFragment{
         }
     }
 
-    private WebElement getPopupContentArea() throws NotFoundException{
+    private WebElement getFancyboxContentArea() throws NotFoundException{
     	
     	if (popup != null){
     		return popup.findElement(By.xpath(".//div[@class='content']"));
@@ -53,11 +56,11 @@ public class BasePopupFragment extends BaseFragment{
     	}
     };
 
-    public String getPopupText() throws NotFoundException{
+    public String getFancyboxText() throws NotFoundException{
     	
-    	WebElement popupContentArea = getPopupContentArea();
+    	WebElement popupContentArea = getFancyboxContentArea();
     	if(popupContentArea != null){
-    		return getPopupContentArea().getText();
+    		return getFancyboxContentArea().getText();
     	}
     	else{
     		return "";
@@ -66,7 +69,7 @@ public class BasePopupFragment extends BaseFragment{
 
     public void clickOnCloseButton(){
     	
-    	popup.findElement(By.xpath(".//img[@title='close']")).click();
-        LOGGER.info("Popup close button was clicked");
+    	popup.findElement(By.xpath(".//a[@class='fancybox-item fancybox-close']")).click();
+        LOGGER.info("Fancybox close button was clicked");
     }
 }

@@ -17,4 +17,28 @@ public abstract class AbstractTransferCreditPage extends LoggedNymgoPage {
 		baseTransferCreditPageFragment = new BaseTransferCreditPageFragment(driver);
 	}
 
+	private void setUsername(String username){
+		baseTransferCreditPageFragment.setUsername(username);
+	}
+	
+	private void setAmount(String amount){
+		baseTransferCreditPageFragment.setAmount(amount);
+	}
+	
+	private void setPassword(String password){
+		baseTransferCreditPageFragment.setPassword(password);
+	}
+	
+	private void clickTransferButton(){
+		baseTransferCreditPageFragment.clickTransferButton();
+	}
+
+	//TODO instead of void
+	public void setDataAndClickTransferCredit(String username, String password, String amount){
+		setUsername(username);
+		setPassword(password);
+		setAmount(amount);
+		clickTransferButton();
+		
+	}
 }

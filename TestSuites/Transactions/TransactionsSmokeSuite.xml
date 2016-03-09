@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -772,6 +772,16 @@
                     <include name="payVisaAdyenPendingTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptInterNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
                     <include name="verifyBuyCreditAcceptedLoggedInterNormalUserTest" />
@@ -1376,7 +1386,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Inter NormalUser CAD GlobalCollect Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="CAD" />        
         <parameter name="cardType" value="Visa" />    
@@ -1523,7 +1533,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -1670,5 +1680,5 @@
             </class>
         </classes>
     </test>
-
+-->
 </suite>

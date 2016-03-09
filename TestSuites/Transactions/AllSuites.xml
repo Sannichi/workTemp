@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="allSuites" parallel="classes" thread-count="2" verbose="10">
+  <suite-files>
+    <suite-file path="TransactionsSmokeSuite.xml" />
+    <suite-file path="DealsSmokeSuite.xml" />
+  </suite-files>
+</suite>

@@ -127,8 +127,9 @@ public class PayCreditCardCase extends AbstractCase{
 	
 	//		Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionChallenged(), 
 	//				"Transaction is not challenged, current status is: " + successfulTransactionGlobalCollectPage.getPaymentStatus());
-			Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionChallenged() || successfulTransactionGlobalCollectPage.isTransactionSuccessful(), 
-					"Transaction is not challenged or autoaccepted, current status is: " + successfulTransactionGlobalCollectPage.getPaymentStatus());
+			Assert.assertTrue(successfulTransactionGlobalCollectPage.isTransactionChallenged() || successfulTransactionGlobalCollectPage.isTransactionSuccessful()
+					 			|| successfulTransactionGlobalCollectPage.isTransactionPending(), 
+					"Transaction is not challenged or autoaccepted or pending, current status is: " + successfulTransactionGlobalCollectPage.getPaymentStatus());
 			String transactionID = successfulTransactionGlobalCollectPage.getTransactionNumber();
 			String paymentStatus = successfulTransactionGlobalCollectPage.getPaymentStatus();
 			if(successfulTransactionGlobalCollectPage.isTransactionSuccessful()){

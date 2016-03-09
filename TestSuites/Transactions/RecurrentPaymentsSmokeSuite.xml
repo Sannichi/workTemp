@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Recurrent Euro NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -100,11 +100,6 @@
                     <include name="signInRecurrentEuroNormalWhitelistUserTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.ViewAccountCases">
-                <methods>
-                    <include name="editEuroNormalUserAccountTest" />
-                </methods>
-            </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
@@ -147,11 +142,6 @@
             <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInRecurrentEuroNormalWhitelistUserTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.ViewAccountCases">
-                <methods>
-                    <include name="editEuroNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -214,7 +204,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Euro MasterReseller KWD Worldpay MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    
@@ -229,11 +219,6 @@
             <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInRecurrentEuroMasterResellerTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.ViewAccountCases">
-                <methods>
-                    <include name="editEuroMasterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -280,11 +265,6 @@
                     <include name="signInRecurrentEuroMasterResellerTest" />
                 </methods>
             </class>
-            <class name="com.nymgo.ViewAccountCases">
-                <methods>
-                    <include name="editEuroMasterResellerAccountTest" />
-                </methods>
-            </class>
             <class name="com.nymgo.BuyCreditCase">
                 <methods>
                     <include name="buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest" />
@@ -313,7 +293,7 @@
         </classes>
     </test>
 
-    <test name="Test - Change Euro NormalUser Gateway to Adyen" preserve-order="true">
+    <test name="Test - Change Recurrent Euro NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
         <classes>
@@ -324,13 +304,13 @@
             </class>
             <class name="com.nymgo.AdminNormalMembersCase">
                 <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
+                    <include name="editRecurrentEuroNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="Test - Change Euro MasterReseller Gateway to Adyen" preserve-order="true">
+    <test name="Test - Change Recurrent Euro MasterReseller Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
         <classes>
@@ -341,7 +321,7 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroMasterResellerGatewayAdminTest" />
+                    <include name="editRecurrentEuroMasterResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
@@ -410,11 +390,6 @@
             <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInRecurrentEuroNormalWhitelistUserTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.ViewAccountCases">
-                <methods>
-                    <include name="editEuroNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -508,11 +483,6 @@
             <class name="com.nymgo.SignInCase">
                 <methods>
                     <include name="signInRecurrentEuroMasterResellerTest" />
-                </methods>
-            </class>
-            <class name="com.nymgo.ViewAccountCases">
-                <methods>
-                    <include name="editEuroMasterResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">

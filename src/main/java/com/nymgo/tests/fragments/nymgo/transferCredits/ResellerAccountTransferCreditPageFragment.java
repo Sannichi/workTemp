@@ -10,17 +10,17 @@ import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.starter.Starter;
 
 /**
- * Created by Iuliia Khikmatova on Dec 30, 2015
+ * Created by Iuliia Khikmatova on Mar 09, 2016
  */
-public class NormalAccountTransferCreditPageFragment extends BaseTransferCreditPageFragment {
+public class ResellerAccountTransferCreditPageFragment extends BaseTransferCreditPageFragment {
 	
-	public NormalAccountTransferCreditPageFragment(WebDriver driver) {
+	public ResellerAccountTransferCreditPageFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public static final String TRANSFER_CREDIT_PAGE_URL = Starter.SECURE_PART +
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/credits/transfer-credits";
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/credits/transfer-credits";
 	
 	@Override
 	public boolean isCorrectURL() {

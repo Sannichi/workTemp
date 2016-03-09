@@ -115,7 +115,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		String conversionAmount = String.valueOf(Rounder.roundFloat((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
 		String[] splitted = conversionAmount.split("\\.");
 		conversionAmount = splitted[1].equals("0") ? splitted[0] : conversionAmount; 
-		String fullAmount = currencyAmount + currency + "/" +
+		String fullAmount = currencyAmount + currency + "|" +
 			 conversionAmount +"$";
 		
 		String fullProduct = "";
@@ -179,7 +179,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		softAssert.assertTrue(isTransactionCountryCorrect(transactionDetails, country), "Country is not correct! Current value is '" + getTransactionCountry(transactionDetails) + 
 				"', should be '" + country + "'");
 		LOGGER.info("Country is correct");
-//		softAssert.assertAll();
+		softAssert.assertAll();
 	}
 
 	public void verifyDealData(String transactionID, String username, String amount, String VAT, String currency, String dealCurrency, String dealName, String service, String cardType, String country){
