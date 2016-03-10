@@ -19,16 +19,16 @@ public class BaseFancyboxFragment extends BaseFragment{
 		setFancyboxContainer();
 	}
 
-    private WebElement popup;
+    private WebElement fancybox;
 
     private void setFancyboxContainer() throws NotFoundException{
     	
     	try{
-        	popup = driver.findElement(By.xpath("//div[@class='fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened']"));
+    		fancybox = driver.findElement(By.xpath("//div[@class='fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened']"));
     	}
     	catch(NoSuchElementException e){
     		LOGGER.fatal("Seems like Fancybox is absent on the screen");
-    		popup = null;
+    		fancybox = null;
     	}
     };
 
@@ -36,7 +36,7 @@ public class BaseFancyboxFragment extends BaseFragment{
 
         try{
             setFancyboxContainer();
-            return popup.isDisplayed();
+            return fancybox.isDisplayed();
         }
         catch (NotFoundException e){
             return false;
@@ -46,30 +46,9 @@ public class BaseFancyboxFragment extends BaseFragment{
         }
     }
 
-    private WebElement getFancyboxContentArea() throws NotFoundException{
-    	
-    	if (popup != null){
-    		return popup.findElement(By.xpath(".//div[@class='content']"));
-    	}
-    	else{
-    		return null;
-    	}
-    };
-
-    public String getFancyboxText() throws NotFoundException{
-    	
-    	WebElement popupContentArea = getFancyboxContentArea();
-    	if(popupContentArea != null){
-    		return getFancyboxContentArea().getText();
-    	}
-    	else{
-    		return "";
-    	}
-    };
-
     public void clickOnCloseButton(){
     	
-    	popup.findElement(By.xpath(".//a[@class='fancybox-item fancybox-close']")).click();
+    	fancybox.findElement(By.xpath(".//a[@class='fancybox-item fancybox-close']")).click();
         LOGGER.info("Fancybox close button was clicked");
     }
 }

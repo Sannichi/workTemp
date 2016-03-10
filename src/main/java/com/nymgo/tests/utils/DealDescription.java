@@ -8,26 +8,26 @@ import com.nymgo.tests.enums.CURRENCY_SIGNS;
 public class DealDescription {
 
 	private Float usdPrice;
-	private int sarPrice;
-	private int aedPrice;
+	private Float sarPrice;
+	private Float aedPrice;
 	private Float kwdPrice;
-	private int qarPrice;
-	private int eurPrice;
-	private int gbpPrice;
-	private int cadPrice;
-	private int audPrice;
-	private int nzdPrice;
-	private int myrPrice;
-	private int sgdPrice;
-	private int inrPrice;
-	private int aoaPrice;
-	private int bndPrice;
+	private Float qarPrice;
+	private Float eurPrice;
+	private Float gbpPrice;
+	private Float cadPrice;
+	private Float audPrice;
+	private Float nzdPrice;
+	private Float myrPrice;
+	private Float sgdPrice;
+	private Float inrPrice;
+	private Float aoaPrice;
+	private Float bndPrice;
 	private CURRENCY_SIGNS currencySign;
 	private int minutes;
 	private int imtuAmount;
 	
-	public DealDescription(Float usdPrice, int audPrice, int cadPrice, int eurPrice, int inrPrice, int nzdPrice, int qarPrice, int sarPrice, 
-			int aedPrice, int gbpPrice, Float kwdPrice, int myrPrice, int sgdPrice, int aoaPrice, int bndPrice, CURRENCY_SIGNS currencySign, int minutes, int imtuAmount) {
+	public DealDescription(Float usdPrice, Float audPrice, Float cadPrice, Float eurPrice, Float inrPrice, Float nzdPrice, Float qarPrice, Float sarPrice, 
+			Float aedPrice, Float gbpPrice, Float kwdPrice, Float myrPrice, Float sgdPrice, Float aoaPrice, Float bndPrice, CURRENCY_SIGNS currencySign, int minutes, int imtuAmount) {
 
 		this.usdPrice = usdPrice;
 		this.sarPrice = sarPrice;
@@ -57,19 +57,19 @@ public class DealDescription {
 		this.usdPrice = usdPrice;
 	}
 
-	public int getSarPrice() {
+	public Float getSarPrice() {
 		return sarPrice;
 	}
 
-	public void setSarPrice(int sarPrice) {
+	public void setSarPrice(Float sarPrice) {
 		this.sarPrice = sarPrice;
 	}
 
-	public int getAedPrice() {
+	public Float getAedPrice() {
 		return aedPrice;
 	}
 
-	public void setAedPrice(int aedPrice) {
+	public void setAedPrice(Float aedPrice) {
 		this.aedPrice = aedPrice;
 	}
 
@@ -81,91 +81,91 @@ public class DealDescription {
 		this.kwdPrice = kwdPrice;
 	}
 
-	public int getQarPrice() {
+	public Float getQarPrice() {
 		return qarPrice;
 	}
 
-	public void setQarPrice(int qarPrice) {
+	public void setQarPrice(Float qarPrice) {
 		this.qarPrice = qarPrice;
 	}
 
-	public int getEurPrice() {
+	public Float getEurPrice() {
 		return eurPrice;
 	}
 
-	public void setEurPrice(int eurPrice) {
+	public void setEurPrice(Float eurPrice) {
 		this.eurPrice = eurPrice;
 	}
 
-	public int getGbpPrice() {
+	public Float getGbpPrice() {
 		return gbpPrice;
 	}
 
-	public void setGbpPrice(int gbpPrice) {
+	public void setGbpPrice(Float gbpPrice) {
 		this.gbpPrice = gbpPrice;
 	}
 
-	public int getCadPrice() {
+	public Float getCadPrice() {
 		return cadPrice;
 	}
 
-	public void setCadPrice(int cadPrice) {
+	public void setCadPrice(Float cadPrice) {
 		this.cadPrice = cadPrice;
 	}
 
-	public int getAudPrice() {
+	public Float getAudPrice() {
 		return audPrice;
 	}
 
-	public void setAudPrice(int audPrice) {
+	public void setAudPrice(Float audPrice) {
 		this.audPrice = audPrice;
 	}
 
-	public int getNzdPrice() {
+	public Float getNzdPrice() {
 		return nzdPrice;
 	}
 
-	public void setNzdPrice(int nzdPrice) {
+	public void setNzdPrice(Float nzdPrice) {
 		this.nzdPrice = nzdPrice;
 	}
 
-	public int getMyrPrice() {
+	public Float getMyrPrice() {
 		return myrPrice;
 	}
 
-	public void setMyrPrice(int myrPrice) {
+	public void setMyrPrice(Float myrPrice) {
 		this.myrPrice = myrPrice;
 	}
 
-	public int getSgdPrice() {
+	public Float getSgdPrice() {
 		return sgdPrice;
 	}
 
-	public void setSgdPrice(int sgdPrice) {
+	public void setSgdPrice(Float sgdPrice) {
 		this.sgdPrice = sgdPrice;
 	}
 
-	public int getInrPrice() {
+	public Float getInrPrice() {
 		return inrPrice;
 	}
 
-	public void setInrPrice(int inrPrice) {
+	public void setInrPrice(Float inrPrice) {
 		this.inrPrice = inrPrice;
 	}
 
-	public int getAoaPrice() {
+	public Float getAoaPrice() {
 		return aoaPrice;
 	}
 
-	public void setAoaPrice(int aoaPrice) {
+	public void setAoaPrice(Float aoaPrice) {
 		this.aoaPrice = aoaPrice;
 	}
 
-	public int getBndPrice() {
+	public Float getBndPrice() {
 		return bndPrice;
 	}
 
-	public void setBndPrice(int bndPrice) {
+	public void setBndPrice(Float bndPrice) {
 		this.bndPrice = bndPrice;
 	}
 
