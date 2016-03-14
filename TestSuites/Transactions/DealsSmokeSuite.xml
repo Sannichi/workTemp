@@ -17,6 +17,7 @@
         </classes>
     </test>
 -->
+<!--
     <test name="Test - Change Inter NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -32,14 +33,15 @@
                 </methods>
             </class>
         </classes>
+        
     </test>
 
-    <test name="Test - BuyDeal Inter NormalUser KWD Adyen India Deal 350 MasterCard" preserve-order="true">
+    <test name="Test - BuyDeal Inter NormalUser KWD Adyen Indonesia Deal 540 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Adyen" />     
-        <parameter name="dealCurrency" value="INR" />        
-        <parameter name="dealName" value="INDIA Deal 350" />     
+        <parameter name="dealCurrency" value="IDR" />        
+        <parameter name="dealName" value="Indonesia Deal 540" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -74,7 +76,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptInterNormalUserTransactionAdminTest" />
+                    <include name="acceptNymgoInterNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyDealCase">
@@ -102,12 +104,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyDeal Euro NormalUser KWD Worldpay Pakistan Deal 300 MasterCard" preserve-order="true">
+    <test name="Test - BuyDeal Euro NormalUser KWD Worldpay Bangladesh Deal 1150 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Worldpay" />     
-        <parameter name="dealCurrency" value="PKR" />        
-        <parameter name="dealName" value="Pakistan Deal 300" />     
+        <parameter name="dealCurrency" value="BDT" />        
+        <parameter name="dealName" value="Bangladesh Deal 1150" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -142,7 +144,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptNymgoEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyDealCase">
@@ -153,12 +155,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyDeal Euro NormalUser SAR Worldpay Sri Lanka Deal 100 MasterCard" preserve-order="true">
+    <test name="Test - BuyDeal Euro NormalUser SAR Worldpay Egypt Deal 420 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Worldpay" />     
-        <parameter name="dealCurrency" value="LKR" />        
-        <parameter name="dealName" value="Sri Lanka Deal 100" />     
+        <parameter name="dealCurrency" value="EGP" />        
+        <parameter name="dealName" value="Egypt Deal 420" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -193,7 +195,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptNymgoEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyDealCase">
@@ -221,12 +223,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyDeal Euro NormalUser SAR Adyen Philippines Deal 100 MasterCard" preserve-order="true">
+    <test name="Test - BuyDeal Euro NormalUser SAR Adyen Nigeria Deal 40 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Adyen" />     
-        <parameter name="dealCurrency" value="PHP" />        
-        <parameter name="dealName" value="Philippines Deal 100" />     
+        <parameter name="dealCurrency" value="NGN" />        
+        <parameter name="dealName" value="Nigeria Deal 40" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -261,7 +263,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptNymgoEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyDealCase">
@@ -289,12 +291,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyDeal Euro NormalUser KWD Global Collect Nigeria Deal 200 MasterCard" preserve-order="true">
+    <test name="Test - BuyDeal Euro NormalUser KWD Global Collect Pakistan Deal 250 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Global Collect" />     
-        <parameter name="dealCurrency" value="NGN" />        
-        <parameter name="dealName" value="Nigeria Deal 200" />     
+        <parameter name="dealCurrency" value="PKR" />        
+        <parameter name="dealName" value="Pakistan Deal 250" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -329,7 +331,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptNymgoEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyDealCase">
@@ -340,12 +342,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyDeal Euro NormalUser SAR GlobalCollect Kenya Deal 200 MasterCard" preserve-order="true">
+    <test name="Test - BuyDeal Euro NormalUser SAR GlobalCollect Kenya Deal 320 MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Global Collect" />     
         <parameter name="dealCurrency" value="KES" />        
-        <parameter name="dealName" value="Kenya Deal 200" />     
+        <parameter name="dealName" value="Kenya Deal 320" />     
           
         <classes>
             <class name="com.nymgo.DefaultCase">
@@ -380,7 +382,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroNormalUserTransactionAdminTest" />
+                    <include name="acceptNymgoEuroNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyDealCase">
@@ -408,12 +410,12 @@
         </classes>
     </test>
     
-    <test name="Test - BuyCredit Euro Reseller NZD Worldpay India Deal 550 Visa" preserve-order="true">
+    <test name="Test - BuyCredit Euro Reseller NZD Worldpay Sri Lanka Deal 180 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Worldpay" />     
-        <parameter name="dealCurrency" value="INR" />        
-        <parameter name="dealName" value="INDIA Deal 550" />     
+        <parameter name="dealCurrency" value="LKR" />        
+        <parameter name="dealName" value="Sri Lanka Deal 180" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -449,7 +451,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptNymgoEuroResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyDealCase">
@@ -460,12 +462,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyCredit Euro Reseller NZD Worldpay Philippines Deal 100 Visa" preserve-order="true">
+    <test name="Test - BuyCredit Euro Reseller NZD Worldpay Syria Deal 180 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Worldpay" />     
-        <parameter name="dealCurrency" value="PHP" />        
-        <parameter name="dealName" value="Philippines Deal 100" />     
+        <parameter name="dealCurrency" value="SYP" />        
+        <parameter name="dealName" value="Syria Deal 180" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -501,7 +503,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptNymgoEuroResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyDealCase">
@@ -529,12 +531,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyCredit Euro Reseller NZD Adyen India Deal 350 Visa" preserve-order="true">
+    <test name="Test - BuyCredit Euro Reseller NZD Adyen Philippines Deal 150 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Adyen" />     
-        <parameter name="dealCurrency" value="INR" />        
-        <parameter name="dealName" value="INDIA Deal 350" />     
+        <parameter name="dealCurrency" value="PHP" />        
+        <parameter name="dealName" value="Philippines Deal 150" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -570,7 +572,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptNymgoEuroResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyDealCase">
@@ -581,12 +583,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyCredit Euro Reseller NZD Adyen Nigeria Deal 200 Visa" preserve-order="true">
+    <test name="Test - BuyCredit Euro Reseller NZD Adyen Yemen Deal 260 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Adyen" />     
-        <parameter name="dealCurrency" value="NGN" />        
-        <parameter name="dealName" value="Nigeria Deal 200" />     
+        <parameter name="dealCurrency" value="YER" />        
+        <parameter name="dealName" value="Yemen Deal 260" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -622,7 +624,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptNymgoEuroResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyDealCase">
@@ -650,12 +652,12 @@
         </classes>
     </test>
 
-    <test name="Test - BuyCredit Euro Reseller NZD GlobalCollect Pakistan Deal 300 Visa" preserve-order="true">
+    <test name="Test - BuyCredit Euro Reseller NZD GlobalCollect Nepal Deal 260 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Global Collect" />     
-        <parameter name="dealCurrency" value="PKR" />        
-        <parameter name="dealName" value="Pakistan Deal 300" />     
+        <parameter name="dealCurrency" value="NPR" />        
+        <parameter name="dealName" value="Nepal Deal 260" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -691,7 +693,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptEuroResellerTransactionAdminTest" />
+                    <include name="acceptNymgoEuroResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyDealCase">
@@ -718,13 +720,13 @@
             </class>
         </classes>
     </test>
-
-    <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect Sri Lanka Deal 100 Visa" preserve-order="true">
+-->
+    <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect India Deal 350 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
         <parameter name="gatewayName" value="Global Collect" />     
-        <parameter name="dealCurrency" value="LKR" />        
-        <parameter name="dealName" value="Sri Lanka Deal 100" />     
+        <parameter name="dealCurrency" value="INR" />        
+        <parameter name="dealName" value="India Deal 350" />     
         <parameter name="dealQuantity" value="5" />        
           
         <classes>
@@ -760,7 +762,7 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="acceptInterResellerTransactionAdminTest" />
+                    <include name="acceptNymgoInterResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyDealCase">

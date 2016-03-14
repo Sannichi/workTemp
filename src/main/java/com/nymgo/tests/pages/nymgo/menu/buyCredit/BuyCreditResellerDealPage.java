@@ -81,7 +81,8 @@ public class BuyCreditResellerDealPage extends BuyCreditPage {
 	public boolean verifyDealTotalAmountValue(int dealQuantity, Float price){
 		
 		boolean result = false;
-		Float dealVAT = Float.valueOf(getDealVATValue());
+//		Float dealVAT = Float.valueOf(getDealVATValue());
+		Float dealVAT = dealQuantity * price / 100 * Integer.valueOf(getDealVATPercent());
 		Float asIs = Float.valueOf(getDealTotalAmountValue());
 		Float shouldBe = dealQuantity * price + dealVAT;		
 		result = shouldBe.equals(asIs);
@@ -126,8 +127,10 @@ public class BuyCreditResellerDealPage extends BuyCreditPage {
 		softAssert.assertTrue(verifyDealVATValue(intQuantity, price), "Deal VAT is not correct. Current value is '" + getDealVATValue() + 
 				"', should be '" + Rounder.roundFloat((price * intQuantity * Integer.valueOf(getDealVATPercent()) / 100), 2) + "'");
 		LOGGER.info("Deal VAT value is correct");
+//		softAssert.assertTrue(verifyDealTotalAmountValue(intQuantity, price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
+//				"', should be '" + (intQuantity * price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
 		softAssert.assertTrue(verifyDealTotalAmountValue(intQuantity, price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
-				"', should be '" + (intQuantity * price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
+				"', should be '" + (intQuantity * price + Rounder.roundFloat(intQuantity * price / 100 * Integer.valueOf(getDealVATPercent()), 2)) + "'");
 		LOGGER.info("Deal Total Amount value is correct");
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealPackageMinutesValue() + "', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");
@@ -153,7 +156,8 @@ public class BuyCreditResellerDealPage extends BuyCreditPage {
 		setDealsQuantity(dealQuantity);
 		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
 		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(verifyDealTotalAmountValue(intQuantity, price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + "', should be '" + (intQuantity * price + Float.valueOf(getDealVATValue())) + "'");
+		softAssert.assertTrue(verifyDealTotalAmountValue(intQuantity, price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
+				"', should be '" + (intQuantity * price + Rounder.roundFloat(intQuantity * price / 100 * Integer.valueOf(getDealVATPercent()), 2)) + "'");
 		LOGGER.info("Deal Total Amount value is correct");
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealPackageMinutesValue() + "', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");

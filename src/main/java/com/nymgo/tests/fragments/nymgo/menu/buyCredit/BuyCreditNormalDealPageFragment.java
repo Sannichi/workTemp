@@ -56,7 +56,15 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
     @FindBy(id = "deal-imtu-amount")    
     private WebElement dealImtuAmountValue;
     
-    @FindBy(css="button[id='transaction-proceed-user']")
+	@FindBys({@FindBy(css = "div[class$='optionsList clickable2 checked']"),
+		@FindBy(id="deal-minutes")})    
+	private WebElement checkedDealMinutesValue;
+
+	@FindBys({@FindBy(css = "div[class$='optionsList clickable2 checked']"),
+		@FindBy(id="deal-imtu-amount")})    
+	private WebElement checkedDealImtuAmountValue;
+
+  @FindBy(css="button[id='transaction-proceed-user']")
     private WebElement continueDealButton;
 
     public void selectCountryByName(String countryName){
@@ -100,6 +108,16 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 	public String getDealImtuAmountValue(){
 		
 		return dealImtuAmountValue.getText();
+	}
+
+	public String getCheckedDealMinutesValue(){
+		
+		return checkedDealMinutesValue.getText();
+	}
+
+	public String getCheckedDealImtuAmountValue(){
+		
+		return checkedDealImtuAmountValue.getText();
 	}
 
 	private List<WebElement> getAllDealsOptions(){

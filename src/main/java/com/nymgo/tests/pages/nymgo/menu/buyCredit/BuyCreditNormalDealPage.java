@@ -165,6 +165,16 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		return buyCreditNormalDealPageFragment.getDealImtuAmountValue();
 	}
 
+	public String getCheckedDealMinutesValue(){
+		
+		return buyCreditNormalDealPageFragment.getCheckedDealMinutesValue();
+	}
+
+	public String getCheckedDealImtuAmountValue(){
+		
+		return buyCreditNormalDealPageFragment.getCheckedDealImtuAmountValue();
+	}
+
 	public boolean verifyDealVATValue(Float price){
 		
 		boolean result = false;
@@ -187,18 +197,21 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 	public boolean verifyDealMinutes(DealDescription dealDescription){
 		
 		boolean result = false;
-		int asIs = Integer.valueOf(getDealMinutesValue());
-		int shouldBe = dealDescription.getMinutes();
-		result = shouldBe == asIs;
+//		int asIs = Integer.valueOf(getDealMinutesValue());
+//		int asIs = Integer.valueOf(getCheckedDealMinutesValue());
+		String asIs = getCheckedDealMinutesValue();		
+		String shouldBe = String.valueOf(dealDescription.getMinutes());
+		result = shouldBe.equals(asIs);
 		return result;
 	}
 	
 	public boolean verifyDealImtuAmount(DealDescription dealDescription){
 		
 		boolean result = false;
-		int asIs = Integer.valueOf(getDealImtuAmountValue());
-		int shouldBe = dealDescription.getImtuAmount();
-		result = shouldBe == asIs;
+//		int asIs = Integer.valueOf(getDealImtuAmountValue());
+		String asIs = getCheckedDealImtuAmountValue();		
+		String shouldBe = String.valueOf(dealDescription.getImtuAmount());
+		result = shouldBe.equals(asIs);
 		return result;
 	}
 	
@@ -222,10 +235,12 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		softAssert.assertTrue(verifyDealTotalAmountValue(price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
 				"', should be '" + (price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
 		LOGGER.info("Deal Total Amount value is correct");
-		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
+//		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
+		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getCheckedDealMinutesValue() +		
 				"', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");
-		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
+//		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
+		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getCheckedDealImtuAmountValue() + 
 				"', should be '" + (dealDescription.getImtuAmount()) + "'");
 		LOGGER.info("Deal Imtu Amount value is correct");
 		softAssert.assertAll();
@@ -245,10 +260,12 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
 		selectPrice(price);
 		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
+//		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
+		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getCheckedDealMinutesValue() +		
 				"', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");
-		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
+//		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
+		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getCheckedDealImtuAmountValue() + 
 				"', should be '" + (dealDescription.getImtuAmount()) + "'");
 		LOGGER.info("Deal Imtu Amount value is correct");
 		softAssert.assertAll();

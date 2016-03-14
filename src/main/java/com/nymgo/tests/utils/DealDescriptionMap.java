@@ -66,7 +66,7 @@ public class DealDescriptionMap {
 //		dealMap.put(LOCALE_CONST.PAKISTAN_DEAL_240, new DealDescription(	(float) 8.49, 	12, 15, 10, 677, 16, 36, 38, 37, 7, 	(float) 3.0, 43, 15, 1549, 14, CURRENCY_SIGNS.PKR, 300, 300));
 		dealMap.put(LOCALE_CONST.PAKISTAN_DEAL_250, new DealDescription(	(float) 6.99, (float) 9.4, (float) 9.3, (float) 6.4, (float) 470.2, 
 				(float) 10.3, (float) 25.4, (float) 26.2, (float) 25.7, (float) 4.9, 	
-				(float) 2.1, (float) 28.7, (float) 9.6, (float) 1105.5, (float) 9.5, CURRENCY_SIGNS.PKR, 250, 250));
+				(float) 2.1, (float) 28.7, (float) 9.6, (float) 1105.5, (float) 9.5, CURRENCY_SIGNS.PKR, 250, 200));
 
 //		dealMap.put(LOCALE_CONST.PAKISTAN_DEAL_300, new DealDescription(	(float) 10, 	15, 15, 10, 677, 16, 36, 38, 37, 7, 	(float) 3.0, 43, 15, 1549, 14, CURRENCY_SIGNS.PKR, 300, 300));
 //		dealMap.put(LOCALE_CONST.PAKISTAN_DEAL_600, new DealDescription(	(float) 15.49, 	21, 15, 10, 677, 16, 36, 38, 37, 7, 	(float) 3.0, 43, 15, 1549, 14, CURRENCY_SIGNS.PKR, 300, 300));

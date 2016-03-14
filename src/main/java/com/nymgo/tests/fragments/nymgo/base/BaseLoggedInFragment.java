@@ -1,6 +1,7 @@
 package com.nymgo.tests.fragments.nymgo.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -51,7 +52,8 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 
 		initializeWebElements();
 		Actions actions = new Actions(driver);
-		scrollToElement(accountButton);
+		actions.sendKeys(Keys.chord(Keys.CONTROL, Keys.HOME)).perform();
+//		scrollToElement(accountButton);
 		LOGGER.info("Hover Account dropdown");
 		actions.moveToElement(accountButton).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);

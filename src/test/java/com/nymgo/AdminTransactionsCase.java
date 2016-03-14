@@ -20,6 +20,8 @@ import com.nymgo.tests.pages.admin.widgets.BusinessMemberPaymentHistoryWidget;
 import com.nymgo.tests.pages.admin.widgets.MemberPaymentHistoryWidget;
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
+import com.nymgo.tests.utils.DealDescriptionMap;
+import com.nymgo.tests.utils.Rounder;
 
 public class AdminTransactionsCase extends AbstractCase{
 	
@@ -38,8 +40,13 @@ public class AdminTransactionsCase extends AbstractCase{
 			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 			transactionsAdminPage.searchIDExactMatch(transactionID);
 			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-			if(currencyAmount == null){
-				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			if (dealName == null){
+				if(currencyAmount == null){
+					currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+				}
+			}
+			else{
+				currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
 			}
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -68,8 +75,13 @@ public class AdminTransactionsCase extends AbstractCase{
 			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 			transactionsAdminPage.searchIDExactMatch(transactionID);
 			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-			if(currencyAmount == null){
-				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			if (dealName == null){
+				if(currencyAmount == null){
+					currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+				}
+			}
+			else{
+				currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
 			}
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -104,8 +116,54 @@ public class AdminTransactionsCase extends AbstractCase{
 				NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 				transactionsAdminPage.searchIDExactMatch(transactionID);
 				Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-				if(currencyAmount == null){
-					currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+				if (dealName == null){
+					if(currencyAmount == null){
+						currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+					}
+				}
+				else{
+					currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
+				}
+				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+			}
+			else{
+				LOGGER.info("Visa transaction was autoaccepted");
+				Starter.NORMAL_USER_VISA_AUTOACCEPTED = false;
+			}
+    	}
+    	else{
+    		LOGGER.fatal("User's limit is reached");
+    	}
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptNymgoEuroNormalUserTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+    	if (!Starter.USER_LIMIT_REACHED){
+        	
+			FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroNormalUser();
+			
+			AdminPage adminPage = new AdminPage(starter);
+	
+			if (! Starter.NORMAL_USER_VISA_AUTOACCEPTED){
+				String transactionID = ExcelUtils.getLastTransaction();		
+				Assert.assertNotNull(transactionID, "TransactionID is null!");
+				NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+				transactionsAdminPage.searchIDExactMatch(transactionID);
+				Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+				if (dealName == null){
+					if(currencyAmount == null){
+						currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+					}
+				}
+				else{
+					currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
 				}
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -139,8 +197,13 @@ public class AdminTransactionsCase extends AbstractCase{
 			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 			transactionsAdminPage.searchIDExactMatch(transactionID);
 			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-			if(currencyAmount == null){
-				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			if (dealName == null){
+				if(currencyAmount == null){
+					currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+				}
+			}
+			else{
+				currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
 			}
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -167,8 +230,14 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -191,8 +260,14 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -220,8 +295,51 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
+		}
+		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
+		if (dealName == null){
+			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		}
+		else{
+			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
+			dealAcceptedPopup.closeDealAcceptedPopup();
+//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		}
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptNymgoEuroResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getNymgoEuroReseller();
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
+		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -251,8 +369,14 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -276,9 +400,15 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
-//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+//				currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -309,9 +439,15 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
-//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+//				currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);			
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -343,8 +479,13 @@ public class AdminTransactionsCase extends AbstractCase{
 			NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 			transactionsAdminPage.searchIDExactMatch(transactionID);
 			Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-			if(currencyAmount == null){
-				currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+			if (dealName == null){
+				if(currencyAmount == null){
+					currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+				}
+			}
+			else{
+				currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
 			}
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -374,8 +515,54 @@ public class AdminTransactionsCase extends AbstractCase{
 				NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
 				transactionsAdminPage.searchIDExactMatch(transactionID);
 				Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-				if(currencyAmount == null){
-					currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+				if (dealName == null){
+					if(currencyAmount == null){
+						currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+					}
+				}
+				else{
+					currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
+				}
+				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+			}
+			else{
+				LOGGER.info("Visa transaction was autoaccepted");
+				Starter.NORMAL_USER_VISA_AUTOACCEPTED = false;
+			}
+    	}
+    	else{
+    		LOGGER.fatal("User's limit is reached");
+    	}
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptNymgoInterNormalUserTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+    	if (!Starter.USER_LIMIT_REACHED){
+        	
+			FullUserEntity fullUserEntity = DataAdapter.getNymgoInterNormalUser();
+			
+			AdminPage adminPage = new AdminPage(starter);
+			
+			if (! Starter.NORMAL_USER_VISA_AUTOACCEPTED){
+				String transactionID = ExcelUtils.getLastTransaction();		
+				Assert.assertNotNull(transactionID, "TransactionID is null!");
+				NormalTransactionsAdminPage transactionsAdminPage = adminPage.navigateTransactionsTab();
+				transactionsAdminPage.searchIDExactMatch(transactionID);
+				Assert.assertFalse(transactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+				if (dealName == null){
+					if(currencyAmount == null){
+						currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
+					}
+				}
+				else{
+					currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
 				}
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -407,8 +594,14 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -431,8 +624,51 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
+		}
+		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+		BusinessMemberPaymentHistoryWidget businessMemberPaymentHistoryWidget = businessTransactionsAdminPage.openViewBusinessTransactionsWidgetByID(transactionID);
+		if (dealName == null){
+			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		}
+		else{
+			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
+			dealAcceptedPopup.closeDealAcceptedPopup();
+//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+		}
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.PAYMENT_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void acceptNymgoInterResellerTransactionAdminTest(String paymentCurrency, String dealCurrency, String dealName, String dealQuantity, 
+			String countryOfCredit, String cardType, String gatewayName, String currencyAmount, String bonusType, String bonusTypeValue){
+
+		FullUserEntity fullUserEntity = DataAdapter.getNymgoInterReseller();
+		
+		AdminPage adminPage = new AdminPage(starter);
+
+		String transactionID = ExcelUtils.getLastTransaction();		
+		Assert.assertNotNull(transactionID, "TransactionID is null!");
+		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
+		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
+		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -462,8 +698,14 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
@@ -487,9 +729,14 @@ public class AdminTransactionsCase extends AbstractCase{
 		BusinessTransactionsAdminPage businessTransactionsAdminPage = adminPage.navigateBusinessTransactionsTab();
 		businessTransactionsAdminPage.searchIDExactMatch(transactionID);
 		Assert.assertFalse(businessTransactionsAdminPage.isSearchResultEmpty(), "Search result by transaction ID = '" + transactionID + "' is empty");
-		if(currencyAmount == null){
-			currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
-//			currencyAmount = CurrencyUtils.getSecondResellerBuyCurrencyValue(paymentCurrency);
+		if (dealName == null){
+			if(currencyAmount == null){
+				currencyAmount = CurrencyUtils.getMinResellerBuyCurrencyValue(paymentCurrency);
+			}
+		}
+		else{
+			currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2) 
+					* Integer.valueOf(dealQuantity));
 		}
 		businessTransactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(), 
 				paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
