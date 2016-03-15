@@ -2,6 +2,7 @@ package com.nymgo.tests.pages.nymgo.account;
 
 import com.nymgo.tests.fragments.nymgo.account.ResellerAccountPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
+import com.nymgo.tests.pages.nymgo.transferCredits.ResellerAccountTransferCreditPage;
 import com.nymgo.tests.starter.Starter;
 
 public class ResellerAccountPage extends AbstractAccountPage{
@@ -62,6 +63,15 @@ public class ResellerAccountPage extends AbstractAccountPage{
 	public int navigateToDeal(String dealName){
 		
 		return resellerAccountPageFragment.navigateToDeal(dealName);
+	}
+
+	public ResellerAccountTransferCreditPage clickResellerAccountTransferCreditButton(){
+
+		resellerAccountPageFragment.clickAccountTransferCreditButton();
+		ResellerAccountTransferCreditPage resellerAccountTransferCreditPage = new ResellerAccountTransferCreditPage(starter);
+		PageNavigation<ResellerAccountTransferCreditPage> navigation = new PageNavigation<ResellerAccountTransferCreditPage>(resellerAccountTransferCreditPage);
+		navigation.NavigatedTo();
+		return resellerAccountTransferCreditPage;
 	}
 
 	public ViewResellerAccountPage clickViewAccountDetailsButton(){

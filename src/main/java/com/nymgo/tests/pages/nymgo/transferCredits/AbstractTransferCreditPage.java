@@ -1,7 +1,9 @@
 package com.nymgo.tests.pages.nymgo.transferCredits;
 
 import com.nymgo.tests.fragments.nymgo.transferCredits.BaseTransferCreditPageFragment;
+import com.nymgo.tests.navigation.FancyboxNavigation;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
+import com.nymgo.tests.pages.nymgo.fancyboxes.ConfirmTransferFancybox;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -34,11 +36,14 @@ public abstract class AbstractTransferCreditPage extends LoggedNymgoPage {
 	}
 
 	//TODO instead of void
-	public void setDataAndClickTransferCredit(String username, String password, String amount){
+	public ConfirmTransferFancybox setDataAndClickTransferCredit(String username, String password, String transferAmount){
 		setUsername(username);
 		setPassword(password);
-		setAmount(amount);
+		setAmount(transferAmount);
 		clickTransferButton();
-		
+		ConfirmTransferFancybox confirmTransferFancybox = new ConfirmTransferFancybox(starter);
+		FancyboxNavigation<ConfirmTransferFancybox> navigation = new FancyboxNavigation<ConfirmTransferFancybox>(confirmTransferFancybox);
+		navigation.NavigatedTo();
+		return confirmTransferFancybox;
 	}
 }

@@ -42,7 +42,8 @@ public class DealDescriptionMap {
 //		dealMap.put(LOCALE_CONST.INDIA_DEAL, new DealDescription(			(float) 14.99, 	(float) 22, (float) 22, (float) 14, (float) 1014, (float) 24, (float) 55, (float) 57, (float) 56, (float) 11, 	
 //				(float) 4.5, (float) 66, (float) 22, (float) 2321, (float) 22, CURRENCY_SIGNS.INR, 1000, 200));
 		dealMap.put(LOCALE_CONST.INDIA_DEAL_350, new DealDescription(		(float) 7.99, (float) 10.7, (float) 10.6, (float) 7.3, (float) 537.5, 
-				(float) 11.8, (float) 29.1, (float) 30.0, (float) 29.3, (float) 5.6, 		
+//				(float) 11.8, (float) 29.1, (float) 30.0, (float) 29.3, (float) 5.6, 		
+				(float) 13.0, (float) 29.1, (float) 30.0, (float) 29.3, (float) 5.6, 		
 				(float) 2.4, (float) 32.8, (float) 11.0, (float) 1263.7, (float) 10.9, CURRENCY_SIGNS.INR, 350, 200));
 ////		dealMap.put(LOCALE_CONST.INDIA_DEAL_550, new DealDescription(		(float) 9.99, 	14, 15, 10, 677, 16, 36, 38, 37, 7, 	(float) 3.0, 43, 15, 1547, 14, CURRENCY_SIGNS.INR, 550, 200));		
 ////		dealMap.put(LOCALE_CONST.INDIA_DEAL_800, new DealDescription(		(float) 11.99, 	17, 18, 12, 812, 19, 44, 45, 45, 9, 	(float) 3.6, 52, 18, 1857, 17, CURRENCY_SIGNS.INR, 800, 200));

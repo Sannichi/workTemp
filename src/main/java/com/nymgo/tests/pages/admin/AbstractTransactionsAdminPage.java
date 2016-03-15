@@ -115,10 +115,10 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		String conversionAmount = String.valueOf(Rounder.roundFloat((Float.valueOf(amount)*Float.valueOf(VAT)/100 + Float.valueOf(amount))/Float.valueOf(conversionRate), 2));
 		String[] splitted = conversionAmount.split("\\.");
 		conversionAmount = splitted[1].equals("0") ? splitted[0] : conversionAmount; 
-		String fullAmount = currencyAmount + currency + "|" +
-			 conversionAmount +"$";
 		
+		String fullAmount = "";
 		String fullProduct = "";
+
 		if (dealName == null) {
 			fullProduct = currency + " " + amount;
 			if(currency.equals(CURRENCY_SIGNS.USD.toString())){
@@ -129,9 +129,12 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 					fullProduct = "$" + " " + amount;
 				}
 			}
+			fullAmount = currencyAmount + currency + "|" +
+					 conversionAmount +"$";
 		}
 		else {
 			fullProduct = dealName;
+			fullAmount = currencyAmount;
 		}
 		
 		String method = cardType;

@@ -409,7 +409,7 @@
             </class>
         </classes>
     </test>
-    
+
     <test name="Test - BuyCredit Euro Reseller NZD Worldpay Sri Lanka Deal 180 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -651,7 +651,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro Reseller NZD GlobalCollect Nepal Deal 260 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -703,7 +703,7 @@
             </class>
         </classes>
     </test>
-    
+<!--    
 	<test name="Test - Change Inter Reseller Gateway to GlobalCollect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -720,7 +720,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect India Deal 350 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -772,5 +772,5 @@
             </class>
         </classes>
     </test>
-
+-->
 </suite>

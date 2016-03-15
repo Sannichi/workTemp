@@ -14,16 +14,16 @@ public class MasterRechargeAccountFancyboxFragment extends BaseFancyboxFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(xpath = "input[@name='transfer_credit_master']")
+	@FindBy(xpath = "//input[@name='transfer_credit_master']")
 	WebElement transferAmountField;
 	
-	@FindBy(xpath = "input[@name='save']")
+	@FindBy(xpath = "//input[@name='save']")
 	WebElement sendButton;
 	
-	@FindBy(xpath = "a[@id='cancelBtn']")
+	@FindBy(xpath = "//a[@id='cancelBtn']")
 	WebElement cancelButton;
 
-	@FindBy(xpath = "p[@id='help-mr-transfer']")
+	@FindBy(xpath = "//p[@id='help-mr-transfer']")
 	WebElement helpText;
 
 	public void setAmount(String amount){
