@@ -3,8 +3,11 @@ package com.nymgo.data.providers;
 import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 
+import com.nymgo.data.adapters.DataAdapter;
+import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
 import com.nymgo.data.utils.ExcelUtils;
+import com.nymgo.tests.enums.NYMGO_USERS;
 
 public class GeneralDataProvider extends BaseDataProvider{
 
@@ -127,6 +130,36 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.USER_AND_PAYMENT_PARAMS_PROVIDER)
+    public static Object[][] userAndBuyCreditParamsDataProviderWithParams(ITestContext context) throws Exception {
+
+        String paymentCurrency = context.getCurrentXmlTest().getParameter("paymentCurrency");
+        String dealCurrency = context.getCurrentXmlTest().getParameter("dealCurrency");
+        String dealName = context.getCurrentXmlTest().getParameter("dealName");
+        String dealQuantity = context.getCurrentXmlTest().getParameter("dealQuantity");
+        String countryOfCredit = context.getCurrentXmlTest().getParameter("countryOfCredit");
+        String cardType = context.getCurrentXmlTest().getParameter("cardType");
+        String gatewayName = context.getCurrentXmlTest().getParameter("gatewayName");
+        String currencyAmount = context.getCurrentXmlTest().getParameter("currencyAmount");
+        String bonusType = context.getCurrentXmlTest().getParameter("bonusType");
+        String bonusTypeValue = context.getCurrentXmlTest().getParameter("bonusTypeValue");
+        FullUserEntity loginUserEntity = getNymgoUserEntity(context.getCurrentXmlTest().getParameter("loginUser"));
+
+        Object[][] dataAdapterArray = new Object[1][11]; 
+        dataAdapterArray[0][0] = paymentCurrency;   	
+        dataAdapterArray[0][1] = dealCurrency;   	
+        dataAdapterArray[0][2] = dealName;   	
+        dataAdapterArray[0][3] = dealQuantity;   	
+        dataAdapterArray[0][4] = countryOfCredit;    	
+        dataAdapterArray[0][5] = cardType;    	
+        dataAdapterArray[0][6] = gatewayName;    	
+        dataAdapterArray[0][7] = currencyAmount;    
+        dataAdapterArray[0][8] = bonusType;
+        dataAdapterArray[0][9] = bonusTypeValue;
+        dataAdapterArray[0][10] = loginUserEntity;
+        return dataAdapterArray;
+    }
+
     @DataProvider(name=PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER)
     public static Object[][] setNormalUserParamsDataProvider(ITestContext context) throws Exception {
 
@@ -218,4 +251,62 @@ public class GeneralDataProvider extends BaseDataProvider{
         return dataAdapterArray;
     }
 
+    @DataProvider(name=PROVIDER_CONST.TRANSFER_PARAMS_PROVIDER)
+    public static Object[][] transferCreditParamsDataProvider(ITestContext context) throws Exception {
+
+        FullUserEntity userEntityFrom = getNymgoUserEntity(context.getCurrentXmlTest().getParameter("userFrom"));
+        FullUserEntity userEntityTo = getNymgoUserEntity(context.getCurrentXmlTest().getParameter("userTo"));
+        String transferAmount = context.getCurrentXmlTest().getParameter("transferAmount");
+        
+        Object[][] dataAdapterArray = new Object[1][3]; 
+        dataAdapterArray[0][0] = userEntityFrom;   	
+        dataAdapterArray[0][1] = userEntityTo;   	
+        dataAdapterArray[0][2] = transferAmount;   	
+        return dataAdapterArray;
+    }
+    
+    public static FullUserEntity getNymgoUserEntity(String nymgoUser){
+    	
+		NYMGO_USERS NYMGO_USER = NYMGO_USERS.valueOf(nymgoUser);
+		
+		switch(NYMGO_USER){
+		
+			case EURO_NORMAL_WHITELIST:
+				return DataAdapter.getEuroNormalWhitelist();
+			case EURO_RESELLER:
+				return DataAdapter.getEuroReseller();
+			case EURO_MASTER_RESELLER:
+				return DataAdapter.getEuroMasterReseller();
+			case INTER_NORMAL_WHITELIST:
+				return DataAdapter.getInterNormalWhitelist();
+			case INTER_RESELLER:
+				return DataAdapter.getInterReseller();
+			case INTER_MASTER_RESELLER:
+				return DataAdapter.getInterMasterReseller();
+			case RECURRENT_EURO_NORMAL_WHITELIST:
+				return DataAdapter.getRecurrentEuroNormalWhitelist();
+			case RECURRENT_EURO_MASTER_RESELLER:
+				return DataAdapter.getRecurrentEuroMasterReseller();
+			case NYMGO_EURO_NORMAL_USER:
+				return DataAdapter.getNymgoEuroNormalUser();
+			case NYMGO_EURO_RESELLER:
+				return DataAdapter.getNymgoEuroReseller();
+			case NYMGO_INTER_NORMAL_USER:
+				return DataAdapter.getNymgoInterNormalUser();
+			case NYMGO_INTER_RESELLER:
+				return DataAdapter.getNymgoInterReseller();
+			default: 
+				return DataAdapter.getEuroNormalWhitelist();
+		}
+    }
+
+    @DataProvider(name=PROVIDER_CONST.LOGIN_USER_PROVIDER)
+    public static Object[][] loginUserDataProvider(ITestContext context) throws Exception {
+
+        FullUserEntity loginUserEntity = getNymgoUserEntity(context.getCurrentXmlTest().getParameter("loginUser"));
+        Object[][] dataAdapterArray = new Object[1][1]; 
+        dataAdapterArray[0][0] = loginUserEntity;   	
+        return dataAdapterArray;
+    }
+    
 }

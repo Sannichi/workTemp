@@ -29,7 +29,7 @@ public class ResellerAccountPageFragment extends BaseAccountPageFragment{
     @FindBy(xpath = "//div[@id='account-details']//a[@class='button-edit']")
 	private WebElement accountDetailsButton;
 
-	@FindBy(xpath = "//div[@class='owl-item']//div[@class='innerPadding']/div[1]")
+    @FindBy(xpath = "//div[@class='owl-item']//div[@class='innerPadding']/div[1]")
 	private List<WebElement> resellerDealsNamesList;
 
 	public void clickViewAccountDetailsButton(){

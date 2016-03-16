@@ -2,7 +2,11 @@ package com.nymgo.data.enums;
 
 public class PROVIDER_CONST {
 
+    public final static String LOGIN_USER_PROVIDER = "loginUserProvider";
+
     public final static String PAYMENT_PARAMS_PROVIDER = "buyCreditParamsProvider";
+    public final static String USER_AND_PAYMENT_PARAMS_PROVIDER = "userAndBuyCreditParamsProvider";
+    public final static String TRANSFER_PARAMS_PROVIDER = "transferCreditParamsProvider";
 
     public final static String FULLNAME_SIGN_UP_VERIFIES = "fullNameSignUpVerifies";
     public final static String BUSINESS_NAME_SIGN_UP_VERIFIES = "businessNameSignUpVerifies";

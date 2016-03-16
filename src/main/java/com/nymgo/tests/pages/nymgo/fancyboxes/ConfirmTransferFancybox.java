@@ -1,6 +1,8 @@
 package com.nymgo.tests.pages.nymgo.fancyboxes;
 
 import com.nymgo.tests.fragments.nymgo.fancyboxes.MasterRechargeAccountFancyboxFragment;
+import com.nymgo.tests.navigation.PageNavigation;
+import com.nymgo.tests.pages.nymgo.transferCredits.NormalAccountTransferCreditPage;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -54,4 +56,12 @@ public class ConfirmTransferFancybox extends AbstractFancybox {
 		masterRechargeAccountFancyboxFragment.clickCancel();
 	}
 	
+	public NormalAccountTransferCreditPage clickSendAmountNormalAccount(){
+		
+		clickSendButton();
+		NormalAccountTransferCreditPage normalAccountTransferCreditPage = new NormalAccountTransferCreditPage(starter);
+		PageNavigation<NormalAccountTransferCreditPage> navigation = new PageNavigation<NormalAccountTransferCreditPage>(normalAccountTransferCreditPage);
+		navigation.NavigatedTo();
+		return normalAccountTransferCreditPage;
+	}
 }
