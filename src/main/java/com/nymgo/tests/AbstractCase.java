@@ -60,7 +60,23 @@ public class AbstractCase {
     @AfterTest
 	public void finishTests(){
 		
+//		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));
     	starter.quiteDriver();
+//    	try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//    	if(BROWSER.equals(BROWSERS.CHROME)){
+//	    	try {
+//				Runtime.getRuntime().exec("cmd /c start " + Starter.WORKING_DIRECTORY + "\\kill_chromedriver.bat");
+//				Runtime.getRuntime().exec("taskkill /f /im cmd.exe");				
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//    	}
 	}
 
     @AfterSuite

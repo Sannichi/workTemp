@@ -119,6 +119,8 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		String fullAmount = "";
 		String fullProduct = "";
 
+		fullAmount = currencyAmount + currency + "|" +
+				 conversionAmount +"$";
 		if (dealName == null) {
 			fullProduct = currency + " " + amount;
 			if(currency.equals(CURRENCY_SIGNS.USD.toString())){
@@ -129,12 +131,10 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 					fullProduct = "$" + " " + amount;
 				}
 			}
-			fullAmount = currencyAmount + currency + "|" +
-					 conversionAmount +"$";
 		}
 		else {
 			fullProduct = dealName;
-			fullAmount = currencyAmount;
+//			fullAmount = currencyAmount;
 		}
 		
 		String method = cardType;

@@ -17,6 +17,7 @@
         </classes>
     </test>
 -->
+<!--
     <test name="Test - Change Recurrent Euro NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -419,7 +420,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro MasterReseller KWD Adyen MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    

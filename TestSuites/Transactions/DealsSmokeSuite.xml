@@ -17,7 +17,6 @@
         </classes>
     </test>
 -->
-<!--
     <test name="Test - Change Inter NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -651,7 +650,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Euro Reseller NZD GlobalCollect Nepal Deal 260 Visa" preserve-order="true">
         <parameter name="paymentCurrency" value="NZD" />        
         <parameter name="cardType" value="Visa" />    
@@ -703,7 +702,7 @@
             </class>
         </classes>
     </test>
-<!--    
+
 	<test name="Test - Change Inter Reseller Gateway to GlobalCollect" preserve-order="true">
         <parameter name="gatewayName" value="Global Collect" />     
         
@@ -772,5 +771,5 @@
             </class>
         </classes>
     </test>
--->
+
 </suite>
