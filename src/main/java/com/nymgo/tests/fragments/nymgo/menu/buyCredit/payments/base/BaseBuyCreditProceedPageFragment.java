@@ -1,14 +1,13 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.base;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.account.baseProfile.BaseProfileInfoFragment;
@@ -23,7 +22,7 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
+	private static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART_PATTERN +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/proceed";	
 			
 	@FindBy(id = "payment_card")
@@ -40,14 +39,9 @@ public class BaseBuyCreditProceedPageFragment extends BaseProfileInfoFragment{
 
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-		try{
-			wait.until(ExpectedConditions.urlToBe(BUY_CREDIT_PAGE_URL));
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+		Pattern p = Pattern.compile(BUY_CREDIT_PAGE_URL);
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
 
 	public String getCorrectURL() {

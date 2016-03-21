@@ -1,9 +1,9 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.worldpay;
 
-import org.openqa.selenium.TimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.BROWSERS;
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -22,9 +22,10 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String PENDING_TRANSACTION_WP_3DS_CHROME_URL = "https://secure-dev.nymgo.com/en/wp3ds-return/";	
-	private static final String PENDING_TRANSACTION_WP_3DS_URL = Starter.SECURE_PART + 
-	LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
+	private static final String PENDING_TRANSACTION_WP_3DS_CHROME_URL = Starter.SECURE_PART_PATTERN + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/wp3ds-return/";	
+	private static final String PENDING_TRANSACTION_WP_3DS_URL = Starter.SECURE_PART_PATTERN + 
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	private String defineCorrectURL(){
 		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));
@@ -43,15 +44,9 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 	
 	public boolean isCorrectURL(){
 
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	String correctURL = defineCorrectURL();
-		try{
-	    	wait.until(ExpectedConditions.urlContains(correctURL));			
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+		Pattern p = Pattern.compile(defineCorrectURL());
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
 
 	public String getCorrectURL() {

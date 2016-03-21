@@ -1,11 +1,11 @@
 package com.nymgo.tests.fragments.nymgo.menu.signIn;
 
-import org.openqa.selenium.TimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.base.BaseNymgoFragment;
@@ -28,19 +28,14 @@ public class ResellerSignInPageFragment extends BaseNymgoFragment{
 	@FindBy(id = "reseller-login-el")
 	private WebElement signInButton;
 	
-	private static final String RESELLER_ACCOUNT_PAGE_URL = Starter.SECURE_PART +
+	private static final String RESELLER_ACCOUNT_PAGE_URL = Starter.SECURE_PART_PATTERN +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/";
 	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-		try{
-	    	wait.until(ExpectedConditions.urlToBe(RESELLER_ACCOUNT_PAGE_URL));
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+		Pattern p = Pattern.compile(RESELLER_ACCOUNT_PAGE_URL);
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
 
 	public String getCorrectURL() {

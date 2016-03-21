@@ -37,14 +37,30 @@ public abstract class BaseLoggedInFragment extends BaseNymgoFragment{
 
 		initializeWebElements();
 		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.chord(Keys.CONTROL, Keys.HOME)).perform();
+		LOGGER.info("Hover Account dropdown");
 		actions.moveToElement(accountButton).perform();
 		WebDriverWait wait = new WebDriverWait(driver, Starter.INITIALIZED_ELEMENT_WAIT_TIME);
-		try{
-			WebElement webElement = wait.until(ExpectedConditions.visibilityOf(logOutDropdown));
+		WebElement webElement = null;
+		try {
+			webElement = wait.until(ExpectedConditions.visibilityOf(logOutDropdown)); 
+		}
+		catch (TimeoutException e){
+			actions.moveToElement(nymgoLogo).perform();
+			LOGGER.info("Hover Account dropdown again...");
+			actions.moveToElement(accountButton).perform();
+			try {
+				webElement = wait.until(ExpectedConditions.visibilityOf(myAccountDropdown)); 
+			}
+			catch (TimeoutException e2){
+				LOGGER.fatal("Something was wrong with account dropdown items");
+			}
+		}
+		if (webElement != null){
 			clickButton(webElement);
 		}
-		catch(TimeoutException e){
-			LOGGER.fatal("Sign out dropdown was not shown");
+		else{
+			LOGGER.fatal("myAccountDropdown = null");
 		}
 	}
 

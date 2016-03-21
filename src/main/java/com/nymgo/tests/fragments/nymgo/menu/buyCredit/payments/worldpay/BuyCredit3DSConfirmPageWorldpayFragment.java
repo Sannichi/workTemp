@@ -1,11 +1,11 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.worldpay;
 
-import org.openqa.selenium.TimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.BROWSERS;
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -26,7 +26,7 @@ public class BuyCredit3DSConfirmPageWorldpayFragment extends BaseIframePageFragm
 	}
 
 	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_CHROME_URL = "https://secure-test.streamline-esolutions.com/jsp/test/shopper/ThreeDResponseSimulator.jsp";
-	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL = Starter.SECURE_PART + 
+	private static final String BUY_CREDIT_3DS_CONFIRM_PAGE_WP_NEXT_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 	
 	@FindBy(css = "input[name='continue']")
@@ -49,15 +49,9 @@ public class BuyCredit3DSConfirmPageWorldpayFragment extends BaseIframePageFragm
 	
 	public boolean isCorrectURL(){
 
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-    	String correctURL = defineCorrectURL();
-    	try{
-    		wait.until(ExpectedConditions.urlContains(correctURL));    		
-    		return true;
-    	}
-    	catch(TimeoutException e){
-    		return false;
-    	}
+		Pattern p = Pattern.compile(defineCorrectURL());
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
 
 	public String getCorrectURL() {

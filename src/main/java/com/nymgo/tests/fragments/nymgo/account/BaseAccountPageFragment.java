@@ -1,15 +1,17 @@
 package com.nymgo.tests.fragments.nymgo.account;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
+//import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+//import org.openqa.selenium.support.ui.ExpectedConditions;
+//import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.base.BaseLoggedInFragment;
@@ -23,8 +25,10 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
+//	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
+	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART_PATTERN +	
+	LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	
 	private static final String language = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL);
 	
@@ -62,14 +66,9 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 
 	public boolean isCorrectURL(){
 		// TODO Auto-generated method stub
-		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-		try{
-			wait.until(ExpectedConditions.urlToBe(ACCOUNT_PAGE_URL_EN));
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+			Pattern p = Pattern.compile(ACCOUNT_PAGE_URL_EN);
+	        Matcher m = p.matcher(getCurrentURL());	
+	        return m.matches();
 	}
 
 	public String getCorrectURL() {

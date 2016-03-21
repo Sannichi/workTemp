@@ -1,11 +1,11 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.adyen;
 
-import org.openqa.selenium.TimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.BROWSERS;
 import com.nymgo.tests.enums.LOCALE_CONST;
@@ -24,7 +24,7 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = Starter.SECURE_PART + 
+	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	private static final String BUY_CREDIT_3DS_PAGE_CONFIRM_ADYEN_CHROME_URL = "https://test.adyen.com/hpp/3d/validate.shtml";	
@@ -55,15 +55,9 @@ public class BuyCredit3DSConfirmPageAdyenFragment extends BaseIframePageFragment
 	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-		WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-		String correctURL = defineCorrectURL();
-		try{
-			wait.until(ExpectedConditions.urlToBe(correctURL));			
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+		Pattern p = Pattern.compile(defineCorrectURL());
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
 
 	public String getCorrectURL() {

@@ -1,9 +1,9 @@
 package com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.worldpay;
 
-import org.openqa.selenium.TimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.base.transactions.PendingTransactionFragment;
@@ -20,19 +20,14 @@ public class PendingTransactionWorldpayFragment extends PendingTransactionFragme
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = Starter.SECURE_PART + 
+	private static final String BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";
 	
 	public boolean isCorrectURL(){
 
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-		try{
-			wait.until(ExpectedConditions.urlMatches(BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL));    	
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+		Pattern p = Pattern.compile(BUY_CREDIT_CONFIRM_PAGE_WP_PENDING_URL);
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
 
 	public String getCorrectURL() {

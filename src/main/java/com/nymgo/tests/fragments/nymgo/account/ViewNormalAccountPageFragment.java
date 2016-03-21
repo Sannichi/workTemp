@@ -1,9 +1,9 @@
 package com.nymgo.tests.fragments.nymgo.account;
 
-import org.openqa.selenium.TimeoutException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.generators.LocaleGenerator;
@@ -20,20 +20,15 @@ public class ViewNormalAccountPageFragment extends BaseViewAccountFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String VIEW_NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART +
+	private static final String VIEW_NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART_PATTERN +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/account/view/profile";
 
 	@Override
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-    	WebDriverWait wait = new WebDriverWait(driver, Starter.CORRECT_PAGE_WAIT_TIME);
-		try{
-			wait.until(ExpectedConditions.urlToBe(VIEW_NORMAL_ACCOUNT_PAGE_URL));
-			return true;
-		}
-		catch(TimeoutException e){
-			return false;
-		}
+		Pattern p = Pattern.compile(VIEW_NORMAL_ACCOUNT_PAGE_URL);
+        Matcher m = p.matcher(getCurrentURL());	
+        return m.matches();
 	}
     
 	@Override
