@@ -1,6 +1,9 @@
 package com.nymgo.tests.pages.nymgo.transferCredits;
 
+import org.openqa.selenium.WebElement;
+
 import com.nymgo.tests.fragments.nymgo.transferCredits.BaseTransferCreditPageFragment;
+import com.nymgo.tests.fragments.nymgo.transferCredits.TransferCreditData;
 import com.nymgo.tests.navigation.FancyboxNavigation;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
 import com.nymgo.tests.pages.nymgo.fancyboxes.ConfirmTransferFancybox;
@@ -45,5 +48,30 @@ public abstract class AbstractTransferCreditPage extends LoggedNymgoPage {
 		FancyboxNavigation<ConfirmTransferFancybox> navigation = new FancyboxNavigation<ConfirmTransferFancybox>(confirmTransferFancybox);
 		navigation.NavigatedTo();
 		return confirmTransferFancybox;
+	}
+
+	public TransferCreditData getLastTransferData(){
+		
+		return baseTransferCreditPageFragment.getLastTransferData();
+	}
+	
+	public String getLastTransferActivity(){
+		
+		return baseTransferCreditPageFragment.getLastTransferActivity();
+	}
+
+	public String getLastTransferSender(){
+		
+		return baseTransferCreditPageFragment.getLastTransferSender();
+	}
+	
+	public String getLastTransferRecipient(){
+		
+		return baseTransferCreditPageFragment.getLastTransferRecipient();
+	}
+	
+	public String getLastTransferAmount(){
+		
+		return baseTransferCreditPageFragment.getLastTransferAmount();
 	}
 }

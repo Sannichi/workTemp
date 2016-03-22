@@ -2,6 +2,7 @@ package com.nymgo;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.nymgo.data.entity.FullUserEntity;
 import com.nymgo.data.enums.PROVIDER_CONST;
@@ -37,8 +38,13 @@ public class VerifyTransferCreditsCase extends AbstractCase {
 		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(normalUserTo.getUsername(), normalUserTo.getPassword());
 		Assert.assertTrue(normalAccountPage.isUserLogged(normalUserTo.getUsername()), "User was not logged");
 		
-		@SuppressWarnings("unused")
-		String accountBalanceValueAfter = normalAccountPage.getAccountBalanceValue();
+		NormalAccountTransferCreditPage normalAccountTransferCreditPage = normalAccountPage.clickNormalAccountTransferCreditButton();
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getSender(), normalUserFrom.getUsername());
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getRecipient(), normalUserTo.getUsername());
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getAmount(), transferAmount);
+		softAssert.assertAll();
+
 //		Assert.assertEquals(transferAmount, 
 //				(Rounder.roundFloat(Float.valueOf(accountBalanceValueBefore), 2) - Rounder.roundFloat(Float.valueOf(accountBalanceValueAfter), 2)));
 	}
@@ -65,16 +71,19 @@ public class VerifyTransferCreditsCase extends AbstractCase {
 	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 		
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValueBefore = normalAccountPage.getAccountBalanceValue();
+		SecureHomePage secureHomePage = loggedNymgoPage.logout();
+		
+		NormalUserSignInPage normalUserSignInPage = secureHomePage.clickMenuNormalUserSignInButton();
+
+		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(normalUserTo.getUsername(), normalUserTo.getPassword());
+		Assert.assertTrue(normalAccountPage.isUserLogged(normalUserTo.getUsername()), "User was not logged");
+		
 		NormalAccountTransferCreditPage normalAccountTransferCreditPage = normalAccountPage.clickNormalAccountTransferCreditButton();
-		ConfirmTransferFancybox confirmTransferFancybox = normalAccountTransferCreditPage.setDataAndClickTransferCredit(
-				normalUserTo.getUsername(), resellerFrom.getPassword(), transferAmount);
-		normalAccountTransferCreditPage = confirmTransferFancybox.clickSendAmountNormalAccount();
-		normalAccountPage = normalAccountTransferCreditPage.navigateToNormalUserMyAccountPage();
-		String accountBalanceValueAfter = normalAccountPage.getAccountBalanceValue();
-		Assert.assertEquals(transferAmount, 
-				(Rounder.roundFloat(Float.valueOf(accountBalanceValueBefore), 2) - Rounder.roundFloat(Float.valueOf(accountBalanceValueAfter), 2)));
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getSender(), resellerFrom.getUsername());
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getRecipient(), normalUserTo.getUsername());
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getAmount(), transferAmount);
+		softAssert.assertAll();
 	}
 	
 	@Test(dataProvider = PROVIDER_CONST.TRANSFER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)

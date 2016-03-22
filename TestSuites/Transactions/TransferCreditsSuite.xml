@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="1" name="Transactions Smoke Suite" preserve-order="true">
+	<listeners>
+		<listener class-name="com.nymgo.tests.listeners.LoggerTestListener" />
+	</listeners>      
+    <parameter name="config.file.name" value="config.dev.properties" />
+    <parameter name="params.file.name" value="params.properties" />
+<!--
+    <test name="Test - Clear Transactions file" preserve-order="true">
+     <classes>
+            <class name="com.nymgo.data.testCases.ExcelCases">
+                <methods>
+                    <include name="clearTransactionsExcelTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+-->
+    <test name="Test - Transfer Credit From Euro NormalUser To Inter NormalUser" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />        
+        <parameter name="userFrom" value="EuroNormalWhitelist" />        
+        <parameter name="userTo" value="InterNormalWhitelist" />        
+        
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInNormalUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.TransferCreditCase">
+                <methods>
+                    <include name="transferCreditLoggedNormalUserToNormalUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyTransferCreditCase">
+                <methods>
+                    <include name="verifyTransferCreditLoggedNormalUserToNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro NormalUser SAR Worldpay MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardAddNewCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+			<class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro NormalUser SAR Worldpay Recurrent MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardRecurrentCase">
+                <methods>
+                    <include name="payRecurrentMasterCardWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+			<class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Set Euro MasterReseller Default Recurrent Credit Card Worldpay" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />    
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroMasterResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.DefaultCreditCardCase">
+                <methods>
+                    <include name="setWorldpayDefaultRecurrentCreditCard" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro MasterReseller KWD Worldpay MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardAddNewCardCase">
+                <methods>
+                    <include name="payMasterCardWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro MasterReseller KWD Worldpay Recurrent MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Worldpay" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardRecurrentCase">
+                <methods>
+                    <include name="payRecurrentMasterCardWorldpayPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Change Recurrent Euro NormalUser Gateway to Adyen" preserve-order="true">
+        <parameter name="gatewayName" value="Adyen" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminNormalMembersCase">
+                <methods>
+                    <include name="editRecurrentEuroNormalUserGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Change Recurrent Euro MasterReseller Gateway to Adyen" preserve-order="true">
+        <parameter name="gatewayName" value="Adyen" />     
+        
+        <classes>
+			<class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminResellersCase">
+                <methods>
+                    <include name="editRecurrentEuroMasterResellerGatewayAdminTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro NormalUser SAR Adyen MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroNormalUserAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardAddNewCardCase">
+                <methods>
+                    <include name="payMasterCardAdyenPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+			<class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro NormalUser SAR Adyen Recurrent MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="SAR" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroNormalWhitelistUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroNormalUserWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardRecurrentCase">
+                <methods>
+                    <include name="payRecurrentMasterCardAdyenPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroNormalUserTransactionAdminTest" />
+                </methods>
+            </class>
+			<class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+-->
+    <test name="Test - BuyCredit Euro MasterReseller KWD Adyen MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editEuroMasterResellerAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardAddNewCardCase">
+                <methods>
+                    <include name="payMasterCardAdyenPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - BuyCredit Euro MasterReseller KWD Adyen Recurrent MasterCard" preserve-order="true">
+        <parameter name="paymentCurrency" value="KWD" />        
+        <parameter name="cardType" value="MasterCard" />    
+        <parameter name="gatewayName" value="Adyen" />     
+          
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.BuyCreditCase">
+                <methods>
+                    <include name="buyCreditLoggedRecurrentEuroMasterResellerWorldpayTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.PayCreditCardRecurrentCase">
+                <methods>
+                    <include name="payRecurrentMasterCardAdyenPendingTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminSignInCase">
+                <methods>
+                    <include name="signInAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.AdminTransactionsCase">
+                <methods>
+                    <include name="acceptRecurrentEuroMasterResellerTransactionAdminTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyBuyCreditCase">
+                <methods>
+                    <include name="verifyBuyCreditAcceptedLoggedRecurrentEuroMasterResellerTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
