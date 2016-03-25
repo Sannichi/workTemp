@@ -1,7 +1,5 @@
 package com.nymgo.tests.pages.nymgo.transferCredits;
 
-import org.openqa.selenium.WebElement;
-
 import com.nymgo.tests.fragments.nymgo.transferCredits.BaseTransferCreditPageFragment;
 import com.nymgo.tests.fragments.nymgo.transferCredits.TransferCreditData;
 import com.nymgo.tests.navigation.FancyboxNavigation;

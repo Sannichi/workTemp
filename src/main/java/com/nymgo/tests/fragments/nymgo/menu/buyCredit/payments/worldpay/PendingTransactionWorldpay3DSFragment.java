@@ -26,6 +26,10 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/wp3ds-return/";	
 	private static final String PENDING_TRANSACTION_WP_3DS_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
+//	private static final String PENDING_TRANSACTION_WP_3DS_CHROME_URL = Starter.SECURE_PART + 
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/wp3ds-return/";	
+//	private static final String PENDING_TRANSACTION_WP_3DS_URL = Starter.SECURE_PART + 
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
 	private String defineCorrectURL(){
 		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));
@@ -46,7 +50,8 @@ public class PendingTransactionWorldpay3DSFragment extends PendingTransactionFra
 
 		Pattern p = Pattern.compile(defineCorrectURL());
         Matcher m = p.matcher(getCurrentURL());	
-        return m.matches();
+        return m.find();
+		
 	}
 
 	public String getCorrectURL() {

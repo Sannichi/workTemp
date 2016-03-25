@@ -21,7 +21,9 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final String RESELLERS_PAGE_URL = Starter.SECURE_PART_PATTERN +
+	public static final String RESELLERS_PAGE_URL_PATTERN = Starter.SECURE_PART_PATTERN +
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
+	public static final String RESELLERS_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
 	
 	private static final String ResellerSingInButtonXpath = "//a[@href='" + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/']";
@@ -33,7 +35,7 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-		Pattern p = Pattern.compile(RESELLERS_PAGE_URL);
+		Pattern p = Pattern.compile(RESELLERS_PAGE_URL_PATTERN);
         Matcher m = p.matcher(getCurrentURL());	
         return m.matches();
 	}

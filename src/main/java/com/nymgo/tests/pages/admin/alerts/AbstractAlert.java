@@ -28,6 +28,7 @@ public abstract class AbstractAlert extends AbstractPage{
 //	        LOGGER.info("Alert detected with text '" + alert.getText() + "'");
 	    } catch (Exception e) {
 	        //exception handling
+	    	LOGGER.fatal("Alert Exception is handling");
 	    	alert = new Alert() {
 				
 				@Override

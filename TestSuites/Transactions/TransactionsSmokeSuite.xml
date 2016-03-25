@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+<!--
     <test name="Test - Change Inter NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -1435,7 +1435,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro NormalUser AED GlobalCollect MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="AED" />        
         <parameter name="cardType" value="MasterCard" />    

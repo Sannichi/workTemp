@@ -44,7 +44,7 @@ public class SuccessfulTransactionGlobalCollectFragment extends PendingIframeTra
 
 		Pattern p = Pattern.compile(defineCorrectURL());
         Matcher m = p.matcher(getCurrentURL());	
-        return m.matches();
+        return m.find();
 	}
 
 	public String getCorrectURL() {

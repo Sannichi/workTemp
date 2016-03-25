@@ -24,7 +24,9 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART_PATTERN +
+	public static final String BUY_CREDIT_PAGE_URL_PATTERN = Starter.SECURE_PART_PATTERN +
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
+	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
 			
     @FindBy(css="div[class^='adyenOption']")
@@ -49,7 +51,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 
     public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-		Pattern p = Pattern.compile(BUY_CREDIT_PAGE_URL);
+		Pattern p = Pattern.compile(BUY_CREDIT_PAGE_URL_PATTERN);
         Matcher m = p.matcher(getCurrentURL());	
         return m.matches();
 	}

@@ -11,6 +11,7 @@ import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.admin.BusinessTransactionsAdminPage;
 import com.nymgo.tests.pages.admin.NormalTransactionsAdminPage;
+import com.nymgo.tests.pages.admin.alerts.TransactionAcceptedAlert;
 import com.nymgo.tests.pages.admin.base.AdminPage;
 import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
@@ -50,8 +51,10 @@ public class AdminTransactionsCase extends AbstractCase{
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedAlert.acceptAlert();
 		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
@@ -333,8 +336,10 @@ public class AdminTransactionsCase extends AbstractCase{
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedAlert.acceptAlert();
 		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
@@ -374,8 +379,10 @@ public class AdminTransactionsCase extends AbstractCase{
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedAlert.acceptAlert();
 		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
@@ -414,8 +421,10 @@ public class AdminTransactionsCase extends AbstractCase{
 			transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 					paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 			MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-			TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//			TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//			transactionAcceptedPopup.closeTransactionAcceptedPopup();
+			TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+			transactionAcceptedAlert.acceptAlert();
 	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
     	}
     	else{
@@ -732,8 +741,10 @@ public class AdminTransactionsCase extends AbstractCase{
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedAlert.acceptAlert();
 		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
@@ -773,8 +784,10 @@ public class AdminTransactionsCase extends AbstractCase{
 				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
 						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
 				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+				transactionAcceptedAlert.acceptAlert();
 		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{

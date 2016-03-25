@@ -32,7 +32,7 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
     	}
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_CHROME_URL = "https://eu.gcsip.nl/orb/orb?ACTION=DO_START&REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_CHROME_URL = "https:\\/\\/eu\\.gcsip\\.nl\\/orb\\/orb\\?ACTION=DO_START&REF=";	
 	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
@@ -73,7 +73,7 @@ public class BuyCreditConfirmPageGlobalCollectFragment extends BaseIframePageFra
 
 		Pattern p = Pattern.compile(defineCorrectURL());
         Matcher m = p.matcher(getCurrentURL());	
-        return m.matches();
+        return m.find();
 	}
 
 	public String getCorrectURL() {

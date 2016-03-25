@@ -28,12 +28,14 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
 	@FindBy(id = "user-login-el")
 	private WebElement signInButton;
 	
-	public static final String NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART_PATTERN + 
+	public static final String NORMAL_ACCOUNT_PAGE_URL_PATTERN = Starter.SECURE_PART_PATTERN +
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
+	public static final String NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
 	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
-		Pattern p = Pattern.compile(NORMAL_ACCOUNT_PAGE_URL);
+		Pattern p = Pattern.compile(NORMAL_ACCOUNT_PAGE_URL_PATTERN);
         Matcher m = p.matcher(getCurrentURL());	
         return m.matches();
 	}

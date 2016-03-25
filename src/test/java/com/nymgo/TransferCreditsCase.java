@@ -66,7 +66,7 @@ public class TransferCreditsCase extends AbstractCase {
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 		
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
-		String accountBalanceValueBefore = resellerAccountPage.getAccountBalanceValue();
+//		String accountBalanceValueBefore = resellerAccountPage.getAccountBalanceValue();
 		ResellerAccountTransferCreditPage resellerAccountTransferCreditPage = resellerAccountPage.clickResellerAccountTransferCreditButton();
 		ConfirmTransferFancybox confirmTransferFancybox = resellerAccountTransferCreditPage.setDataAndClickTransferCredit(
 				normalUserTo.getUsername(), resellerFrom.getPassword(), transferAmount);

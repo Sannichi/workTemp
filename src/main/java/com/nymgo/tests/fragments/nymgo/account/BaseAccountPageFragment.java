@@ -25,9 +25,9 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-//	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
-//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
-	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART_PATTERN +	
+	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
+	public static final String ACCOUNT_PAGE_URL_EN_PATTERN = Starter.SECURE_PART_PATTERN +	
 	LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	
 	private static final String language = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL);
@@ -66,7 +66,7 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 
 	public boolean isCorrectURL(){
 		// TODO Auto-generated method stub
-			Pattern p = Pattern.compile(ACCOUNT_PAGE_URL_EN);
+			Pattern p = Pattern.compile(ACCOUNT_PAGE_URL_EN_PATTERN);
 	        Matcher m = p.matcher(getCurrentURL());	
 	        return m.matches();
 	}

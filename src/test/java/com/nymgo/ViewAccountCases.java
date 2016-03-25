@@ -16,6 +16,17 @@ import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
 public class ViewAccountCases extends AbstractCase{
 
     @Test(dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)	
+	public void editNormalUserAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
+
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+
+		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
+		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
+		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+	}
+
+    @Test(dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)	
 	public void editEuroNormalUserAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
 

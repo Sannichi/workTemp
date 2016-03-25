@@ -18,6 +18,7 @@
     </test>
 -->
     <test name="Test - Transfer Credit From Euro NormalUser To Inter NormalUser" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
         <parameter name="loginUser" value="EuroNormalWhitelist" />        
         <parameter name="userFrom" value="EuroNormalWhitelist" />        
         <parameter name="userTo" value="InterNormalWhitelist" />        
@@ -33,6 +34,11 @@
                     <include name="signInNormalUserTest" />
                 </methods>
             </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editNormalUserAccountTest" />
+                </methods>
+            </class>
             <class name="com.nymgo.TransferCreditCase">
                 <methods>
                     <include name="transferCreditLoggedNormalUserToNormalUserTest" />
@@ -40,7 +46,42 @@
             </class>
             <class name="com.nymgo.VerifyTransferCreditCase">
                 <methods>
-                    <include name="verifyTransferCreditLoggedNormalUserToNormalUserTest" />
+                    <include name="verifyTransferCreditToNormalUserTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Test - Transfer Credit From Inter NormalUser To Euro NormalUser" preserve-order="true">
+        <parameter name="paymentCurrency" value="USD" />        
+        <parameter name="loginUser" value="InterNormalWhitelist" />        
+        <parameter name="userFrom" value="InterNormalWhitelist" />        
+        <parameter name="userTo" value="EuroNormalWhitelist" />        
+        
+        <classes>
+            <class name="com.nymgo.DefaultCase">
+                <methods>
+                    <include name="setNymgoDefaultState" />
+                </methods>
+            </class>
+            <class name="com.nymgo.SignInCase">
+                <methods>
+                    <include name="signInNormalUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.ViewAccountCases">
+                <methods>
+                    <include name="editNormalUserAccountTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.TransferCreditCase">
+                <methods>
+                    <include name="transferCreditLoggedNormalUserToNormalUserTest" />
+                </methods>
+            </class>
+            <class name="com.nymgo.VerifyTransferCreditCase">
+                <methods>
+                    <include name="verifyTransferCreditToNormalUserTest" />
                 </methods>
             </class>
         </classes>

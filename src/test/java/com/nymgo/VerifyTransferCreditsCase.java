@@ -27,6 +27,29 @@ public class VerifyTransferCreditsCase extends AbstractCase {
 	}
 
 	@Test(dataProvider = PROVIDER_CONST.TRANSFER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
+	public void verifyTransferCreditToNormalUserTest(FullUserEntity normalUserFrom, FullUserEntity normalUserTo, String transferAmount){
+	
+		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
+		
+		SecureHomePage secureHomePage = loggedNymgoPage.logout();
+		
+		NormalUserSignInPage normalUserSignInPage = secureHomePage.clickMenuNormalUserSignInButton();
+
+		NormalAccountPage normalAccountPage = normalUserSignInPage.signInUserSuccess(normalUserTo.getUsername(), normalUserTo.getPassword());
+		Assert.assertTrue(normalAccountPage.isUserLogged(normalUserTo.getUsername()), "User was not logged");
+		
+		NormalAccountTransferCreditPage normalAccountTransferCreditPage = normalAccountPage.clickNormalAccountTransferCreditButton();
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getSender(), normalUserFrom.getUsername());
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getRecipient(), normalUserTo.getUsername());
+		softAssert.assertEquals(normalAccountTransferCreditPage.getLastTransferData().getAmount(), transferAmount);
+		softAssert.assertAll();
+
+//		Assert.assertEquals(transferAmount, 
+//				(Rounder.roundFloat(Float.valueOf(accountBalanceValueBefore), 2) - Rounder.roundFloat(Float.valueOf(accountBalanceValueAfter), 2)));
+	}
+
+	@Test(dataProvider = PROVIDER_CONST.TRANSFER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)
 	public void verifyTransferCreditLoggedNormalUserToNormalUserTest(FullUserEntity normalUserFrom, FullUserEntity normalUserTo, String transferAmount){
 	
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);

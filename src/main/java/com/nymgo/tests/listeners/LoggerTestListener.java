@@ -7,10 +7,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnhandledAlertException;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 import com.nymgo.tests.enums.LOGS;
+import com.nymgo.tests.pages.admin.alerts.UnhandledAlert;
 import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Oct 19, 2015
@@ -25,16 +27,24 @@ public class LoggerTestListener extends TestListenerAdapter{
 	public void onTestFailure(ITestResult tr) {
 		log("Test Result is Failure");
 		starter = Starter.getInstance();
-		File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
-    	long millis = System.currentTimeMillis() % 1000;
-    	String screenshotName = String.valueOf(millis) + ".png";
-        try {
-        	FileUtils.copyFile(scrFile, new File(Starter.WORKING_DIRECTORY + "\\screenshots\\" + screenshotName));
-        } catch (IOException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-        }
-        log("Screenshot with name '" + screenshotName + "' created");		
+		UnhandledAlert unhandledAlert = new UnhandledAlert(starter);
+		try{
+			File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
+	    	long millis = System.currentTimeMillis() % 1000;
+	    	String screenshotName = String.valueOf(millis) + ".png";
+	        try {
+	        	FileUtils.copyFile(scrFile, new File(Starter.WORKING_DIRECTORY + "\\screenshots\\" + screenshotName));
+	        } catch (IOException e) {
+	               // TODO Auto-generated catch block
+	               e.printStackTrace();
+	        }
+	        log("Screenshot with name '" + screenshotName + "' created");		
+		}
+		catch (UnhandledAlertException e){
+			String alertText = unhandledAlert.getAlertText();
+			unhandledAlert.acceptAlert();
+			LOGGER.fatal("Unhandled alert with text: '" + alertText + "' was closed");
+		}
 	}
  
 	@Override

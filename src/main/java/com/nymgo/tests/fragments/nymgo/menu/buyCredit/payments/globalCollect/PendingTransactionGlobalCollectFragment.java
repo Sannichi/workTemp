@@ -19,7 +19,7 @@ public class PendingTransactionGlobalCollectFragment extends PendingIframeTransa
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_PENDING_CHROME_URL = Starter.SECURE_PART_PATTERN + "/gcreturn?REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_PENDING_CHROME_URL = Starter.SECURE_PART_PATTERN + "\\/gcreturn\\?REF=";	
 	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_PENDING_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
 
@@ -42,7 +42,7 @@ public class PendingTransactionGlobalCollectFragment extends PendingIframeTransa
 
 		Pattern p = Pattern.compile(defineCorrectURL());
         Matcher m = p.matcher(getCurrentURL());	
-        return m.matches();
+        return m.find();
 	}
 
 	public String getCorrectURL() {

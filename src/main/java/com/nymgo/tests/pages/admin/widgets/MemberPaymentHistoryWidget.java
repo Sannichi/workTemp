@@ -5,9 +5,12 @@ import java.util.Map;
 import org.testng.Assert;
 
 import com.nymgo.tests.fragments.admin.widgets.MemberPaymentHistoryWidgetFragment;
+import com.nymgo.tests.navigation.AlertNavigation;
 import com.nymgo.tests.navigation.PopupNavigation;
+import com.nymgo.tests.pages.admin.alerts.AbstractAlert;
+import com.nymgo.tests.pages.admin.alerts.TransactionAcceptedAlert;
 import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
-import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
+//import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionCancelledPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionDeclinedPopup;
 import com.nymgo.tests.starter.Starter;
@@ -102,16 +105,21 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 		return memberPaymentHistoryWidgetFragment.paymentActionFragment.getPaymentActionTransactionID();
 	}
 	
-	public TransactionAcceptedPopup verifyTransactionInformationAndAccept(String transactionID){
+//	public TransactionAcceptedPopup verifyTransactionInformationAndAccept(String transactionID){
+	public TransactionAcceptedAlert verifyTransactionInformationAndAccept(String transactionID){
 		
 		navigateToPaymentActionTab();
 		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
 		LOGGER.info("Transaction ID is correct");
 		clickAcceptTransaction();
-		TransactionAcceptedPopup transactionAcceptedPopup = new TransactionAcceptedPopup(starter);
-		PopupNavigation<TransactionAcceptedPopup> navigation = new PopupNavigation<TransactionAcceptedPopup>(transactionAcceptedPopup);
+		TransactionAcceptedAlert transactionAcceptedAlert = new TransactionAcceptedAlert(starter);
+		AlertNavigation<AbstractAlert> navigation = new AlertNavigation<AbstractAlert>(transactionAcceptedAlert);
 		navigation.NavigatedTo();
-		return transactionAcceptedPopup;
+		return transactionAcceptedAlert;
+//		TransactionAcceptedPopup transactionAcceptedPopup = new TransactionAcceptedPopup(starter);
+//		PopupNavigation<TransactionAcceptedPopup> navigation = new PopupNavigation<TransactionAcceptedPopup>(transactionAcceptedPopup);
+//		navigation.NavigatedTo();
+//		return transactionAcceptedPopup;
 	}
 	
 	public DealAcceptedPopup verifyDealInformationAndAccept(String transactionID){

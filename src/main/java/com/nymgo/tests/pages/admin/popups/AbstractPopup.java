@@ -21,15 +21,15 @@ public abstract class AbstractPopup extends AbstractPage{
         return basePopupFragment.isPopupExist();
     }
 
-    public void closePopups(){
-    	
-    	TransactionAcceptedPopup transactionAcceptedPopup = new TransactionAcceptedPopup(starter);
-    	if(transactionAcceptedPopup.isPopupExist()){
-            delay(2000);
-    		transactionAcceptedPopup.clickOnCloseButton();
-            LOGGER.info("Closing the Transaction Accepted Popup");            
-        } 
-    }
+//    public void closePopups(){
+//    	
+//    	TransactionAcceptedPopup transactionAcceptedPopup = new TransactionAcceptedPopup(starter);
+//    	if(transactionAcceptedPopup.isPopupExist()){
+//            delay(2000);
+//    		transactionAcceptedPopup.clickOnCloseButton();
+//            LOGGER.info("Closing the Transaction Accepted Popup");            
+//        } 
+//    }
     
     public String getPopupText(){
     	
