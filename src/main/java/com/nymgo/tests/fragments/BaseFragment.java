@@ -8,18 +8,23 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.enums.URL_CONST;
+import com.nymgo.tests.fragments.nymgo.base.BaseNymgoFragment;
 import com.nymgo.tests.generators.LocaleGenerator;
 import com.nymgo.tests.generators.ServerGenerator;
+import com.nymgo.tests.starter.Starter;
 
 public class BaseFragment {
 
@@ -141,8 +146,18 @@ public class BaseFragment {
 	
 	public void navigateHomePage(){
 
-		driver.get(ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
-				LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL));
+//		driver.get(ServerGenerator.getServerKey(URL_CONST.HOME_URL) +
+//				LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL));
+		driver.get(BaseNymgoFragment.getHomeURL());
+    	WebDriverWait wait = new WebDriverWait(driver, Starter.IMPLICITLY_WAIT_TIME);
+		try{
+			wait.until(ExpectedConditions.urlToBe(BaseNymgoFragment.getHomeURL()));
+		}
+		catch(TimeoutException e){
+			LOGGER.fatal("Could not navigate to Home Page within " + Starter.IMPLICITLY_WAIT_TIME + " seconds, trying once again");
+			driver.get(BaseNymgoFragment.getHomeURL());
+		}
+		
 	}
 
 	public void navigateAdminLoginPage(){

@@ -21,9 +21,9 @@ public class SuccessfulTransactionGlobalCollectFragment extends PendingIframeTra
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_SUCCESSFUL_CHROME_URL = Starter.SECURE_PART_PATTERN + "/gcreturn?REF=";	
+	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_SUCCESSFUL_CHROME_URL = Starter.SECURE_PART_PATTERN + "\\/gcreturn\\?REF=";	
 	private static final String BUY_CREDIT_CONFIRM_PAGE_GC_SUCCESSFUL_URL = Starter.SECURE_PART_PATTERN + 
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";	
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "\\/generate";	
 
 	private String defineCorrectURL(){
 		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));

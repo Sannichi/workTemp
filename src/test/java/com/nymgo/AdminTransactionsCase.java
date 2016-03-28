@@ -11,6 +11,7 @@ import com.nymgo.data.utils.ExcelUtils;
 import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.admin.BusinessTransactionsAdminPage;
 import com.nymgo.tests.pages.admin.NormalTransactionsAdminPage;
+import com.nymgo.tests.pages.admin.alerts.DealAcceptedAlert;
 import com.nymgo.tests.pages.admin.alerts.TransactionAcceptedAlert;
 import com.nymgo.tests.pages.admin.base.AdminPage;
 import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
@@ -55,7 +56,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //				transactionAcceptedPopup.closeTransactionAcceptedPopup();
 				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 				transactionAcceptedAlert.acceptAlert();
-		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+				memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
 				LOGGER.info("Visa transaction was autoaccepted");
@@ -164,12 +165,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -340,7 +341,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //				transactionAcceptedPopup.closeTransactionAcceptedPopup();
 				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 				transactionAcceptedAlert.acceptAlert();
-		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+				memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
 				LOGGER.info("Visa transaction was autoaccepted");
@@ -372,18 +373,24 @@ public class AdminTransactionsCase extends AbstractCase{
 					if(currencyAmount == null){
 						currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 					}
+					transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+							paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+					MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+//					TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//					transactionAcceptedPopup.closeTransactionAcceptedPopup();
+					TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+					transactionAcceptedAlert.acceptAlert();
+					memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 				}
 				else{
 					currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
+					transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+							paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+					MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+					DealAcceptedAlert dealAcceptedAlert = memberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
+					dealAcceptedAlert.acceptAlert();
+					memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 				}
-				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
-				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
-				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedAlert.acceptAlert();
-		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
 				LOGGER.info("Visa transaction was autoaccepted");
@@ -425,7 +432,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //			transactionAcceptedPopup.closeTransactionAcceptedPopup();
 			TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedAlert.acceptAlert();
-	//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+			memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
     	}
     	else{
     		LOGGER.fatal("User's limit is reached");
@@ -525,12 +532,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -562,12 +569,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -631,12 +638,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -670,12 +677,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -745,7 +752,7 @@ public class AdminTransactionsCase extends AbstractCase{
 //				transactionAcceptedPopup.closeTransactionAcceptedPopup();
 				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 				transactionAcceptedAlert.acceptAlert();
-		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
+				memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
 				LOGGER.info("Visa transaction was autoaccepted");
@@ -777,18 +784,24 @@ public class AdminTransactionsCase extends AbstractCase{
 					if(currencyAmount == null){
 						currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 					}
+					transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+							paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+					MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+//					TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+//					transactionAcceptedPopup.closeTransactionAcceptedPopup();
+					TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+					transactionAcceptedAlert.acceptAlert();
+					memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 				}
 				else{
 					currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
+					transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+							paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
+					MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+					DealAcceptedAlert dealAcceptedAlert = memberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
+					dealAcceptedAlert.acceptAlert();
+					memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 				}
-				transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-						paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName);
-				MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
-				TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-				transactionAcceptedAlert.acceptAlert();
-		//		memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 			}
 			else{
 				LOGGER.info("Visa transaction was autoaccepted");
@@ -858,12 +871,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -895,12 +908,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 
@@ -963,12 +976,12 @@ public class AdminTransactionsCase extends AbstractCase{
 		if (dealName == null){
 			TransactionAcceptedPopup transactionAcceptedPopup = businessMemberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 			transactionAcceptedPopup.closeTransactionAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 		else{
 			DealAcceptedPopup dealAcceptedPopup = businessMemberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
 			dealAcceptedPopup.closeDealAcceptedPopup();
-//			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
+			businessMemberPaymentHistoryWidget.closeBusinessMemberPaymentHistoryWidget();
 		}
 	}
 

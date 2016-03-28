@@ -174,7 +174,7 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 		}
 	}
 	
-	public String getHomeURL(){
+	public static String getHomeURL(){
 
 		return homeURL;
 	}

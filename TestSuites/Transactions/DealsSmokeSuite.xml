@@ -17,6 +17,7 @@
         </classes>
     </test>
 -->
+<!--
     <test name="Test - Change Inter NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         
@@ -204,7 +205,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Euro NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="gatewayName" value="Adyen" />     
         

@@ -36,7 +36,7 @@ public class AlertNavigation<T extends AbstractAlert>
 		catch (TimeoutException e){
 			LOGGER.fatal("Could not navigate to page: " + getPageName());
 		}
-		Assert.assertTrue(result, "Could not navigate to alert: " + getPageName() + ", current Alert text is " + alert.getAlertText() + "', should be '" + 
+		Assert.assertTrue(result, "Could not navigate to alert: " + getPageName() + ", current Alert text is '" + alert.getAlertText() + "', should be '" + 
 				alert.getPageURL() + "'");
 		LOGGER.info("Successfully navigated to alert: " + getPageName());		
 	}

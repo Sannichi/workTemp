@@ -26,7 +26,7 @@ public class BaseWidgetFragment extends BaseFragment{
     		widgetContainer = driver.findElement(By.id("widjectWindow"));
     	}
     	catch(NoSuchElementException e){
-    		LOGGER.fatal("Seems like widget contaiter is absent on the screen");
+    		LOGGER.fatal("Seems like widget container is absent on the screen");
     		widgetContainer = null;
     	}
     };
@@ -34,7 +34,12 @@ public class BaseWidgetFragment extends BaseFragment{
     protected void setWidgetName() throws NotFoundException{
     	
     	setWidgetContainer();
-    	widgetName = widgetContainer.findElement(By.xpath(".//div[@class='drag-handle']")).getText().split("\n")[0];
+    	if (widgetContainer != null){
+        	widgetName = widgetContainer.findElement(By.xpath(".//div[@class='drag-handle']")).getText().split("\n")[0];
+    	}
+    	else{
+        	widgetName = null;
+    	}
     };
 
     public String getWidgetName(){
@@ -47,7 +52,11 @@ public class BaseWidgetFragment extends BaseFragment{
 
         try{
             setWidgetName();
-            return widgetContainer.isDisplayed();
+            if (widgetName != null){
+            	return widgetContainer.isDisplayed();
+            }else{
+            	return false;
+            }
         }
         catch (NotFoundException e){
             return false;

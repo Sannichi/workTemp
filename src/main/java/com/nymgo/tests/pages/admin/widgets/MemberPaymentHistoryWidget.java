@@ -8,8 +8,9 @@ import com.nymgo.tests.fragments.admin.widgets.MemberPaymentHistoryWidgetFragmen
 import com.nymgo.tests.navigation.AlertNavigation;
 import com.nymgo.tests.navigation.PopupNavigation;
 import com.nymgo.tests.pages.admin.alerts.AbstractAlert;
+import com.nymgo.tests.pages.admin.alerts.DealAcceptedAlert;
 import com.nymgo.tests.pages.admin.alerts.TransactionAcceptedAlert;
-import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
+//import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
 //import com.nymgo.tests.pages.admin.popups.TransactionAcceptedPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionCancelledPopup;
 import com.nymgo.tests.pages.admin.popups.TransactionDeclinedPopup;
@@ -122,16 +123,17 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 //		return transactionAcceptedPopup;
 	}
 	
-	public DealAcceptedPopup verifyDealInformationAndAccept(String transactionID){
+//	public DealAcceptedPopup verifyDealInformationAndAccept(String transactionID){
+	public DealAcceptedAlert verifyDealInformationAndAccept(String transactionID){
 		
 		navigateToPaymentActionTab();
 		Assert.assertTrue(getPaymentActionTransactionID().equals(transactionID));
 		LOGGER.info("Deal ID is correct");
 		clickAcceptTransaction();
-		DealAcceptedPopup dealAcceptedPopup = new DealAcceptedPopup(starter);
-		PopupNavigation<DealAcceptedPopup> navigation = new PopupNavigation<DealAcceptedPopup>(dealAcceptedPopup);
+		DealAcceptedAlert dealAcceptedAlert = new DealAcceptedAlert(starter);
+		AlertNavigation<DealAcceptedAlert> navigation = new AlertNavigation<DealAcceptedAlert>(dealAcceptedAlert);
 		navigation.NavigatedTo();
-		return dealAcceptedPopup;
+		return dealAcceptedAlert;
 	}
 	
 	public TransactionCancelledPopup verifyTransactionInformationAndCancel(String transactionID){

@@ -1,5 +1,6 @@
 package com.nymgo.tests.pages.nymgo.base;
 
+import com.nymgo.tests.fragments.nymgo.base.BaseNymgoFragment;
 import com.nymgo.tests.fragments.nymgo.base.LoggedNymgoPageFragment;
 import com.nymgo.tests.fragments.nymgo.base.NymgoPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
@@ -121,7 +122,7 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 	public HomePage setDefaultState()
 	{
 
-		if (!getCurrentURL().equals(nymgoPageFragment.getHomeURL())){
+		if (!getCurrentURL().equals(BaseNymgoFragment.getHomeURL())){
 			navigateToHomePage();
 		}
 		if (isUserLogged())
