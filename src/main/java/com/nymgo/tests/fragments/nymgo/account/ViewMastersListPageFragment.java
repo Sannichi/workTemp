@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.base.BaseLoggedInFragment;
@@ -20,8 +22,11 @@ public class ViewMastersListPageFragment extends BaseLoggedInFragment{
 	}
 
 	public static final String VIEW_MASTERS_LIST_PAGE_URL = Starter.SECURE_PART_PATTERN +	
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/master-resellers/view-master-list";
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "\\/master-resellers\\/view-master-list";
 
+	@FindBy(xpath = "//div[@class='balance']")
+	private WebElement accountBalance; 
+	
 	@Override
 	public boolean isCorrectURL() {
 

@@ -20,7 +20,7 @@ public class ResellerAccountTransferCreditPageFragment extends BaseTransferCredi
 	}
 	
 	public static final String TRANSFER_CREDIT_PAGE_URL = Starter.SECURE_PART_PATTERN +
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/credits/transfer-credits";
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "\\/reseller\\/credits\\/transfer-credits";
 	
 	@Override
 	public boolean isCorrectURL() {

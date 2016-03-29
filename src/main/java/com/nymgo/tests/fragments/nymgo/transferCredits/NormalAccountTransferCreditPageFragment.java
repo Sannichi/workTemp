@@ -20,7 +20,7 @@ public class NormalAccountTransferCreditPageFragment extends BaseTransferCreditP
 	}
 	
 	public static final String TRANSFER_CREDIT_PAGE_URL = Starter.SECURE_PART_PATTERN +
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/credits/transfer-credits";
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "\\/user\\/credits\\/transfer-credits";
 	
 	@Override
 	public boolean isCorrectURL() {
