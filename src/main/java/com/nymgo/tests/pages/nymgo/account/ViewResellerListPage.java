@@ -1,13 +1,12 @@
 package com.nymgo.tests.pages.nymgo.account;
 
 import com.nymgo.tests.fragments.nymgo.account.ViewResellerListPageFragment;
-import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Mar 16, 2016
  */
-public class ViewResellerListPage extends AbstractLoggedInPage {
+public class ViewResellerListPage extends AbstractMasterResellerTransferCreditPage {
 	
 	private ViewResellerListPageFragment viewResellerListPageFragment;
 
@@ -35,21 +34,5 @@ public class ViewResellerListPage extends AbstractLoggedInPage {
 	public String getPageURL() {
 		// TODO Auto-generated method stub
 		return viewResellerListPageFragment.getCorrectURL();
-	}
-
-	public String getResellerBalanceCurrencyByResellerName(String resellerName){
-		
-		return viewResellerListPageFragment.getResellerBalanceCurrencyByResellerName(resellerName);
-	}
-
-	public String getResellerBalanceValueByResellerName(String resellerName){
-		
-		return viewResellerListPageFragment.getResellerBalanceValueByResellerName(resellerName);
-	}
-	
-	//TODO
-	public void clickTransferCreditByResellerName(String resellerName){
-		
-		viewResellerListPageFragment.clickTransferCreditByResellerName(resellerName);
 	}
 }

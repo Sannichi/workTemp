@@ -3,6 +3,7 @@ package com.nymgo.tests.pages.nymgo.base;
 import com.nymgo.tests.fragments.nymgo.base.LoggedNymgoPageFragment;
 import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.SecureHomePage;
+import com.nymgo.tests.pages.nymgo.account.MasterAccountPage;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.starter.Starter;
@@ -61,5 +62,18 @@ public abstract class AbstractLoggedInPage extends AbstractNymgoPage{
 			LOGGER.warn("Reseller Account Page is already opened");
 		}
 		return resellerAccountPage;
+	}
+
+	public MasterAccountPage navigateToMasterResellerMyAccountPage(){
+		
+		MasterAccountPage masterAccountPage = new MasterAccountPage(starter);
+		if(!masterAccountPage.isCorrectPage()){
+			clickMyAccountDropdown();
+			PageNavigation<MasterAccountPage> navigation = new PageNavigation<MasterAccountPage>(masterAccountPage);
+			navigation.NavigatedTo();
+		} else {
+			LOGGER.warn("Master Reseller Account Page is already opened");
+		}
+		return masterAccountPage;
 	}
 }

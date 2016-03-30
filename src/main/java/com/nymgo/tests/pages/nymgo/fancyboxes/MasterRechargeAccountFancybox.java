@@ -1,6 +1,9 @@
 package com.nymgo.tests.pages.nymgo.fancyboxes;
 
 import com.nymgo.tests.fragments.nymgo.fancyboxes.MasterRechargeAccountFancyboxFragment;
+import com.nymgo.tests.navigation.PageNavigation;
+import com.nymgo.tests.pages.nymgo.account.ViewMastersListPage;
+import com.nymgo.tests.pages.nymgo.account.ViewResellerListPage;
 import com.nymgo.tests.starter.Starter;
 
 /**
@@ -54,4 +57,23 @@ public class MasterRechargeAccountFancybox extends AbstractFancybox {
 		masterRechargeAccountFancyboxFragment.clickCancel();
 	}
 	
+	public ViewResellerListPage setResellerAmountAndClickSend(String transferAmount){
+		
+		setAmount(transferAmount);
+		clickSendButton();
+		ViewResellerListPage viewResellerListPage = new ViewResellerListPage(starter);
+		PageNavigation<ViewResellerListPage> navigation = new PageNavigation<ViewResellerListPage>(viewResellerListPage);
+		navigation.NavigatedTo();
+		return viewResellerListPage;
+	}
+
+	public ViewMastersListPage setMasterAmountAndClickSend(String transferAmount){
+		
+		setAmount(transferAmount);
+		clickSendButton();
+		ViewMastersListPage viewMastersListPage = new ViewMastersListPage(starter);
+		PageNavigation<ViewMastersListPage> navigation = new PageNavigation<ViewMastersListPage>(viewMastersListPage);
+		navigation.NavigatedTo();
+		return viewMastersListPage;
+	}
 }

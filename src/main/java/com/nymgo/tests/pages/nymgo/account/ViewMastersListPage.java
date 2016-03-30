@@ -1,13 +1,12 @@
 package com.nymgo.tests.pages.nymgo.account;
 
 import com.nymgo.tests.fragments.nymgo.account.ViewMastersListPageFragment;
-import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.starter.Starter;
 
 /**
  * Created by Iuliia Khikmatova on Mar 16, 2016
  */
-public class ViewMastersListPage extends AbstractLoggedInPage {
+public class ViewMastersListPage extends AbstractMasterResellerTransferCreditPage {
 	
 	private ViewMastersListPageFragment viewMastersListPageFragment;
 
