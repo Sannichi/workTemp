@@ -83,4 +83,12 @@ public class ResellerAccountPage extends AbstractAccountPage{
 		return viewResellerAccountPage;
 	}
 
+	public RequestTransfersResellerPage clickRequestTransfersLink(){
+		
+		resellerAccountPageFragment.clickRequestTransfersLink();
+		RequestTransfersResellerPage requestTransfersResellerPage = new RequestTransfersResellerPage(starter);
+		PageNavigation<RequestTransfersResellerPage> navigation = new PageNavigation<RequestTransfersResellerPage>(requestTransfersResellerPage);
+		navigation.NavigatedTo();
+		return requestTransfersResellerPage;
+	}
 }

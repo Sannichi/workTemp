@@ -32,10 +32,19 @@ public class ResellerAccountPageFragment extends BaseAccountPageFragment{
     @FindBy(xpath = "//div[@class='owl-item']//div[@class='innerPadding']/div[1]")
 	private List<WebElement> resellerDealsNamesList;
 
-	public void clickViewAccountDetailsButton(){
+    @FindBy(css = "a[href$='/reseller/account/request-transfers']")
+	private WebElement requestTransfersLink;
+    
+    public void clickViewAccountDetailsButton(){
 		
 		scrollToElement(accountDetailsButton);
 		clickSubmitButton(accountDetailsButton);
+	}
+
+	public void clickRequestTransfersLink(){
+		
+		scrollToElement(requestTransfersLink);
+		clickLink(requestTransfersLink);
 	}
 
 	public String getDealsCount(int i){
