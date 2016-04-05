@@ -33,7 +33,7 @@ public class LoggerTestListener extends TestListenerAdapter{
 			File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
 //	    	long millis = System.currentTimeMillis() % 1000;
 //	    	String screenshotName = String.valueOf(millis) + ".png";
-	    	String screenshotName = String.valueOf(LocalDateTime.now()) + ".png";
+	    	String screenshotName = LocalDateTime.now().toString() + ".png";
 	        try {
 	        	FileUtils.copyFile(scrFile, new File(Starter.WORKING_DIRECTORY + "\\screenshots\\" + screenshotName));
 	        } catch (IOException e) {
