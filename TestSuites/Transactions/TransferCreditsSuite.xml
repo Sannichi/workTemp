@@ -17,6 +17,7 @@
         </classes>
     </test>
 -->
+
     <test name="Test - Transfer Credit From Euro NormalUser To Inter NormalUser" preserve-order="true">
         <parameter name="paymentCurrency" value="USD" />        
         <parameter name="loginUser" value="EuroNormalWhitelist" />        
@@ -422,7 +423,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Euro MasterReseller KWD Adyen MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    

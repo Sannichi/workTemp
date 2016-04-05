@@ -133,10 +133,12 @@ public abstract class AbstractNymgoPage extends AbstractPage{
 			navigation.NavigatedTo();
 			navigateToHomePage();
 		}
-		nymgoPageFragment.setLanguage(starter.LOCALE);
+		if (!nymgoPageFragment.getCurrentLanguage().equals(starter.LOCALE)){
+			nymgoPageFragment.setLanguage(starter.LOCALE);
+		}
 		HomePage homePage = new HomePage(starter);
-		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage); 
-		navigation.NavigatedTo();
+//		PageNavigation<HomePage> navigation = new PageNavigation<HomePage>(homePage); 
+//		navigation.NavigatedTo();
 		return homePage;
 		
 	}

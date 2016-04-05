@@ -67,8 +67,20 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 	public boolean isCorrectURL(){
 		// TODO Auto-generated method stub
 			Pattern p = Pattern.compile(ACCOUNT_PAGE_URL_EN_PATTERN);
-	        Matcher m = p.matcher(getCurrentURL());	
-	        return m.matches();
+			Matcher m;
+			for(int i = 0; i < Starter.IMPLICITLY_WAIT_TIME; i++){
+				m = p.matcher(getCurrentURL());
+				if (m.matches()){
+					return true;
+				}
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return false;
 	}
 
 	public String getCorrectURL() {

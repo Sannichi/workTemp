@@ -28,4 +28,13 @@ public enum NYMGO_USERS {
     public String toString() {
         return text;
     }
+    
+    public static NYMGO_USERS findUserByValue(String nymgoUser){
+        for(NYMGO_USERS user : values()){
+            if( user.toString().equals(nymgoUser)){
+                return user;
+            }
+        }
+        return null;
+    }
 }

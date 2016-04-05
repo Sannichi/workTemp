@@ -44,13 +44,13 @@ public abstract class AbstractPopup extends AbstractPage{
     protected  void closePopup(String popupName){
     	
 		for(int i = 0; i < 5; i++){
-			delay(2000);
+			delay(200);
 	        LOGGER.info("Waiting 2 seconds...");
 			if(isPopupExist()){
 				clickOnCloseButton();
 		        for (int j = 0; j < 5; j++){
 		        	if (isPopupExist()){
-		        		delay(2000);
+		        		delay(200);
 		    	        LOGGER.info("Waiting 2 seconds for closing...");
 		        	}
 		        	else

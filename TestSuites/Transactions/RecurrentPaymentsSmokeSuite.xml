@@ -17,7 +17,7 @@
         </classes>
     </test>
 -->
-
+<!--
     <test name="Test - Change Recurrent Euro NormalUser Gateway to Worldpay" preserve-order="true">
         <parameter name="gatewayName" value="Worldpay" />     
         
@@ -51,7 +51,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Set Euro NormalUser Default Recurrent Credit Card Worldpay" preserve-order="true">
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    

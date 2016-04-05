@@ -45,6 +45,13 @@ public class NormalTransactionsAdminPage extends AbstractTransactionsAdminPage{
     	return this;
 	}
 
+    public NormalTransactionsAdminPage clickProcessedTransactionsLink()
+	{
+		
+    	normalTransactionsAdminPageFragment.clickProcessedTransactionsLink();
+    	return this;
+	}
+
     public MemberPaymentHistoryWidget openViewTransactionsWidgetByID(String stringID){
 
 		transactionsAdminPageFragment.clickViewTransactionsByID(stringID);

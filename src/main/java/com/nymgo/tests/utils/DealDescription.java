@@ -26,6 +26,28 @@ public class DealDescription {
 	private int minutes;
 	private int imtuAmount;
 	
+	public DealDescription() {
+
+		this.usdPrice = (float) 0;
+		this.sarPrice = (float) 0;
+		this.aedPrice = (float) 0;
+		this.kwdPrice = (float) 0;
+		this.qarPrice = (float) 0;
+		this.eurPrice = (float) 0;
+		this.gbpPrice = (float) 0;
+		this.cadPrice = (float) 0;
+		this.audPrice = (float) 0;
+		this.nzdPrice = (float) 0;
+		this.myrPrice = (float) 0;
+		this.sgdPrice = (float) 0;
+		this.inrPrice = (float) 0;
+		this.aoaPrice = (float) 0;
+		this.bndPrice = (float) 0;
+		this.currencySign = CURRENCY_SIGNS.USD;
+		this.minutes = 0;
+		this.imtuAmount = 0;
+	}
+
 	public DealDescription(Float usdPrice, Float audPrice, Float cadPrice, Float eurPrice, Float inrPrice, Float nzdPrice, Float qarPrice, Float sarPrice, 
 			Float aedPrice, Float gbpPrice, Float kwdPrice, Float myrPrice, Float sgdPrice, Float aoaPrice, Float bndPrice, CURRENCY_SIGNS currencySign, int minutes, int imtuAmount) {
 
@@ -47,7 +69,7 @@ public class DealDescription {
 		this.currencySign = currencySign;
 		this.minutes = minutes;
 		this.imtuAmount = imtuAmount;
-}
+	}
 
 	public Float getUsdPrice() {
 		return usdPrice;

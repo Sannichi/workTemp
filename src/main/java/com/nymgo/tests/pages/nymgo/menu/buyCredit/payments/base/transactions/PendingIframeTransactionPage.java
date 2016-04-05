@@ -28,7 +28,7 @@ public abstract class PendingIframeTransactionPage extends AbstractIframeTransac
 	public NormalAccountPage clickBackToNormalUserDashboardButton(){
 		
 		clickBackToDashboardButton();
-		delay(1500);
+		delay(150);
 		NormalAccountPage normalAccountPage = new NormalAccountPage(starter);
 		PageNavigation<NormalAccountPage> navigation = new PageNavigation<NormalAccountPage>(normalAccountPage);
 		navigation.NavigatedTo();
@@ -39,7 +39,7 @@ public abstract class PendingIframeTransactionPage extends AbstractIframeTransac
 	public ResellerAccountPage clickBackToResellerDashboardButton(){
 		
 		clickBackToDashboardButton();
-		delay(1500);
+		delay(150);
 		ResellerAccountPage resellerAccountPage = new ResellerAccountPage(starter);
 		PageNavigation<ResellerAccountPage> navigation = new PageNavigation<ResellerAccountPage>(resellerAccountPage);
 		navigation.NavigatedTo();

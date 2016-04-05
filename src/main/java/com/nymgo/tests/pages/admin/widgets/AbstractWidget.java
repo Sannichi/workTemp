@@ -34,7 +34,7 @@ public abstract class AbstractWidget extends AbstractPage{
     public void closeWidgets(){
         MemberListWidget memberListWidget = new MemberListWidget(starter);
         if(memberListWidget.isWidgetExist()){
-            delay(2000);
+            delay(200);
             memberListWidget.clickOnCloseButton();
             LOGGER.info("Closing the Member List widget");            
         } 
@@ -63,7 +63,7 @@ public abstract class AbstractWidget extends AbstractPage{
     protected void closeWidget(String widgetName){
     	
 		for(int i = 0; i < 5; i++){
-			delay(2000);
+			delay(200);
 	        LOGGER.info("Waiting 2 seconds...");
 	    	if(isWidgetExist()){
 	    		if(isContentAreaDisplayed()){
@@ -71,7 +71,7 @@ public abstract class AbstractWidget extends AbstractPage{
 			        LOGGER.info("Closing the " + widgetName);
 			        for (int j = 0; j < 5; j++){
 			        	if (isWidgetExist()){
-			        		delay(2000);
+			        		delay(200);
 			    	        LOGGER.info("Waiting 2 seconds for closing...");
 			        	}
 			        	else

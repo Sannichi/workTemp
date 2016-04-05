@@ -62,7 +62,7 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 	{
 		
     	adminPageFragment.clickTransactionsLink();
-    	delay(1500);
+    	delay(150);
     	NormalTransactionsAdminPage transactionsAdminPage = new NormalTransactionsAdminPage(starter);
 		PageNavigation<NormalTransactionsAdminPage> navigation = new PageNavigation<NormalTransactionsAdminPage>(transactionsAdminPage); 
 		navigation.NavigatedTo();
@@ -73,7 +73,7 @@ public abstract class AbstractLoggedAdminPage extends AbstractAdminPage{
 	{
 		
     	adminPageFragment.clickBusinessTransactionsLink();
-    	delay(1500);
+    	delay(150);
     	BusinessTransactionsAdminPage businessTransactionsAdminPage = new BusinessTransactionsAdminPage(starter);
 		PageNavigation<BusinessTransactionsAdminPage> navigation = new PageNavigation<BusinessTransactionsAdminPage>(businessTransactionsAdminPage); 
 		navigation.NavigatedTo();

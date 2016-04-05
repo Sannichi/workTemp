@@ -26,15 +26,21 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 	@FindBy(id = "deal-countries-list")
 	private WebElement countrySelect;
 
-//	@FindBy(css = ("div[id^=country-deal]"))
-	@FindBy(css = ("div[class$='optionsList clickable2']"))
+	@FindBy(id = "deal-search")
+	private WebElement countrySearch;
+
+	@FindBy(xpath = "//li[@class='ui-menu-item odd']")
+	private WebElement countryMenuItem;
+
+	private final String dealOptionClassEnding = "optionsList clickable2 voip-deal";
+	private final String dealOptionCheckedCSS = "div[class$='" + dealOptionClassEnding + " checked']";
+
+	@FindBy(css = ("div[class$='" + dealOptionClassEnding + "']"))
 	private List<WebElement> dealsOptions;
 	
-//    @FindBy(css="div[class='multi_optionsList clickable2 checked']")
-    @FindBy(css="div[class$='optionsList clickable2 checked']")	
+    @FindBy(css = dealOptionCheckedCSS)	
     private WebElement dealOptionChecked;
 
-//    @FindBy(css="div[class='multi_optionsList clickable2 disabled']")
     @FindBy(css="div[class$='optionsList clickable2 disabled']")
     private List<WebElement> dealsOptionsDisabled;
     
@@ -48,15 +54,11 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
     @FindBy(css="span[id='user-package-price-total']")
     private WebElement dealTotalAmountValue;
 
-//    @FindBy(css="span[id='deal-minutes']")
-    @FindBy(id = "deal-minutes")    
-    private WebElement dealMinutesValue;
+    @FindBys({@FindBy(css = dealOptionCheckedCSS),
+		@FindBy(id="deal-price")})    
+	private WebElement checkedDealPriceValue;
 
-//    @FindBy(css="span[id='deal-imtu-amount']")
-    @FindBy(id = "deal-imtu-amount")    
-    private WebElement dealImtuAmountValue;
-    
-	@FindBys({@FindBy(css = "div[class$='optionsList clickable2 checked']"),
+	@FindBys({@FindBy(css = dealOptionCheckedCSS),
 		@FindBy(id="deal-minutes")})    
 	private WebElement checkedDealMinutesValue;
 
@@ -70,6 +72,12 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
     public void selectCountryByName(String countryName){
 		
 		selectValueFromSelectByVisibleText(countrySelect, countryName);
+	}
+	
+    public void selectCountryName(String countryName){
+		
+		setTextToEditField(countrySearch, countryName);
+		clickElement(countryMenuItem);
 	}
 	
     public String getSelectedCountryName(){
@@ -100,14 +108,19 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return dealTotalAmountValue.getText();
 	}
 
-	public String getDealMinutesValue(){
-		
-		return dealMinutesValue.getText();
-	}
+//	public String getDealMinutesValue(){
+//		
+//		return dealMinutesValue.getText();
+//	}
+//
+//	public String getDealImtuAmountValue(){
+//		
+//		return dealImtuAmountValue.getText();
+//	}
 
-	public String getDealImtuAmountValue(){
+	public String getCheckedDealPriceValue(){
 		
-		return dealImtuAmountValue.getText();
+		return checkedDealPriceValue.getText();
 	}
 
 	public String getCheckedDealMinutesValue(){
@@ -141,6 +154,16 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		}
 	}
 
+	private int getDealMinutes(WebElement option){
+		
+		try{
+			return Integer.valueOf(option.findElement(By.id("deal-minutes")).getText());
+		}
+		catch(NoSuchElementException e){
+			return 0;
+		}
+	}
+
 	private String getDealCurrencyName(WebElement option){
 		
 		return option.findElement(By.id("deal-symbol")).getText();
@@ -171,9 +194,19 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		return getFullDealOptionDescription(returnCheckedOption());
 	}
 
+	public int getCheckedDealOptionMinutes() throws NoSuchElementException{
+		
+		return getDealMinutes(returnCheckedOption());
+	}
+
 	private boolean isDealOptionByPriceChecked(Float value){
 	
 		return (getDealPrice(returnCheckedOption()) == value);
+	}
+
+	private boolean isDealOptionByMinutesChecked(int value){
+		
+		return (getDealMinutes(returnCheckedOption()) == value);
 	}
 
 	private WebElement returnOptionByPrice(Float value){
@@ -185,6 +218,18 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 			}
 		}
 		LOGGER.fatal("There is no option with price " + value);
+		return null;
+	}
+
+	private WebElement returnOptionByMinutes(int value){
+		
+		List<WebElement> options = getAllDealsOptions();
+		for (WebElement option: options){
+			if(getDealMinutes(option) == value){
+				return option;
+			}
+		}
+		LOGGER.fatal("There is no option with minutes " + value);
 		return null;
 	}
 
@@ -204,6 +249,20 @@ public class BuyCreditNormalDealPageFragment extends BuyCreditPageFragment {
 		}
 		else{
 			LOGGER.debug("Price " + value+ " is already checked");
+		}
+	}
+	
+	public void checkDealOptionByMinutes(int value){
+		
+		if (!isDealOptionByMinutesChecked(value)){
+				WebElement element = returnOptionByMinutes(value);
+				if(element != null){
+					LOGGER.info("Option is found");
+					clickElement(element);
+				}
+		}
+		else{
+			LOGGER.debug("Minutes " + value+ " are already checked");
 		}
 	}
 	

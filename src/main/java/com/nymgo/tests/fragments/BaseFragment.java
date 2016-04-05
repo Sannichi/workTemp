@@ -192,6 +192,12 @@ public class BaseFragment {
 		}
 	}
 
+	protected void pressDownArrow(){
+		
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.DOWN);
+		LOGGER.info("Down arrow was pressed");
+	}
+
 	protected void pressEnter(){
 		
 		driver.findElement(By.cssSelector("body")).sendKeys(Keys.ENTER);

@@ -2,6 +2,7 @@ package com.nymgo.tests.listeners;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -30,8 +31,9 @@ public class LoggerTestListener extends TestListenerAdapter{
 		UnhandledAlert unhandledAlert = new UnhandledAlert(starter);
 		try{
 			File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
-	    	long millis = System.currentTimeMillis() % 1000;
-	    	String screenshotName = String.valueOf(millis) + ".png";
+//	    	long millis = System.currentTimeMillis() % 1000;
+//	    	String screenshotName = String.valueOf(millis) + ".png";
+	    	String screenshotName = String.valueOf(LocalDateTime.now()) + ".png";
 	        try {
 	        	FileUtils.copyFile(scrFile, new File(Starter.WORKING_DIRECTORY + "\\screenshots\\" + screenshotName));
 	        } catch (IOException e) {

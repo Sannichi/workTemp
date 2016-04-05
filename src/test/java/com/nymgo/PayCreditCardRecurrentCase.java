@@ -1,5 +1,6 @@
 package com.nymgo;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -32,7 +33,7 @@ public class PayCreditCardRecurrentCase extends AbstractCase{
 
 		PendingTransactionWorldpayPage pendingTransactionWorldpayPage = buyCredit3DSProceedPageWorldpay.selectSavedCreditCardAndClickPay();
 
-		softAssert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
+		Assert.assertTrue(pendingTransactionWorldpayPage.isTransactionPending(), 
 				"Transaction is not pending, current status is: " + pendingTransactionWorldpayPage.getPaymentStatus());
 		String transactionID = pendingTransactionWorldpayPage.getTransactionNumber();
 		String paymentStatus = pendingTransactionWorldpayPage.getPaymentStatus();
@@ -57,7 +58,7 @@ public class PayCreditCardRecurrentCase extends AbstractCase{
 
 		PendingTransactionAdyenPage pendingTransactionAdyenPage = buyCredit3DSProceedPageAdyen.selectSavedCreditCardAndClickPay();
 
-		softAssert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
+		Assert.assertTrue(pendingTransactionAdyenPage.isTransactionPending(), 
 				"Transaction is not pending, current status is: " + pendingTransactionAdyenPage.getPaymentStatus());
 		String transactionID = pendingTransactionAdyenPage.getTransactionNumber();
 		String paymentStatus = pendingTransactionAdyenPage.getPaymentStatus();

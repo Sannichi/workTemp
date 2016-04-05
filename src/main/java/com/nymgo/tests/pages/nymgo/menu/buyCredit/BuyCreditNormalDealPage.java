@@ -15,6 +15,7 @@ import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.adyen.BuyCredit3DSPro
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.globalCollect.BuyCreditProceedPageGlobalCollect;
 import com.nymgo.tests.pages.nymgo.menu.buyCredit.payments.worldpay.BuyCredit3DSProceedPageWorldpay;
 import com.nymgo.tests.starter.Starter;
+import com.nymgo.tests.utils.CurrencyUtils;
 import com.nymgo.tests.utils.DealDescription;
 import com.nymgo.tests.utils.DealDescriptionMap;
 import com.nymgo.tests.utils.Rounder;
@@ -42,6 +43,11 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		buyCreditNormalDealPageFragment.selectCountryByName(countryName);
 	}
 	
+	private void selectCountryName(String countryName){
+		
+		buyCreditNormalDealPageFragment.selectCountryName(countryName);
+	}
+	
 	private String getCountryByDealCurrency(String dealCurrency){
 
 		return DealsNameGenerator.getDealKeyBySign(dealCurrency);
@@ -53,6 +59,12 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 //		String countryName = dealName.split(" Deal")[0];
 		String countryName = DealsCountryNameGenerator.getDealKeyBySign(dealCurrency); 
 		selectCountryByName(countryName);
+	}
+	
+	public void enterCountryByDealCurrency(String dealCurrency){
+
+		String countryName = DealsCountryNameGenerator.getDealKeyBySign(dealCurrency); 
+		selectCountryName(countryName);
 	}
 	
 	private String getCheckedDealOptionDescription() throws NoSuchElementException{
@@ -69,10 +81,21 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		}
 	}
 	
+	private int getCheckedDealOptionMinutes() throws NoSuchElementException{
+		
+		return buyCreditNormalDealPageFragment.getCheckedDealOptionMinutes();
+	}
+
 	private void checkDealOptionByPrice(Float price){
 		
 		buyCreditNormalDealPageFragment.checkDealOptionByPrice(price);
 		Assert.assertTrue(getCheckedDealOptionValue().equals(price), "Could not select option " + price + "!");
+	}
+
+	private void checkDealOptionByMinutes(int minutes){
+		
+		buyCreditNormalDealPageFragment.checkDealOptionByMinutes(minutes);
+		Assert.assertTrue((getCheckedDealOptionMinutes() == minutes), "Could not select option " + minutes + "!");
 	}
 
 	public BuyCreditProceedPageGlobalCollect selectPriceAndClickContinueToGlobalCollect(String price){
@@ -140,6 +163,12 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		checkDealOptionByPrice(price);
 	} 
 	
+	public void selectByMinutes(int minutes){
+		
+//		int intPrice = Integer.valueOf(price);
+		checkDealOptionByMinutes(minutes);
+	} 
+	
 	public String getDealVATPercent(){
 		
 		return buyCreditNormalDealPageFragment.getDealVATPercent();
@@ -155,14 +184,19 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		return buyCreditNormalDealPageFragment.getDealTotalAmountValue();
 	}
 
-	public String getDealMinutesValue(){
-		
-		return buyCreditNormalDealPageFragment.getDealMinutesValue();
-	}
+//	public String getDealMinutesValue(){
+//		
+//		return buyCreditNormalDealPageFragment.getDealMinutesValue();
+//	}
+//
+//	public String getDealImtuAmountValue(){
+//		
+//		return buyCreditNormalDealPageFragment.getDealImtuAmountValue();
+//	}
 
-	public String getDealImtuAmountValue(){
+	public String getCheckedDealPriceValue(){
 		
-		return buyCreditNormalDealPageFragment.getDealImtuAmountValue();
+		return buyCreditNormalDealPageFragment.getCheckedDealPriceValue();
 	}
 
 	public String getCheckedDealMinutesValue(){
@@ -205,6 +239,15 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		return result;
 	}
 	
+	public boolean verifyDealPrice(DealDescription dealDescription, String paymentCurrency){
+		
+		boolean result = false;
+		String asIs = getCheckedDealPriceValue();		
+		String shouldBe = String.valueOf(CurrencyUtils.getStringCurrencyValueFromFloat(dealDescription.getPriceByPaymentCurrency(paymentCurrency)));
+		result = shouldBe.equals(asIs);
+		return result;
+	}
+	
 	public boolean verifyDealImtuAmount(DealDescription dealDescription){
 		
 		boolean result = false;
@@ -219,7 +262,8 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		
 		LOGGER.debug("Deal currency is: '" + dealCurrency + "', deal name is '" + dealName == null ? getCountryByDealCurrency(dealCurrency) : dealName + "'");
 		DealDescription dealDescription;
-		selectCountryByDealCurrency(dealCurrency);
+//		selectCountryByDealCurrency(dealCurrency);
+		enterCountryByDealCurrency(dealCurrency);
 		if(dealName == null){
 			dealDescription = DealDescriptionMap.getFirstDealDescriptionByCurrencySign(dealCurrency);
 		}
@@ -227,22 +271,25 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 			dealDescription = DealDescriptionMap.getDealDescriptionByName(dealName);
 		}
 		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
-		selectPrice(price);
+//		selectPrice(price);
+		int minutes = dealDescription.getMinutes();
+		selectByMinutes(minutes);
 		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(verifyDealPrice(dealDescription, paymentCurrency), "Deal Price are not correct. Current value is '" + getCheckedDealPriceValue() +		
+				"', should be '" + (dealDescription.getPriceByPaymentCurrency(paymentCurrency)) + "'");
+		LOGGER.info("Deal Price value is correct");
 		softAssert.assertTrue(verifyDealVATValue(price), "Deal VAT is not correct. Current value is '" + getDealVATValue() + 
 				"', should be '" + Rounder.roundFloat((price * Integer.valueOf(getDealVATPercent()) / 100), 2) + "'");
 		LOGGER.info("Deal VAT value is correct");
 		softAssert.assertTrue(verifyDealTotalAmountValue(price), "Deal Total Amount is not correct. Current value is '" + getDealTotalAmountValue() + 
 				"', should be '" + (price + Rounder.roundFloat(Float.valueOf(getDealVATValue()), 2)) + "'");
 		LOGGER.info("Deal Total Amount value is correct");
-//		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getCheckedDealMinutesValue() +		
 				"', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");
-//		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
-		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getCheckedDealImtuAmountValue() + 
-				"', should be '" + (dealDescription.getImtuAmount()) + "'");
-		LOGGER.info("Deal Imtu Amount value is correct");
+//		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getCheckedDealImtuAmountValue() + 
+//				"', should be '" + (dealDescription.getImtuAmount()) + "'");
+//		LOGGER.info("Deal Imtu Amount value is correct");
 		softAssert.assertAll();
 	} 
 
@@ -250,24 +297,28 @@ public class BuyCreditNormalDealPage extends BuyCreditPage {
 		
 		LOGGER.debug("Deal currency is: '" + dealCurrency + "', deal name is '" + dealName == null ? getCountryByDealCurrency(dealCurrency) : dealName + "'");
 		DealDescription dealDescription;
-		selectCountryByDealCurrency(dealCurrency);
+//		selectCountryByDealCurrency(dealCurrency);
+		enterCountryByDealCurrency(dealCurrency);
 		if(dealName == null){
 			dealDescription = DealDescriptionMap.getFirstDealDescriptionByCurrencySign(dealCurrency);
 		}
 		else{
 			dealDescription = DealDescriptionMap.getDealDescriptionByName(dealName);
 		}
-		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
-		selectPrice(price);
+//		Float price = dealDescription.getPriceByPaymentCurrency(paymentCurrency);
+//		selectPrice(price);
+		int minutes = dealDescription.getMinutes();
+		selectByMinutes(minutes);
 		SoftAssert softAssert = new SoftAssert();
-//		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getDealMinutesValue() + 
+		softAssert.assertTrue(verifyDealPrice(dealDescription, paymentCurrency), "Deal Price are not correct. Current value is '" + getCheckedDealPriceValue() +		
+				"', should be '" + (dealDescription.getPriceByPaymentCurrency(paymentCurrency)) + "'");
+		LOGGER.info("Deal Price value is correct");
 		softAssert.assertTrue(verifyDealMinutes(dealDescription), "Deal Minutes are not correct. Current value is '" + getCheckedDealMinutesValue() +		
 				"', should be '" + (dealDescription.getMinutes()) + "'");
 		LOGGER.info("Deal Minutes value is correct");
-//		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getDealImtuAmountValue() + 
-		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getCheckedDealImtuAmountValue() + 
-				"', should be '" + (dealDescription.getImtuAmount()) + "'");
-		LOGGER.info("Deal Imtu Amount value is correct");
+//		softAssert.assertTrue(verifyDealImtuAmount(dealDescription), "Deal Imtu Amount is not correct. Current value is '" + getCheckedDealImtuAmountValue() + 
+//				"', should be '" + (dealDescription.getImtuAmount()) + "'");
+//		LOGGER.info("Deal Imtu Amount value is correct");
 		softAssert.assertAll();
 	} 
 }

@@ -28,16 +28,16 @@ public class BuyCreditResellerDealPageFragment extends BuyCreditPageFragment {
     	@FindBy(xpath = ".//label")})
     private WebElement dealVatLabel;
 
-    @FindBy(css="span[id='package-vat-total']")
+    @FindBy(id = "package-vat-total")
     private WebElement dealVatValue;
 	
-    @FindBy(css="span[id='package-price-total']")
+    @FindBy(id = "package-price-total")
     private WebElement dealTotalAmountValue;
 
-    @FindBy(css="span[id='package-minutes']")
+    @FindBy(id = "package-minutes")
     private WebElement dealPackageMinutesValue;
 
-    @FindBy(css="span[id='package-imtu-amount']")
+    @FindBy(id = "package-imtu-amount")
     private WebElement dealImtuAmountValue;
 
     public void selectDealByName(String dealName){

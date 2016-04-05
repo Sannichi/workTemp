@@ -22,7 +22,7 @@ public abstract class AbstractAlert extends AbstractPage{
 	
 	public void setAlert() {
 	    try {
-	        WebDriverWait wait = new WebDriverWait(driver, Starter.ELEMENT_WAIT_TIME);
+	        WebDriverWait wait = new WebDriverWait(driver, Starter.ADMIN_TAB_WAIT_TIME);
 	        wait.until(ExpectedConditions.alertIsPresent());
 	        alert = driver.switchTo().alert();
 //	        LOGGER.info("Alert detected with text '" + alert.getText() + "'");

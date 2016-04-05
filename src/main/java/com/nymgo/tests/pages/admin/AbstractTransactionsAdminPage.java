@@ -14,6 +14,7 @@ import com.nymgo.tests.pages.admin.base.AbstractLoggedAdminPageWithSearch;
 import com.nymgo.tests.starter.Starter;
 import com.nymgo.tests.utils.CurrencyUtils;
 import com.nymgo.tests.utils.DealDescriptionMap;
+import com.nymgo.tests.utils.DealUtils;
 import com.nymgo.tests.utils.Rounder;
 
 public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminPageWithSearch{
@@ -101,7 +102,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 		return transactionsAdminPageFragment.getTransactionCountry(transactionDetails);
 	}
 	
-	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String currency, String service, String cardType, String country, String dealName){
+	public void verifyTransactionData(String transactionID, String username, String amount, String VAT, String currency, String service, String cardType, String country, String dealName, String dealCurrency){
 
 		/*
 		 * if amount == null - minimum value for current currency is got
@@ -133,8 +134,7 @@ public abstract class AbstractTransactionsAdminPage extends AbstractLoggedAdminP
 			}
 		}
 		else {
-			fullProduct = dealName;
-//			fullAmount = currencyAmount;
+			fullProduct = DealUtils.getFullDealName(dealName, dealCurrency);
 		}
 		
 		String method = cardType;

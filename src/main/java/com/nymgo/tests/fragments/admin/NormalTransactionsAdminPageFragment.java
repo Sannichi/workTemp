@@ -24,6 +24,9 @@ public class NormalTransactionsAdminPageFragment extends BaseTransactionsAdminPa
 	@FindBy(xpath = "//a[@href='/modules/declined_transactions/index.php']")
 	private WebElement declinedTransactionsLink;
 		
+	@FindBy(xpath = "//a[@href='/modules/proccessed_transactions/index.php']")
+	private WebElement processedTransactionsLink;
+		
 	private static final String TRANSACTIONS_PAGE_URL_ENG = ServerGenerator.getServerKey(URL_CONST.ADMIN_URL) + "/modules/transactions/index.php"; 
 			
 	@Override
@@ -49,5 +52,11 @@ public class NormalTransactionsAdminPageFragment extends BaseTransactionsAdminPa
 	{
 		
     	clickLink(declinedTransactionsLink);
+	}
+
+    public void clickProcessedTransactionsLink()
+	{
+		
+    	clickLink(processedTransactionsLink);
 	}
 }

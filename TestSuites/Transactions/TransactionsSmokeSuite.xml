@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -1582,7 +1582,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Euro MasterReseller AUD GlobalCollect MasterCard" preserve-order="true">
         <parameter name="paymentCurrency" value="AUD" />        
         <parameter name="cardType" value="MasterCard" />    

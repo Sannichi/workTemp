@@ -267,7 +267,7 @@ public class GeneralDataProvider extends BaseDataProvider{
     
     public static FullUserEntity getNymgoUserEntity(String nymgoUser){
     	
-		NYMGO_USERS NYMGO_USER = NYMGO_USERS.valueOf(nymgoUser);
+    	NYMGO_USERS NYMGO_USER = NYMGO_USERS.findUserByValue(nymgoUser);
 		
 		switch(NYMGO_USER){
 		

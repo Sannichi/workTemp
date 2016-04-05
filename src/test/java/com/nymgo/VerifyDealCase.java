@@ -14,6 +14,7 @@ import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
 import com.nymgo.tests.pages.nymgo.base.NymgoPage;
+import com.nymgo.tests.utils.DealUtils;
 
 public class VerifyDealCase extends AbstractCase{
 	
@@ -52,15 +53,17 @@ public class VerifyDealCase extends AbstractCase{
 		
 		ResellerAccountPage resellerAccountPage = loggedNymgoPage.navigateToResellerMyAccountPage();
 
-		int i = resellerAccountPage.navigateToDeal(dealName);
+//		int i = resellerAccountPage.navigateToDeal(dealName);
+		int i = resellerAccountPage.navigateToDeal(DealUtils.getFullDealName(dealName, dealCurrency));
 		Assert.assertNotEquals(i, -1, "There is no deal with deal Name " + dealName);
 		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
 				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + Integer.parseInt(dealQuantity)), 
 				resellerAccountPage.getDealsCount(i));
 		LOGGER.info("Deal name is '" + resellerAccountPage.getDealName(i) + "' Deal days counter is " + resellerAccountPage.getDealDaysCounter(i) +  
 				" Deal count is " + resellerAccountPage.getDealsCount(i) + 
-				" Deal minutes are " + resellerAccountPage.getDealMinutes(i) +
-				" Deal Top Up is " + resellerAccountPage.getDealTopUp(i));
+				" Deal minutes are " + resellerAccountPage.getDealMinutes(i));
+//		+
+//				" Deal Top Up is " + resellerAccountPage.getDealTopUp(i));
 		Assert.assertEquals(Integer.parseInt(resellerAccountPage.getDealsCount(i)),
 				Integer.parseInt(
 						ExcelUtils.getAccountBalanceBeforeTransaction(

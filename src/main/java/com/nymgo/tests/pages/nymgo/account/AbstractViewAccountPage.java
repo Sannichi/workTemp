@@ -25,7 +25,7 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 	public AbstractViewAccountPage expandContentByText(String contentName){
 
 		baseViewAccountFragment.expandContentByText(contentName);
-		delay(1000);
+		delay(100);
 		LOGGER.info("Expandable content " + contentName + " is expanded");
 		return this;
 	}

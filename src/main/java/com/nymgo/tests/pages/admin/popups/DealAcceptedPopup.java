@@ -38,7 +38,7 @@ public class DealAcceptedPopup extends AbstractPopup{
 	public void closeDealAcceptedPopup(){
     	
 		for(int i = 0; i < 5; i++){
-			delay(2000);
+			delay(200);
 			if(isPopupExist()){
 				clickOnCloseButton();
 		        delay(2000);

@@ -12,7 +12,7 @@ public class TransactionAcceptedAlert extends AbstractAlert{
 	}
 	
 	private static final String TRANSACTION_ACCEPTED_POPUP_NAME_ENG = "TransactionAcceptedAlert"; 
-	private static final String TRANSACTION_ACCEPTED_POPUP_TEXT_ENG = "transaction accepted successfully And queued successfully|3Transaction event has been updated successfully on Vero"; 
+	private static final String TRANSACTION_ACCEPTED_POPUP_TEXT_ENG = "transaction accepted successfully And queued successfully|3Transaction event has been posted successfully"; 
 	
 	@Override
 	public String getPageName() {

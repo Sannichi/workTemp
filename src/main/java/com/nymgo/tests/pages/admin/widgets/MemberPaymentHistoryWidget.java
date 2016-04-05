@@ -7,7 +7,6 @@ import org.testng.Assert;
 import com.nymgo.tests.fragments.admin.widgets.MemberPaymentHistoryWidgetFragment;
 import com.nymgo.tests.navigation.AlertNavigation;
 import com.nymgo.tests.navigation.PopupNavigation;
-import com.nymgo.tests.pages.admin.alerts.AbstractAlert;
 import com.nymgo.tests.pages.admin.alerts.DealAcceptedAlert;
 import com.nymgo.tests.pages.admin.alerts.TransactionAcceptedAlert;
 //import com.nymgo.tests.pages.admin.popups.DealAcceptedPopup;
@@ -114,7 +113,7 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 		LOGGER.info("Transaction ID is correct");
 		clickAcceptTransaction();
 		TransactionAcceptedAlert transactionAcceptedAlert = new TransactionAcceptedAlert(starter);
-		AlertNavigation<AbstractAlert> navigation = new AlertNavigation<AbstractAlert>(transactionAcceptedAlert);
+		AlertNavigation<TransactionAcceptedAlert> navigation = new AlertNavigation<TransactionAcceptedAlert>(transactionAcceptedAlert);
 		navigation.NavigatedTo();
 		return transactionAcceptedAlert;
 //		TransactionAcceptedPopup transactionAcceptedPopup = new TransactionAcceptedPopup(starter);
