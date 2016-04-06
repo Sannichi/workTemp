@@ -137,7 +137,7 @@
             </class>
             <class name="com.nymgo.PayCreditCardCase">
                 <methods>
-                    <include name="payMasterCardAdyenPendingTest" />
+                    <include name="payMasterCardWorldpayPendingTest" />
                 </methods>
             </class>
             <class name="com.nymgo.AdminSignInCase">
@@ -189,7 +189,7 @@
             </class>
             <class name="com.nymgo.PayCreditCardCase">
                 <methods>
-                    <include name="payMasterCardAdyenPendingTest" />
+                    <include name="payMasterCardWorldpayPendingTest" />
                 </methods>
             </class>
             <class name="com.nymgo.AdminSignInCase">
@@ -419,7 +419,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Euro Reseller NZD Worldpay Sri Lanka Deal 180 Visa" preserve-order="true">
         <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="paymentCurrency" value="NZD" />        
@@ -472,7 +472,7 @@
             </class>
         </classes>
     </test>
-<!--
+
     <test name="Test - BuyCredit Euro Reseller NZD Worldpay Syria Deal 180 Visa" preserve-order="true">
         <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="paymentCurrency" value="NZD" />        
@@ -738,7 +738,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect India Deal 350 Visa" preserve-order="true">
         <parameter name="loginUser" value="InterReseller" />     
         <parameter name="paymentCurrency" value="NZD" />        
@@ -791,5 +791,5 @@
             </class>
         </classes>
     </test>
--->
+
 </suite>

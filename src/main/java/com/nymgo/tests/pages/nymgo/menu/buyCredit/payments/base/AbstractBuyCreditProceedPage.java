@@ -6,6 +6,7 @@ import org.testng.asserts.SoftAssert;
 import com.nymgo.tests.fragments.nymgo.menu.buyCredit.payments.base.BaseBuyCreditProceedPageFragment;
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.starter.Starter;
+//import com.nymgo.tests.utils.CurrencyUtils;
 
 //for GlobalCollect payments
 public abstract class AbstractBuyCreditProceedPage extends AbstractLoggedInPage{

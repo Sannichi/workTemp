@@ -133,6 +133,8 @@ public enum LOCALE_CONST {
     NEPAL,
     SRI_LANKA,
     PHILIPPINES,
+    
+    MOBILE,
 
     CARD_ISSUED_IN_COUNTRY,
     AUSTIRA,

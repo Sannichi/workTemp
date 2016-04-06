@@ -47,7 +47,7 @@ public class BuyDealCase extends AbstractCase{
 		
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
+				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat((Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2))));				
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
 		}
@@ -57,7 +57,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
+				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Rounder.roundFloat(price, 2) + Rounder.roundFloat(dealVATValue, 2)));				
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName, cardType + "," + gatewayName);
 		softAssert.assertAll();
     }
@@ -124,7 +124,7 @@ public class BuyDealCase extends AbstractCase{
 		
 		buyCreditProceedPage.verifyDefaultData(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(), 
-				currencyAmount, dealVATPercent, String.valueOf(Rounder.roundFloat(price, 2) * Integer.valueOf(dealQuantity) + Rounder.roundFloat(dealVATValue, 2)));				
+				currencyAmount, dealVATPercent, CurrencyUtils.getStringCurrencyValueFromFloat(Rounder.roundFloat(price, 2) * Integer.valueOf(dealQuantity) + Rounder.roundFloat(dealVATValue, 2)));				
 		
 		if(countryOfCredit == null){
 			countryOfCredit = fullUserEntity.getCountryOfResidence();
@@ -273,7 +273,7 @@ public class BuyDealCase extends AbstractCase{
 		BuyCreditConfirmPageGlobalCollect buyCreditConfirmPage = buyCreditProceedPage.verifyInternationalDataAndClickContinue(fullUserEntity.getFullName(), fullUserEntity.getEmail(), fullUserEntity.getMobile(), fullUserEntity.getPhone(), 
 				fullUserEntity.getCountryOfResidence(), fullUserEntity.getPostalCode(), fullUserEntity.getStreet(), fullUserEntity.getFullAddress(),
 				cardType, countryOfCredit,
-				currencyAmount, String.valueOf(Rounder.roundFloat(price, 2)));				
+				currencyAmount, CurrencyUtils.getStringCurrencyValueFromFloat(Rounder.roundFloat(price, 2)));	
 		ExcelUtils.addUserAndCurrencyAndBalanceAndAmountAndCardTypeData(fullUserEntity.getUsername(), paymentCurrency, accountDealsValue, dealName + "," + dealQuantity, cardType + "," + gatewayName);
 	}
 

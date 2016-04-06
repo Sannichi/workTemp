@@ -76,7 +76,7 @@ public class NormalAccountPageFragment extends BaseAccountPageFragment{
 		
 //		WebElement minutes = driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='packageInfo']//strong)[" + (i * 2 - 1) + "]")); 
 //		return minutes.getText();
-		return driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='packageInfo']//strong)[" + (i * 2 - 1) + "]")).getText();
+		return driver.findElement(By.xpath("(//div[starts-with(@class,'block package')]//div[@class='packageInfo']//strong)[" + (i) + "]")).getText();
 	}
 	
 	public String getDealTopUp(int i){

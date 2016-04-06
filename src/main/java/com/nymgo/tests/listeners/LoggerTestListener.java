@@ -2,7 +2,8 @@ package com.nymgo.tests.listeners;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -24,16 +25,30 @@ public class LoggerTestListener extends TestListenerAdapter{
 	private Logger LOGGER; 
 	private Starter starter;
  
+	private void takeScreenshot(){
+		
+		File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
+		Date dNow = new Date( );
+	    SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd hh:mm:ss");
+    	String screenshotName = ft.format(dNow) + ".png";
+        try {
+        	FileUtils.copyFile(scrFile, new File(Starter.WORKING_DIRECTORY + "\\screenshots\\" + screenshotName));
+        } catch (IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+        }
+        log("Screenshot with name '" + screenshotName + "' created");		
+	}
+	
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		log("Test Result is Failure");
 		starter = Starter.getInstance();
-		UnhandledAlert unhandledAlert = new UnhandledAlert(starter);
 		try{
 			File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
-//	    	long millis = System.currentTimeMillis() % 1000;
-//	    	String screenshotName = String.valueOf(millis) + ".png";
-	    	String screenshotName = LocalDateTime.now().toString() + ".png";
+			Date dNow = new Date( );
+		    SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd hh.mm.ss");
+	    	String screenshotName = ft.format(dNow) + ".png";
 	        try {
 	        	FileUtils.copyFile(scrFile, new File(Starter.WORKING_DIRECTORY + "\\screenshots\\" + screenshotName));
 	        } catch (IOException e) {
@@ -43,9 +58,11 @@ public class LoggerTestListener extends TestListenerAdapter{
 	        log("Screenshot with name '" + screenshotName + "' created");		
 		}
 		catch (UnhandledAlertException e){
+			UnhandledAlert unhandledAlert = new UnhandledAlert(starter);
 			String alertText = unhandledAlert.getAlertText();
 			unhandledAlert.acceptAlert();
 			LOGGER.fatal("Unhandled alert with text: '" + alertText + "' was closed");
+			takeScreenshot();
 		}
 	}
  

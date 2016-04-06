@@ -31,11 +31,14 @@ public class VerifyDealCase extends AbstractCase{
 		ExcelUtils.addExpectedAndActualAddedAmountData(String.valueOf(Integer.parseInt(
 				ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + 1), 
 				normalAccountPage.getMyDealsCounter());
-		int i = normalAccountPage.navigateToDeal(DealsCountryNameGenerator.getDealKeyBySign(dealCurrency));
+		String countryDealName = DealsCountryNameGenerator.getDealKeyBySign(dealCurrency);
+		int i = normalAccountPage.navigateToDeal(countryDealName);
+		Assert.assertNotEquals(i, -1, "There is no deal with deal Name " + countryDealName);
 		LOGGER.info("Deal name is '" + normalAccountPage.getDealName(i) + "' Deal days counter is " + normalAccountPage.getDealDaysCounter(i) + 
 				" Deal count is " + normalAccountPage.getMyDealsCounter() + 
-				" Deal minutes are " + normalAccountPage.getDealMinutes(i) +
-				" Deal Top Up is " + normalAccountPage.getDealTopUp(i));
+				" Deal minutes are " + normalAccountPage.getDealMinutes(i));
+//		+
+//				" Deal Top Up is " + normalAccountPage.getDealTopUp(i));
 		Assert.assertEquals(Integer.parseInt(normalAccountPage.getMyDealsCounter()),
 				Integer.parseInt(
 						ExcelUtils.getAccountBalanceBeforeTransaction(ExcelUtils.getLastTransactionByUsername(fullUserEntity.getUsername()))) + 1,

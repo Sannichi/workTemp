@@ -46,18 +46,24 @@ public class AdminTransactionsCase extends AbstractCase{
 						if(currencyAmount == null){
 							currencyAmount = CurrencyUtils.getMinNormalUserBuyCurrencyValue(paymentCurrency);
 						}
+						transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+								paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName, dealCurrency);
+						MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+		//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+		//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
+						TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
+						transactionAcceptedAlert.acceptAlert();
+						memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 					}
 					else{
 						currencyAmount = String.valueOf(Rounder.roundFloat(DealDescriptionMap.getDealDescriptionByName(dealName).getPriceByPaymentCurrency(paymentCurrency), 2));
+						transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
+								paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName, dealCurrency);
+						MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
+						DealAcceptedAlert dealAcceptedAlert = memberPaymentHistoryWidget.verifyDealInformationAndAccept(transactionID);
+						dealAcceptedAlert.acceptAlert();
+						memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 					}
-					transactionsAdminPage.verifyTransactionData(transactionID, fullUserEntity.getUsername(), currencyAmount, fullUserEntity.getVat(),
-							paymentCurrency, gatewayName, cardType, fullUserEntity.getGeoIpCountry(), dealName, dealCurrency);
-					MemberPaymentHistoryWidget memberPaymentHistoryWidget = transactionsAdminPage.openViewTransactionsWidgetByID(transactionID);
-	//				TransactionAcceptedPopup transactionAcceptedPopup = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-	//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
-					TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
-					transactionAcceptedAlert.acceptAlert();
-					memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 				}
 				else{
 					LOGGER.info("Search result by transaction ID = '" + transactionID + "' is empty, verifying processed transactions...");

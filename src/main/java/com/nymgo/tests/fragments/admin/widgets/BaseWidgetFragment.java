@@ -3,6 +3,7 @@ package com.nymgo.tests.fragments.admin.widgets;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -35,7 +36,13 @@ public class BaseWidgetFragment extends BaseFragment{
     	
     	setWidgetContainer();
     	if (widgetContainer != null){
-        	widgetName = widgetContainer.findElement(By.xpath(".//div[@class='drag-handle']")).getText().split("\n")[0];
+    		try{
+    			widgetName = widgetContainer.findElement(By.xpath(".//div[@class='drag-handle']")).getText().split("\n")[0];
+    		}
+    		catch(StaleElementReferenceException e){
+    			LOGGER.info("Page refreshes too long, trying again...");
+    			setWidgetName();
+    		}
     	}
     	else{
         	widgetName = null;
