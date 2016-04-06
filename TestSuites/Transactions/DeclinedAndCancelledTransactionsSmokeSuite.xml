@@ -18,6 +18,7 @@
     </test>
 -->
     <test name="Test - Change Euro NormalUser Gateway to Worldpay" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="gatewayName" value="Worldpay" />     
         
         <classes>
@@ -28,13 +29,14 @@
             </class>
             <class name="com.nymgo.AdminNormalMembersCase">
                 <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
+                    <include name="editNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - Change Euro Reseller Gateway to Worldpay" preserve-order="true">
+        <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="gatewayName" value="Worldpay" />     
         
         <classes>
@@ -45,13 +47,14 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Cancel Euro NormalUser CAD Worldpay MasterCard" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="paymentCurrency" value="CAD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Worldpay" />     
@@ -64,12 +67,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInNormalUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroNormalUserAccountTest" />
+                    <include name="editNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -89,18 +92,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="cancelEuroNormalUserTransactionAdminTest" />
+                    <include name="cancelNormalUserTransactionAdminTest" />
                 </methods>
             </class>
 			<class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditCancelledLoggedNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Decline Euro NormalUser SGD Worldpay Amex" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="paymentCurrency" value="SGD" />        
         <parameter name="cardType" value="American Express" />    
         <parameter name="gatewayName" value="Worldpay" />     
@@ -113,12 +117,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInNormalUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroNormalUserAccountTest" />
+                    <include name="editNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -138,18 +142,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroNormalUserTransactionAdminTest" />
+                    <include name="declineNormalUserTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditCancelledLoggedNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Cancel Euro Reseller QAR Worldpay Amex" preserve-order="true">
+        <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="paymentCurrency" value="QAR" />        
         <parameter name="cardType" value="American Express" />    
         <parameter name="gatewayName" value="Worldpay" />     
@@ -162,12 +167,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -187,18 +192,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="cancelEuroResellerTransactionAdminTest" />
+                    <include name="cancelResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditCancelledLoggedResellerTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - Change Euro NormalUser Gateway to Adyen" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="gatewayName" value="Adyen" />     
         
         <classes>
@@ -209,13 +215,14 @@
             </class>
             <class name="com.nymgo.AdminNormalMembersCase">
                 <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
+                    <include name="editNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - Change Euro Reseller Gateway to Adyen" preserve-order="true">
+        <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="gatewayName" value="Adyen" />     
         
         <classes>
@@ -226,13 +233,14 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Cancel Euro NormalUser CAD Adyen MasterCard" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="paymentCurrency" value="CAD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Adyen" />     
@@ -245,12 +253,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInNormalUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroNormalUserAccountTest" />
+                    <include name="editNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -270,18 +278,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="cancelEuroNormalUserTransactionAdminTest" />
+                    <include name="cancelNormalUserTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditCancelledLoggedNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Decline Euro NormalUser SAR Adyen MasterCard" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Adyen" />     
@@ -294,12 +303,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInNormalUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroNormalUserAccountTest" />
+                    <include name="editNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -319,18 +328,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroNormalUserTransactionAdminTest" />
+                    <include name="declineNormalUserTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditCancelledLoggedNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
 	<test name="Test - BuyCredit And Cancel Euro Reseller AED Adyen Amex" preserve-order="true">
+        <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="paymentCurrency" value="AED" />        
         <parameter name="cardType" value="American Express" />    
         <parameter name="gatewayName" value="Adyen" />     
@@ -343,12 +353,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -368,18 +378,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="cancelEuroResellerTransactionAdminTest" />
+                    <include name="cancelResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditCancelledLoggedResellerTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - Change Euro NormalUser Gateway to GlobalCollect" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="gatewayName" value="Global Collect" />     
         
         <classes>
@@ -390,13 +401,14 @@
             </class>
             <class name="com.nymgo.AdminNormalMembersCase">
                 <methods>
-                    <include name="editEuroNormalUserGatewayAdminTest" />
+                    <include name="editNormalUserGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - Change Euro Reseller Gateway to GlobalCollect" preserve-order="true">
+        <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="gatewayName" value="Global Collect" />     
         
         <classes>
@@ -407,13 +419,14 @@
             </class>
             <class name="com.nymgo.AdminResellersCase">
                 <methods>
-                    <include name="editEuroResellerGatewayAdminTest" />
+                    <include name="editResellerGatewayAdminTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Cancel Euro NormalUser SAR GlobalCollect MasterCard" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="paymentCurrency" value="SAR" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Global Collect" />     
@@ -426,12 +439,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInNormalUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroNormalUserAccountTest" />
+                    <include name="editNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -451,18 +464,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="cancelEuroNormalUserTransactionAdminTest" />
+                    <include name="cancelNormalUserTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditCancelledLoggedNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Decline Euro NormalUser SGD GlobalCollect Amex" preserve-order="true">
+        <parameter name="loginUser" value="EuroNormalWhitelist" />     
         <parameter name="paymentCurrency" value="SGD" />        
         <parameter name="cardType" value="American Express" />    
         <parameter name="gatewayName" value="Global Collect" />     
@@ -475,12 +489,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroNormalWhitelistUserTest" />
+                    <include name="signInNormalUserTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroNormalUserAccountTest" />
+                    <include name="editNormalUserAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -500,18 +514,19 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="declineEuroNormalUserTransactionAdminTest" />
+                    <include name="declineNormalUserTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroNormalUserTest" />
+                    <include name="verifyBuyCreditCancelledLoggedNormalUserTest" />
                 </methods>
             </class>
         </classes>
     </test>
 
     <test name="Test - BuyCredit And Cancel Euro Reseller KWD GlobalCollect MasterCard" preserve-order="true">
+        <parameter name="loginUser" value="EuroReseller" />     
         <parameter name="paymentCurrency" value="KWD" />        
         <parameter name="cardType" value="MasterCard" />    
         <parameter name="gatewayName" value="Global Collect" />     
@@ -524,12 +539,12 @@
             </class>
             <class name="com.nymgo.SignInCase">
                 <methods>
-                    <include name="signInEuroResellerTest" />
+                    <include name="signInResellerTest" />
                 </methods>
             </class>
             <class name="com.nymgo.ViewAccountCases">
                 <methods>
-                    <include name="editEuroResellerAccountTest" />
+                    <include name="editResellerAccountTest" />
                 </methods>
             </class>
             <class name="com.nymgo.BuyCreditCase">
@@ -549,12 +564,12 @@
             </class>
             <class name="com.nymgo.AdminTransactionsCase">
                 <methods>
-                    <include name="cancelEuroResellerTransactionAdminTest" />
+                    <include name="cancelResellerTransactionAdminTest" />
                 </methods>
             </class>
             <class name="com.nymgo.VerifyBuyCreditCase">
                 <methods>
-                    <include name="verifyBuyCreditCancelledLoggedEuroResellerTest" />
+                    <include name="verifyBuyCreditCancelledLoggedResellerTest" />
                 </methods>
             </class>
         </classes>

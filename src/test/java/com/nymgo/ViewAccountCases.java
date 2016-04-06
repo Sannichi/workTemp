@@ -26,41 +26,8 @@ public class ViewAccountCases extends AbstractCase{
 		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
-    @Test(dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)	
-	public void editEuroNormalUserAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
-			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
-		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
-	}
-
     @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void editEuroResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
-			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
-		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
-		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
-	}
-
-    @Test(dataProvider = PROVIDER_CONST.SET_NORMAL_USER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)	
-	public void editInterNormalUserAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
-			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		NormalAccountPage normalAccountPage = loggedNymgoPage.navigateToNormalUserMyAccountPage();
-		ViewNormalAccountPage viewNormalAccountPage = normalAccountPage.clickViewFullNormalAccountButton();
-		viewNormalAccountPage.editNormalUserProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
-	}
-
-    @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void editInterResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+	public void editResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -71,7 +38,7 @@ public class ViewAccountCases extends AbstractCase{
 	}
 
     @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void editEuroMasterResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
+	public void editMasterResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
 
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
@@ -80,16 +47,4 @@ public class ViewAccountCases extends AbstractCase{
 		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
 		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
-
-    @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
-	public void editInterMasterResellerAccountTest(String fullName, String mobile, String phone, String countryOfResidence, String city, String address, 
-			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
-
-		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
-
-		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
-		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
-		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
-	}
-
 }
