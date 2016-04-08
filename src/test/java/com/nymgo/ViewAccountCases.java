@@ -8,7 +8,7 @@ import com.nymgo.tests.AbstractCase;
 import com.nymgo.tests.pages.nymgo.account.NormalAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ResellerAccountPage;
 import com.nymgo.tests.pages.nymgo.account.ViewNormalAccountPage;
-import com.nymgo.tests.pages.nymgo.account.ViewResellerAccountPage;
+import com.nymgo.tests.pages.nymgo.account.ViewResellerAccountDetailsPage;
 import com.nymgo.tests.pages.nymgo.base.LoggedNymgoPage;
 /**
  * Created by Iuliia Khikmatova on Oct 13, 2015
@@ -33,8 +33,8 @@ public class ViewAccountCases extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
-		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
-		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		ViewResellerAccountDetailsPage viewResellerAccountDetailsPage = resellerAccountPage.clickViewAccountDetailsButton();
+		viewResellerAccountDetailsPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 
     @Test(dataProvider = PROVIDER_CONST.SET_RESELLER_PARAMS_PROVIDER, dataProviderClass = GeneralDataProvider.class)    
@@ -44,7 +44,7 @@ public class ViewAccountCases extends AbstractCase{
 		LoggedNymgoPage loggedNymgoPage = new LoggedNymgoPage(starter);
 
 		ResellerAccountPage resellerAccountPage =  loggedNymgoPage.navigateToResellerMyAccountPage();
-		ViewResellerAccountPage viewResellerAccountPage = resellerAccountPage.clickViewAccountDetailsButton();
-		viewResellerAccountPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
+		ViewResellerAccountDetailsPage viewResellerAccountDetailsPage = resellerAccountPage.clickViewAccountDetailsButton();
+		viewResellerAccountDetailsPage.editResellerProfileAndSave(fullName, mobile, phone, countryOfResidence, city, address, street, postalCode, displayCurrency, paymentCurrency, language);
 	}
 }

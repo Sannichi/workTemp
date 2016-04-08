@@ -1,6 +1,11 @@
 package com.nymgo.tests.pages.nymgo.account;
 
+import org.testng.Assert;
+
+import com.nymgo.tests.enums.LOCALE_CONST;
 import com.nymgo.tests.fragments.nymgo.account.RequestTransfersResellerPageFragment;
+import com.nymgo.tests.generators.LocaleGenerator;
+import com.nymgo.tests.navigation.PageNavigation;
 import com.nymgo.tests.pages.nymgo.base.AbstractLoggedInPage;
 import com.nymgo.tests.starter.Starter;
 
@@ -45,5 +50,16 @@ public class RequestTransfersResellerPage extends AbstractLoggedInPage {
 	public void clickRequestTransfersButton(){
 		
 		requestTransfersResellerPageFragment.clickRequestTransfersButton();
+	}
+
+	public ViewResellerAccountPage setAmountAndClickRequestTransferButton(String requestAmountValue){
+		
+		setRequestAmountValue(requestAmountValue);
+		clickRequestTransfersButton();
+		ViewResellerAccountPage viewResellerAccountPage = new ViewResellerAccountPage(starter);
+		PageNavigation<ViewResellerAccountPage> navigation = new PageNavigation<ViewResellerAccountPage>(viewResellerAccountPage);
+		navigation.NavigatedTo();
+		Assert.assertTrue(getSuccessMessage().equals(LocaleGenerator.getLocaleKey(LOCALE_CONST.REQUEST_TRANSFER_CREDIT_SUCCESS_MESSAGE)), "Success Message is incorrect: '" + getSuccessMessage() + "'");		
+		return viewResellerAccountPage;
 	}
 }

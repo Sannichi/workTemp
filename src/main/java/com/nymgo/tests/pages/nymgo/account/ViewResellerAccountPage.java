@@ -8,7 +8,7 @@ import com.nymgo.tests.starter.Starter;
  */
 public class ViewResellerAccountPage extends AbstractViewAccountPage{
 
-	ViewResellerAccountPageFragment viewResellerAccountPageFragment;
+	private ViewResellerAccountPageFragment viewResellerAccountPageFragment;
 	
 	public ViewResellerAccountPage(Starter starter) {
 		super(starter);

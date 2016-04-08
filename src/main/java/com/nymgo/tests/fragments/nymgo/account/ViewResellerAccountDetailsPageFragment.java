@@ -12,15 +12,15 @@ import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Oct 27, 2015
  */
-public class ViewResellerAccountPageFragment extends BaseViewAccountFragment{
+public class ViewResellerAccountDetailsPageFragment extends BaseViewAccountFragment{
 	
-    public ViewResellerAccountPageFragment(WebDriver driver) {
+    public ViewResellerAccountDetailsPageFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
 	private static final String VIEW_RESELLER_ACCOUNT_PAGE_URL = Starter.SECURE_PART_PATTERN +    
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/account/";
+			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/account/account-details/account-profile";
 
 	@Override
 	public boolean isCorrectURL() {

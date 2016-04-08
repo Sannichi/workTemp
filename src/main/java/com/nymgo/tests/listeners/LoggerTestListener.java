@@ -83,4 +83,5 @@ public class LoggerTestListener extends TestListenerAdapter{
 			LOGGER.info("");
 		}
 	}
+	
 }

@@ -74,13 +74,13 @@ public class ResellerAccountPage extends AbstractAccountPage{
 		return resellerAccountTransferCreditPage;
 	}
 
-	public ViewResellerAccountPage clickViewAccountDetailsButton(){
+	public ViewResellerAccountDetailsPage clickViewAccountDetailsButton(){
 		
 		resellerAccountPageFragment.clickViewAccountDetailsButton();
-		ViewResellerAccountPage viewResellerAccountPage = new ViewResellerAccountPage(starter);
-		PageNavigation<ViewResellerAccountPage> navigation = new PageNavigation<ViewResellerAccountPage>(viewResellerAccountPage);
+		ViewResellerAccountDetailsPage viewResellerAccountDetailsPage = new ViewResellerAccountDetailsPage(starter);
+		PageNavigation<ViewResellerAccountDetailsPage> navigation = new PageNavigation<ViewResellerAccountDetailsPage>(viewResellerAccountDetailsPage);
 		navigation.NavigatedTo();
-		return viewResellerAccountPage;
+		return viewResellerAccountDetailsPage;
 	}
 
 	public RequestTransfersResellerPage clickRequestTransfersLink(){
