@@ -1,5 +1,7 @@
 package com.nymgo.tests.fragments.admin.widgets;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
@@ -8,14 +10,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.nymgo.tests.fragments.BaseFragment;
+import com.nymgo.tests.starter.Starter;
 
 public class BaseWidgetFragment extends BaseFragment{
 
 	public BaseWidgetFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
+    	driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		setWidgetContainer();
 		setWidgetName();
+    	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
 	}
 
     protected WebElement widgetContainer;
@@ -57,18 +62,23 @@ public class BaseWidgetFragment extends BaseFragment{
 
     public boolean isWidgetExist(){
 
+    	driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         try{
             setWidgetName();
             if (widgetName != null){
+            	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             	return widgetContainer.isDisplayed();
             }else{
+            	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             	return false;
             }
         }
         catch (NotFoundException e){
+        	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             return false;
         }
         catch (NullPointerException e){
+        	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             return false;
         }
     }

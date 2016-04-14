@@ -1,5 +1,7 @@
 package com.nymgo.tests.fragments.admin.popups;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
@@ -7,13 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.nymgo.tests.fragments.BaseFragment;
+import com.nymgo.tests.starter.Starter;
 
 public class BasePopupFragment extends BaseFragment{
 
 	public BasePopupFragment(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
+    	driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		setPopupContainer();
+    	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
 	}
 
     private WebElement popup;
@@ -31,14 +36,18 @@ public class BasePopupFragment extends BaseFragment{
 
     public boolean isPopupExist(){
 
+    	driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         try{
             setPopupContainer();
+        	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             return popup.isDisplayed();
         }
         catch (NotFoundException e){
+        	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             return false;
         }
         catch (NullPointerException e){
+        	driver.manage().timeouts().implicitlyWait(Starter.IMPLICITLY_WAIT_TIME, TimeUnit.SECONDS);
             return false;
         }
     }

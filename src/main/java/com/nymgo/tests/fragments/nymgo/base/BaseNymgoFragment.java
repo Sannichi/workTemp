@@ -42,10 +42,14 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 	private static final String nymgoAppsXpath = "//a[@href='" + AppsPageFragment.APPS_PAGE_URL + "']";	
 	private static final String nymgoPricesXpath = "//a[@href='" + PricesPageFragment.PRICES_PAGE_URL + "']";	
 	private static final String nymgoSupportXpath = "//a[@href='" + SupportPageFragment.SUPPORT_PAGE_URL + "']";	
-	private static final String nymgoResellersXpath = "//a[@href='" + ResellersPageFragment.RESELLERS_PAGE_URL + "']";	
-	private static final String nymgoBuyCreditXpath = "//a[@href='" + BuyCreditPageFragment.BUY_CREDIT_PAGE_URL + "']";	
-	private static final String nymgoNormalUserSignInXpath = "//a[@href='" + NormalUserSignInPageFragment.NORMAL_ACCOUNT_PAGE_URL + "']";	
-	protected static final String nymgoMyAccountXpath = ".//a[@href='" + BaseAccountPageFragment.ACCOUNT_PAGE_URL_EN + "']";	
+//	private static final String nymgoResellersXpath = "//a[@href='" + ResellersPageFragment.RESELLERS_PAGE_URL + "']";	
+	private static final String nymgoResellersCss = "a[href$='" + ResellersPageFragment.RESELLERS_PAGE_URL_END + "']";	
+//	private static final String nymgoBuyCreditXpath = "//a[@href='" + BuyCreditPageFragment.BUY_CREDIT_PAGE_URL + "']";	
+	private static final String nymgoBuyCreditCss = "a[href$='" + BuyCreditPageFragment.BUY_CREDIT_PAGE_URL_END + "']";	
+//	private static final String nymgoNormalUserSignInXpath = "//a[@href='" + NormalUserSignInPageFragment.NORMAL_ACCOUNT_PAGE_URL + "']";	
+	private static final String nymgoNormalUserSignInCSS = "a[href$='" + NormalUserSignInPageFragment.NORMAL_ACCOUNT_PAGE_URL_END + "']";	
+//	protected static final String nymgoMyAccountXpath = ".//a[@href='" + BaseAccountPageFragment.ACCOUNT_PAGE_URL_EN + "']";	
+	protected static final String nymgoMyAccountCss = "a[href$='" + BaseAccountPageFragment.ACCOUNT_PAGE_URL_END + "']";	
 	protected static final String nymgoLogOutXpath = ".//a[@href='" + secureHomeURL + "/logout']";	
 
 	private WebElement nymgoHomepageLink;
@@ -157,18 +161,21 @@ public abstract class BaseNymgoFragment extends BaseFragment implements HasURL{
 
 	private void initializeResellersLink() throws NoSuchElementException{
 		
-		resellersLink = driver.findElement(By.xpath(nymgoResellersXpath));
+//		resellersLink = driver.findElement(By.xpath(nymgoResellersXpath));
+		resellersLink = driver.findElement(By.cssSelector(nymgoResellersCss));
 	}
 	
 	private void initializeBuyCreditButton() throws NoSuchElementException{
 		
-		buyCreditButton = driver.findElement(By.xpath(nymgoBuyCreditXpath));
+//		buyCreditButton = driver.findElement(By.xpath(nymgoBuyCreditXpath));
+		buyCreditButton = driver.findElement(By.cssSelector(nymgoBuyCreditCss));
 	}
 
 	private void initializeNormalUserSingInButton(){
 
 		try{
-			normalUserSignInButton = driver.findElement(By.xpath(nymgoNormalUserSignInXpath));
+//			normalUserSignInButton = driver.findElement(By.xpath(nymgoNormalUserSignInXpath));
+			normalUserSignInButton = driver.findElement(By.cssSelector(nymgoNormalUserSignInCSS));
 		} catch (NoSuchElementException e){
 			LOGGER.fatal("Normal user Sign In button was not found");
 		}

@@ -36,7 +36,7 @@ public abstract class AbstractPage {
 	public abstract boolean isCorrectPage();
 	public abstract String getPageURL();
 	
-    protected void delay(final long amount) {
+    public void delay(final long amount) {
         try {
             Thread.sleep(amount);
         }

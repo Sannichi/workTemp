@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - Change Inter NormalUser Gateway to Adyen" preserve-order="true">
         <parameter name="loginUser" value="InterNormalWhitelist" />     
         <parameter name="gatewayName" value="Adyen" />     
@@ -738,7 +738,7 @@
             </class>
         </classes>
     </test>
--->
+
     <test name="Test - BuyCredit Inter Reseller NZD GlobalCollect India Deal 350 Visa" preserve-order="true">
         <parameter name="loginUser" value="InterReseller" />     
         <parameter name="paymentCurrency" value="NZD" />        

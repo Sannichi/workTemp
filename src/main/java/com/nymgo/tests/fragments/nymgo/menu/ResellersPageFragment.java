@@ -23,8 +23,9 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 
 	public static final String RESELLERS_PAGE_URL_PATTERN = Starter.SECURE_PART_PATTERN +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
-	public static final String RESELLERS_PAGE_URL = Starter.SECURE_PART +
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
+//	public static final String RESELLERS_PAGE_URL = Starter.SECURE_PART +
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
+	public static final String RESELLERS_PAGE_URL_END = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/home";
 	
 	private static final String ResellerSingInButtonXpath = "//a[@href='" + LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/reseller/']";
 
@@ -42,7 +43,7 @@ public class ResellersPageFragment extends BaseNymgoFragment{
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return RESELLERS_PAGE_URL;
+		return RESELLERS_PAGE_URL_END;
 	}
 
 	private void initializeResellerSignInButton() throws NoSuchElementException{

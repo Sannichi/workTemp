@@ -1,7 +1,5 @@
 package com.nymgo.tests.pages.admin.popups;
 
-import org.testng.Assert;
-
 import com.nymgo.tests.starter.Starter;
 /**
  * Created by Iuliia Khikmatova on Feb 23, 2016
@@ -35,20 +33,25 @@ public class DealAcceptedPopup extends AbstractPopup{
 		return DEAL_ACCEPTED_POPUP_TEXT_ENG;
 	}
 
+//	public void closeDealAcceptedPopup(){
+//    	
+//		for(int i = 0; i < 5; i++){
+//			delay(200);
+//			if(isPopupExist()){
+//				clickOnCloseButton();
+//		        delay(2000);
+//	            LOGGER.info("Closing the Deal Accepted Popup");            
+//		    	Assert.assertFalse(isPopupExist(), "Deal Accepted Popup was not closed");
+//				break;
+//			}
+//			if(i == 4){
+//				LOGGER.fatal("Deal Accepted Popup was not appeared in 10 seconds");
+//			}
+//		}
+//    }
+
 	public void closeDealAcceptedPopup(){
-    	
-		for(int i = 0; i < 5; i++){
-			delay(200);
-			if(isPopupExist()){
-				clickOnCloseButton();
-		        delay(2000);
-	            LOGGER.info("Closing the Deal Accepted Popup");            
-		    	Assert.assertFalse(isPopupExist(), "Deal Accepted Popup was not closed");
-				break;
-			}
-			if(i == 4){
-				LOGGER.fatal("Deal Accepted Popup was not appeared in 10 seconds");
-			}
-		}
-    }
+	
+		closePopup(getPageName());
+	}
 }

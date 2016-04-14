@@ -25,7 +25,10 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
     	wait.until(ExpectedConditions.visibilityOf(searchCrieteriaInput));
 	}
 
-	@FindBy(id = "search")
+  	@FindBy(id = "loading3")
+	private WebElement loadingIcon;
+
+  	@FindBy(id = "search")
 	private WebElement searchCrieteriaInput;
     
 
@@ -45,6 +48,16 @@ public abstract class BaseLoggedAdminPageWithSearchFragment extends BaseLoggedAd
 
 	@FindBy(xpath = "//div[@class='ttrows'][last()]")
 	private WebElement tableColumnsNames;
+	
+	public boolean isLoading(){
+		
+		try{
+			return loadingIcon.isDisplayed();
+		}
+		catch(NoSuchElementException e){
+			return false;
+		}
+	}
 	
 	public void typeCriteria(String criteria){
 		

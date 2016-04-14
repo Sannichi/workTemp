@@ -26,8 +26,9 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 
 	public static final String BUY_CREDIT_PAGE_URL_PATTERN = Starter.SECURE_PART_PATTERN +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
-	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
+//	public static final String BUY_CREDIT_PAGE_URL = Starter.SECURE_PART +
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
+	public static final String BUY_CREDIT_PAGE_URL_END = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/buy-credits";	
 			
     @FindBy(css="div[class^='adyenOption']")
     private List<WebElement> adyenOptions;
@@ -58,7 +59,7 @@ public class BuyCreditPageFragment extends BaseLoggedInFragment{
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return BUY_CREDIT_PAGE_URL;
+		return BUY_CREDIT_PAGE_URL_END;
 	}
 
 	private String getAmountCurrencyIcon(WebElement option){

@@ -44,7 +44,7 @@ public class Starter {
     public static Properties PARAMS;
 	
     public final  static String CONFIG_FILE_NAME = "config.file.name";
-    public static String SECURE_PART;    
+//    public static String SECURE_PART;    
     public static String SECURE_PART_PATTERN;    
     public static String CONFIG_FILE = "config.properties";
     public static String PARAMS_FILE_NAME = "params.file.name";
@@ -239,7 +239,7 @@ public class Starter {
                 CurrencyConversionRateGenerator.setProps(FILES_NAMES.CONVERSION_RATES_DEV.toString());
                 break;
         }
-        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);    
+//        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL);    
 //        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.SECURE_HOME_URL);    
 //        SECURE_PART = ServerGenerator.getServerKey(URL_CONST.HOME_URL).replace("http", "https");    
         SECURE_PART_PATTERN = "^(https?\\:\\/\\/)(|secure-)(" + ServerGenerator.getServerKey(URL_CONST.HOME_URL).split("://")[1] + ")";    
@@ -252,10 +252,10 @@ public class Starter {
             case FIREFOX:
                 return new FirefoxDriver();
             case CHROME:
-                System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", WORKING_DIRECTORY + "\\drivers\\ChromeDriver\\chromedriver.exe");
                 return new ChromeDriver();
             case IE:
-                System.setProperty("webdriver.ie.driver", "C:\\IEDriver\\IEDriverServer.exe");
+                System.setProperty("webdriver.ie.driver", WORKING_DIRECTORY + "\\drivers\\IEDriver\\IEDriverServer.exe");
                 return new InternetExplorerDriver();
             default:
                 return new FirefoxDriver();

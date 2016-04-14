@@ -25,8 +25,9 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
+//	public static final String ACCOUNT_PAGE_URL_EN = Starter.SECURE_PART +	
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
+	public static final String ACCOUNT_PAGE_URL_END = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	public static final String ACCOUNT_PAGE_URL_EN_PATTERN = Starter.SECURE_PART_PATTERN +	
 	LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/user/dashboard";
 	
@@ -85,7 +86,7 @@ public class BaseAccountPageFragment extends BaseLoggedInFragment{
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return ACCOUNT_PAGE_URL_EN;
+		return ACCOUNT_PAGE_URL_END;
 	}
 	
 	private void initializeBuyCreditButton() throws NoSuchElementException{

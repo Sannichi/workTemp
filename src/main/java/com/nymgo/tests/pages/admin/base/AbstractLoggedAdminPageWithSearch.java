@@ -18,6 +18,11 @@ public abstract class AbstractLoggedAdminPageWithSearch extends AbstractLoggedAd
     	adminPageWithSearchFragment = new AdminPageWithSearchFragment(driver);
     }
 	
+	public boolean isLoading(){
+		
+		return adminPageWithSearchFragment.isLoading();
+	}
+
 	private void typeCriteria(String crieteria){
 		
 		adminPageWithSearchFragment.typeCriteria(crieteria);

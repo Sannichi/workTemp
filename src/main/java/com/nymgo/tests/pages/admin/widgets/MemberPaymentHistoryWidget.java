@@ -161,6 +161,6 @@ public class MemberPaymentHistoryWidget extends AbstractWidget{
 	
 	public void closeMemberPaymentHistoryWidget(){
     	
-    	closeWidget(getPageName());
+		closeWidget(getPageName());
     }
 }

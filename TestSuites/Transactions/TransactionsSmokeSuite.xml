@@ -6,7 +6,7 @@
 	</listeners>      
     <parameter name="config.file.name" value="config.dev.properties" />
     <parameter name="params.file.name" value="params.properties" />
-
+<!--
     <test name="Test - Clear Transactions file" preserve-order="true">
      <classes>
             <class name="com.nymgo.data.testCases.ExcelCases">
@@ -388,7 +388,7 @@
             </class>
         </classes>
     </test>
-
+-->
     <test name="Test - BuyCredit Inter NormalUser USD Worldpay 3D Visa" preserve-order="true">
         <parameter name="loginUser" value="InterNormalWhitelist" />     
         <parameter name="paymentCurrency" value="USD" />        

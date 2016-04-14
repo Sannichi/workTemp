@@ -31,19 +31,19 @@ public abstract class AbstractWidget extends AbstractPage{
         return baseWidgetFragment.isContentAreaDisplayed();
     }
 
-    public void closeWidgets(){
-        MemberListWidget memberListWidget = new MemberListWidget(starter);
-        if(memberListWidget.isWidgetExist()){
-            delay(200);
-            memberListWidget.clickOnCloseButton();
-            LOGGER.info("Closing the Member List widget");            
-        } 
-        /*
-        else if() {
-        	
-        }
-        */
-    }
+//    public void closeWidgets(){
+//        MemberListWidget memberListWidget = new MemberListWidget(starter);
+//        if(memberListWidget.isWidgetExist()){
+//            delay(2000);
+//            memberListWidget.clickOnCloseButton();
+//            LOGGER.info("Closing the Member List widget");            
+//        } 
+//        /*
+//        else if() {
+//        	
+//        }
+//        */
+//    }
     
     public void clickOnTabByAltText(String tabText){
 
@@ -63,7 +63,7 @@ public abstract class AbstractWidget extends AbstractPage{
     protected void closeWidget(String widgetName){
     	
 		for(int i = 0; i < 5; i++){
-			delay(200);
+			delay(2000);
 	        LOGGER.info("Waiting 2 seconds...");
 	    	if(isWidgetExist()){
 	    		if(isContentAreaDisplayed()){
@@ -71,7 +71,7 @@ public abstract class AbstractWidget extends AbstractPage{
 			        LOGGER.info("Closing the " + widgetName);
 			        for (int j = 0; j < 5; j++){
 			        	if (isWidgetExist()){
-			        		delay(200);
+			        		delay(2000);
 			    	        LOGGER.info("Waiting 2 seconds for closing...");
 			        	}
 			        	else

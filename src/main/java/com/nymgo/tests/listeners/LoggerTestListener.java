@@ -45,6 +45,7 @@ public class LoggerTestListener extends TestListenerAdapter{
 		log("Test Result is Failure");
 		starter = Starter.getInstance();
 		try{
+			log(tr.getThrowable().getMessage());
 			File scrFile = ((TakesScreenshot)starter.driver).getScreenshotAs(OutputType.FILE);
 			Date dNow = new Date( );
 		    SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MM.dd hh.mm.ss");
@@ -69,6 +70,7 @@ public class LoggerTestListener extends TestListenerAdapter{
 	@Override
 	public void onTestSkipped(ITestResult tr) {
 		log("Test Result is Skipped");
+		log(tr.getThrowable().getMessage());
 	}
  
 	@Override

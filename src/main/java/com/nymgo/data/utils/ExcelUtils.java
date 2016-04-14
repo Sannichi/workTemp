@@ -321,7 +321,7 @@ public class ExcelUtils {
 	public static Object[][] getBusinessNameVerifiesArray(){
 		
 		return getVerifiesArray(verifiesFilePath, verifiesBusinessNameSheetName);
-} 
+	} 
 
 	public static Object[][] getUsernameVerifiesArray(){
 		

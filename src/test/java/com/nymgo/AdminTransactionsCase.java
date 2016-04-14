@@ -52,6 +52,9 @@ public class AdminTransactionsCase extends AbstractCase{
 		//				transactionAcceptedPopup.closeTransactionAcceptedPopup();
 						TransactionAcceptedAlert transactionAcceptedAlert = memberPaymentHistoryWidget.verifyTransactionInformationAndAccept(transactionID);
 						transactionAcceptedAlert.acceptAlert();
+						while(transactionsAdminPage.isLoading()){
+							transactionsAdminPage.delay(1000);
+						}
 						memberPaymentHistoryWidget.closeMemberPaymentHistoryWidget();
 					}
 					else{

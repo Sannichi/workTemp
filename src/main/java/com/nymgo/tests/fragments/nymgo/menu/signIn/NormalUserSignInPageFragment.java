@@ -30,8 +30,9 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
 	
 	public static final String NORMAL_ACCOUNT_PAGE_URL_PATTERN = Starter.SECURE_PART_PATTERN +
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
-	public static final String NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART +
-			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
+//	public static final String NORMAL_ACCOUNT_PAGE_URL = Starter.SECURE_PART +
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
+	public static final String NORMAL_ACCOUNT_PAGE_URL_END = LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/login";
 	
 	public boolean isCorrectURL() {
 		// TODO Auto-generated method stub
@@ -42,7 +43,7 @@ public class NormalUserSignInPageFragment extends BaseNymgoFragment{
 
 	public String getCorrectURL() {
 		// TODO Auto-generated method stub
-		return NORMAL_ACCOUNT_PAGE_URL;
+		return NORMAL_ACCOUNT_PAGE_URL_END;
 	}
 
 	public void typeUsername(String login){

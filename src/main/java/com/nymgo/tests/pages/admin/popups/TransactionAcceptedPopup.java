@@ -1,7 +1,5 @@
 package com.nymgo.tests.pages.admin.popups;
 
-import org.testng.Assert;
-
 import com.nymgo.tests.starter.Starter;
 
 public class TransactionAcceptedPopup extends AbstractPopup{
@@ -33,20 +31,25 @@ public class TransactionAcceptedPopup extends AbstractPopup{
 		return TRANSACTION_ACCEPTED_POPUP_TEXT_ENG;
 	}
 
+//	public void closeTransactionAcceptedPopup(){
+//    	
+//		for(int i = 0; i < 5; i++){
+//			delay(2000);
+//			if(isPopupExist()){
+//				clickOnCloseButton();
+//		        delay(2000);
+//	            LOGGER.info("Closing the Transaction Accepted Popup");            
+//		    	Assert.assertFalse(isPopupExist(), "Transaction Accepted Popup was not closed");
+//				break;
+//			}
+//			if(i == 4){
+//				LOGGER.fatal("Transaction Accepted Popup was not appeared in 10 seconds");
+//			}
+//		}
+//    }
+
 	public void closeTransactionAcceptedPopup(){
-    	
-		for(int i = 0; i < 5; i++){
-			delay(200);
-			if(isPopupExist()){
-				clickOnCloseButton();
-		        delay(200);
-	            LOGGER.info("Closing the Transaction Accepted Popup");            
-		    	Assert.assertFalse(isPopupExist(), "Transaction Accepted Popup was not closed");
-				break;
-			}
-			if(i == 4){
-				LOGGER.fatal("Transaction Accepted Popup was not appeared in 10 seconds");
-			}
-		}
-    }
+	
+		closePopup(getPageName());
+	}
 }

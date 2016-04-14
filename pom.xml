@@ -22,7 +22,8 @@
 		<groupId>org.testng</groupId> 
 		<artifactId>testng</artifactId> 
 		<version>6.8</version> 
-		<scope>test</scope>
+<!--		<scope>test</scope> -->
+		<scope>compile</scope>
 	</dependency>
 
     <dependency>
@@ -84,7 +85,8 @@
 				<!--<groups>euroNormalSignIn,editEuroNormalUser</groups>-->
           		<suiteXmlFiles>
 					<suiteXmlFile>TestSuites/Transactions/TransactionsSmokeSuite.xml</suiteXmlFile>
-					<suiteXmlFile>TestSuites/Transactions/DealsSmokeSuite.xml</suiteXmlFile>
+					<!--<suiteXmlFile>TestSuites/Transactions/DealsSmokeSuite.xml</suiteXmlFile>
+					<suiteXmlFile>TestSuites/Transactions/AllSuites.xml</suiteXmlFile>-->
 				</suiteXmlFiles>
 			</configuration>
 		</plugin>

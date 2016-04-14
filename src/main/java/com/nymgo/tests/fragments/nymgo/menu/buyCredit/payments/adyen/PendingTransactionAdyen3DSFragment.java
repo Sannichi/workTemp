@@ -22,16 +22,16 @@ public class PendingTransactionAdyen3DSFragment extends PendingTransactionFragme
 		// TODO Auto-generated constructor stub
 	}
 
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL = Starter.SECURE_PART_PATTERN + 
-//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";			
-//
-//	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_CHROME_URL = Starter.SECURE_PART_PATTERN + 
-//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/adyen3ds-return/";
-	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL = Starter.SECURE_PART + 
+	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";			
 
-	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_CHROME_URL = Starter.SECURE_PART + 
+	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_CHROME_URL = Starter.SECURE_PART_PATTERN + 
 			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/adyen3ds-return/";
+//	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_URL = Starter.SECURE_PART + 
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/generate";			
+//
+//	private static final String BUY_CREDIT_CONFIRM_PAGE_ADYEN_3DS_PENDING_CHROME_URL = Starter.SECURE_PART + 
+//			LocaleGenerator.getLocaleKey(LOCALE_CONST.LANGUAGE_URL) + "/adyen3ds-return/";
 	
 	private String defineCorrectURL(){
 		BROWSERS BROWSER = BROWSERS.valueOf(Starter.PROPS.getProperty(PROPERTIES.BROWSER.name()));
