@@ -25,7 +25,7 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 	public AbstractViewAccountPage expandContentByText(String contentName){
 
 		baseViewAccountFragment.expandContentByText(contentName);
-		delay(100);
+		delay(1000);
 		LOGGER.info("Expandable content " + contentName + " is expanded");
 		return this;
 	}
@@ -246,52 +246,63 @@ public abstract class AbstractViewAccountPage extends AbstractLoggedInPage{
 			String street, String postalCode, String displayCurrency, String paymentCurrency, String language){
 		
 		if (fullName != null){
-			Assert.assertTrue(getFullName().equals(fullName), "FullName was not updated. Current value is '" + getFullName() + "', should be '" + fullName + "'");
+			String currentFullName = getFullName();
+			Assert.assertTrue(currentFullName.equals(fullName), "FullName was not updated. Current value is '" + currentFullName + "', should be '" + fullName + "'");
 			LOGGER.info("FullName is updated with " + fullName);
 		}
 		if (mobile != null){
-			Assert.assertTrue(getMobile().equals(mobile), "Mobile was not updated. Current value is '" + getMobile() + "', should be '" + mobile + "'");
+			String currentMobile = getMobile();
+			Assert.assertTrue(currentMobile.equals(mobile), "Mobile was not updated. Current value is '" + currentMobile + "', should be '" + mobile + "'");
 			LOGGER.info("Mobile is updated with " + mobile);
 		}
 		if (phone != null){
-			Assert.assertTrue(getPhone().equals(phone), "Phone was not updated. Current value is '" + getPhone() + "', should be '" + phone + "'");
+			String currentPhone = getPhone();
+			Assert.assertTrue(currentPhone.equals(phone), "Phone was not updated. Current value is '" + currentPhone + "', should be '" + phone + "'");
 			LOGGER.info("Phone is updated with " + phone);
 		}
 		if (countryOfResidence != null){
-			Assert.assertTrue(getSelectedCountryOfResidence().equals(countryOfResidence), "Country of Residence was not updated. Current value is '" 
-			+ getSelectedCountryOfResidence() + "', should be '" + countryOfResidence + "'");
+			String selectedCountryOfResidence = getSelectedCountryOfResidence();
+			Assert.assertTrue(selectedCountryOfResidence.equals(countryOfResidence), "Country of Residence was not updated. Current value is '" 
+			+ selectedCountryOfResidence + "', should be '" + countryOfResidence + "'");
 			LOGGER.info("Country of Residence is updated with " + countryOfResidence);
 		}
 		if (city != null){
-			Assert.assertTrue(getCity().equals(city), "City was not updated. Current value is '" + getCity() + "', should be '" + city + "'");
+			String currentCity = getCity();
+			Assert.assertTrue(currentCity.equals(city), "City was not updated. Current value is '" + currentCity + "', should be '" + city + "'");
 			LOGGER.info("City is updated with " + city);
 		}
 		if (address != null){
-			Assert.assertTrue(getAddress().equals(address), "Address was not updated. Current value is '" + getAddress() + "', should be '" + address + "'");
+			String currentAddress = getAddress();
+			Assert.assertTrue(currentAddress.equals(address), "Address was not updated. Current value is '" + currentAddress + "', should be '" + address + "'");
 			LOGGER.info("Address is updated with " + address);
 		}
 		if (street != null){
-			Assert.assertTrue(getStreet().equals(street), "Street was not updated. Current value is '" + getStreet() + "', should be '" + street + "'");
+			String currentStreet = getStreet();
+			Assert.assertTrue(currentStreet.equals(street), "Street was not updated. Current value is '" + currentStreet + "', should be '" + street + "'");
 			LOGGER.info("Street is updated with " + street);
 		}
 		if (postalCode != null){
-			Assert.assertTrue(getPostalCode().equals(postalCode), "Postal Code was not updated. Current value is '" + getPostalCode() + "', should be '" + postalCode + "'");
+			String currentPostalCode = getPostalCode();
+			Assert.assertTrue(currentPostalCode.equals(postalCode), "Postal Code was not updated. Current value is '" + currentPostalCode + "', should be '" + postalCode + "'");
 			LOGGER.info("Postal Code is updated with " + postalCode);
 		}
 		if (displayCurrency != null){
-			Assert.assertTrue(getSelectedDisplayCurrency().equals(displayCurrency), "Display Currency was not updated. Current value is '"
-			+ getSelectedDisplayCurrency() + "', should be '" + displayCurrency + "'");
+			String selectedDisplayCurrency = getSelectedDisplayCurrency();
+			Assert.assertTrue(selectedDisplayCurrency.equals(displayCurrency), "Display Currency was not updated. Current value is '"
+			+ selectedDisplayCurrency + "', should be '" + displayCurrency + "'");
 			LOGGER.info("Display Currency is updated with " + displayCurrency);
 		}
 		if (paymentCurrency != null){
 			String paymentCurrencyName = CurrencyNameGenerator.getCurrencyKeyBySign(paymentCurrency); 
-			Assert.assertTrue(getSelectedPaymentCurrency().equals(paymentCurrencyName), "Payment Currency was not updated. Current value is '"
-			+ getSelectedPaymentCurrency() + "', should be '" + paymentCurrencyName + "'");
+			String selectedPaymentCurrency = getSelectedPaymentCurrency();
+			Assert.assertTrue(selectedPaymentCurrency.equals(paymentCurrencyName), "Payment Currency was not updated. Current value is '"
+			+ selectedPaymentCurrency + "', should be '" + paymentCurrencyName + "'");
 			LOGGER.info("Payment Currency is updated with " + paymentCurrencyName);
 		}
 		if (language != null){
-			Assert.assertTrue(getSelectedLanguage().equals(language), "Language was not updated. Current value is '"
-			+ getSelectedLanguage() + "', should be '" + language + "'");
+			String selectedLanguage = getSelectedLanguage();
+			Assert.assertTrue(selectedLanguage.equals(language), "Language was not updated. Current value is '"
+			+ selectedLanguage + "', should be '" + language + "'");
 			LOGGER.info("Language is updated with " + language);
 		}
 	}
